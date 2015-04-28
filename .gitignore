@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #################
 ## Eclipse
 #################
@@ -215,6 +214,4 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
-=======
 /tedX_met_codeigniter/nbproject/private/
->>>>>>> origin/master
