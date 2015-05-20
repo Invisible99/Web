@@ -406,8 +406,8 @@
                             </div>
                             <div class="row control-group">
                                 <div class="form-group col-xs-12  controls">
-                                    <label>Phone Number<span>*</span></label>
-                                    <input type="tel" class="form-control" placeholder="Phone Number" id="phone" required data-validation-required-message="Please enter your phone number.">
+                                    <label>Phone Number<span><!--*--></span></label>
+                                    <input type="tel" class="form-control" placeholder="Phone Number" id="phone" >
                                     <p class="help-block"></p>
                                 </div>
                             </div>
@@ -432,10 +432,10 @@
                 <div class="col-md-4">
                     <h3 class="heading">Contact info</h3>
                     <ul class="list-unstyled contact contact-info">
-                        <li><p><strong><i class="fa fa-map-marker"></i> Address:</strong> vaisahali, jaipur, 302012</p></li> 
-                        <li><p><strong><i class="fa fa-envelope"></i> Mail Us:</strong> <a href="#">Support@designmylife.com</a></p></li>
+                        <li><p><strong><i class="fa fa-map-marker"></i> Address:</strong> Elfde-Liniestraat 24, 3500 Hasselt, België</p></li> 
+                        <li><p><strong><i class="fa fa-envelope"></i> Mail Us:</strong> <a href="#">pxltedx@gmail.com</a></p></li>
                         <li> <p><strong><i class="fa fa-phone"></i> Phone:</strong> +91 1800 2345 2132</p></li>
-                        <li> <p><strong><i class="fa fa-print"></i> Fax:</strong> +91 2345 2132</p></li>
+                        <!--<li> <p><strong><i class="fa fa-print"></i> Fax:</strong> +91 2345 2132</p></li>-->
                     </ul>
                     <div class="divide40"></div>
                     <h4>Get social</h4>
@@ -571,10 +571,10 @@
             var marker;
 
             function initialize() {
-                myLatlng = new google.maps.LatLng(37.397802, -121.890288);
+                myLatlng = new google.maps.LatLng(50.93773,5.34914);
 
                 var mapOptions = {
-                    zoom: 13,
+                    zoom: 14,
                     center: myLatlng,
                     mapTypeId: google.maps.MapTypeId.ROADMAP,
                     scrollwheel: false,
@@ -582,7 +582,7 @@
                 };
                 map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
-                var contentString = '<p style="line-height: 20px;"><strong>assan Template</strong></p><p>Vailshali, assan City, 302012</p>';
+                var contentString = '<p style="line-height: 20px;"><strong>PXL Hogeschool</strong></p><p>Elfde-Liniestraat 24<br/>3500 Hasselt, België</p>';
 
                 var infowindow = new google.maps.InfoWindow({
                     content: contentString
