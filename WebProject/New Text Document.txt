@@ -1,0 +1,17 @@
+Before this fucking thing works in WAMP
+
+1) Create .htacess file in parallel to application holder and just copy past the following code:
+
+RewriteEngine On
+RewriteBase /CodeIgniter/
+RewriteCond %{REQUEST_URI} ^system.*
+RewriteRule ^(.*)$ /index.php/$1 [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [L]
+2) Change $config['index_page'] to blank in config.php in application folder as below:
+
+$config['index_page'] = '';
+3) Enable "rewrite_module" of apache.
+
+Now you can access your site without index.php in url.
