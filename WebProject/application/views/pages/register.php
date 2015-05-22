@@ -300,29 +300,28 @@
                 <div class="col-sm-6 col-sm-offset-3">
                     <div role="tabpanel">
                         <div role="tabpanel" class="tab-pane" id="profile">
-                            <form method="post">
-                                <?php echo form_open("pages/registration"); ?>
-                                <div class="form-group">
-                                    <label for="username">Username</label>
-                                    <input type="text" class="form-control" name="username" id="username" value="<?php echo set_value('user_name'); ?>">
-                                </div>
-                                <div class="form-group">
-                                    <label for="email_address">Email address</label>
-                                    <input type="email" class="form-control" name="email_address" id="email_address" value="<?php echo set_value('email_address'); ?>">
-                                </div>
-                                <div class="form-group">
-                                    <label for="password">Password</label>
-                                    <input type="password" class="form-control" name="password" id="password" value="<?php echo set_value('password'); ?>">
-                                </div>    
-                                <div class="form-group">
-                                    <label for="con_password">Re-Password</label>
-                                    <input type="password" class="form-control" name="con_password" id="con_password" value="<?php echo set_value('con_password'); ?>">
-                                </div>
-                                <div class="pull-right">
-                                    <input type="submit" class="btn btn-theme-dark btn-lg" name="btn-reg" value="Register"/>
-                                </div>
-                                <div class="clearfix"></div>
-                            </form>
+                            <?php echo form_open("pages/registration"); ?>
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <input type="text" class="form-control" name="username" id="username" value="<?php echo set_value('user_name'); ?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="email_address">Email address</label>
+                                <input type="email" class="form-control" name="email_address" id="email_address" value="<?php echo set_value('email_address'); ?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" name="password" id="password" value="<?php echo set_value('password'); ?>">
+                            </div>    
+                            <div class="form-group">
+                                <label for="con_password">Re-Password</label>
+                                <input type="password" class="form-control" name="con_password" id="con_password" value="<?php echo set_value('con_password'); ?>">
+                            </div>
+                            <div class="pull-right">
+                                <input type="submit" class="btn btn-theme-dark btn-lg" name="btn-reg" value="Submit"/>
+                            </div>
+                            <div class="clearfix"></div>
+                            <?php echo form_close(); ?>
                         </div><!--register tab end-->
                     </div>
                 </div>
