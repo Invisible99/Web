@@ -252,7 +252,6 @@
                             <div class="dropdown-menu dropdown-menu-right dropdown-login-box animated fadeInUp">
                                 <form role="form">
                                     <h4>Signin</h4>
-
                                     <div class="form-group">
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class="fa fa-user"></i></span>
@@ -272,7 +271,7 @@
                                         <!--                                        <button type="submit" class="btn btn-theme pull-right">Login</button>                 -->
                                         <div class="clearfix"></div>
                                         <hr>
-                                        <p>Don't have an account! <a href="#">Register Now</a></p>
+                                        <p>Don't have an account! <a href="register">Register Now</a></p>
                                     </div>
                                 </form>
                             </div>

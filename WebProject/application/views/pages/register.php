@@ -270,7 +270,7 @@
                                         <!--                                        <button type="submit" class="btn btn-theme pull-right">Login</button>                 -->
                                         <div class="clearfix"></div>
                                         <hr>
-                                        <p>Don't have an account! <a href="#">Register Now</a></p>
+                                        <p>Don't have an account! <a href="register">Register Now</a></p>
                                     </div>
                                 </form>
                             </div>
@@ -283,12 +283,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h4>Login or register</h4>
+                        <h4>Register</h4>
                     </div>
                     <div class="col-sm-6 hidden-xs text-right">
                         <ol class="breadcrumb">
                             <li><a href="index">Home</a></li>
-                            <li>Login or register</li>
+                            <li>Register</li>
                         </ol>
                     </div>
                 </div>
@@ -301,21 +301,22 @@
                     <div role="tabpanel">
                         <div role="tabpanel" class="tab-pane" id="profile">
                             <form method="post">
+                                <?php echo form_open("pages/registration"); ?>
                                 <div class="form-group">
                                     <label for="username">Username</label>
-                                    <input type="text" class="form-control" name="row[username]" id="username" placeholder="Enter username">
+                                    <input type="text" class="form-control" name="username" id="username" value="<?php echo set_value('user_name'); ?>">
                                 </div>
                                 <div class="form-group">
-                                    <label for="email">Email address</label>
-                                    <input type="email" class="form-control" name="row[email]" id="email" placeholder="Enter email">
+                                    <label for="email_address">Email address</label>
+                                    <input type="email" class="form-control" name="email_address" id="email_address" value="<?php echo set_value('email_address'); ?>">
                                 </div>
                                 <div class="form-group">
                                     <label for="password">Password</label>
-                                    <input type="password" class="form-control" name="row[password]" id="password" placeholder="Password">
+                                    <input type="password" class="form-control" name="password" id="password" value="<?php echo set_value('password'); ?>">
                                 </div>    
                                 <div class="form-group">
-                                    <label for="repassword">Re-Password</label>
-                                    <input type="password" class="form-control" name="password2" id="repassword" placeholder="Password">
+                                    <label for="con_password">Re-Password</label>
+                                    <input type="password" class="form-control" name="con_password" id="con_password" value="<?php echo set_value('con_password'); ?>">
                                 </div>
                                 <div class="pull-right">
                                     <input type="submit" class="btn btn-theme-dark btn-lg" name="btn-reg" value="Register"/>
