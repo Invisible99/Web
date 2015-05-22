@@ -46,28 +46,6 @@
 
     </head>
     <body>
-
-        <div id="header-top" class="hidden-xs">
-            <div class="container">
-                <div class="top-bar">
-                    <div class="pull-left sample-1right">
-                        <a><i class="fa fa-phone"></i> Any questions? Call us: <span class="colored-text"> +32 474 21 21 25</span> </a> 
-                        <a><i class="fa fa-envelope"></i> Mail us: <span class="colored-text"> pxltedx@gmail.com </span> </a>
-                    </div>
-                    <div class="pull-right">
-                        <ul class="list-inline top-social">
-                            <li>Follow us:</li>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                            <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div><!--top bar end hidden in small devices-->
-        <!--navigation -->
         <!-- Static navbar -->
         <div class="navbar navbar-default navbar-static-top yamm sticky" role="navigation">
             <div class="container">
