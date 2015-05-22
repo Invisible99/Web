@@ -223,14 +223,31 @@
                                 </li>
                             </ul>
                         </li> <!--menu Features li end here-->
-                        <!--mega menu end-->    
+                        <!--mega menu end-->      
+
+                        <li class="dropdown " data-animate="animated fadeInUp" style="z-index:500;">
+                            <a href="#" class="dropdown-toggle " data-toggle="dropdown"><i class="fa fa-search"></i></a>
+                            <ul class="dropdown-menu search-dropdown animated fadeInUp">
+                                <li id="dropdownForm">
+                                    <div class="dropdown-form">
+                                        <form class=" form-inline">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" placeholder="search...">
+                                                <span class="input-group-btn">
+                                                    <button class="btn btn-theme-bg" type="button">Go!</button>
+                                                </span>
+                                            </div><!--input group-->
+                                        </form><!--form-->
+                                    </div><!--.dropdown form-->
+                                </li><!--.drop form search-->
+                            </ul><!--.drop menu-->
+                        </li> <!--menu search li end here--> 
 
                         <li class="dropdown">
-                            <a href="#" class=" dropdown-toggle" data-toggle="dropdown"><i class="fa fa-lock"></i> Sign In</a>
+                            <a href="#" class=" dropdown-toggle" data-toggle="dropdown"><i class="fa fa-lock"></i></a>
                             <div class="dropdown-menu dropdown-menu-right dropdown-login-box animated fadeInUp">
                                 <form role="form">
                                     <h4>Signin</h4>
-
                                     <div class="form-group">
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class="fa fa-user"></i></span>

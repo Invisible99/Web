@@ -164,21 +164,9 @@
                             </ul>
                         </li>
                         <!--menu pages li end here-->
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Shop <i class="fa fa-angle-down"></i></a>
-                            <ul class="dropdown-menu" role="menu">                              
-                                <li><a href="shop-2col.html">2 columns sidebar</a></li>
-                                <li><a href="shop-3col.html">3 columns sidebar</a></li>
-                                <li><a href="shop-4col.html">4 columns full width</a></li>
-                                <li><a href="product-list.html">Product list</a></li>
-                                <li><a href="product-detail.html">Single product</a></li>
-                                <li><a href="cart.html">Shopping cart</a></li>                                
-                                <li><a href="checkout.html">Checkout</a></li>
-                                <li><a href="shop-login.html">Login</a></li>
-                                <li><a href="shop-register.html">Register</a></li>
-
-                            </ul>
-                        </li> <!--menu Shop li end here-->
+                        <li>
+                            <a href="events">Events</a>
+                        </li>
                         <!--mega menu-->
                         <li class="dropdown yamm-fw active">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Features  <i class="fa fa-angle-down"></i></a>
