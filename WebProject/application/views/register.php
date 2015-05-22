@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+    <?php
+    if (isset($this->session->userdata['logged_in'])) {
+        header("location: http://localhost/login/index.php/user_authentication/user_login_process");
+    }
+    ?>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -300,14 +305,19 @@
                 <div class="col-sm-6 col-sm-offset-3">
                     <div role="tabpanel">
                         <div role="tabpanel" class="tab-pane" id="profile">
-                            <?php echo form_open("pages/registration"); ?>
+                            <?php
+                            echo "<div class='error_msg'>";
+                            echo validation_errors();
+                            echo "</div>";
+                            ?>
+                            <?php echo form_open("user/new_user_registration"); ?>
                             <div class="form-group">
                                 <label for="username">Username</label>
-                                <input type="text" class="form-control" name="username" id="username" value="<?php echo set_value('user_name'); ?>">
+                                <input type="text" class="form-control" name="username" id="username" value="<?php echo set_value('username'); ?>">
                             </div>
                             <div class="form-group">
                                 <label for="email_address">Email address</label>
-                                <input type="email" class="form-control" name="email_address" id="email_address" value="<?php echo set_value('email_address'); ?>">
+                                <input type="email" class="form-control" name="email" id="email" value="<?php echo set_value('email'); ?>">
                             </div>
                             <div class="form-group">
                                 <label for="password">Password</label>
@@ -315,13 +325,13 @@
                             </div>    
                             <div class="form-group">
                                 <label for="con_password">Re-Password</label>
-                                <input type="password" class="form-control" name="con_password" id="con_password" value="<?php echo set_value('con_password'); ?>">
+                                <input type="password" class="form-control" name="passconf" id="con_password" value="<?php echo set_value('passconf'); ?>">
                             </div>
                             <div class="pull-right">
-                                <input type="submit" class="btn btn-theme-dark btn-lg" name="btn-reg" value="Submit"/>
+                                <input type="submit" class="btn btn-theme-dark btn-lg" name="btn-reg" value="Sign Up"/>
                             </div>
                             <div class="clearfix"></div>
-                            <?php echo form_close(); ?>
+                            <?php form_close(); ?>
                         </div><!--register tab end-->
                     </div>
                 </div>
