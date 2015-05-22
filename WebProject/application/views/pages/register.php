@@ -27,8 +27,8 @@
         <!-- animated css  -->
         <link href="css/animate.css" rel="stylesheet" type="text/css" media="screen">
         <!--google fonts-->
-        
-        
+
+
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
         <!--owl carousel css-->
         <link href="css/owl.carousel.css" rel="stylesheet" type="text/css" media="screen">
@@ -64,7 +64,7 @@
                             <a href="index">Home</a>
                         </li>
                         <!--menu home li end here-->
-                             <li class="dropdown">
+                        <li class="dropdown">
                             <a href="#" class="dropdown-toggle " data-toggle="dropdown">Portfolio <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu multi-level" role="menu">
                                 <li class="dropdown-submenu">
@@ -126,7 +126,7 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu" role="menu">
-                                  <li><a href="blog-full.html">Blog - full width</a></li>
+                                <li><a href="blog-full.html">Blog - full width</a></li>
                                 <li><a href="blog-leftimg.html">Blog - left image</a></li>
                                 <li><a href="blog-sidebar.html">Blog - sidebar</a></li>
                                 <li><a href="blog-2col.html">Blog - 2 column</a></li>
@@ -194,7 +194,7 @@
                                                     <li><a href="header-dark.html">Header 2 - dark </a></li>
                                                     <li><a href="header-transparent.html">header 3 - transparent </a></li>
                                                     <li><a href="header-center-logo.html">header 4 - Logo center </a></li>
-                                                    
+
                                                     <li><a href="index.html">Footer - 1</a></li>
                                                     <li><a href="footer-2.html">Footer - 2</a></li>
                                                     <li><a href="footer-3.html">Footer - 3 </a></li>
@@ -205,7 +205,7 @@
                                                 <h3 class="heading">Layout grids </h3>
                                                 <ul class="nav mega-vertical-nav">
                                                     <li><a href="full-width.html">Full Width</a></li>
-                                                    
+
                                                     <li><a href="left-sidebar.html">Left Sidebar</a></li>
                                                     <li><a href="right-sidebar.html">Right sidebar</a></li>
                                                     <li><a href="both-sidebar.html">Both Sidebar</a></li>
@@ -311,62 +311,30 @@
             <div class="row">
                 <div class="col-sm-6 col-sm-offset-3">
                     <div role="tabpanel">
-
-                        <!-- Nav tabs -->
-                        <ul class="nav nav-tabs text-center" role="tablist">
-                            <li role="presentation" class="active"><a href="#login" aria-controls="login" role="tab" data-toggle="tab">Login</a></li>
-                            <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Register</a></li>
-                        </ul>
-
-                        <!-- Tab panes -->
-                        <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane active" id="login">
-                                <form method="post">
-                                    <div class="form-group">
-                                        <label for="loginUsername">Username</label>
-                                        <input type="text" name="row[username]" class="form-control" id="loginUsername" placeholder="Enter username">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="loginPassword">Password</label>
-                                        <input type="password" name="row[password]" class="form-control" id="loginPassword" placeholder="Password">
-                                    </div>                                  
-                                    <div class="pull-left">
-
-                                        <p><a href="#">Forget password?</a></p>
-
-                                    </div>
-                                    <div class="pull-right">
-                                        <input type="submit" class="btn btn-theme-dark" name="btn-login" value="Login"/>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </form>
-                            </div><!--login tab end-->
-                            <div role="tabpanel" class="tab-pane" id="profile">
-                                <form method="post">
-                                    <div class="form-group">
-                                        <label for="username">Username</label>
-                                        <input type="text" class="form-control" name="row[username]" id="username" placeholder="Enter username">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="email">Email address</label>
-                                        <input type="email" class="form-control" name="row[email]" id="email" placeholder="Enter email">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="password">Password</label>
-                                        <input type="password" class="form-control" name="row[password]" id="password" placeholder="Password">
-                                    </div>    
-                                    <div class="form-group">
-                                        <label for="repassword">Re-Password</label>
-                                        <input type="password" class="form-control" name="password2" id="repassword" placeholder="Password">
-                                    </div>
-                                    <div class="pull-right">
-                                        <input type="submit" class="btn btn-theme-dark btn-lg" name="btn-reg" value="Register"/>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </form>
-                            </div><!--register tab end-->
-                        </div>
-
+                        <div role="tabpanel" class="tab-pane" id="profile">
+                            <form method="post">
+                                <div class="form-group">
+                                    <label for="username">Username</label>
+                                    <input type="text" class="form-control" name="row[username]" id="username" placeholder="Enter username">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email address</label>
+                                    <input type="email" class="form-control" name="row[email]" id="email" placeholder="Enter email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input type="password" class="form-control" name="row[password]" id="password" placeholder="Password">
+                                </div>    
+                                <div class="form-group">
+                                    <label for="repassword">Re-Password</label>
+                                    <input type="password" class="form-control" name="password2" id="repassword" placeholder="Password">
+                                </div>
+                                <div class="pull-right">
+                                    <input type="submit" class="btn btn-theme-dark btn-lg" name="btn-reg" value="Register"/>
+                                </div>
+                                <div class="clearfix"></div>
+                            </form>
+                        </div><!--register tab end-->
                     </div>
                 </div>
             </div>
@@ -448,7 +416,7 @@
                 </div>
             </div>
         </footer><!--default footer end here-->
-       <!--scripts and plugins -->
+        <!--scripts and plugins -->
         <!--must need plugin jquery-->
         <script src="js/jquery.min.js"></script>        
         <!--bootstrap js plugin-->
@@ -461,8 +429,8 @@
         <script src="js/jquery.flexslider-min.js" type="text/javascript"></script>
         <!--parallax background plugin-->
         <script src="js/jquery.stellar.min.js" type="text/javascript"></script>
-        
-        
+
+
         <!--digit countdown plugin-->
         <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
         <!--digit countdown plugin-->
@@ -475,8 +443,8 @@
         <script src="js/jquery.magnific-popup.min.js" type="text/javascript"></script>
         <!--you tube player-->
         <script src="js/jquery.mb.YTPlayer.min.js" type="text/javascript"></script>
-        
-        
+
+
         <!--customizable plugin edit according to your needs-->
         <script src="js/custom.js" type="text/javascript"></script>
     </body>
