@@ -12,14 +12,8 @@ class User extends CI_Controller {
         $this->load->view('events');
     }
 
-    //Show team page
-    function team() {
-        $this->load->view('team');
-    }
-
     //Show register page
     function register() {
-        $this->load->view('index');
+        $this->load->view('register');
     }
-
 }
