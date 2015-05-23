@@ -50,7 +50,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index"><img src="<?php echo base_url(); ?>img/logo.png" alt="ASSAN"></a>
+                    <a class="navbar-brand" href="index"><img src="<?php echo base_url(); ?>img/TEDx_logo.png" alt="ASSAN"></a>
                     test
                 </div>
                 <div class="navbar-collapse collapse">
