@@ -71,7 +71,7 @@ hr {
     padding: 3px 6px;
 }
 a {
-    color: #333;
+    color: #FF2B06;
     -webkit-transition: all 200ms ease-in;
     -o-transition: all 200ms ease-in;
     -moz-transition: all 200ms ease-in;
@@ -170,6 +170,7 @@ p {
     margin: 0 0 20px;
     font-family: 'Open Sans', sans-serif;
     font-weight: 400;
+    word-wrap:break-word;
 }
 p.sub-text{
     font-style: normal;
@@ -177,6 +178,33 @@ p.sub-text{
     line-height: 29px;
     font-weight:400;
     color:#555;
+}
+
+/******forum overview*********/
+p.forum-overview-poster{
+    color: #FF2B06;
+    padding: 6px 12px;
+    margin: 0 0 0px;
+}
+
+p.forum-overview-post{
+    color: #000;
+    background-color: #DCDCDC;
+    padding: 6px 12px;
+    margin: 0 0 0px;
+    background-image: url(../img/shadow-bg.png);
+}
+
+.forum-overview-naam{
+    line-height: 24px;
+    padding: 6px 12px;
+    color: #FF2B06;
+    display: inline-block;
+}
+
+div.forumoverview-box{
+    color: #000;            
+    background-color: #f6f6f6;
 }
 /*******section heading**********/
 .center-heading{

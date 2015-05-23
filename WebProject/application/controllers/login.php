@@ -34,11 +34,11 @@ class Login extends CI_Controller {
             $this->data['emailVanDB'] = $this->users_model->doesEmailExist($this->input->post('email'));
             $this->data['usernameVanDB'] = $this->users_model->doesUsernameExist($this->input->post('gebruikersnaam'));
 
-            if (!empty($this->data['emailVanDB'])) {
-                $this->data['melding'] .= "<p class='alert alert-danger'>Dit e-mail adres is al in gebruik.</p>";
-            }
             if (!empty($this->data['usernameVanDB'])) {
                 $this->data['melding'] .= "<p class='alert alert-danger'>Deze gebruikersnaam is al in gebruik.</p>";
+            }
+            if (!empty($this->data['emailVanDB'])) {
+                $this->data['melding'] .= "<p class='alert alert-danger'>Dit e-mail adres is al in gebruik.</p>";
             }
 
             if ($this->data['melding'] == "") {
@@ -50,7 +50,12 @@ class Login extends CI_Controller {
                   else{
                   echo "Hij zit er in ma deze controle werkt hier nie";
                   } */
-
+                
+                $this->data['melding'] = "";
+                $this->data['voornaam'] = "";
+                $this->data['familienaam'] = "";
+                $this->data['gebruikersnaam'] = "";
+                $this->data['email'] = "";
                 $this->data['melding'] = "<p class='alert alert-success'>Bedankt voor uw registratie, een admin zal uw account zo snel mogelijk activeren.</p>";
             }
             //stuur door naar registerpagina en laat de errors of gelukte insert melding zien

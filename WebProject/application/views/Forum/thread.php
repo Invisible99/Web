@@ -283,58 +283,44 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h4>Register</h4>
+                        <h4>Forum</h4>
                     </div>
                     <div class="col-sm-6 hidden-xs text-right">
                         <ol class="breadcrumb">
                             <li><a href="index">Home</a></li>
-                            <li>Register</li>
+                            <li>Forum</li>
                         </ol>
                     </div>
                 </div>
             </div>
         </div><!--breadcrumbs-->
         <div class="divide80"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6 col-sm-offset-3">
-                    <div role="tabpanel">
-                        <div role="tabpanel" class="tab-pane" id="profile">
-                            {melding}
-                            <?php
-                            echo "<div class='error_msg'>";
-                            echo validation_errors();
-                            echo "</div>";
-                            
-                            ?>
-                            <?php echo form_open("login/insert"); ?>
-                            <div class="form-group">
-                                <label for="voornaam">Voornaam</label>
-                                <input type="text" class="form-control" name="voornaam" id="voornaam" value="{voornaam}" required="required">
-                            </div>
-                            <div class="form-group">
-                                <label for="familienaam">Familienaam</label>
-                                <input type="text" class="form-control" name="familienaam" id="familienaam" value="{familienaam}" required="required">
-                            </div>
-                            <div class="form-group">
-                                <label for="gebruikersnaam">Gebruikersnaam</label>
-                                <input type="text" class="form-control" name="gebruikersnaam" id="gebruikersnaam" value="{gebruikersnaam}" required="required">
-                            </div>    
-                            <div class="form-group">
-                                <label for="email">E-mail adres</label>
-                                <input type="email" class="form-control" name="email" id="email" value="{email}" required="required">
-                            </div>
-                            <div class="pull-right">
-                                <input type="submit" class="btn btn-theme-dark btn-lg" name="btn-reg" value="Sign Up"/>
-                            </div>
-                            <div class="clearfix"></div>
-                            <!-- !!!!!!!! voor koen moet hier een ketchup :D staan !!!!!!! -->
-                            <?php form_close(); ?>
-                        </div><!--register tab end-->
+        <div class="schedule">
+            <div class="container">
+                <div class="center-heading">
+                    <h2>Welkom op het TEDxPXL forum</h2>
+                    <span class="center-line"></span>
+                    <p class="margin40">
+                        Gelieve naar hartelust deel te nemen aan onze vele interessante topics.
+                    </p>
+                </div> 
+                <div class="row">
+                    <div class="col-sm-12">
+                        {error}
+                        {posts}
+                        <div class="forumoverview-box event-box animated fadeInLeft">
+                            <p class="forum-overview-post">
+                                <strong>({berichtID}) Posted on {postDate}: </strong> {bericht}
+                                </p>
+                            <p class="forum-overview-poster">
+                                <strong>Poster:</strong> {username}
+                            </p>
+                        </div><!--event box-->
+                        {/posts}
                     </div>
                 </div>
             </div>
-        </div>
+        </div><!--schedule end-->
         <div class="divide80"></div>
         <footer id="footer">
             <div class="container">

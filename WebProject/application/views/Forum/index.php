@@ -283,55 +283,50 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h4>Register</h4>
+                        <h4>Forum</h4>
                     </div>
                     <div class="col-sm-6 hidden-xs text-right">
                         <ol class="breadcrumb">
                             <li><a href="index">Home</a></li>
-                            <li>Register</li>
+                            <li>Forum</li>
                         </ol>
                     </div>
                 </div>
             </div>
         </div><!--breadcrumbs-->
         <div class="divide80"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6 col-sm-offset-3">
-                    <div role="tabpanel">
-                        <div role="tabpanel" class="tab-pane" id="profile">
-                            <?php
-                            echo "<div class='error_msg'>";
-                            echo validation_errors();
-                            echo "</div>";
-                            ?>
-                            <?php echo form_open("user/new_user_registration"); ?>
-                            <div class="form-group">
-                                <label for="username">Username</label>
-                                <input type="text" class="form-control" name="username" id="username" value="<?php echo set_value('username'); ?>">
-                            </div>
-                            <div class="form-group">
-                                <label for="email_address">Email address</label>
-                                <input type="email" class="form-control" name="email" id="email" value="<?php echo set_value('email'); ?>">
-                            </div>
-                            <div class="form-group">
-                                <label for="password">Password</label>
-                                <input type="password" class="form-control" name="password" id="password" value="<?php echo set_value('password'); ?>">
-                            </div>    
-                            <div class="form-group">
-                                <label for="con_password">Re-Password</label>
-                                <input type="password" class="form-control" name="passconf" id="con_password" value="<?php echo set_value('passconf'); ?>">
-                            </div>
-                            <div class="pull-right">
-                                <input type="submit" class="btn btn-theme-dark btn-lg" name="btn-reg" value="Sign Up"/>
-                            </div>
-                            <div class="clearfix"></div>
-                            <?php form_close(); ?>
-                        </div><!--register tab end-->
+        <div class="schedule">
+            <div class="container">
+                <div class="center-heading">
+                    <h2>Welkom op het TEDxPXL forum</h2>
+                    <span class="center-line"></span>
+                    <p class="margin40">
+                        Gelieve naar hartelust deel te nemen aan onze vele interessante topics.
+                    </p>
+                </div> 
+                <div class="row">
+                    <div class="col-sm-12">
+                        {error}
+                        {subforums}
+                        <div class="forumoverview-box event-box animated fadeInLeft">
+                            <h3 class="forum-overview-naam margin40">
+                                <a href="<?php echo base_url(); ?>/forum/subforum/{categorieID}">{titel}</a>
+                            </h3>                        
+                            <p class="forum-overview-post">
+                                {omschrijving} 
+                            </p>
+                            <p class="forum-overview-post">
+                                <strong>Laatste post:</strong> blablabla <strong>in:</strong> balblabllalblalbal 
+                            </p>
+                            <p class="forum-overview-poster">
+                                <strong>Poster:</strong> Piet.Vandeput
+                            </p>
+                        </div><!--event box-->
+                        {/subforums}
                     </div>
                 </div>
             </div>
-        </div>
+        </div><!--schedule end-->
         <div class="divide80"></div>
         <footer id="footer">
             <div class="container">
