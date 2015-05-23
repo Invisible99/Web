@@ -4,7 +4,37 @@ class Login extends CI_Controller {
 
     //Show login page
     function index() {
-        $this->load->view('login/index');
+          if (isset($_POST['btn-inlog'])) {          
+            
+            $this->load->model("users_model");
+            $this->data['melding'] = "";
+            $this->data['username'] = $this->input->post('gebruikersnaam');
+            $this->data['password'] = $this->input->post('password');
+          
+            $this->data['inloggen'] = $this->users_model->login($this->input->post('gebruikersnaam'));
+
+            if (!empty($this->data['inloggen'])) {
+                $hash = $this->data['inloggen']["password"];
+                
+                if(password_verify($this->input->post('password'), $hash)){
+                    $this->data['melding'] = "<p class='alert alert-success'>Bedankt voor uw inloggen.</p>";
+                }
+                else{
+                    $this->data['melding'] = "<p class='alert alert-danger'>De gebruikersnaam of wachtwoord bestaat niet.</p>";
+                }
+            }
+            else{
+                $this->data['melding'] = "<p class='alert alert-danger'>De gebruikersnaam of wachtwoord bestaat niet.</p>";
+            }
+ 
+            $this->parser->parse('login/index.php', $this->data);
+        } else {
+            $this->data['melding'] = "";
+            $this->data['gebruikersnaam'] = "";
+            $this->data['password'] = "";
+
+            $this->parser->parse('login/index.php', $this->data);
+        }
     }
 
     function register() {
