@@ -73,7 +73,7 @@ class Login extends CI_Controller {
         $to = $userEmail;
         $subject = 'TEDxPXL registratie';
         $message = "Beste " . $userVoornaam . " " . $userAchternaam . "\n\nBedankt voor uw registratie bij TEDxPXL.\nU kan nu inloggen met " . $userUsername . " met als wachtwoord " . $generatedPassword . "\nU zal uw wachtwoord moeten wijzigen bij de eerste keer inloggen.\n\nMet vriendelijke groet\n\nTEDxPXL Administratie";
-        $headers = 'From: pxltedx@gmail.com' . "\r\n" . 'MIME-Version: 1.0' . "\r\n" . 'Content-type: text/html; charset=utf-8';
+        $headers = 'From: pxltedx@gmail.com';
         if (!mail($to, $subject, $message, $headers)){
             //echo "Email sending failed";
         }
@@ -84,7 +84,7 @@ class Login extends CI_Controller {
         $to = 'koen895@hotmail.com'; //hier email van TEDx admin indien nodig
         $subject = 'Nieuwe TEDxPXL gebruiker';
         $message = "Beste Admin \n\n" . $userVoornaam . " " . $userAchternaam . " wil zich registreren met gebruikersnaam: " . $userUsername . " en het e-mail adres " . $userEmail . "\nGa naar de website om dit te bevestigen of af te keuren.";
-        $headers = 'From: pxltedx@gmail.com' . "\r\n" . 'MIME-Version: 1.0' . "\r\n" . 'Content-type: text/html; charset=utf-8';
+        $headers = 'From: pxltedx@gmail.com';
         if (!mail($to, $subject, $message, $headers)){
             //echo "Email sending failed";
         }
