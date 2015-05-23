@@ -274,7 +274,7 @@
                 </div><!--/.nav-collapse -->
             </div><!--container-->
         </div><!--navbar-default-->
-        
+
         <div class="breadcrumb-wrap">
             <div class="container">
                 <div class="row">
@@ -308,52 +308,62 @@
                             <p>( <span>*</span> fields are required )</p>
                         </div>
 
-                       <form name="sentMessage" id="contactForm" method="post" novalidate>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="row control-group">
-                                        <div class="form-group col-xs-12 controls">
-                                            <label>Name<span>*</span></label>
-                                            <input type="text" class="form-control" placeholder="Name" id="name" required data-validation-required-message="Please enter your name.">
-                                            <p class="help-block"></p>
-                                        </div>
+                        <?php
+                        echo "<div class='error_msg'>";
+                        echo validation_errors();
+                        echo "</div>";
+                        ?>
+                        <?php echo form_open("home/sendMail"); ?>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="row control-group">
+                                    <div class="form-group col-xs-12 controls">
+                                        <label>Name<span>*</span></label>
+                                        <input type="text" class="form-control" name="naam" placeholder="Name" id="name" required data-validation-required-message="Please enter your name.">
+                                        <p class="help-block"></p>
                                     </div>
+                                </div>
+                            </div>
 
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="row control-group">
-                                        <div class="form-group col-xs-12 controls">
-                                            <label>Email Address<span>*</span></label>
-                                            <input type="email" class="form-control" placeholder="Email Address" id="email" required data-validation-required-message="Please enter your email address.">
-                                            <p class="help-block"></p>
-                                        </div>
-                                    </div> 
-                                </div>
+                            <div class="col-md-6">
+                                <div class="row control-group">
+                                    <div class="form-group col-xs-12 controls">
+                                        <label>Email Address<span>*</span></label>
+                                        <input type="email" class="form-control" name="email" placeholder="Email Address" id="email" required data-validation-required-message="Please enter your email address.">
+                                        <p class="help-block"></p>
+                                    </div>
+                                </div> 
                             </div>
-                            <div class="row control-group">
-                                <div class="form-group col-xs-12  controls">
-                                    <label>Phone Number<span><!--*--></span></label>
-                                    <input type="tel" class="form-control" placeholder="Phone Number" id="phone" >
-                                    <p class="help-block"></p>
-                                </div>
+                        </div>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12  controls">
+                                <label>Phone Number<span><!--*--></span></label>
+                                <input type="tel" class="form-control" name="telefoon" placeholder="Phone Number" id="phone" >
+                                <p class="help-block"></p>
                             </div>
-                            <div class="row control-group">
-                                <div class="form-group col-xs-12 controls">
-                                    <label>Message<span>*</span></label>
-                                    <textarea rows="5" class="form-control" placeholder="Message" id="message" required data-validation-required-message="Please enter a message."></textarea>
-                                    <p class="help-block"></p>
-                                </div>
+                        </div>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 controls">
+                                <label>Subject<span>*</span></label>
+                                <input type="text" class="form-control" name="onderwerp" placeholder="Subject" id="name" required data-validation-required-message="Please enter a subject.">
+                                <p class="help-block"></p>
                             </div>
-                            <br>
-                            <div id="success"></div>
-                            <div class="row">
-                                <div class="form-group col-xs-12">
-                                    <button type="submit" class="btn btn-theme-bg btn-lg">Send Message</button>
-                                </div>
+                        </div>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 controls">
+                                <label>Message<span>*</span></label>
+                                <textarea rows="5" class="form-control" name="bericht" placeholder="Message" id="message" required data-validation-required-message="Please enter a message."></textarea>
+                                <p class="help-block"></p>
                             </div>
-                        </form>
-
+                        </div>
+                        <br>
+                        <div id="success"></div>
+                        <div class="row">
+                            <div class="form-group col-xs-12">
+                                <button type="submit" class="btn btn-theme-bg btn-lg">Verstuur Bericht</button>
+                            </div>
+                        </div>
+                        <?php form_close(); ?>
                     </div><!--contact form-->
                 </div>
                 <div class="col-md-4">
@@ -376,7 +386,7 @@
             </div>
         </div>
         <div class="divide40"></div>
-                 <footer id="footer">
+        <footer id="footer">
             <div class="container">
 
                 <div class="row">
@@ -434,7 +444,7 @@
                                     <input type="text" class="form-control" placeholder="Enter email to subscribe">
                                     <span class="input-group-btn">
                                         <a class="btn  btn-theme-dark btn-lg" href="">Ok</a>
-<!--                                        <button class="btn  btn-theme-dark btn-lg" type="submit">Ok</button>-->
+                                        <!--                                        <button class="btn  btn-theme-dark btn-lg" type="submit">Ok</button>-->
                                     </span>
                                 </div>
                             </form>
@@ -451,7 +461,7 @@
                 </div>
             </div>
         </footer><!--default footer end here-->
-       <!--scripts and plugins -->
+        <!--scripts and plugins -->
         <!--must need plugin jquery-->
         <script src="js/jquery.min.js"></script>        
         <!--bootstrap js plugin-->
@@ -464,8 +474,8 @@
         <script src="js/jquery.flexslider-min.js" type="text/javascript"></script>
         <!--parallax background plugin-->
         <script src="js/jquery.stellar.min.js" type="text/javascript"></script>
-        
-        
+
+
         <!--digit countdown plugin-->
         <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
         <!--digit countdown plugin-->
@@ -478,12 +488,12 @@
         <script src="js/jquery.magnific-popup.min.js" type="text/javascript"></script>
         <!--you tube player-->
         <script src="js/jquery.mb.YTPlayer.min.js" type="text/javascript"></script>
-        
-        
+
+
         <!--customizable plugin edit according to your needs-->
         <script src="js/custom.js" type="text/javascript"></script>
 
-        
+
         <!--cantact form script-->
         <script src="js/contact_me.js" type="text/javascript"></script>
         <script src="js/jqBootstrapValidation.js" type="text/javascript"></script>
@@ -495,7 +505,7 @@
             var marker;
 
             function initialize() {
-                myLatlng = new google.maps.LatLng(50.93773,5.34914);
+                myLatlng = new google.maps.LatLng(50.93773, 5.34914);
 
                 var mapOptions = {
                     zoom: 14,
@@ -518,7 +528,7 @@
                     title: 'Marker'
                 });
 
-                google.maps.event.addListener(marker, 'click', function() {
+                google.maps.event.addListener(marker, 'click', function () {
                     infowindow.open(map, marker);
                 });
             }

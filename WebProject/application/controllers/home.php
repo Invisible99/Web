@@ -46,4 +46,12 @@ class Home extends CI_Controller {
         $this->parser->parse('home/overzichtUsers_view.html', $this->data);
     }
 
+    function sendMail() {
+        $to = 'wefknrise@gmail.com';
+        $subject = $this->input->post('onderwerp');
+        $message = $this->input->post('bericht') . "\n\nNaam verzender: " . $this->input->post('naam') . "\n\nTelefoonnummer: " . $this->input->post('telefoon');
+        $headers = 'From: ';
+        mail($to, $subject, $message, $headers);
+    }
+
 }
