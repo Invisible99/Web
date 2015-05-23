@@ -7,13 +7,7 @@ class Login extends CI_Controller {
         $this->load->view('login/index');
     }
 
-    //Show register page
     function register() {
-        $this->data['melding'] = "";
-        $this->parser->parse('login/register.php', $this->data);
-    }
-
-    function insert() {
 
         //hier nog invoercontrole, alle velden zijn wel via html required. CI doet anti-sqlinjectie automatisch
         //met de parser kan je de ingevulde velden teruggeven in de value van het tekstvak zodat ze niet alles opnieuw moeten invullen
@@ -42,15 +36,13 @@ class Login extends CI_Controller {
             }
 
             if ($this->data['melding'] == "") {
+                
+                //roep hier method aan die random passwd genereert
+                          
                 $this->users_model->insert(array('rolID' => 2, 'username' => $this->input->post('gebruikersnaam'), 'password' => 'test', 'email' => $this->input->post('email'), 'voornaam' => $this->input->post('voornaam'), 'familienaam' => $this->input->post('familienaam')));
 
-                /* if($this->db->affected_rows() == 1){ //hiermee kan je controleren of er effectief iets in de DB gebeurd is, maar als de insert niet lukt dan geeft hij meteen een database error, dus heeft de controle hier geen zin
-                  echo "Hij zit er in.";
-                  }
-                  else{
-                  echo "Hij zit er in ma deze controle werkt hier nie";
-                  } */
-                
+                //roep hier method aan die mail stuurt (met random passwd) indien insert gelukt is
+ 
                 $this->data['melding'] = "";
                 $this->data['voornaam'] = "";
                 $this->data['familienaam'] = "";

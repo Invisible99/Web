@@ -307,7 +307,7 @@
                             echo "</div>";
                             
                             ?>
-                            <?php echo form_open("login/insert"); ?>
+                            <?php echo form_open("login/register"); ?>
                             <div class="form-group">
                                 <label for="voornaam">Voornaam</label>
                                 <input type="text" class="form-control" name="voornaam" id="voornaam" value="{voornaam}" required="required">
