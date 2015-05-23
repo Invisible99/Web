@@ -307,19 +307,16 @@
                 <div class="row">
                     <div class="col-sm-12">
                         {error}
-                        {threads}
+                        {posts}
                         <div class="forumoverview-box event-box animated fadeInLeft">
-                            <h3 class="forum-overview-naam margin40">
-                                <a href="<?php echo base_url(); ?>/forum/thread/{topicID}">{{titel}</a>
-                            </h3>                        
                             <p class="forum-overview-post">
-                                <strong>Laatste post:</strong> {bericht}
+                                <strong>({berichtID}) Posted on {postDate}: </strong> {bericht}
                                 </p>
                             <p class="forum-overview-poster">
                                 <strong>Poster:</strong> {username}
                             </p>
                         </div><!--event box-->
-                        {/threads}
+                        {/posts}
                     </div>
                 </div>
             </div>

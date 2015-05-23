@@ -306,51 +306,23 @@
                 </div> 
                 <div class="row">
                     <div class="col-sm-12">
+                        {error}
+                        {subforums}
                         <div class="forumoverview-box event-box animated fadeInLeft">
                             <h3 class="forum-overview-naam margin40">
-                                <a href="subforum/1">Gastenforum</a>
+                                <a href="<?php echo base_url(); ?>/forum/subforum/{categorieID}">{titel}</a>
                             </h3>                        
                             <p class="forum-overview-post">
-                                <strong>Laatste post:</strong> Hoe gaat ie ermee knuppels? 
-                                </p>
+                                {omschrijving} 
+                            </p>
+                            <p class="forum-overview-post">
+                                <strong>Laatste post:</strong> blablabla <strong>in:</strong> balblabllalblalbal 
+                            </p>
                             <p class="forum-overview-poster">
                                 <strong>Poster:</strong> Piet.Vandeput
                             </p>
                         </div><!--event box-->
-                        <div class="forumoverview-box event-box animated fadeInLeft">
-                            <h3 class="forum-overview-naam margin40">
-                                Ledenforum
-                            </h3>                        
-                            <p class="forum-overview-post">
-                                <strong>Laatste post:</strong> Hehe, die gastenplebs kunnen niet aan dit coole ledenforum 
-                                </p>
-                            <p class="forum-overview-poster">
-                                <strong>Poster:</strong> Stef.Janssens
-                            </p>
-                        </div><!--event box-->
-                        
-                        <div class="forumoverview-box event-box animated fadeInLeft">
-                            <h3 class="forum-overview-naam margin40">
-                                Nieuwsforum
-                            </h3>                        
-                            <p class="forum-overview-post">
-                                <strong>Laatste post:</strong> Binnenkort nieuwe website
-                                </p>
-                            <p class="forum-overview-poster">
-                                <strong>Poster:</strong> Jarno.Michiels
-                            </p>
-                        </div><!--event box-->
-                        <div class="forumoverview-box event-box animated fadeInLeft">
-                            <h3 class="forum-overview-naam margin40">
-                                Eventsforum
-                            </h3>                        
-                            <p class="forum-overview-post">
-                                <strong>Laatste post:</strong> Feesje op TEDxPXL binnenkort!
-                                </p>
-                            <p class="forum-overview-poster">
-                                <strong>Poster:</strong> Koen Vaes
-                            </p>
-                        </div><!--event box-->
+                        {/subforums}
                     </div>
                 </div>
             </div>

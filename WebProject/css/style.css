@@ -192,6 +192,7 @@ p.forum-overview-post{
     background-color: #DCDCDC;
     padding: 6px 12px;
     margin: 0 0 0px;
+    background-image: url(../img/shadow-bg.png);
 }
 
 .forum-overview-naam{
@@ -202,8 +203,8 @@ p.forum-overview-post{
 }
 
 div.forumoverview-box{
-    color: #000;
-    background-color: #EAEAEA;
+    color: #000;            
+    background-color: #f6f6f6;
 }
 /*******section heading**********/
 .center-heading{

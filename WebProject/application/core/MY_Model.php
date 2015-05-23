@@ -27,7 +27,6 @@ class MY_Model extends CI_Model{
     function updateID($dataArray,$idArray){
         return $this->db->update($this->tableName, $dataArray, $idArray);
     }
-    
 }
 
 ?>
