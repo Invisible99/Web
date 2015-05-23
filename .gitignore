@@ -216,8 +216,9 @@ pip-log.txt
 .mr.developer.cfg
 
 */nbproject
-
+nbproject/
 nbproject/private/private.properties
 nbproject/private/private.xml
 nbproject/project.properties
 nbproject/project.xml
+WebProject/nbproject/private/private.properties
