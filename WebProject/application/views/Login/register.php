@@ -305,27 +305,28 @@
                             echo validation_errors();
                             echo "</div>";
                             ?>
-                            <?php echo form_open("user/new_user_registration"); ?>
+                            <?php echo form_open("login/insert"); ?>
                             <div class="form-group">
-                                <label for="username">Username</label>
-                                <input type="text" class="form-control" name="username" id="username" value="<?php echo set_value('username'); ?>">
+                                <label for="voornaam">Voornaam</label>
+                                <input type="text" class="form-control" name="voornaam" id="voornaam" value="<?php echo set_value('username'); ?>">
                             </div>
                             <div class="form-group">
-                                <label for="email_address">Email address</label>
-                                <input type="email" class="form-control" name="email" id="email" value="<?php echo set_value('email'); ?>">
+                                <label for="familienaam">Familienaam</label>
+                                <input type="text" class="form-control" name="familienaam" id="familienaam" value="<?php echo set_value('email'); ?>">
                             </div>
                             <div class="form-group">
-                                <label for="password">Password</label>
-                                <input type="password" class="form-control" name="password" id="password" value="<?php echo set_value('password'); ?>">
+                                <label for="gebruikersnaam">Gebruikersnaam</label>
+                                <input type="text" class="form-control" name="gebruikersnaam" id="gebruikersnaam" value="<?php echo set_value('password'); ?>">
                             </div>    
                             <div class="form-group">
-                                <label for="con_password">Re-Password</label>
-                                <input type="password" class="form-control" name="passconf" id="con_password" value="<?php echo set_value('passconf'); ?>">
+                                <label for="email">E-mail adres</label>
+                                <input type="email" class="form-control" name="email" id="email" value="<?php echo set_value('passconf'); ?>">
                             </div>
                             <div class="pull-right">
                                 <input type="submit" class="btn btn-theme-dark btn-lg" name="btn-reg" value="Sign Up"/>
                             </div>
                             <div class="clearfix"></div>
+                            <!-- !!!!!!!! voor koen moet hier een ketchup :D staan !!!!!!! -->
                             <?php form_close(); ?>
                         </div><!--register tab end-->
                     </div>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Machine: 127.0.0.1
--- Gegenereerd op: 23 mei 2015 om 15:01
+-- Gegenereerd op: 23 mei 2015 om 20:24
 -- Serverversie: 5.6.17
 -- PHP-versie: 5.5.12
 
@@ -108,11 +108,14 @@ CREATE TABLE IF NOT EXISTS `threads` (
 
 CREATE TABLE IF NOT EXISTS `users` (
   `gebruikerID` int(11) NOT NULL AUTO_INCREMENT,
-  `rolID` int(11) NOT NULL DEFAULT '11',
+  `rolID` int(11) NOT NULL,
   `username` varchar(75) NOT NULL COMMENT 'Ding wat gegenereerd wordt bij aanvraag nieuwe user',
   `password` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `profielfoto` mediumblob,
+  `voornaam` varchar(75) NOT NULL,
+  `familienaam` varchar(75) NOT NULL,
+  `al_ingelogd` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`gebruikerID`),
   UNIQUE KEY `email` (`email`),
   KEY `rolID` (`rolID`)
@@ -122,10 +125,10 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Gegevens worden geëxporteerd voor tabel `users`
 --
 
-INSERT INTO `users` (`gebruikerID`, `rolID`, `username`, `password`, `email`, `profielfoto`) VALUES
-(1, 1, 'admin.admin', 'pxl', 'admin.admin@admin.be', NULL),
-(2, 2, 'lid.lid', 'pxl', 'lid.lid@lid.be', NULL),
-(3, 3, 'guest.guest', 'pxl', 'guest.guest@guest.be', NULL);
+INSERT INTO `users` (`gebruikerID`, `rolID`, `username`, `password`, `email`, `profielfoto`, `voornaam`, `familienaam`, `al_ingelogd`) VALUES
+(1, 1, 'admin.admin', 'pxl', 'admin.admin@admin.be', NULL, '', '', 0),
+(2, 2, 'lid.lid', 'pxl', 'lid.lid@lid.be', NULL, '', '', 0),
+(3, 3, 'guest.guest', 'pxl', 'guest.guest@guest.be', NULL, '', '', 0);
 
 --
 -- Beperkingen voor geëxporteerde tabellen

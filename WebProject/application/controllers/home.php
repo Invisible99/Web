@@ -43,7 +43,7 @@ class Home extends CI_Controller {
         if (empty($this->data['gebruikers'])) {
             $this->data['error'] = "<div class='alert alert-error'>Er zijn geen records in de tabel users.</div>"; //de alert-error is vn bootstrap
         }
-        $this->parser->parse('overzichtUsers_view.html', $this->data);
+        $this->parser->parse('home/overzichtUsers_view.html', $this->data);
     }
 
 }
