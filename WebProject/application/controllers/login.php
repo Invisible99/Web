@@ -23,8 +23,6 @@ class Login extends CI_Controller {
             $this->data['gebruikersnaam'] = $this->input->post('gebruikersnaam');
             $this->data['email'] = $this->input->post('email');
 
-
-
             $this->data['emailVanDB'] = $this->users_model->doesEmailExist($this->input->post('email'));
             $this->data['usernameVanDB'] = $this->users_model->doesUsernameExist($this->input->post('gebruikersnaam'));
 
@@ -38,8 +36,9 @@ class Login extends CI_Controller {
             if ($this->data['melding'] == "") {
                 
                 //roep hier method aan die random passwd genereert
-                          
-                $this->users_model->insert(array('rolID' => 2, 'username' => $this->input->post('gebruikersnaam'), 'password' => 'test', 'email' => $this->input->post('email'), 'voornaam' => $this->input->post('voornaam'), 'familienaam' => $this->input->post('familienaam')));
+                $randomPaswoord = $this->genereerPaswoord();  
+                
+                $this->users_model->insert(array('rolID' => 2, 'username' => $this->input->post('gebruikersnaam'), 'password' => $randomPaswoord, 'email' => $this->input->post('email'), 'voornaam' => $this->input->post('voornaam'), 'familienaam' => $this->input->post('familienaam')));
 
                 //roep hier method aan die mail stuurt (met random passwd) indien insert gelukt is
  
@@ -60,6 +59,12 @@ class Login extends CI_Controller {
             $this->data['email'] = "";
             $this->parser->parse('login/register.php', $this->data);
         }
+    }
+    
+    function genereerPaswoord(){
+        $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_-=+;:,.?";
+        $password = substr( str_shuffle( $chars ), 0, 8 );
+        return $password;
     }
 
 }
