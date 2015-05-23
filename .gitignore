@@ -218,3 +218,6 @@ pip-log.txt
 */nbproject
 
 nbproject/private/private.properties
+nbproject/private/private.xml
+nbproject/project.properties
+nbproject/project.xml
