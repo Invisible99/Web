@@ -220,3 +220,5 @@ pip-log.txt
 /nbproject/private/
 =======
 
+WebProject/nbproject/private/private.properties
+WebProject/nbproject/project.properties
