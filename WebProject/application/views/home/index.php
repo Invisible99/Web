@@ -50,12 +50,12 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index"><img src="<?php echo base_url(); ?>img/logo.png" alt="ASSAN"></a>
+                    <a class="navbar-brand" href="home/index"><img src="<?php echo base_url(); ?>img/logo.png" alt="ASSAN"></a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li class="active ">
-                            <a href="index">Home</a>
+                            <a href="home/index">Home</a>
                         </li>
                         <!--menu home li end here-->
                         <li class="dropdown">
@@ -159,7 +159,7 @@
                         </li>
 
                         <li class="dropdown">
-                            <a href="events">Events</a>
+                            <a href="home/events">Events</a>
                         </li> 
                         <!--mega menu-->
                         <li class="dropdown yamm-fw">
@@ -263,7 +263,7 @@
                                         <!--                                        <button type="submit" class="btn btn-theme pull-right">Login</button>                 -->
                                         <div class="clearfix"></div>
                                         <hr>
-                                        <p>Don't have an account! <a href="register">Register Now</a></p>
+                                        <p>Don't have an account! <a href="home/register">Register Now</a></p>
                                     </div>
                                 </form>
                             </div>
@@ -1079,7 +1079,7 @@
 
                             <ul class="list-unstyled contact">
                                 <li><p><strong><i class="fa fa-map-marker"></i> Address:</strong> Elfde-Liniestraat 24, B-3500 Hasselt</p></li> 
-                                <li><p><strong><i class="fa fa-envelope"></i> Mail Us:</strong> <a href="contact">pxltedx@gmail.com</a></p></li>
+                                <li><p><strong><i class="fa fa-envelope"></i> Mail Us:</strong> <a href="home/contact">pxltedx@gmail.com</a></p></li>
                                 <li> <p><strong><i class="fa fa-phone"></i> Phone:</strong>+32 474 21 21 25</p></li>
                             </ul>
                         </div>                        

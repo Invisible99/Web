@@ -1,24 +1,24 @@
 <?php
 
-class User extends CI_Controller {
+class Home extends CI_Controller {
 
     //Show index page
     function index() {
-        $this->load->view('index');
+        $this->load->view('home/index');
     }
 
     //Show events page
     function events() {
-        $this->load->view('events');
+        $this->load->view('home/events');
     }
 
     //Show register page
     function register() {
-        $this->load->view('register');
+        $this->load->view('home/register');
     }
     
     //Show contact page
     function contact() {
-        $this->load->view('contact');
+        $this->load->view('home/contact');
     }
 }
