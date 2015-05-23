@@ -306,51 +306,20 @@
                 </div> 
                 <div class="row">
                     <div class="col-sm-12">
+                        {error}
+                        {threads}
                         <div class="forumoverview-box event-box animated fadeInLeft">
                             <h3 class="forum-overview-naam margin40">
-                                <a href="subforum/1">Gastenforum</a>
+                                {titel}
                             </h3>                        
                             <p class="forum-overview-post">
-                                <strong>Laatste post:</strong> Hoe gaat ie ermee knuppels? 
+                                <strong>Laatste post:</strong> {bericht}
                                 </p>
                             <p class="forum-overview-poster">
-                                <strong>Poster:</strong> Piet.Vandeput
+                                <strong>Poster:</strong> {username}
                             </p>
                         </div><!--event box-->
-                        <div class="forumoverview-box event-box animated fadeInLeft">
-                            <h3 class="forum-overview-naam margin40">
-                                Ledenforum
-                            </h3>                        
-                            <p class="forum-overview-post">
-                                <strong>Laatste post:</strong> Hehe, die gastenplebs kunnen niet aan dit coole ledenforum 
-                                </p>
-                            <p class="forum-overview-poster">
-                                <strong>Poster:</strong> Stef.Janssens
-                            </p>
-                        </div><!--event box-->
-                        
-                        <div class="forumoverview-box event-box animated fadeInLeft">
-                            <h3 class="forum-overview-naam margin40">
-                                Nieuwsforum
-                            </h3>                        
-                            <p class="forum-overview-post">
-                                <strong>Laatste post:</strong> Binnenkort nieuwe website
-                                </p>
-                            <p class="forum-overview-poster">
-                                <strong>Poster:</strong> Jarno.Michiels
-                            </p>
-                        </div><!--event box-->
-                        <div class="forumoverview-box event-box animated fadeInLeft">
-                            <h3 class="forum-overview-naam margin40">
-                                Eventsforum
-                            </h3>                        
-                            <p class="forum-overview-post">
-                                <strong>Laatste post:</strong> Feesje op TEDxPXL binnenkort!
-                                </p>
-                            <p class="forum-overview-poster">
-                                <strong>Poster:</strong> Koen Vaes
-                            </p>
-                        </div><!--event box-->
+                        {/threads}
                     </div>
                 </div>
             </div>
