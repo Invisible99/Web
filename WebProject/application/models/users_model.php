@@ -1,8 +1,21 @@
 <?php
-class register extends CI_Model {
+class users_model extends MY_Model {
   
-	public function insert($voornaam, $familienaam, $gebruikersnaam, $email){
-            $sql = "INSERT INTO users (rolID, username, password, email, voornaam, familienaam) VALUES(2,'?','test','?','?', '?')";
-            $this->db->query($sql, array($gebruikersnaam, $email, $voornaam, $familienaam));
-	}
+    var $tableName="users";
+    var $primkey="gebruikerID";
+    
+    var $emailColName="email";
+    var $usernameColName="username";
+    
+    function doesEmailExist($email){
+        $this->db->from($this->tableName)->where($this->emailColName,$email);
+        $query=$this->db->get();
+        return $query->row_array();
+    }
+    
+    function doesUsernameExist($username){
+        $this->db->from($this->tableName)->where($this->usernameColName,$username);
+        $query=$this->db->get();
+        return $query->row_array();
+    }
 }

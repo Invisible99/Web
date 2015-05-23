@@ -300,27 +300,29 @@
                 <div class="col-sm-6 col-sm-offset-3">
                     <div role="tabpanel">
                         <div role="tabpanel" class="tab-pane" id="profile">
+                            {melding}
                             <?php
                             echo "<div class='error_msg'>";
                             echo validation_errors();
                             echo "</div>";
+                            
                             ?>
                             <?php echo form_open("login/insert"); ?>
                             <div class="form-group">
                                 <label for="voornaam">Voornaam</label>
-                                <input type="text" class="form-control" name="voornaam" id="voornaam" value="<?php echo set_value('username'); ?>">
+                                <input type="text" class="form-control" name="voornaam" id="voornaam" value="" required="required">
                             </div>
                             <div class="form-group">
                                 <label for="familienaam">Familienaam</label>
-                                <input type="text" class="form-control" name="familienaam" id="familienaam" value="<?php echo set_value('email'); ?>">
+                                <input type="text" class="form-control" name="familienaam" id="familienaam" value="" required="required">
                             </div>
                             <div class="form-group">
                                 <label for="gebruikersnaam">Gebruikersnaam</label>
-                                <input type="text" class="form-control" name="gebruikersnaam" id="gebruikersnaam" value="<?php echo set_value('password'); ?>">
+                                <input type="text" class="form-control" name="gebruikersnaam" id="gebruikersnaam" value="" required="required">
                             </div>    
                             <div class="form-group">
                                 <label for="email">E-mail adres</label>
-                                <input type="email" class="form-control" name="email" id="email" value="<?php echo set_value('passconf'); ?>">
+                                <input type="email" class="form-control" name="email" id="email" value="" required="required">
                             </div>
                             <div class="pull-right">
                                 <input type="submit" class="btn btn-theme-dark btn-lg" name="btn-reg" value="Sign Up"/>

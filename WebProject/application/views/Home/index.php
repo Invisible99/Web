@@ -51,7 +51,6 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="index"><img src="<?php echo base_url(); ?>img/logo.png" alt="ASSAN"></a>
-                    test
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
