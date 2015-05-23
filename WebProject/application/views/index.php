@@ -1079,7 +1079,7 @@
 
                             <ul class="list-unstyled contact">
                                 <li><p><strong><i class="fa fa-map-marker"></i> Address:</strong> Elfde-Liniestraat 24, B-3500 Hasselt</p></li> 
-                                <li><p><strong><i class="fa fa-envelope"></i> Mail Us:</strong> <a href="contact.html">pxltedx@gmail.com</a></p></li>
+                                <li><p><strong><i class="fa fa-envelope"></i> Mail Us:</strong> <a href="contact">pxltedx@gmail.com</a></p></li>
                                 <li> <p><strong><i class="fa fa-phone"></i> Phone:</strong>+32 474 21 21 25</p></li>
                             </ul>
                         </div>                        

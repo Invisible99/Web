@@ -62,7 +62,7 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="active">
+                        <li >
                             <a href="index">Home</a>
                         </li>
                         <!--menu home li end here-->
@@ -166,7 +166,7 @@
                             </ul>
                         </li>
                         <!--menu pages li end here-->
-                        <li class="dropdown">
+                        <li class="active">
                             <a href="events">Events</a>
                         </li>
                         <!--mega menu-->
@@ -733,7 +733,7 @@
 
                             <ul class="list-unstyled contact">
                                 <li><p><strong><i class="fa fa-map-marker"></i> Address:</strong> Elfde-Liniestraat 24, B-3500 Hasselt</p></li> 
-                                <li><p><strong><i class="fa fa-envelope"></i> Mail Us:</strong> <a href="#">pxltedx@gmail.com</a></p></li>
+                                <li><p><strong><i class="fa fa-envelope"></i> Mail Us:</strong> <a href="contact">pxltedx@gmail.com</a></p></li>
                                 <li> <p><strong><i class="fa fa-phone"></i> Phone:</strong>+32 474 21 21 25</p></li>
                             </ul>
                         </div>                        

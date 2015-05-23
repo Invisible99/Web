@@ -16,4 +16,9 @@ class User extends CI_Controller {
     function register() {
         $this->load->view('register');
     }
+    
+    //Show contact page
+    function contact() {
+        $this->load->view('contact');
+    }
 }
