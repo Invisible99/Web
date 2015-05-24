@@ -1,5 +1,7 @@
 <?php
 
+define("KEY_FOR_RC4", "adadaNchsadagadgakk342eiejfiejifje4234MnUUK25fjiNNBZBZNAkdaasd8sadhHZKZJnGREQhhsdjdksdsde");
+
 class Home extends CI_Controller {
 
     //Show index page
@@ -19,9 +21,28 @@ class Home extends CI_Controller {
 
     //Show contact page
     function contact() {
-        $this->load->view('Home/contact');
+        $this->captcha();
+        if (isset($_POST['contactBtn'])) {
+            $this->data['melding'] = "";
+
+            if ($this->data['melding'] == "") {
+                $to = 'wefknrise@gmail.com';
+                $subject = $this->input->post('onderwerp');
+                $message = $this->input->post('bericht') . "\n\nNaam verzender: " . $this->input->post('naam') . "\n\nTelefoonnummer: " . $this->input->post('telefoon') . "\n\nE-mail: " . $this->input->post('email');
+                $headers = 'From: ' . $this->input->post('email');
+                mail($to, $subject, $message, $headers);
+                $this->data['melding'] .= "<p class='alert alert-success'>Uw e-mail is met succes verzonden.</p>";
+            }
+            $this->parser->parse('home/contact.php', $this->data);
+        } else {
+            //$this->data['melding'] .= "<p class='alert alert-danger'>Gelieve het formulier in te vullen.</p>";
+            $this->data['melding'] = "";
+            $this->parser->parse('home/contact.php', $this->data);
+        }
     }
 
+    //$code = $this->str_encrypt($this->generateCode(6));
+    /* $this->data['captcha'] = "<img src='captcha_images.php?width=120&height=40&code=<?php echo $code ?>' />"; */
     //eerste testqry uitvoeren
     function query() {
         /* $this->load->model("testModelUsers");
@@ -46,12 +67,21 @@ class Home extends CI_Controller {
         $this->parser->parse('home/overzichtUsers_view.html', $this->data);
     }
 
-    function sendMail() {
-        $to = 'wefknrise@gmail.com';
-        $subject = $this->input->post('onderwerp');
-        $message = $this->input->post('bericht') . "\n\nNaam verzender: " . $this->input->post('naam') . "\n\nTelefoonnummer: " . $this->input->post('telefoon') . "\n\nE-mail: " . $this->input->post('email');
-        $headers = 'From: ' . $this->input->post('email');
-        mail($to, $subject, $message, $headers);
+    function captcha() {
+        $this->load->helper('captcha');
+
+        $captcha = array(
+            'word' => '',
+            'img_path' => './img/captcha/',
+            'img_url' => base_url().'img/captcha/',
+            'font_path' => base_url().'fonts/impact.ttf',
+            'img_width' => '150',
+            'img_height' => 30,
+            'expiration' => 7200
+        );
+        
+        $img = create_captcha($captcha);
+        $this->data['captcha'] = $img['image'];
     }
 
 }
