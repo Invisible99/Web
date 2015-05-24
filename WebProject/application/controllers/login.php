@@ -125,13 +125,13 @@ class Login extends CI_Controller {
 
             if ($this->data['melding'] == "") {
                 //roep hier method aan die random passwd genereert
-                $randomPaswoord = $this->genereerPaswoord();
+                $randomPaswoord = $this->_genereerPaswoord();
 
                 $this->users_model->insert(array('rolID' => 2, 'username' => $this->input->post('gebruikersnaam'), 'password' => $randomPaswoord, 'email' => $this->input->post('email'), 'voornaam' => $this->input->post('voornaam'), 'familienaam' => $this->input->post('familienaam')));
 
                 //roep hier method aan die mail stuurt (met random passwd) indien insert gelukt is, zowel naar admin die moet activeren als naar persoon die zich wil registreren
-                $this->mailToUser($this->input->post('voornaam'), $this->input->post('familienaam'), $this->input->post('gebruikersnaam'), $this->input->post('email'), $randomPaswoord);
-                $this->mailToAdmin($this->input->post('voornaam'), $this->input->post('familienaam'), $this->input->post('gebruikersnaam'), $this->input->post('email'));
+                $this->_mailToUser($this->input->post('voornaam'), $this->input->post('familienaam'), $this->input->post('gebruikersnaam'), $this->input->post('email'), $randomPaswoord);
+                $this->_mailToAdmin($this->input->post('voornaam'), $this->input->post('familienaam'), $this->input->post('gebruikersnaam'), $this->input->post('email'));
 
                 $this->data['melding'] = "";
                 $this->data['voornaam'] = "";
@@ -152,14 +152,16 @@ class Login extends CI_Controller {
         }
     }
 
-    function genereerPaswoord() {
+    
+    
+    function _genereerPaswoord() {
         $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         $password = substr(str_shuffle($chars), 0, 8);
         return $password;
     }
 
     //moet hier niet gebruikt worden, maar vanaf het moment dat een admin een gebruiker goedkeurt!!!!!!!
-    function mailToUser($userVoornaam, $userAchternaam, $userUsername, $userEmail, $generatedPassword) {
+    function _mailToUser($userVoornaam, $userAchternaam, $userUsername, $userEmail, $generatedPassword) {
         $to = $userEmail;
         $subject = 'TEDxPXL registratie';
         $message = "Beste " . $userVoornaam . " " . $userAchternaam . "\n\nBedankt voor uw registratie bij TEDxPXL.\nU kan nu inloggen met " . $userUsername . " met als wachtwoord " . $generatedPassword . "\nU zal uw wachtwoord moeten wijzigen bij de eerste keer inloggen.\n\nMet vriendelijke groet\n\nTEDxPXL Administratie";
@@ -170,7 +172,7 @@ class Login extends CI_Controller {
     }
 
     //wordt niet gebruikt ATM, kan gebruikt worden om de admin een mail te sturen als een nieuwe gebruiker zich registreert.
-    function mailToAdmin($userVoornaam, $userAchternaam, $userUsername, $userEmail) {
+    function _mailToAdmin($userVoornaam, $userAchternaam, $userUsername, $userEmail) {
         $to = 'koen895@hotmail.com'; //hier email van TEDx admin indien nodig
         $subject = 'Nieuwe TEDxPXL gebruiker';
         $message = "Beste Admin \n\n" . $userVoornaam . " " . $userAchternaam . " wil zich registreren met gebruikersnaam: " . $userUsername . " en het e-mail adres " . $userEmail . "\nGa naar de website om dit te bevestigen of af te keuren.";
