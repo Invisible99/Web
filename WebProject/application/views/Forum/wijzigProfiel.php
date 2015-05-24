@@ -144,16 +144,20 @@
             <div class="row">
                 {error}
                 {user}
-                <?php echo form_open("forum/wijzigProfiel"); ?>
+               
                 <div class="animated fadeInLeft">
                     <div class="col-md-2"> 
                         <div class="row control-group">
                             <div class="form-group col-xs-12 controls">
                                 <label>Profielfoto:</label>
                                 <ul class="list-inline f3-work">
-                                    <li><a href="" onclick="document.getElementById('userfile').click();
-                                            return false"><img id="img" src="{/user}{foto}{user}" class="img-responsive" alt=""></a></li>
-                                        <input type="file" name="userfile" id="userfile" onchange="readURL(this);" class="hidden" />
+                                    <?php echo form_open_multipart('forum/do_upload'); ?>
+                                    <?php echo "<input type='file' name='userfile' size='20' />"; ?>{profielfoto} <!-- krijgt de naam van de file -->
+                                    <?php echo "<input type='submit' name='submit' value='upload' /> "; ?>
+                                    <?php echo "</form>" ?>
+                                    <!--<li><a href="" onclick="document.getElementById('userfile').click();
+                                            return false"><img id="img" src="{/user}{foto}{user}" name="foto" class="img-responsive" alt=""></a></li>
+                                    <input type="file" name="userfile" id="userfile" onchange="readURL(this);" class="hidden" />-->
                                 </ul>
                                 <p class="help-block"></p>
                             </div>
@@ -164,6 +168,7 @@
                             </div>
                         </div>
                     </div>
+                     <?php echo form_open("forum/wijzigProfiel"); ?>
                     <div class="col-md-8 col-md-offset-2">
                         <div class="col-md-12 margin30">
                             <div class="row control-group">
@@ -281,21 +286,21 @@
 
         <!--customizable plugin edit according to your needs-->
         <script src="<?php echo base_url(); ?>js/custom.js" type="text/javascript"></script>
-        <script type="text/javascript">
-                                        function readURL(input) {
-                                            if (input.files && input.files[0]) {
-                                                var reader = new FileReader();
+        <!--<script type="text/javascript">
+                                            function readURL(input) {
+                                                if (input.files && input.files[0]) {
+                                                    var reader = new FileReader();
 
-                                                reader.onload = function (e) {
-                                                    $('#img')
-                                                            .attr('src', e.target.result)
-                                                            .width(160)
-                                                            .height(160);
-                                                };
+                                                    reader.onload = function (e) {
+                                                        $('#img')
+                                                                .attr('src', e.target.result)
+                                                                .width(160)
+                                                                .height(160);
+                                                    };
 
-                                                reader.readAsDataURL(input.files[0]);
+                                                    reader.readAsDataURL(input.files[0]);
+                                                }
                                             }
-                                        }
-        </script>
+        </script>-->
     </body>
 </html>
