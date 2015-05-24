@@ -216,7 +216,7 @@ class Forum extends CI_Controller {
             }
             //$this->index();
         } else if (isset($_POST['btn-prfWzg'])) {
-            print($this->session->userdata('user'));
+            //print($this->session->userdata('user'));
             $this->data['error'] = "";
 
             $this->data['user'] = $this->users_model->find($this->session->userdata('gebruikerID'));
