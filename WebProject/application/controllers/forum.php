@@ -9,6 +9,7 @@ class Forum extends CI_Controller {
         $this->data['error'] = "";
         //alle subforums opvragen samen met laatste post en thread
         $this->data['forum'] = $this->forum_model->findSubforums();
+        $this->data['categorieID']=$this->data['forum'][0]->categorieID;
         if (empty($this->data['forum'])) {
             //de alert-error is vn bootstrap
             $this->data['error'] = "<div class='alert alert-error'>Er zijn geen subforums!</div>";
@@ -59,19 +60,63 @@ class Forum extends CI_Controller {
 
         if (empty($this->data['categorie'])) {
             //de alert-error is vn bootstrap
-            $this->data['error'] = "<div class='alert alert-error'>Er zijn geen subforums!</div>";
+            $this->data['error'] = "<div class='alert alert-error'>Dit subforum kan je niet wijzigen!</div>";
         }
 
         $this->parser->parse('forum/editSubforum', $this->data);
     }
+    
+    //Show index page
+    function deleteSubforum($categorieID) {
+        //model laden
+        $this->load->model("forum_model");
+        $this->data['error'] = "";
+        $this->data['categorieID'] = $categorieID;
+        //alle subforums opvragen samen met laatste post en thread
+        $this->data['categorie'] = $this->forum_model->find($categorieID);
+
+        if (empty($this->data['categorie'])) {
+            //de alert-error is vn bootstrap
+            $this->data['error'] = "<div class='alert alert-error'>Dit subforum kan je niet verwijderen!</div>";
+        }
+
+        $this->parser->parse('forum/deleteSubforum', $this->data);
+    }
+    
+     //Show index page
+    function addSubforum($categorieID) {
+        //model laden
+        $this->data['categorieID'] = $categorieID;
+        $this->parser->parse('forum/addSubforum', $this->data);
+    }
 
     //Show index page
     function doneEditing($categorieID) {
+        //wijzigen van 
         if (isset($_POST['editcat'])) {
             $this->load->model("forum_model");
             $this->data['forum'] = $this->forum_model->findSubforums();
-            print($this->forum_model->updateID(array('titel' => $this->input->post('formtitel'), 'omschrijving' => $this->input->post('formomschrijving')), array('categorieID' => $categorieID)));
-            $this->index();
+            $this->forum_model->updateID(array('titel' => $this->input->post('formtitel'), 'omschrijving' => $this->input->post('formomschrijving')), array('categorieID' => $categorieID));
+            redirect(base_url()."forum/index");
+        }
+        if (isset($_POST['deletecatyes'])) {
+            $this->load->model("forum_model");
+            $this->data['forum'] = $this->forum_model->findSubforums();
+            $this->forum_model->deleteID(array('categorieID' => $categorieID));
+            redirect(base_url()."forum/index");
+        }
+        if (isset($_POST['deletecatno'])) {
+            redirect(base_url()."forum/index");
+        }
+        if (isset($_POST['addcat'])) {
+            $this->load->view('Home/index');
+            $this->load->model("forum_model");
+            $this->data['forum'] = $this->forum_model->findSubforums();
+            $this->forum_model->insert(array('titel' => $this->input->post('formtitel'),'omschrijving' => $this->input->post('formomschrijving')));
+        }
+        else
+        {
+            redirect(base_url()."forum/index");
         }
     }
 
@@ -113,5 +158,4 @@ class Forum extends CI_Controller {
             redirect('home/index/', 'refresh');
         }
     }
-
 }

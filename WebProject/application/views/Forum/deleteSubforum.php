@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Thread</title>
+        <title>Forum</title>
 
         <!-- Bootstrap -->
         <link href="<?php echo base_url(); ?>bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -132,12 +132,8 @@
                     </div>
                     <div class="col-sm-6 hidden-xs text-right">
                         <ol class="breadcrumb">
-                            <li><a href="index">Home</a></li>
-                            <li><a href="<?php echo base_url(); ?>forum/index">Forum</a></li>
-                            {dezeThread}
-                            <li><a href="<?php echo base_url(); ?>forum/subforum/{categorieID}">Subforum</a></li>
-                            {/dezeThread}
-                            <li>Thread</li>
+                            <li><a href="<?php echo base_url(); ?>home/index">Home</a></li>
+                            <li>Forum</li>
                         </ol>
                     </div>
                 </div>
@@ -146,28 +142,22 @@
         <div class="divide80"></div>
         <div class="schedule">
             <div class="container">
-                <div class="center-heading">
-                    {dezeThread}
-                    <h2>{titel}</h2>
-                    <span class="center-line"></span>
-                    <p class="margin40">
-                        {bericht}
-                    </p>
-                    {/dezeThread}
-                </div> 
                 <div class="row">
                     <div class="col-sm-12 animated fadeInLeft">
                         {error}
-                        {thread}
-                        <div class="forumoverview-box event-box">
-                            <p class="forum-overview-post">
-                                <strong>({berichtID}) Posted on {postDate}: </strong> {bericht}
-                                </p>
-                            <p class="forum-overview-poster">
-                                <strong>Poster:</strong> {username}
-                            </p>
+                        {categorie}
+                        <div class="forumoverview-box event-box jumbotron">
+                            <h3 class="forum-wrap">
+                                <a href="<?php echo base_url(); ?>forum/subforum/{categorieID}" class="forum-overview-naam jumbotron">{titel}:</a> {omschrijving}
+                            </h3>
                         </div><!--event box-->
-                        {/thread}
+                        <div class="forumoverview-box event-box jumbotron">
+                            <div><p class="forum-label">Bent u zeker dat u deze categorie wilt verwijderen?:</p></div>
+                            <form id="deletecat" action="<?php echo base_url(); ?>forum/doneEditing/{categorieID}" method="POST">
+                                <div><input type="submit" name="deletecatyes" value="Ja" class="btn"> of <input type="submit" name="deletecatno" value="Nee" class="btn"></div>
+                            </form>
+                        </div><!--event box-->
+                        {/categorie}
                     </div>
                 </div>
             </div>
@@ -235,7 +225,6 @@
                             </form>
                         </div>                        
                     </div><!--footer col-->
-
                 </div>
                 <div class="row">
                     <div class="col-md-12 text-center">
