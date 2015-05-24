@@ -24,7 +24,7 @@ class Login extends CI_Controller {
             $this->data['inloggen'] = $this->users_model->login($this->input->post('gebruikersnaam'));
 
             if (!empty($this->data['inloggen'])) {
-                if ($this->data['inloggen']["al_ingelogd"] == 0) { //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!hier moet nog controle bij of de gebruiker al geactiveerd is en dus wel mag inloggen!
+                if ($this->data['inloggen']["al_ingelogd"] == 0) { 
                     if ($this->data['inloggen']["password"] == $this->input->post('password')) {
                         $this->firstlogin($this->data['inloggen']["gebruikerID"]);
                         return;
@@ -139,8 +139,8 @@ class Login extends CI_Controller {
                     $this->users_model->insert(array('rolID' => 2, 'username' => $this->input->post('gebruikersnaam'), 'password' => $randomPaswoord, 'email' => $this->input->post('email'), 'voornaam' => $this->input->post('voornaam'), 'familienaam' => $this->input->post('familienaam')));
 
                     //roep hier method aan die mail stuurt (met random passwd) indien insert gelukt is, zowel naar admin die moet activeren als naar persoon die zich wil registreren
-                    $this->_mailToUser($this->input->post('voornaam'), $this->input->post('familienaam'), $this->input->post('gebruikersnaam'), $this->input->post('email'), $randomPaswoord);
-                    $this->_mailToAdmin($this->input->post('voornaam'), $this->input->post('familienaam'), $this->input->post('gebruikersnaam'), $this->input->post('email'));
+                    //$this->_mailToUser($this->input->post('voornaam'), $this->input->post('familienaam'), $this->input->post('gebruikersnaam'), $this->input->post('email'), $randomPaswoord);
+                    //$this->_mailToAdmin($this->input->post('voornaam'), $this->input->post('familienaam'), $this->input->post('gebruikersnaam'), $this->input->post('email'));
 
                     $this->data['melding'] = "";
                     $this->data['voornaam'] = "";

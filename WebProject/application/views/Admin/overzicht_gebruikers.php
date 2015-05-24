@@ -158,10 +158,10 @@
                 <div class="col-sm-8 col-sm-offset-2">
 
                     <h2>Overzicht van alle niet actieve gebruikers</h2>
-                    <table class="table table-striped table-bordered"> <tr> <th> RolID </th> <th> Username: </th> <th> E-mail: </th> <th> Voornaam: </th> <th> Familienaam: </th> </tr>
+                    <table class="table table-striped table-bordered"> <tr> <th> Username: </th> <th> E-mail: </th> <th> Voornaam: </th> <th> Familienaam: </th> </tr>
 
                         {inactieveGebruikers}
-                        <tr><td>{rolID}</td> <td>{username}</td> <td>{email}</td> <td>{voornaam}</td> <td>{familienaam}</td>
+                        <tr> <td>{username}</td> <td>{email}</td> <td>{voornaam}</td> <td>{familienaam}</td>
                             <td> <a href="<?php echo base_url(); ?>admin/deleteGebruiker/{gebruikerID}" onclick="return confirm('Weet u zeker dat u {username} wil verwijderen?')"></i>Verwijderen</a></td>
                             <td> <a href="<?php echo base_url(); ?>admin/activeerGebruiker/{gebruikerID}" onclick="return confirm('Weet u zeker dat u {username} wil activeren?')">Activeren</a></td>
                             {/inactieveGebruikers}
@@ -172,10 +172,10 @@
                     <div class="divide60"></div>
                     
                     <h2>Overzicht van alle banned gebruikers</h2>
-                    <table class="table table-striped table-bordered"> <tr> <th> RolID </th> <th> Username: </th> <th> E-mail: </th> <th> Voornaam: </th> <th> Familienaam: </th> </tr>
+                    <table class="table table-striped table-bordered"> <tr>  <th> Username: </th> <th> E-mail: </th> <th> Voornaam: </th> <th> Familienaam: </th> </tr>
 
                         {bannedGebruikers}
-                        <tr><td>{rolID}</td> <td>{username}</td> <td>{email}</td> <td>{voornaam}</td> <td>{familienaam}</td>
+                        <tr> <td>{username}</td> <td>{email}</td> <td>{voornaam}</td> <td>{familienaam}</td>
                             <td> <a href="<?php echo base_url(); ?>admin/unbanGebruiker/{gebruikerID}" onclick="return confirm('Weet u zeker dat u {username} wil unbannen?')"></i>Unbannen</a></td>
                             {/bannedGebruikers}
                         </tr>        
@@ -185,10 +185,10 @@
                     <div class="divide60"></div>
 
                     <h2>Overzicht van alle geactiveerde gebruikers</h2>
-                    <table class="table table-striped table-bordered"> <tr> <th> RolID </th> <th> Username: </th> <th> E-mail: </th> <th> Voornaam: </th> <th> Familienaam: </th> </tr>
+                    <table class="table table-striped table-bordered"> <tr> <th> Username: </th> <th> E-mail: </th> <th> Voornaam: </th> <th> Familienaam: </th> </tr>
 
                         {actieveGebruikers}
-                        <tr><td>{rolID}</td> <td>{username}</td> <td>{email}</td> <td>{voornaam}</td> <td>{familienaam}</td>
+                        <tr> <td>{username}</td> <td>{email}</td> <td>{voornaam}</td> <td>{familienaam}</td>
                             <td> <a href="<?php echo base_url(); ?>admin/deactivateGebruiker/{gebruikerID}" onclick="return confirm('Weet u zeker dat u {username} wil verwijderen?')"></i>Verwijderen</a></td>
                             <td> <a href="<?php echo base_url(); ?>admin/banGebruiker/{gebruikerID}" onclick="return confirm('Weet u zeker dat u {username} wil bannen?')"></i>Bannen</a></td>
                             <td> <a href="<?php echo base_url(); ?>admin/bewerkGebruiker/{gebruikerID}">Bewerken</a></td>

@@ -16,7 +16,7 @@ class Admin extends CI_Controller {
         }
     }
 
-    //Show overzichtsplatvorm page
+    
     function index() {
         
     }
@@ -55,6 +55,17 @@ class Admin extends CI_Controller {
 
     function activeerGebruiker($gebruikerID) {
         $this->users_model->updateID(array('actief' => 1), array('gebruikerID' => $gebruikerID));
+        
+        //haal alle gegevens op van de user met dit ID en gebruik dit in de mail
+        $this->data['gebruiker'] = $this->users_model->find($gebruikerID);
+        $voornaam = $this->data['gebruiker'][0]['voornaam'];
+        $familienaam = $this->data['gebruiker'][0]['familienaam'];
+        $gebruikersnaam = $this->data['gebruiker'][0]['username'];
+        $email = $this->data['gebruiker'][0]['email'];
+        $randomPaswoord = $this->data['gebruiker'][0]['password'];
+        
+        $this->_mailToUser($voornaam, $familienaam, $gebruikersnaam, $email, $randomPaswoord);
+                     
         redirect(base_url() . "admin/gebruikerOverzicht");
     }
 
@@ -83,5 +94,14 @@ class Admin extends CI_Controller {
         
     }
 
-    //code voor mailmethods uit loigincontroler halen
+    //code voor mailmethods uit loigincontroler
+    function _mailToUser($userVoornaam, $userAchternaam, $userUsername, $userEmail, $generatedPassword) {
+        $to = $userEmail;
+        $subject = 'TEDxPXL registratie';
+        $message = "Beste " . $userVoornaam . " " . $userAchternaam . "\n\nBedankt voor uw registratie bij TEDxPXL.\nU kan nu inloggen met " . $userUsername . " met als wachtwoord " . $generatedPassword . "\nU zal uw wachtwoord moeten wijzigen bij de eerste keer inloggen.\n\nMet vriendelijke groet\n\nTEDxPXL Administratie";
+        $headers = 'From: pxltedx@gmail.com';
+        if (!mail($to, $subject, $message, $headers)) {
+            //echo "Email sending failed";
+        }
+    }
 }
