@@ -56,12 +56,12 @@ class Forum extends CI_Controller {
         $this->data['categorieID'] = $categorieID;
         //alle subforums opvragen samen met laatste post en thread
         $this->data['categorie'] = $this->forum_model->find($categorieID);
-    
+
         if (empty($this->data['categorie'])) {
             //de alert-error is vn bootstrap
             $this->data['error'] = "<div class='alert alert-error'>Er zijn geen subforums!</div>";
         }
-  
+
         $this->parser->parse('forum/editSubforum', $this->data);
     }
 
@@ -76,22 +76,41 @@ class Forum extends CI_Controller {
     }
 
     function wijzigProfiel() {
+        $this->load->library('session');
+        $this->load->library('user_agent');
+        $this->load->helper('url');
+        $this->load->model("users_model");
         if (isset($_POST['editProfile'])) {
-            
+            $wijzigArray = array('username' => $this->input->post('gebruikersnaam'), 'email' => $this->input->post('email'), 'voornaam' => $this->input->post('voornaam'), 'familienaam' => $this->input->post('familienaam'));
+            $teWijzigen = array('gebruikerID' => $this->session->userdata('gebruikerID'));
+            $result = $this->users_model->updateID($wijzigArray, $teWijzigen);
+            if ($result == 1) {
+                $this->data['user'] = $this->users_model->find($this->session->userdata('gebruikerID'));
+                $this->data['error'] = "<div class='alert alert-success'>Gegevens zijn opgeslagen</div>";
+                
+                if (empty($this->data['user'])) {
+                    //de alert-error is vn bootstrap
+                    $this->data['error'] = "<div class='alert alert-error'>De gebruiker is niet gevonden</div>";
+                }
+
+                $this->parser->parse('forum/wijzigProfiel', $this->data);
+            }
+            //$this->index();
         } else if (isset($_POST['btn-prfWzg'])) {
-            $this->load->library('session');
-            $this->load->library('user_agent');
-            $this->load->helper('url');
-            
-            $this->load->model("users_model");
-            
             //print($this->session->userdata('user'));
             $this->data['error'] = "";
-            
-            $this->data['user'] = $this->users_model->findUser($this->session->userdata('user'));
-            print_r($this->data['user']);
+
+            $this->data['user'] = $this->users_model->find($this->session->userdata('gebruikerID'));
+
+            if (empty($this->data['user'])) {
+                //de alert-error is vn bootstrap
+                $this->data['error'] = "<div class='alert alert-error'>De gebruiker is niet gevonden</div>";
+            }
+
             $this->parser->parse('forum/wijzigProfiel', $this->data);
             //$this->load->view('forum/wijzigProfiel');
+        } else {
+            redirect('home/index/', 'refresh');
         }
     }
 

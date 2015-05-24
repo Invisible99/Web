@@ -39,7 +39,8 @@ class Login extends CI_Controller {
 
                     if (password_verify($this->input->post('password'), $hash)) {
                         $this->data['melding'] = "<p class='alert alert-success'>Bedankt voor uw inloggen.</p>";
-                        $data = array('user' => $this->data['inloggen']["username"], 'logged_in' => true, 'rolID' => $this->data['inloggen']["rolID"]);
+                        $data = array('user' => $this->data['inloggen']["username"], 'logged_in' => true, 'rolID' => $this->data['inloggen']["rolID"], 'gebruikerID' => $this->data['inloggen']["gebruikerID"]);
+
                         $this->session->set_userdata($data);
                     } else {
                         $this->data['melding'] = "<p class='alert alert-danger'>De gebruikersnaam en wachtwoord komen niet overeen.</p>";

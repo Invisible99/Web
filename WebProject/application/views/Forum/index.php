@@ -98,7 +98,7 @@
                                 <?php
                                 if (!($this->session->has_userdata('user') && $this->session->has_userdata('logged_in') && $this->session->logged_in && $this->session->has_userdata('rolID'))) {
                                     ?>
-                                    <form role="form" action='<?php echo base_url(); ?>/login/index' method='post'>
+                                    <form role="form" action='<?php echo base_url(); ?>login/index' method='post'>
                                         <h4>Aanmelden</h4>
                                         <div class="form-group">
                                             <div class="input-group">
@@ -125,14 +125,14 @@
                             } else {
                                 ?> 
                                 <div class="row">
-                                    <form role="form" action='<?php echo base_url(); ?>/forum/wijzigProfiel' method='post'>
+                                    <form role="form" action='<?php echo base_url(); ?>forum/wijzigProfiel' method='post'>
                                         <h4>Profiel wijzigen</h4>
 
                                         <input type="submit" class="btn btn-theme-bg pull-right" name="btn-prfWzg" value="Profiel wijzigen"/>
                                     </form>
                                 </div>
                                 <div class="row">
-                                    <form role="form" action='<?php echo base_url(); ?>/login/index' method='post'>
+                                    <form role="form" action='<?php echo base_url(); ?>login/index' method='post'>
                                         <h4>Afmelden</h4>
 
                                         <input type="submit" class="btn btn-theme-bg pull-right" name="btn-logoff" value="Afmelden"/>
