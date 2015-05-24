@@ -101,6 +101,20 @@
                         <li class="dropdown">
                             <a href="<?php echo base_url(); ?>nieuws/index">Nieuws</a>
                         </li>
+                        <!--dit enkel laten zien als een admin is ingelogd-->
+                        <?php
+                        if ($this->session->has_userdata('user') && $this->session->has_userdata('logged_in') && $this->session->logged_in && $this->session->has_userdata('rolID') && $this->session->userdata['rolID'] == 1) {
+                            ?>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <i class="fa fa-angle-down"></i></a>
+                                <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+                                    <li><a href="<?php echo base_url(); ?>admin/gebruikerOverzicht">Gebruikers</a></li>
+                                    <li><a href="<?php echo base_url(); ?>admin/evenementOverzicht">Evenementen</a></li><!--doorsturen naar pagina om de evenementen te beheren-->
+                                </ul>
+                            </li>
+
+                        <?php } ?>
+                            
                         <li class="dropdown " data-animate="animated fadeInUp" style="z-index:500;">
                             <a href="#" class="dropdown-toggle " data-toggle="dropdown"><i class="fa fa-search"></i></a>
                             <ul class="dropdown-menu search-dropdown animated fadeInUp">
