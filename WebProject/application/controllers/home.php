@@ -6,10 +6,10 @@ class Home extends CI_Controller {
 
     //Show index page
     function index() {
-        $this->load->library('session');
+        /*$this->load->library('session');
             $this->load->library('user_agent');
             $this->load->helper('url');
-            $this->session->sess_destroy();
+            $this->session->sess_destroy();*/
         $this->load->view('Home/index');
     }
 
