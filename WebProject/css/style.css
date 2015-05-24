@@ -181,24 +181,41 @@ p.sub-text{
 }
 
 /******forum overview*********/
-p.forum-overview-poster{
+.forum-overview-poster{
     color: #FF2B06;
     padding: 6px 12px;
-    margin: 0 0 0px;
+    margin: 0 0 0 0;
+    background-color: #DCDCDC;
 }
 
-p.forum-overview-post{
+.forum-overview-red{
+    color: #FF2B06;  
+}
+
+.forum-overview-black{
+    color: #000;  
+}
+
+.forum-overview-post{
     color: #000;
     background-color: #DCDCDC;
     padding: 6px 12px;
-    margin: 0 0 0px;
+    margin: 0 0 0;
     background-image: url(../img/shadow-bg.png);
 }
 
 .forum-overview-naam{
-    line-height: 24px;
-    padding: 6px 12px;
+    line-height: 40px;
+    padding: 6px 10px;
+    margin:  0 0 0 0;
     color: #FF2B06;
+    display: inline-block;
+    background-color: #DCDCDC;
+}
+
+.forum-overview-omschrijving{
+    background-color: #DCDCDC;
+    padding: 12px 12px;
     display: inline-block;
 }
 

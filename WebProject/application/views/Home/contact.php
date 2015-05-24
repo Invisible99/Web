@@ -53,21 +53,22 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="index"><img src="<?php echo base_url(); ?>img/TEDx_logo.png" alt="TEDx"></a>
+
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li class="active ">
-                            <a href="index">Home</a>
+                            <a href="<?php echo base_url(); ?>home/index">Home</a>
                         </li>
                         <!--menu Portfolio li end here-->
                         <li class="dropdown">
-                            <a href="forum/index">Forum</a>
+                            <a href="<?php echo base_url(); ?>forum/index">Forum</a>
                         </li>
                         <li class="dropdown">
-                            <a href="home/events">Evenementen</a>
+                            <a href="<?php echo base_url(); ?>events/index">Evenementen</a>
                         </li> 
                         <li class="dropdown">
-                            <a href="home/nieuws">Nieuws</a>
+                            <a href="<?php echo base_url(); ?>nieuws/index">Nieuws</a>
                         </li>
                         <li class="dropdown " data-animate="animated fadeInUp" style="z-index:500;">
                             <a href="#" class="dropdown-toggle " data-toggle="dropdown"><i class="fa fa-search"></i></a>
@@ -86,7 +87,6 @@
                                 </li><!--.drop form search-->
                             </ul><!--.drop menu-->
                         </li> <!--menu search li end here--> 
-
                         <li class="dropdown">
                             <a href="#" class=" dropdown-toggle" data-toggle="dropdown"><i class="fa fa-lock"></i></a>
                             <div class="dropdown-menu dropdown-menu-right dropdown-login-box animated fadeInUp">
@@ -107,11 +107,11 @@
                                                 <input type="checkbox"> Remember me
                                             </label>
                                         </div>
-                                        <a class="btn btn-theme-bg pull-right" href="">Login</a>
+                                        <a class="btn btn-theme-bg pull-right" href="<?php echo base_url(); ?>login/index">Login</a>
                                         <!--                                        <button type="submit" class="btn btn-theme pull-right">Login</button>                 -->
                                         <div class="clearfix"></div>
                                         <hr>
-                                        <p>Don't have an account! <a href="register">Register Now</a></p>
+                                        <p>Don't have an account! <a href="<?php echo base_url(); ?>login/register">Register Now</a></p>
                                     </div>
                                 </form>
                             </div>

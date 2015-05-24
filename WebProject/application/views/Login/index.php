@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Forum</title>
+        <title>assan - Professional theme</title>
 
         <!-- Bootstrap -->
         <link href="<?php echo base_url(); ?>bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -46,6 +46,28 @@
 
     </head>
     <body>
+
+        <div id="header-top" class="hidden-xs">
+            <div class="container">
+                <div class="top-bar">
+                    <div class="pull-left sample-1right">
+                        <a><i class="fa fa-phone"></i> Any questions? Call us: <span class="colored-text">+02 34543454</span> </a> 
+                         <a><i class="fa fa-envelope"></i> Mail us: <span class="colored-text">Support@domain.com</span> </a>
+                    </div>
+                    <div class="pull-right">
+                        <ul class="list-inline top-social">
+                            <li>Follow us:</li>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div><!--top bar end hidden in small devices-->
+        <!--navigation -->
         <!-- Static navbar -->
         <div class="navbar navbar-default navbar-static-top yamm sticky" role="navigation">
             <div class="container">
@@ -128,49 +150,48 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h4>Forum</h4>
+                        <h4>Sign in or Sign up</h4>
                     </div>
                     <div class="col-sm-6 hidden-xs text-right">
                         <ol class="breadcrumb">
-                            <li><a href="<?php echo base_url(); ?>home/index">Home</a></li>
-                            <li>Forum</li>
+                            <li><a href="index.html">Home</a></li>
+                            <li>404</li>
                         </ol>
                     </div>
                 </div>
             </div>
         </div><!--breadcrumbs-->
         <div class="divide80"></div>
-        <div class="schedule">
-            <div class="container">
-                <div class="center-heading">
-                    <h2>Welkom op het TEDxPXL forum</h2>
-                    <span class="center-line"></span>
-                    <p class="margin40">
-                        Gelieve naar hartelust deel te nemen aan onze vele interessante topics.
-                    </p>
-                </div> 
-                <div class="row">
-                    <div class="col-sm-12">
-                        {error}
-                        {forum}
-                        <div class="forumoverview-box event-box animated fadeInLeft">
-                            <h3>
-                                <a href="<?php echo base_url(); ?>forum/subforum/{categorieID}" class="forum-overview-naam">{titel}:</a> {omschrijving}
-                            </h3>
-                            <p class="forum-overview-post">
-                                <strong>Laatste post in </strong><strong class="forum-overview-red"><a href="<?php echo base_url(); ?>forum/thread/{topicID}">{thrtitel}</a></strong>: {bericht} 
-                            </p>
-                            <p class="forum-overview-poster">
-                                <strong class="forum-overview-black">Poster:</strong> <a href="#">{username}</a>
-                            </p>
-                        </div><!--event box-->
-                        {/forum}
+        <div class="container">
+            <div class="row">  
+                <div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
+                    <div class="login-form">
+                        {melding}
+                        <h3>Sign In <span>Or Sign Up</span></h3>
+                         <form role="form" action='index' method='post' >
+                        <div class="form-group">
+                            <label for="gebruikersnaam">Gebruikersnaam</label>
+                            <input type="text" class="form-control" name="gebruikersnaam" id="gebruikersnaam" placeholder="Gebruikersnaam" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" name="password" id="password" placeholder="Password" required="required">
+                        </div>                   
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox"> Remember Me
+                            </label>
+                        </div>
+                        <input type="submit" class="btn btn-theme-bg" name="btn-inlog" value="Login"/>
+                        <a href="#" class="btn btn-fb-login"><i class="fa fa-facebook"></i> Login With Facebook</a>
+                        <a href="#">Forget Password?</a>
+                    </form>
                     </div>
                 </div>
             </div>
-        </div><!--schedule end-->
-        <div class="divide80"></div>
-        <footer id="footer">
+        </div>
+        <div class="divide60"></div>
+             <footer id="footer">
             <div class="container">
 
                 <div class="row">
@@ -194,9 +215,12 @@
                             <h3>Contact</h3>
 
                             <ul class="list-unstyled contact">
-                                <li><p><strong><i class="fa fa-map-marker"></i> Address:</strong>  Elfde-Liniestraat 24, B-3500 Hasselt</p></li> 
-                                <li><p><strong><i class="fa fa-envelope"></i> Mail Us:</strong> <a href="#">pxltedx@gmail.com</a></p></li>
-                                <li> <p><strong><i class="fa fa-phone"></i> Phone:</strong>+32 474 21 21 25</p></li>
+                                <li><p><strong><i class="fa fa-map-marker"></i> Address:</strong> vaisahali, jaipur, 302012</p></li> 
+                                <li><p><strong><i class="fa fa-envelope"></i> Mail Us:</strong> <a href="#">Support@designmylife.com</a></p></li>
+                                <li> <p><strong><i class="fa fa-phone"></i> Phone:</strong> +91 1800 2345 2132</p></li>
+                                <li> <p><strong><i class="fa fa-print"></i> Fax</strong> 1800 2345 2132</p></li>
+                                <li> <p><strong><i class="fa fa-skype"></i> Skype</strong> assan.856</p></li>
+
                             </ul>
                         </div>                        
                     </div><!--footer col-->
@@ -204,15 +228,15 @@
                         <div class="footer-col">
                             <h3>Featured Work</h3>
                             <ul class="list-inline f2-work">
-                                <li><a href="portfolio-single.html"><img src="<?php echo base_url(); ?>img/img-1.jpg" class="img-responsive" alt=""></a></li>
-                                <li><a href="portfolio-single.html"><img src="<?php echo base_url(); ?>img/img-2.jpg" class="img-responsive" alt=""></a></li>
-                                <li><a href="portfolio-single.html"><img src="<?php echo base_url(); ?>img/img-3.jpg" class="img-responsive" alt=""></a></li>
-                                <li><a href="portfolio-single.html"><img src="<?php echo base_url(); ?>img/img-4.jpg" class="img-responsive" alt=""></a></li>
-                                <li><a href="portfolio-single.html"><img src="<?php echo base_url(); ?>img/img-5.jpg" class="img-responsive" alt=""></a></li>
-                                <li><a href="portfolio-single.html"><img src="<?php echo base_url(); ?>img/img-6.jpg" class="img-responsive" alt=""></a></li>
-                                <li><a href="portfolio-single.html"><img src="<?php echo base_url(); ?>img/img-7.jpg" class="img-responsive" alt=""></a></li>
-                                <li><a href="portfolio-single.html"><img src="<?php echo base_url(); ?>img/img-8.jpg" class="img-responsive" alt=""></a></li>
-                                <li><a href="portfolio-single.html"><img src="<?php echo base_url(); ?>img/img-9.jpg" class="img-responsive" alt=""></a></li>
+                                <li><a href="portfolio-single.html"><img src="img/img-1.jpg" class="img-responsive" alt=""></a></li>
+                                <li><a href="portfolio-single.html"><img src="img/img-2.jpg" class="img-responsive" alt=""></a></li>
+                                <li><a href="portfolio-single.html"><img src="img/img-3.jpg" class="img-responsive" alt=""></a></li>
+                                <li><a href="portfolio-single.html"><img src="img/img-4.jpg" class="img-responsive" alt=""></a></li>
+                                <li><a href="portfolio-single.html"><img src="img/img-5.jpg" class="img-responsive" alt=""></a></li>
+                                <li><a href="portfolio-single.html"><img src="img/img-6.jpg" class="img-responsive" alt=""></a></li>
+                                <li><a href="portfolio-single.html"><img src="img/img-7.jpg" class="img-responsive" alt=""></a></li>
+                                <li><a href="portfolio-single.html"><img src="img/img-8.jpg" class="img-responsive" alt=""></a></li>
+                                <li><a href="portfolio-single.html"><img src="img/img-9.jpg" class="img-responsive" alt=""></a></li>
                             </ul>
                         </div>                        
                     </div><!--footer col-->
@@ -237,42 +261,44 @@
                 <div class="row">
                     <div class="col-md-12 text-center">
                         <div class="footer-btm">
-                            <span>&copy;2014. Theme by Jarno</span>
+                            <span>&copy;2014. Theme by Design_mylife</span>
                         </div>
                     </div>
                 </div>
             </div>
         </footer><!--default footer end here-->
-        <!--scripts and plugins -->
+       <!--scripts and plugins -->
         <!--must need plugin jquery-->
-        <script src="<?php echo base_url(); ?>js/jquery.min.js"></script>        
+        <script src="js/jquery.min.js"></script>        
         <!--bootstrap js plugin-->
-        <script src="<?php echo base_url(); ?>bootstrap/js/bootstrap.min.js" type="text/javascript"></script>       
+        <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>       
         <!--easing plugin for smooth scroll-->
-        <script src="<?php echo base_url(); ?>js/jquery.easing.1.3.min.js" type="text/javascript"></script>
+        <script src="js/jquery.easing.1.3.min.js" type="text/javascript"></script>
         <!--sticky header-->
-        <script type="<?php echo base_url(); ?>text/javascript" src="js/jquery.sticky.js"></script>
+        <script type="text/javascript" src="js/jquery.sticky.js"></script>
         <!--flex slider plugin-->
-        <script src="<?php echo base_url(); ?>js/jquery.flexslider-min.js" type="text/javascript"></script>
+        <script src="js/jquery.flexslider-min.js" type="text/javascript"></script>
         <!--parallax background plugin-->
-        <script src="<?php echo base_url(); ?>js/jquery.stellar.min.js" type="text/javascript"></script>
-
-
+        <script src="js/jquery.stellar.min.js" type="text/javascript"></script>
+        
+        
         <!--digit countdown plugin-->
         <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
         <!--digit countdown plugin-->
-        <script src="<?php echo base_url(); ?>js/jquery.counterup.min.js" type="text/javascript"></script>
+        <script src="js/jquery.counterup.min.js" type="text/javascript"></script>
         <!--on scroll animation-->
-        <script src="<?php echo base_url(); ?>js/wow.min.js" type="text/javascript"></script> 
+        <script src="js/wow.min.js" type="text/javascript"></script> 
         <!--owl carousel slider-->
-        <script src="<?php echo base_url(); ?>js/owl.carousel.min.js" type="text/javascript"></script>
+        <script src="js/owl.carousel.min.js" type="text/javascript"></script>
         <!--popup js-->
-        <script src="<?php echo base_url(); ?>js/jquery.magnific-popup.min.js" type="text/javascript"></script>
+        <script src="js/jquery.magnific-popup.min.js" type="text/javascript"></script>
         <!--you tube player-->
-        <script src="<?php echo base_url(); ?>js/jquery.mb.YTPlayer.min.js" type="text/javascript"></script>
-
-
+        <script src="js/jquery.mb.YTPlayer.min.js" type="text/javascript"></script>
+        
+        
         <!--customizable plugin edit according to your needs-->
-        <script src="<?php echo base_url(); ?>js/custom.js" type="text/javascript"></script>
+        <script src="js/custom.js" type="text/javascript"></script>
+
+
     </body>
 </html>
