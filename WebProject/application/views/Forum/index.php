@@ -124,20 +124,16 @@
                                 <?php
                             } else {
                                 ?> 
-                                <div class="row">
-                                    <form role="form" action='<?php echo base_url(); ?>forum/wijzigProfiel' method='post'>
-                                        <h4>Profiel wijzigen</h4>
-
-                                        <input type="submit" class="btn btn-theme-bg pull-right" name="btn-prfWzg" value="Profiel wijzigen"/>
-                                    </form>
-                                </div>
-                                <div class="row">
-                                    <form role="form" action='<?php echo base_url(); ?>login/index' method='post'>
-                                        <h4>Afmelden</h4>
-
-                                        <input type="submit" class="btn btn-theme-bg pull-right" name="btn-logoff" value="Afmelden"/>
-                                    </form>
-                                </div>
+                                <form role="form" action='<?php echo base_url(); ?>forum/wijzigProfiel' method='post'>
+                                    <h4 class="center-heading">Profiel wijzigen</h4>
+                                    <input type="submit" class="btn btn-theme-bg center-block" name="btn-prfWzg" value="Profiel wijzigen"/>
+                                    <div class="clearfix"></div>
+                                </form>
+                                <hr>
+                                <form role="form" action='<?php echo base_url(); ?>login/index' method='post'>
+                                    <h4 class="center-heading">Afmelden</h4>
+                                    <input type="submit" class="btn btn-theme-bg center-block" name="btn-logoff" value="Afmelden"/>
+                                </form>
                                 <?php
                             }
                             ?>
@@ -203,13 +199,12 @@
         <div class="divide80"></div> 
         <footer id="footer">
             <div class="container">
-
                 <div class="row">
-                    <div class="col-md-3 col-sm-6 margin30">
+                    <div class="col-md-4 col-sm-6 col-md-offset-1 margin30">
                         <div class="footer-col">
-                            <h3>About assan</h3>
+                            <h3>Over TEDx</h3>
                             <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam, adipiscing condimentum tristique vel, eleifend sed turpis. Pellentesque cursus arcu id magna euismod in elementum purus molestie.
+                                TEDxPXL is een onafhankelijk georganiseerd TED conferentie waar sprekers uit de hele wereld hun cutting-edge ideeën kunnen delen.
                             </p>
                             <ul class="list-inline social-1">
                                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -220,49 +215,18 @@
                             </ul>
                         </div>                        
                     </div><!--footer col-->
-                    <div class="col-md-3 col-sm-6 margin30">
+                    <div class="col-md-4 col-sm-6 col-md-offset-3 margin30">
                         <div class="footer-col">
                             <h3>Contact</h3>
 
                             <ul class="list-unstyled contact">
-                                <li><p><strong><i class="fa fa-map-marker"></i> Address:</strong>  Elfde-Liniestraat 24, B-3500 Hasselt</p></li> 
-                                <li><p><strong><i class="fa fa-envelope"></i> Mail Us:</strong> <a href="#">pxltedx@gmail.com</a></p></li>
-                                <li> <p><strong><i class="fa fa-phone"></i> Phone:</strong>+32 474 21 21 25</p></li>
+                                <li><p><strong><i class="fa fa-map-marker"></i> Adres:</strong> Elfde-Liniestraat 24, 3500 Hasselt, België</p></li> 
+                                <li><p><strong><i class="fa fa-envelope"></i> Mail Ons:</strong> <a href="#">pxltedx@gmail.com</a></p></li>
+                                <li> <p><strong><i class="fa fa-phone"></i> Telefoon:</strong>+32 474 21 21 25</p></li>
+
                             </ul>
                         </div>                        
-                    </div><!--footer col-->
-                    <div class="col-md-3 col-sm-6 margin30">
-                        <div class="footer-col">
-                            <h3>Featured Work</h3>
-                            <ul class="list-inline f2-work">
-                                <li><a href="portfolio-single.html"><img src="<?php echo base_url(); ?>img/img-1.jpg" class="img-responsive" alt=""></a></li>
-                                <li><a href="portfolio-single.html"><img src="<?php echo base_url(); ?>img/img-2.jpg" class="img-responsive" alt=""></a></li>
-                                <li><a href="portfolio-single.html"><img src="<?php echo base_url(); ?>img/img-3.jpg" class="img-responsive" alt=""></a></li>
-                                <li><a href="portfolio-single.html"><img src="<?php echo base_url(); ?>img/img-4.jpg" class="img-responsive" alt=""></a></li>
-                                <li><a href="portfolio-single.html"><img src="<?php echo base_url(); ?>img/img-5.jpg" class="img-responsive" alt=""></a></li>
-                                <li><a href="portfolio-single.html"><img src="<?php echo base_url(); ?>img/img-6.jpg" class="img-responsive" alt=""></a></li>
-                                <li><a href="portfolio-single.html"><img src="<?php echo base_url(); ?>img/img-7.jpg" class="img-responsive" alt=""></a></li>
-                                <li><a href="portfolio-single.html"><img src="<?php echo base_url(); ?>img/img-8.jpg" class="img-responsive" alt=""></a></li>
-                                <li><a href="portfolio-single.html"><img src="<?php echo base_url(); ?>img/img-9.jpg" class="img-responsive" alt=""></a></li>
-                            </ul>
-                        </div>                        
-                    </div><!--footer col-->
-                    <div class="col-md-3 col-sm-6 margin30">
-                        <div class="footer-col">
-                            <h3>Newsletter</h3>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam, 
-                            </p>
-                            <form role="form" class="subscribe-form">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Enter email to subscribe">
-                                    <span class="input-group-btn">
-                                        <button class="btn  btn-theme-dark btn-lg" type="submit">Ok</button>
-                                    </span>
-                                </div>
-                            </form>
-                        </div>                        
-                    </div><!--footer col-->
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12 text-center">
