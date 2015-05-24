@@ -12,7 +12,7 @@ class subforum_model extends MY_Model{
     }
 
     function findEvents($maandID, $curYear) {
-            $query = $this->db->query("SELECT thr.titel, thr.bericht, thr.gebruikerID, thr.categorieID, Date_Format(thr.eventDate,'%a %e %b %Y') 'eventDate', users.username FROM threads thr LEFT JOIN users ON thr.gebruikerID = users.gebruikerID WHERE categorieID = 1 AND month(eventDate)=$maandID AND year(eventDate)=$curYear ORDER BY eventDate");
+            $query = $this->db->query("SELECT thr.topicID, thr.titel, thr.bericht, thr.gebruikerID, thr.categorieID, Date_Format(thr.eventDate,'%a %e %b %Y') 'eventDate', users.username FROM threads thr LEFT JOIN users ON thr.gebruikerID = users.gebruikerID WHERE categorieID = 1 AND month(eventDate)=$maandID AND year(eventDate)=$curYear ORDER BY eventDate");
         return array(
             'query' => $query->result(),
             'count' => count($query->result())
@@ -24,5 +24,11 @@ class subforum_model extends MY_Model{
         $result = array();
 
         return $query->result();
+    }
+    
+    function selectAllEvents(){
+        $query = $this->db->query("SELECT thr.topicID, thr.titel, thr.bericht, thr.gebruikerID, thr.categorieID, Date_Format(thr.eventDate,'%a %e %b %Y') 'eventDate', users.username FROM threads thr LEFT JOIN users ON thr.gebruikerID = users.gebruikerID ORDER BY eventDate");
+        return $query->result();
+        
     }
 }
