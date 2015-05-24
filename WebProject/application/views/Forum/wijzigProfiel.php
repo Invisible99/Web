@@ -144,67 +144,69 @@
             <div class="row">
                 {error}
                 {user}
-                <form id="editcat" action="<?php echo base_url(); ?>forum/wijzigProfiel" method="POST">
-                    <div class="animated fadeInLeft">
-                        <div class="col-md-2"> 
+                <?php echo form_open("forum/wijzigProfiel"); ?>
+                <div class="animated fadeInLeft">
+                    <div class="col-md-2"> 
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 controls">
+                                <label>Profielfoto:</label>
+                                <ul class="list-inline f3-work">
+                                    <li><a href="" onclick="document.getElementById('userfile').click();
+                                            return false"><img id="img" src="{/user}{foto}{user}" class="img-responsive" alt=""></a></li>
+                                        <input type="file" name="userfile" id="userfile" onchange="readURL(this);" class="hidden" />
+                                </ul>
+                                <p class="help-block"></p>
+                            </div>
+                        </div> 
+                        <div class="row">
+                            <div class="form-group col-xs-12">
+                                <input type="submit" name="editProfile" class="btn btn-theme-bg btn-lg" value="Wijzig profiel" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="col-md-12 margin30">
                             <div class="row control-group">
                                 <div class="form-group col-xs-12 controls">
-                                    <label>Profielfoto:</label>
-                                    <ul class="list-inline f3-work">
-                                        <li><a href="portfolio-single.html"><img src="<?php echo base_url(); ?>img/stef.jpg" class="img-responsive" alt=""></a></li>
-                                    </ul>
+                                    <label>Gebruikersnaam:</label>
+                                    <input type="text" class="form-control" name="gebruikersnaam" value="{username}" placeholder="Username" required="required">
+                                    <p class="help-block"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 margin30">
+                            <div class="row control-group">
+                                <div class="form-group col-xs-12 controls">
+                                    <label>Voornaam:</label>
+                                    <input type="text" class="form-control" name="voornaam" placeholder="Voornaam"  value="{voornaam}" required="required">
+                                    <p class="help-block"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 margin30">
+                            <div class="row control-group">
+                                <div class="form-group col-xs-12 controls">
+                                    <label>Familienaam:</label>
+                                    <input type="text" class="form-control" name="familienaam" placeholder="Familienaam" value="{familienaam}" required="required">
                                     <p class="help-block"></p>
                                 </div>
                             </div> 
-                            <div class="row">
-                                <div class="form-group col-xs-12">
-                                    <input type="submit" name="contactBtn" class="btn btn-theme-bg btn-lg" value="Wijzig profiel" />
+                        </div>
+                        <div class="col-md-12 margin30">
+                            <div class="row control-group">
+                                <div class="form-group col-xs-12 controls">
+                                    <label>E-mailadres:</label>
+                                    <input type="text" class="form-control" name="email" placeholder="Email" value="{email}" required="required">
+                                    <p class="help-block"></p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-8 col-md-offset-2">
-                            <div class="col-md-12 margin30">
-                                <div class="row control-group">
-                                    <div class="form-group col-xs-12 controls">
-                                        <label>Gebruikersnaam:</label>
-                                        <input type="text" class="form-control" name="gebruikersnaam" value="{username}" placeholder="Username" required="required">
-                                        <p class="help-block"></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 margin30">
-                                <div class="row control-group">
-                                    <div class="form-group col-xs-12 controls">
-                                        <label>Voornaam:</label>
-                                        <input type="text" class="form-control" name="voornaam" placeholder="Voornaam"  value="{voornaam}" required="required">
-                                        <p class="help-block"></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 margin30">
-                                <div class="row control-group">
-                                    <div class="form-group col-xs-12 controls">
-                                        <label>Familienaam:</label>
-                                        <input type="text" class="form-control" name="familienaam" placeholder="Familienaam" value="{familienaam}" required="required">
-                                        <p class="help-block"></p>
-                                    </div>
-                                </div> 
-                            </div>
-                            <div class="col-md-12 margin30">
-                                <div class="row control-group">
-                                    <div class="form-group col-xs-12 controls">
-                                        <label>E-mailadres:</label>
-                                        <input type="text" class="form-control" name="email" placeholder="Email" value="{email}" required="required">
-                                        <p class="help-block"></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <br>
-                            <div id="success"></div>
-                        </div>
+                        <br>
+                        <div id="success"></div>
                     </div>
-                    {/user}
-                </form>
+                </div>
+                <?php form_close(); ?>
+                {/user}
             </div>
         </div>
         <div class="divide80"></div>
@@ -256,7 +258,7 @@
         <!--easing plugin for smooth scroll-->
         <script src="<?php echo base_url(); ?>js/jquery.easing.1.3.min.js" type="text/javascript"></script>
         <!--sticky header-->
-        <script type="<?php echo base_url(); ?>text/javascript" src="js/jquery.sticky.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>js/jquery.sticky.js"></script>
         <!--flex slider plugin-->
         <script src="<?php echo base_url(); ?>js/jquery.flexslider-min.js" type="text/javascript"></script>
         <!--parallax background plugin-->
@@ -279,5 +281,21 @@
 
         <!--customizable plugin edit according to your needs-->
         <script src="<?php echo base_url(); ?>js/custom.js" type="text/javascript"></script>
+        <script type="text/javascript">
+                                        function readURL(input) {
+                                            if (input.files && input.files[0]) {
+                                                var reader = new FileReader();
+
+                                                reader.onload = function (e) {
+                                                    $('#img')
+                                                            .attr('src', e.target.result)
+                                                            .width(160)
+                                                            .height(160);
+                                                };
+
+                                                reader.readAsDataURL(input.files[0]);
+                                            }
+                                        }
+        </script>
     </body>
 </html>

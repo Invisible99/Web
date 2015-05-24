@@ -2,6 +2,11 @@
 
 class Forum extends CI_Controller {
 
+    public function __construct() {
+        parent::__construct();
+        $this->load->helper(array('form', 'url'));
+    }
+
     //Show index page
     function index() {
         //model laden
@@ -191,7 +196,9 @@ class Forum extends CI_Controller {
         $this->load->library('session');
         $this->load->library('user_agent');
         $this->load->helper('url');
+        $this->load->helper('path');
         $this->load->model("users_model");
+        
         if (isset($_POST['editProfile'])) {
             $wijzigArray = array('username' => $this->input->post('gebruikersnaam'), 'email' => $this->input->post('email'), 'voornaam' => $this->input->post('voornaam'), 'familienaam' => $this->input->post('familienaam'));
             $teWijzigen = array('gebruikerID' => $this->session->userdata('gebruikerID'));
@@ -199,7 +206,7 @@ class Forum extends CI_Controller {
             if ($result == 1) {
                 $this->data['user'] = $this->users_model->find($this->session->userdata('gebruikerID'));
                 $this->data['error'] = "<div class='alert alert-success'>Gegevens zijn opgeslagen</div>";
-                
+
                 if (empty($this->data['user'])) {
                     //de alert-error is vn bootstrap
                     $this->data['error'] = "<div class='alert alert-error'>De gebruiker is niet gevonden</div>";
@@ -213,6 +220,7 @@ class Forum extends CI_Controller {
             $this->data['error'] = "";
 
             $this->data['user'] = $this->users_model->find($this->session->userdata('gebruikerID'));
+            $this->data['foto'] = base_url() . "img/team-1.jpg";
 
             if (empty($this->data['user'])) {
                 //de alert-error is vn bootstrap
