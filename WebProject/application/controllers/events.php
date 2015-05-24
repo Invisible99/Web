@@ -12,6 +12,10 @@ class Events extends CI_Controller {
         $this->load->model("subforum_model");
         $this->data['error']="";
         $this->data['allEvents']=$this->subforum_model->selectAllEvents();
+        if (empty($this->data['allEvents'])) {
+            //de alert-error is vn bootstrap
+            $this->data['error'] = "<div class='alert alert-error'>Er zijn nog geen events deze maand!</div>";
+        }
         $this->parser->parse('Events/eventsview.php',$this->data);
     }
     
