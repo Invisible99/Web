@@ -1,13 +1,13 @@
--- phpMyAdmin SQL Dump
--- version 3.5.1
+﻿-- phpMyAdmin SQL Dump
+-- version 4.1.14
 -- http://www.phpmyadmin.net
 --
--- Machine: localhost
--- Genereertijd: 24 mei 2015 om 11:02
--- Serverversie: 5.5.24-log
--- PHP-versie: 5.3.13
+-- Machine: 127.0.0.1
+-- Gegenereerd op: 24 mei 2015 om 14:47
+-- Serverversie: 5.6.17
+-- PHP-versie: 5.5.12
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -19,110 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Databank: `tedxpxl`
 --
-
--- --------------------------------------------------------
-
---
--- Tabelstructuur voor tabel `categories`
---
-
-CREATE TABLE IF NOT EXISTS `categories` (
-  `categorieID` int(11) NOT NULL AUTO_INCREMENT,
-  `titel` varchar(75) NOT NULL,
-  `omschrijving` varchar(255) NOT NULL,
-  PRIMARY KEY (`categorieID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
-
---
--- Gegevens worden uitgevoerd voor tabel `categories`
---
-
-INSERT INTO `categories` (`categorieID`, `titel`, `omschrijving`) VALUES
-(1, 'Evenementen', 'Hier komen alle geplande en voorbije evenementen.'),
-(2, 'Gasten forum', 'forum voor de gasten'),
-(3, 'Leden forum', 'forum voor de leden'),
-(4, 'Nieuws', 'Al het nieuws van TedxPxl');
-
--- --------------------------------------------------------
-
---
--- Tabelstructuur voor tabel `posts`
---
-
-CREATE TABLE IF NOT EXISTS `posts` (
-  `berichtID` int(11) NOT NULL AUTO_INCREMENT,
-  `topicID` int(11) NOT NULL,
-  `gebruikerID` int(11) NOT NULL,
-  `bericht` text NOT NULL,
-  `postDate` date NOT NULL,
-  `latestPost` tinyint(4) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`berichtID`),
-  KEY `gebruikerID` (`gebruikerID`),
-  KEY `topicID` (`topicID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
-
---
--- Gegevens worden uitgevoerd voor tabel `posts`
---
-
-INSERT INTO `posts` (`berichtID`, `topicID`, `gebruikerID`, `bericht`, `postDate`, `latestPost`) VALUES
-(1, 1, 4, 'Wanneer werkt het forum?', '2015-05-23', 1),
-(2, 2, 4, 'heheheh nice', '2015-05-23', 1),
-(3, 3, 4, 'vreeed nice. kan niet wachten!', '2015-05-23', 0),
-(4, 4, 4, 'hohohohohho, werk dan maar snel door', '2015-05-23', 1),
-(5, 3, 1, 'Die kerel hierboven weet hoe het zit!!', '2015-05-23', 0),
-(6, 3, 1, 'BTW, al lekker veel posts', '2015-05-23', 1);
-
--- --------------------------------------------------------
-
---
--- Tabelstructuur voor tabel `roles`
---
-
-CREATE TABLE IF NOT EXISTS `roles` (
-  `rolID` int(11) NOT NULL AUTO_INCREMENT,
-  `rolNaam` varchar(75) NOT NULL,
-  PRIMARY KEY (`rolID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
-
---
--- Gegevens worden uitgevoerd voor tabel `roles`
---
-
-INSERT INTO `roles` (`rolID`, `rolNaam`) VALUES
-(1, 'admin'),
-(2, 'lid'),
-(3, 'niet-lid'),
-(4, 'Verwijderd'),
-(5, 'Banned');
-
--- --------------------------------------------------------
-
---
--- Tabelstructuur voor tabel `threads`
---
-
-CREATE TABLE IF NOT EXISTS `threads` (
-  `topicID` int(11) NOT NULL AUTO_INCREMENT,
-  `titel` varchar(75) NOT NULL,
-  `bericht` text NOT NULL,
-  `gebruikerID` int(11) NOT NULL COMMENT 'gebruiker die deze topic heeft aangemaakt',
-  `categorieID` int(11) NOT NULL,
-  `latestThread` tinyint(4) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`topicID`),
-  KEY `gebruikerID` (`gebruikerID`),
-  KEY `categorieID` (`categorieID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
-
---
--- Gegevens worden uitgevoerd voor tabel `threads`
---
-
-INSERT INTO `threads` (`topicID`, `titel`, `bericht`, `gebruikerID`, `categorieID`, `latestThread`) VALUES
-(1, 'Support', 'Stel hier je vragen!', 4, 2, 1),
-(2, 'Welkom leden', 'Maak kennis met de andere leden hier', 4, 3, 1),
-(3, 'Website launch party', 'De party van het jaar! De nieuwe website wordt gelauncht!', 4, 1, 1),
-(4, 'Nieuwe website in de maak', 'We zijn een nieuwe website aan het maken. Woop Woop!', 4, 4, 1);
 
 -- --------------------------------------------------------
 
@@ -140,14 +36,14 @@ CREATE TABLE IF NOT EXISTS `users` (
   `voornaam` varchar(75) NOT NULL,
   `familienaam` varchar(75) NOT NULL,
   `al_ingelogd` tinyint(4) NOT NULL DEFAULT '0',
-  `actief` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0=nog niet geactiveerd door admin (en mag dus niet inloggen), 1=wel',
+  `actief` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0=nog niet geactiveerd door admin( en mag dus niet inloggen), 1 = wel',
   PRIMARY KEY (`gebruikerID`),
   UNIQUE KEY `email` (`email`),
   KEY `rolID` (`rolID`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=34 ;
 
 --
--- Gegevens worden uitgevoerd voor tabel `users`
+-- Gegevens worden geëxporteerd voor tabel `users`
 --
 
 INSERT INTO `users` (`gebruikerID`, `rolID`, `username`, `password`, `email`, `profielfoto`, `voornaam`, `familienaam`, `al_ingelogd`, `actief`) VALUES
@@ -163,22 +59,8 @@ INSERT INTO `users` (`gebruikerID`, `rolID`, `username`, `password`, `email`, `p
 (33, 2, 'koen.vaes', 'SP9UE06I', 'koen895@hotmail.com', NULL, 'koen', 'vaes', 0, 0);
 
 --
--- Beperkingen voor gedumpte tabellen
+-- Beperkingen voor geëxporteerde tabellen
 --
-
---
--- Beperkingen voor tabel `posts`
---
-ALTER TABLE `posts`
-  ADD CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`topicID`) REFERENCES `threads` (`topicID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `posts_ibfk_3` FOREIGN KEY (`gebruikerID`) REFERENCES `users` (`gebruikerID`) ON DELETE NO ACTION ON UPDATE CASCADE;
-
---
--- Beperkingen voor tabel `threads`
---
-ALTER TABLE `threads`
-  ADD CONSTRAINT `threads_ibfk_1` FOREIGN KEY (`gebruikerID`) REFERENCES `users` (`gebruikerID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `threads_ibfk_2` FOREIGN KEY (`categorieID`) REFERENCES `categories` (`categorieID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Beperkingen voor tabel `users`
