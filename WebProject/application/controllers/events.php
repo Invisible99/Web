@@ -7,7 +7,12 @@ class Events extends CI_Controller {
         
         $this->load->model("maand_model");
         $this ->data['maanden'] = $this->maand_model->get_months();
-        $this->parser->parse('Events/eventsview.php', $this->data);
+        //$this->parser->parse('Events/eventsview.php', $this->data);
+        
+        $this->load->model("subforum_model");
+        $this->data['error']="";
+        $this->data['allEvents']=$this->subforum_model->selectAllEvents();
+        $this->parser->parse('Events/eventsview.php',$this->data);
     }
     
     function showevents($maandID, $curYear){
@@ -29,13 +34,7 @@ class Events extends CI_Controller {
         }
         $this->parser->parse('Events/showevents',$this->data);
     }
-    
-    function showAllEvents(){
-        $this->load->model("subforum_model");
-        $this->data['alleEvents']=$this->subforum_model->selectAllEvents();
-        $this->parser->parse('Events/showevents',$this->data);
-    }
-    
+
 
 }
 
