@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.14
+-- version 3.5.1
 -- http://www.phpmyadmin.net
 --
--- Machine: 127.0.0.1
--- Gegenereerd op: 24 mei 2015 om 05:26
--- Serverversie: 5.6.17
--- PHP-versie: 5.5.12
+-- Machine: localhost
+-- Genereertijd: 24 mei 2015 om 11:02
+-- Serverversie: 5.5.24-log
+-- PHP-versie: 5.3.13
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `categories` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Gegevens worden geëxporteerd voor tabel `categories`
+-- Gegevens worden uitgevoerd voor tabel `categories`
 --
 
 INSERT INTO `categories` (`categorieID`, `titel`, `omschrijving`) VALUES
@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `posts` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
--- Gegevens worden geëxporteerd voor tabel `posts`
+-- Gegevens worden uitgevoerd voor tabel `posts`
 --
 
 INSERT INTO `posts` (`berichtID`, `topicID`, `gebruikerID`, `bericht`, `postDate`, `latestPost`) VALUES
@@ -86,7 +86,7 @@ CREATE TABLE IF NOT EXISTS `roles` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
--- Gegevens worden geëxporteerd voor tabel `roles`
+-- Gegevens worden uitgevoerd voor tabel `roles`
 --
 
 INSERT INTO `roles` (`rolID`, `rolNaam`) VALUES
@@ -115,7 +115,7 @@ CREATE TABLE IF NOT EXISTS `threads` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Gegevens worden geëxporteerd voor tabel `threads`
+-- Gegevens worden uitgevoerd voor tabel `threads`
 --
 
 INSERT INTO `threads` (`topicID`, `titel`, `bericht`, `gebruikerID`, `categorieID`, `latestThread`) VALUES
@@ -140,29 +140,30 @@ CREATE TABLE IF NOT EXISTS `users` (
   `voornaam` varchar(75) NOT NULL,
   `familienaam` varchar(75) NOT NULL,
   `al_ingelogd` tinyint(4) NOT NULL DEFAULT '0',
+  `actief` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0=nog niet geactiveerd door admin (en mag dus niet inloggen), 1=wel',
   PRIMARY KEY (`gebruikerID`),
   UNIQUE KEY `email` (`email`),
   KEY `rolID` (`rolID`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=34 ;
 
 --
--- Gegevens worden geëxporteerd voor tabel `users`
+-- Gegevens worden uitgevoerd voor tabel `users`
 --
 
-INSERT INTO `users` (`gebruikerID`, `rolID`, `username`, `password`, `email`, `profielfoto`, `voornaam`, `familienaam`, `al_ingelogd`) VALUES
-(1, 1, 'admin.admin', 'pxl', 'admin.admin@admin.be', NULL, '', '', 0),
-(2, 2, 'lid.lid', 'pxl', 'lid.lid@lid.be', NULL, '', '', 0),
-(3, 3, 'guest.guest', 'pxl', 'guest.guest@guest.be', NULL, '', '', 0),
-(4, 2, 'pxl', '$2y$10$mqocqqNZ00FffJdJX3VadeCdodBKPKtaTBrD0eKTQLj3uG5yn5N5O', 'aaaaaaaaaaaaaaaa@aaaaaaaaaaaaaa', NULL, 'koen', 'vaes', 1),
-(6, 2, 'pxl', 'test', 'neen@swek.com', NULL, 'koen', 'vaes', 0),
-(7, 2, 'pxl', 'test', 'ja@swek.com', NULL, 'koen', 'vaes', 0),
-(12, 2, '"--', 'test', 'koekje@eigendeeg.com', NULL, '"--', '"--', 0),
-(29, 2, 'stef.janssens', '$2y$10$e8zRdxlExduRS.YXlTAbJuDTYrlTNLMmh/1Y385WcOaApJEG3d41C', 's.j@hotmail', NULL, 'stef', 'janssens', 1),
-(30, 2, 'pxl2', '$2y$10$YmR/SN7H5gnj0LJB4LIoX.ubCp0YkO/UUo4XHHeH1y6GgTpU8pq5m', 's.j@hotmail.com', NULL, 'a', 'a', 1),
-(33, 2, 'koen.vaes', 'SP9UE06I', 'koen895@hotmail.com', NULL, 'koen', 'vaes', 0);
+INSERT INTO `users` (`gebruikerID`, `rolID`, `username`, `password`, `email`, `profielfoto`, `voornaam`, `familienaam`, `al_ingelogd`, `actief`) VALUES
+(1, 1, 'admin.admin', 'pxl', 'admin.admin@admin.be', NULL, '', '', 0, 0),
+(2, 2, 'lid.lid', 'pxl', 'lid.lid@lid.be', NULL, '', '', 0, 0),
+(3, 3, 'guest.guest', 'pxl', 'guest.guest@guest.be', NULL, '', '', 0, 0),
+(4, 2, 'pxl', '$2y$10$mqocqqNZ00FffJdJX3VadeCdodBKPKtaTBrD0eKTQLj3uG5yn5N5O', 'aaaaaaaaaaaaaaaa@aaaaaaaaaaaaaa', NULL, 'koen', 'vaes', 1, 0),
+(6, 2, 'pxl', 'test', 'neen@swek.com', NULL, 'koen', 'vaes', 0, 0),
+(7, 2, 'pxl', 'test', 'ja@swek.com', NULL, 'koen', 'vaes', 0, 0),
+(12, 2, '"--', 'test', 'koekje@eigendeeg.com', NULL, '"--', '"--', 0, 0),
+(29, 2, 'stef.janssens', '$2y$10$e8zRdxlExduRS.YXlTAbJuDTYrlTNLMmh/1Y385WcOaApJEG3d41C', 's.j@hotmail', NULL, 'stef', 'janssens', 1, 0),
+(30, 2, 'pxl2', '$2y$10$YmR/SN7H5gnj0LJB4LIoX.ubCp0YkO/UUo4XHHeH1y6GgTpU8pq5m', 's.j@hotmail.com', NULL, 'a', 'a', 1, 0),
+(33, 2, 'koen.vaes', 'SP9UE06I', 'koen895@hotmail.com', NULL, 'koen', 'vaes', 0, 0);
 
 --
--- Beperkingen voor geëxporteerde tabellen
+-- Beperkingen voor gedumpte tabellen
 --
 
 --
