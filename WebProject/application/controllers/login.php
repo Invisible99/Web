@@ -12,15 +12,12 @@ class Login extends CI_Controller {
             $this->load->library('session');
             $this->load->library('user_agent');
             $this->load->helper('url');
-        if (isset($_POST['btn-inlog'])) {
-            
-      
+        if (isset($_POST['btn-inlog'])) {  
 
             $this->data['melding'] = "";
             $this->data['username'] = $this->input->post('gebruikersnaam');
             $this->data['password'] = $this->input->post('password');
-            
-            print($this->data['username']);
+
 
             $this->data['inloggen'] = $this->users_model->login($this->input->post('gebruikersnaam'));
 

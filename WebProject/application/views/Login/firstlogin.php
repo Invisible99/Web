@@ -352,7 +352,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h4>Sign in or Sign up</h4>
+                        <h4>Wachtwoord veranderen</h4>
                     </div>
                     <div class="col-sm-6 hidden-xs text-right">
                         <ol class="breadcrumb">

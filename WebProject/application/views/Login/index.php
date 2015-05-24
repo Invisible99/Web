@@ -173,7 +173,7 @@
                         if (!($this->session->has_userdata('user') && $this->session->has_userdata('logged_in') && $this->session->logged_in && $this->session->has_userdata('rolID'))) {
                             ?>
                             <h4>AANMELDEN OF REGISTEREN</h4>
-                            } else {
+                           <?php } else {
                             ?>
                             <h4>AFMELDEN</h4>
                             <?php
