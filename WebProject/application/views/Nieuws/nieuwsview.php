@@ -123,12 +123,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h4>Events</h4>
+                        <h4>Nieuws</h4>
                     </div>
                     <div class="col-sm-6 hidden-xs text-right">
                         <ol class="breadcrumb">
                             <li><a href="<?php echo base_url(); ?>home/index">Home</a></li>
-                            <li>Events</li>
+                            <li>Nieuws</li>
                         </ol>
                     </div>
                 </div>
@@ -136,122 +136,29 @@
         </div><!--breadcrumbs-->
         <div class="divide80"></div>
         <div class="container">
-
             <div class="row">
-                <div class="col-sm-3 ">
-
-
-                    <div class="sidebar-box margin40">
-                        <h4>Kalender</h4>
-                        <div class="panel-group" id="accordion">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                                            <?php 
-                                                $huidigJaar=date('Y');
-                                                echo $huidigJaar;
-                                            ?>
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseOne" class="panel-collapse collapse in">
-                                    <div class="panel-body">
-                                        <ul class="list-unstyled cat-list">
-                                            {maanden}
-                                            <li> <a href="<?php echo base_url(); ?>Events/showevents/{maandID}/<?php echo $huidigJaar; ?>">{maandNaam}</a></li>
-                                            {/maanden}
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-                                            <?php 
-                                                $huidigJaar=date('Y')+1;
-                                                echo $huidigJaar;
-                                            ?>
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseTwo" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        <ul class="list-unstyled cat-list">
-                                            {maanden}
-                                            <li> <a href="<?php echo base_url(); ?>Events/showevents/{maandID}/<?php echo $huidigJaar; ?>">{maandNaam}</a></li>
-                                            {/maanden}
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-                                            <?php 
-                                                $huidigJaar=date('Y')+2;
-                                                echo $huidigJaar;
-                                            ?>
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseThree" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        <ul class="list-unstyled cat-list">
-                                            {maanden}
-                                            <li> <a href="<?php echo base_url(); ?>Events/showevents/{maandID}/<?php echo $huidigJaar; ?>">{maandNaam}</a></li>
-                                            {/maanden}
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!--sidebar-box-->
-                    <div class="sidebar-box margin40">
-                        <h4>Search Events</h4>
-                        <form role="form" class="search-widget">
-                            <input type="text" class="form-control">
-                            <i class="fa fa-search"></i>
-                        </form>
-                    </div><!--sidebar-box-->
-
-                    
-                    
-                </div><!--sidebar col end-->
-                <div class="col-sm-9">
-
-                    <div class="blog-post ">
-                        {error}
-                        {allEvents}
-                        <div class="row  event-box animated fadeInLeft">
-                            <div class="col-md-3 margin20"> 
-                                
-                                <h4>{eventDate}</h4>                       
-                               
-                            </div>
-                            <div class="col-md-9 margin20">
-
-                                <ul class="list-inline post-detail">                                  
-                                    <li>by <a href="#">{username}</a></li>
-
-                                </ul>
-                                <h2><a href="#">{titel}</a></h2>
-                                <p>
-                                    {bericht}
-                                </p>
-                                <p><a href="<?php echo base_url(); ?>forum/thread/{topicID}" class="btn btn border-theme btn-xs">Read More...</a></p>
-
-                            </div>
-                        </div>
-                        {/allEvents}
+                <div class="col-md-10 col-md-offset-1">
+                    {error}
+                    {nieuws}
+                    <div class="blog-post event-box wow animated fadeInUp animated">
+                        
+                        <h2>{titel}</h2>
+                        <p>
+                             {bericht}
+                        </p>
+                        <p><a href="<?php echo base_url(); ?>forum/thread/{topicID}" class="btn btn border-theme btn-xs">Read More...</a></p>
+                        <ul class="list-inline post-detail">
+                            <li>by <a href="#">{username}</a></li>
+                            <li><i class="fa fa-calendar"></i>{postDate}</li>
+                            <li><i class="fa fa-comment"></i> <a href="#">6 Comments</a></li>
+                        </ul>
                     </div><!--blog post-->
-                    
+                    {/nieuws}
+
                     
                 </div><!--col-->
-            </div>
-        </div><!--left sidebar container-->
+            </div><!--row for blog post-->
+        </div><!--blog full main container-->
         <div class="divide60"></div>
         <footer id="footer">
             <div class="container">

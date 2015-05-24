@@ -27,7 +27,13 @@ class subforum_model extends MY_Model{
     }
     
     function selectAllEvents(){
-        $query = $this->db->query("SELECT thr.topicID, thr.titel, thr.bericht, thr.gebruikerID, thr.categorieID, Date_Format(thr.eventDate,'%a %e %b %Y') 'eventDate', users.username FROM threads thr LEFT JOIN users ON thr.gebruikerID = users.gebruikerID ORDER BY thr.eventDate");
+        $query = $this->db->query("SELECT thr.topicID, thr.titel, thr.bericht, thr.gebruikerID, thr.categorieID, Date_Format(thr.eventDate,'%a %e %b %Y') 'eventDate', users.username FROM threads thr LEFT JOIN users ON thr.gebruikerID = users.gebruikerID WHERE categorieID = 1 ORDER BY thr.eventDate ASC");
+        return $query->result();
+        
+    }
+    
+    function selectAllNieuws(){
+        $query = $this->db->query("SELECT thr.topicID, thr.titel, thr.bericht, thr.gebruikerID, thr.categorieID, Date_Format(thr.postDate,'%d-%m-%Y') 'postDate', users.username FROM threads thr LEFT JOIN users ON thr.gebruikerID = users.gebruikerID WHERE categorieID = 4 ORDER BY thr.eventDate DESC");
         return $query->result();
         
     }

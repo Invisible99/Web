@@ -6,9 +6,7 @@ class Events extends CI_Controller {
     function index() {
         
         $this->load->model("maand_model");
-        $this ->data['maanden'] = $this->maand_model->get_months();
-        //$this->parser->parse('Events/eventsview.php', $this->data);
-        
+        $this ->data['maanden'] = $this->maand_model->get_months();  
         $this->load->model("subforum_model");
         $this->data['error']="";
         $this->data['allEvents']=$this->subforum_model->selectAllEvents();
