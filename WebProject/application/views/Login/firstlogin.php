@@ -370,7 +370,7 @@
                     <div class="login-form">
                         {melding}
                         <h3>Nieuw wachtwoord instellen</h3>
-                        <form role="form" action='firstlogin/{gebruikerID}' method='post' >
+                        <form role="form" action='<?php echo base_url(); ?>login/firstlogin/{gebruikerID}' method='post' >
                         <div class="form-group">
                             <label for="newPassword">Nieuw wachtwoord</label>
                             <input type="password" class="form-control" name="newPassword" id="newPassword" placeholder="Nieuw wachtwoord" required="required">
