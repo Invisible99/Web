@@ -66,11 +66,11 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="active ">
+                        <li class="dropdown ">
                             <a href="<?php echo base_url(); ?>home/index">Home</a>
                         </li>
                         <!--menu Portfolio li end here-->
-                        <li class="dropdown">
+                        <li class="active">
                             <a href="<?php echo base_url(); ?>forum/index">Forum</a>
                         </li>
                         <li class="dropdown">
