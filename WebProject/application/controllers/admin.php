@@ -25,7 +25,6 @@ class Admin extends CI_Controller {
         $this->data['actievemelding'] = "";
         $this->data['inactievemelding'] = "";
         $this->data['bannedmelding'] = "";     
-        $this->data['aantalInactieveGebruikers'] = 0;
 
         $this->data['actieveGebruikers'] = $this->users_model->findallActive();     
         if (empty($this->data['actieveGebruikers'])) {
@@ -33,7 +32,6 @@ class Admin extends CI_Controller {
         }
 
         $this->data['inactieveGebruikers'] = $this->users_model->findallInActive();
-        $this->data['aantalInactieveGebruikers'] = count($this->data['inactieveGebruikers']);
         if (empty($this->data['inactieveGebruikers'])) {
             $this->data['inactievemelding'] .= "<div class='alert alert-info'>Er zijn geen gebruikers om te activeren.</div>";
         }
