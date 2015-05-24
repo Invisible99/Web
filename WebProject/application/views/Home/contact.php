@@ -125,7 +125,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h4>Contact us</h4>
+                        <h4>Contacteer ons</h4>
                     </div>
                     <div class="col-sm-6 hidden-xs text-right">
                         <ol class="breadcrumb">
@@ -151,21 +151,21 @@
                     <div class="divide30"></div>
                     <div class="form-contact">
                         {melding}
+                        {naamError}
+                        {emailError}
+                        {onderwerpError}
+                        {berichtError}
+                        {captchaError}
                         <div class="required">
                             <p>( <span>*</span> velden zijn vereist )</p>
                         </div>
-                        <?php
-                        echo "<div class='error_msg'>";
-                        echo validation_errors();
-                        echo "</div>";
-                        ?>
                         <?php echo form_open("home/contact"); ?>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="row control-group">
                                     <div class="form-group col-xs-12 controls">
                                         <label>Naam<span>*</span></label>
-                                        <input type="text" class="form-control" name="naam" placeholder="Name" id="name" required data-validation-required-message="Gelieve uw naam in te vullen.">
+                                        <input type="text" class="form-control" name="naam" placeholder="Naam" id="naam" value="{naam}">
                                         <p class="help-block"></p>
                                     </div>
                                 </div>
@@ -175,30 +175,23 @@
                                 <div class="row control-group">
                                     <div class="form-group col-xs-12 controls">
                                         <label>E-mailadres<span>*</span></label>
-                                        <input type="email" class="form-control" name="email" placeholder="Email Address" id="email" required data-validation-required-message="Gelieve uw e-mailadres in te vullen.">
+                                        <input type="text" class="form-control" name="email" placeholder="E-mailadres" id="email" value="{email}">
                                         <p class="help-block"></p>
                                     </div>
                                 </div> 
                             </div>
                         </div>
                         <div class="row control-group">
-                            <div class="form-group col-xs-12  controls">
-                                <label>Telefoonnummer<span><!--*--></span></label>
-                                <input type="tel" class="form-control" name="telefoon" placeholder="Phone Number" id="phone" >
-                                <p class="help-block"></p>
-                            </div>
-                        </div>
-                        <div class="row control-group">
                             <div class="form-group col-xs-12 controls">
                                 <label>Onderwerp<span>*</span></label>
-                                <input type="text" class="form-control" name="onderwerp" placeholder="Subject" id="name" required data-validation-required-message="Gelieve een onderwerp in te vullen.">
+                                <input type="text" class="form-control" name="onderwerp" placeholder="Onderwerp" id="onderwerp" value="{onderwerp}">
                                 <p class="help-block"></p>
                             </div>
                         </div>
                         <div class="row control-group">
                             <div class="form-group col-xs-12 controls">
                                 <label>Bericht<span>*</span></label>
-                                <textarea rows="5" class="form-control" name="bericht" placeholder="Message" id="message" required data-validation-required-message="Gelieve een bericht te schrijven."></textarea>
+                                <textarea rows="5" class="form-control" name="bericht" placeholder="Bericht" id="bericht">{bericht}</textarea>
                                 <p class="help-block"></p>
                             </div>
                         </div>  
@@ -207,6 +200,13 @@
                                 {captcha}
                             </div>
                         </div> 
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 controls">
+                                <label>Enter the text from the image above.<span>*</span></label>
+                                <input type="text" class="form-control" name="captchaText" placeholder="Captcha" id="captchaText" value="{captchaText}">
+                                <p class="help-block"></p>
+                            </div>
+                        </div>
                         <br>
                         <div id="success"></div>
                         <div class="row">
@@ -260,9 +260,9 @@
                             <h3>Contact</h3>
 
                             <ul class="list-unstyled contact">
-                                <li><p><strong><i class="fa fa-map-marker"></i> Address:</strong> vaisahali, jaipur, 302012</p></li> 
-                                <li><p><strong><i class="fa fa-envelope"></i> Mail Us:</strong> <a href="#">pxltedx@gmail.com</a></p></li>
-                                <li> <p><strong><i class="fa fa-phone"></i> Phone:</strong>+32 474 21 21 25</p></li>
+                                <li><p><strong><i class="fa fa-map-marker"></i> Adres:</strong> Elfde-Liniestraat 24, 3500 Hasselt, België</p></li> 
+                                <li><p><strong><i class="fa fa-envelope"></i> Mail Ons:</strong> <a href="#">pxltedx@gmail.com</a></p></li>
+                                <li> <p><strong><i class="fa fa-phone"></i> Telefoon:</strong>+32 474 21 21 25</p></li>
 
                             </ul>
                         </div>                        

@@ -71,14 +71,14 @@ if ( ! function_exists('create_captcha'))
 			'font_path'	=> '',
 			'expiration'	=> 7200,
 			'word_length'	=> 8,
-			'font_size'	=> 16,
+			'font_size'	=> 25,
 			'img_id'	=> '',
 			'pool'		=> '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
 			'colors'	=> array(
-				'background'	=> array(255,255,255),
+				'background'	=> array(140,140,140),
 				'border'	=> array(153,102,102),
-				'text'		=> array(204,153,153),
-				'grid'		=> array(255,182,182)
+				'text'		=> array(80,80,80),
+				'grid'		=> array(255,0,0)
 			)
 		);
 
@@ -168,11 +168,11 @@ if ( ! function_exists('create_captcha'))
 		// -----------------------------------
 		//  Create the spiral pattern
 		// -----------------------------------
-		$theta		= 1;
-		$thetac		= 7;
-		$radius		= 16;
-		$circles	= 20;
-		$points		= 32;
+		$theta		= 3;
+		$thetac		= 2;
+		$radius		= 25;
+		$circles	= 15;
+		$points		= 12;
 
 		for ($i = 0, $cp = ($circles * $points) - 1; $i < $cp; $i++)
 		{
@@ -218,7 +218,7 @@ if ( ! function_exists('create_captcha'))
 			{
 				$y = mt_rand($img_height / 2, $img_height - 3);
 				imagettftext($im, $font_size, $angle, $x, $y, $colors['text'], $font_path, $word[$i]);
-				$x += $font_size;
+				$x += $font_size-5;
 			}
 		}
 
