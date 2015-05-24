@@ -8,26 +8,24 @@ class Login extends CI_Controller {
     }
 
     //Show login page
-    function index() {
-        $this->data['inloggen'] = $this->users_model->login('pxl2');
-        print_r($this->data['inloggen']["al_ingelogd"]);
-        
+    function index() {      
         if (isset($_POST['btn-inlog'])) {
 
             $this->data['melding'] = "";
             $this->data['username'] = $this->input->post('gebruikersnaam');
             $this->data['password'] = $this->input->post('password');
             
-            print_r($this->data['username']);
 
             $this->data['inloggen'] = $this->users_model->login($this->input->post('gebruikersnaam'));
 
             if (!empty($this->data['inloggen'])) {
-                //print_r($this->data['inloggen']["al_ingelogd"]);
                 if ($this->data['inloggen']["al_ingelogd"] == 0) { //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!hier moet nog controle bij of de gebruiker al geactiveerd is en dus wel mag inloggen!
                     if ($this->data['inloggen']["password"] == $this->input->post('password')) {
                         $this->firstlogin($this->data['inloggen']["gebruikerID"]);
                         return;
+                        
+                        //$this->data['gebruikerID'] = $this->data['inloggen']["gebruikerID"];
+                        //$this->parser->parse('login/firstlogin.php', $this->data);
                     } else {
                         $this->data['melding'] = "<p class='alert alert-danger'>De gebruikersnaam en wachtwoord komen niet overeen.</p>";
                     }
@@ -64,16 +62,25 @@ class Login extends CI_Controller {
                 
                 $this->data['gebruikerID'] = $gebruikerID;
                 $this->parser->parse('login/firstlogin.php', $this->data);
-            } else {
+            }
+            elseif(strlen($this->input->post('newPassword'))<8){
+                $this->data['melding'] .= "<p class='alert alert-danger'>Uw wachtwoord moet minimaal 8 karakters lang zijn.</p>";
+                
+                $this->data['gebruikerID'] = $gebruikerID;
+                $this->parser->parse('login/firstlogin.php', $this->data);
+            }
+            else {
                 //hash het wachtwoord
                 $hash = password_hash($this->input->post('newPassword'), PASSWORD_DEFAULT);
 
                 //update wachtw van gebruiker met ID
                 $this->users_model->updateID(array('password' => $hash, 'al_ingelogd' => 1), array('gebruikerID' => $gebruikerID));
 
-                $this->data['melding'] = "<p class='alert alert-success'>Uw wactwoord is vervangen, u kan nu inloggen met uw nieuw wachtwoord.</p>";
+                $this->data['melding'] = "<p class='alert alert-success'>Uw wactwoord is vervangen, u kan nu inloggen met uw nieuw wachtwoord. <br/>U wordt doorverwezen naar de loginpagina.</p>";
 
-                $this->parser->parse('login/index.php', $this->data);
+                //$this->parser->parse('login/index.php', $this->data);
+                $this->parser->parse('login/firstlogin.php', $this->data);
+                header('Refresh: 5;url=../index');
             }
         } else {
             $this->data['melding'] = "";
