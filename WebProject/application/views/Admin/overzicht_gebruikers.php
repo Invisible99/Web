@@ -169,6 +169,8 @@
                     </table>
                     {inactievemelding}
 
+                    <div class="divide60"></div>
+                    
                     <h2>Overzicht van alle banned gebruikers</h2>
                     <table class="table table-striped table-bordered"> <tr> <th> RolID </th> <th> Username: </th> <th> E-mail: </th> <th> Voornaam: </th> <th> Familienaam: </th> </tr>
 
@@ -179,6 +181,8 @@
                         </tr>        
                     </table>
                     {bannedmelding}
+                    
+                    <div class="divide60"></div>
 
                     <h2>Overzicht van alle geactiveerde gebruikers</h2>
                     <table class="table table-striped table-bordered"> <tr> <th> RolID </th> <th> Username: </th> <th> E-mail: </th> <th> Voornaam: </th> <th> Familienaam: </th> </tr>
