@@ -137,7 +137,7 @@
                                             <input type="submit" class="btn btn-theme-bg pull-right" name="btn-inlog" value="Aanmelden"/>
                                             <div class="clearfix"></div>
                                             <hr>
-                                            <p>Nog geen lid! <a href="<?php echo base_url(); ?>login/register">Registereer nu!</a></p>
+                                            <p>Nog geen lid! <a href="<?php echo base_url(); ?>login/register">Registreer nu!</a></p>
                                     </form>
                                 </div>
                                 <?php

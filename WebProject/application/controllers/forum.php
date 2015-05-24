@@ -219,7 +219,7 @@ class Forum extends CI_Controller {
                 $this->data['error'] = "<div class='alert alert-error'>De gebruiker is niet gevonden</div>";
             }
 
-            $this->parser->parse('forum/wijzigProfiel', $this->data);
+            $this->parser->parse('forum/wijzigProfiel.php', $this->data);
             //$this->load->view('forum/wijzigProfiel');
         } else {
             redirect('home/index/', 'refresh');
