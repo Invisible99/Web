@@ -175,7 +175,7 @@
                 </div>
             </div>
         </div><!--schedule end-->
-        <div class="divide80"></div>
+        <div class="divide80"></div> 
         <footer id="footer">
             <div class="container">
 
