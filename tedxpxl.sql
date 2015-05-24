@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.5.1
+-- version 4.1.14
 -- http://www.phpmyadmin.net
 --
--- Machine: localhost
--- Genereertijd: 24 mei 2015 om 02:39
--- Serverversie: 5.5.24-log
--- PHP-versie: 5.3.13
+-- Machine: 127.0.0.1
+-- Gegenereerd op: 24 mei 2015 om 05:26
+-- Serverversie: 5.6.17
+-- PHP-versie: 5.5.12
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `categories` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Gegevens worden uitgevoerd voor tabel `categories`
+-- Gegevens worden geëxporteerd voor tabel `categories`
 --
 
 INSERT INTO `categories` (`categorieID`, `titel`, `omschrijving`) VALUES
@@ -55,10 +55,23 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `gebruikerID` int(11) NOT NULL,
   `bericht` text NOT NULL,
   `postDate` date NOT NULL,
+  `latestPost` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`berichtID`),
   KEY `gebruikerID` (`gebruikerID`),
   KEY `topicID` (`topicID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `posts`
+--
+
+INSERT INTO `posts` (`berichtID`, `topicID`, `gebruikerID`, `bericht`, `postDate`, `latestPost`) VALUES
+(1, 1, 4, 'Wanneer werkt het forum?', '2015-05-23', 1),
+(2, 2, 4, 'heheheh nice', '2015-05-23', 1),
+(3, 3, 4, 'vreeed nice. kan niet wachten!', '2015-05-23', 0),
+(4, 4, 4, 'hohohohohho, werk dan maar snel door', '2015-05-23', 1),
+(5, 3, 1, 'Die kerel hierboven weet hoe het zit!!', '2015-05-23', 0),
+(6, 3, 1, 'BTW, al lekker veel posts', '2015-05-23', 1);
 
 -- --------------------------------------------------------
 
@@ -73,7 +86,7 @@ CREATE TABLE IF NOT EXISTS `roles` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
--- Gegevens worden uitgevoerd voor tabel `roles`
+-- Gegevens worden geëxporteerd voor tabel `roles`
 --
 
 INSERT INTO `roles` (`rolID`, `rolNaam`) VALUES
@@ -95,10 +108,21 @@ CREATE TABLE IF NOT EXISTS `threads` (
   `bericht` text NOT NULL,
   `gebruikerID` int(11) NOT NULL COMMENT 'gebruiker die deze topic heeft aangemaakt',
   `categorieID` int(11) NOT NULL,
+  `latestThread` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`topicID`),
   KEY `gebruikerID` (`gebruikerID`),
   KEY `categorieID` (`categorieID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `threads`
+--
+
+INSERT INTO `threads` (`topicID`, `titel`, `bericht`, `gebruikerID`, `categorieID`, `latestThread`) VALUES
+(1, 'Support', 'Stel hier je vragen!', 4, 2, 1),
+(2, 'Welkom leden', 'Maak kennis met de andere leden hier', 4, 3, 1),
+(3, 'Website launch party', 'De party van het jaar! De nieuwe website wordt gelauncht!', 4, 1, 1),
+(4, 'Nieuwe website in de maak', 'We zijn een nieuwe website aan het maken. Woop Woop!', 4, 4, 1);
 
 -- --------------------------------------------------------
 
@@ -122,7 +146,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=34 ;
 
 --
--- Gegevens worden uitgevoerd voor tabel `users`
+-- Gegevens worden geëxporteerd voor tabel `users`
 --
 
 INSERT INTO `users` (`gebruikerID`, `rolID`, `username`, `password`, `email`, `profielfoto`, `voornaam`, `familienaam`, `al_ingelogd`) VALUES
@@ -133,12 +157,12 @@ INSERT INTO `users` (`gebruikerID`, `rolID`, `username`, `password`, `email`, `p
 (6, 2, 'pxl', 'test', 'neen@swek.com', NULL, 'koen', 'vaes', 0),
 (7, 2, 'pxl', 'test', 'ja@swek.com', NULL, 'koen', 'vaes', 0),
 (12, 2, '"--', 'test', 'koekje@eigendeeg.com', NULL, '"--', '"--', 0),
-(29, 2, 'stef.janssens', 'test', 's.j@hotmail', NULL, 'stef', 'janssens', 0),
-(30, 2, 'pxl2', '$2y$10$nDCrDVWzDATuSgxpl.QBLeEbPP4qzfKJHtTJq8A5SlLcSFATVQ33O', 's.j@hotmail.com', NULL, 'a', 'a', 1),
+(29, 2, 'stef.janssens', '$2y$10$e8zRdxlExduRS.YXlTAbJuDTYrlTNLMmh/1Y385WcOaApJEG3d41C', 's.j@hotmail', NULL, 'stef', 'janssens', 1),
+(30, 2, 'pxl2', '$2y$10$YmR/SN7H5gnj0LJB4LIoX.ubCp0YkO/UUo4XHHeH1y6GgTpU8pq5m', 's.j@hotmail.com', NULL, 'a', 'a', 1),
 (33, 2, 'koen.vaes', 'SP9UE06I', 'koen895@hotmail.com', NULL, 'koen', 'vaes', 0);
 
 --
--- Beperkingen voor gedumpte tabellen
+-- Beperkingen voor geëxporteerde tabellen
 --
 
 --
@@ -152,8 +176,8 @@ ALTER TABLE `posts`
 -- Beperkingen voor tabel `threads`
 --
 ALTER TABLE `threads`
-  ADD CONSTRAINT `threads_ibfk_2` FOREIGN KEY (`categorieID`) REFERENCES `categories` (`categorieID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `threads_ibfk_1` FOREIGN KEY (`gebruikerID`) REFERENCES `users` (`gebruikerID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `threads_ibfk_1` FOREIGN KEY (`gebruikerID`) REFERENCES `users` (`gebruikerID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `threads_ibfk_2` FOREIGN KEY (`categorieID`) REFERENCES `categories` (`categorieID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Beperkingen voor tabel `users`
