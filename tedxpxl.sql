@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.14
+-- version 3.5.1
 -- http://www.phpmyadmin.net
 --
--- Machine: 127.0.0.1
--- Gegenereerd op: 23 mei 2015 om 20:24
--- Serverversie: 5.6.17
--- PHP-versie: 5.5.12
+-- Machine: localhost
+-- Genereertijd: 24 mei 2015 om 02:39
+-- Serverversie: 5.5.24-log
+-- PHP-versie: 5.3.13
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `categories` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Gegevens worden geëxporteerd voor tabel `categories`
+-- Gegevens worden uitgevoerd voor tabel `categories`
 --
 
 INSERT INTO `categories` (`categorieID`, `titel`, `omschrijving`) VALUES
@@ -73,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `roles` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
--- Gegevens worden geëxporteerd voor tabel `roles`
+-- Gegevens worden uitgevoerd voor tabel `roles`
 --
 
 INSERT INTO `roles` (`rolID`, `rolNaam`) VALUES
@@ -119,19 +119,26 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`gebruikerID`),
   UNIQUE KEY `email` (`email`),
   KEY `rolID` (`rolID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=34 ;
 
 --
--- Gegevens worden geëxporteerd voor tabel `users`
+-- Gegevens worden uitgevoerd voor tabel `users`
 --
 
 INSERT INTO `users` (`gebruikerID`, `rolID`, `username`, `password`, `email`, `profielfoto`, `voornaam`, `familienaam`, `al_ingelogd`) VALUES
 (1, 1, 'admin.admin', 'pxl', 'admin.admin@admin.be', NULL, '', '', 0),
 (2, 2, 'lid.lid', 'pxl', 'lid.lid@lid.be', NULL, '', '', 0),
-(3, 3, 'guest.guest', 'pxl', 'guest.guest@guest.be', NULL, '', '', 0);
+(3, 3, 'guest.guest', 'pxl', 'guest.guest@guest.be', NULL, '', '', 0),
+(4, 2, 'pxl', '$2y$10$mqocqqNZ00FffJdJX3VadeCdodBKPKtaTBrD0eKTQLj3uG5yn5N5O', 'aaaaaaaaaaaaaaaa@aaaaaaaaaaaaaa', NULL, 'koen', 'vaes', 1),
+(6, 2, 'pxl', 'test', 'neen@swek.com', NULL, 'koen', 'vaes', 0),
+(7, 2, 'pxl', 'test', 'ja@swek.com', NULL, 'koen', 'vaes', 0),
+(12, 2, '"--', 'test', 'koekje@eigendeeg.com', NULL, '"--', '"--', 0),
+(29, 2, 'stef.janssens', 'test', 's.j@hotmail', NULL, 'stef', 'janssens', 0),
+(30, 2, 'pxl2', '$2y$10$nDCrDVWzDATuSgxpl.QBLeEbPP4qzfKJHtTJq8A5SlLcSFATVQ33O', 's.j@hotmail.com', NULL, 'a', 'a', 1),
+(33, 2, 'koen.vaes', 'SP9UE06I', 'koen895@hotmail.com', NULL, 'koen', 'vaes', 0);
 
 --
--- Beperkingen voor geëxporteerde tabellen
+-- Beperkingen voor gedumpte tabellen
 --
 
 --
