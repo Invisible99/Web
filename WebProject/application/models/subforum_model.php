@@ -18,4 +18,11 @@ class subforum_model extends MY_Model{
             'count' => count($query->result())
         );
     }
+    
+    function findThreadsNoPost(){
+        $query = $this->db->query("SELECT * FROM threads WHERE (SELECT COUNT(subpo.latestPost) FROM posts subpo WHERE subpo.latestPost = 1 AND subpo.topicID = threads.topicID) = 0 ORDER BY threads.categorieID ASC");
+        $result = array();
+
+        return $query->result();
+    }
 }

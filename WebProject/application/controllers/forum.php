@@ -9,7 +9,8 @@ class Forum extends CI_Controller {
         $this->data['error'] = "";
         //alle subforums opvragen samen met laatste post en thread
         $this->data['forum'] = $this->forum_model->findSubforums();
-        $this->data['categorieID']=$this->data['forum'][0]->categorieID;
+        $this->data['forumNoThread'] = $this->forum_model->findSubforumsNoThread();
+        $this->data['addButtonID']=0;//id maakt niet uit maar de controller die add afhandeld moet een int ontvangen
         if (empty($this->data['forum'])) {
             //de alert-error is vn bootstrap
             $this->data['error'] = "<div class='alert alert-error'>Er zijn geen subforums!</div>";
@@ -25,6 +26,7 @@ class Forum extends CI_Controller {
         $this->data['error'] = "";
         $this->data['error2'] = "";
         $this->data['subforum'] = $this->subforum_model->findThreads($categorieID);
+        $this->data['subforumNoPost'] = $this->subforum_model->findThreadsNoPost($categorieID);
         $this->data['dezeSub'] = $this->forum_model->find($categorieID);
         if (empty($this->data['subforum'])) {
             //de alert-error is vn bootstrap
@@ -109,10 +111,10 @@ class Forum extends CI_Controller {
             redirect(base_url()."forum/index");
         }
         if (isset($_POST['addcat'])) {
-            $this->load->view('Home/index');
             $this->load->model("forum_model");
             $this->data['forum'] = $this->forum_model->findSubforums();
             $this->forum_model->insert(array('titel' => $this->input->post('formtitel'),'omschrijving' => $this->input->post('formomschrijving')));
+            redirect(base_url()."forum/index");
         }
         else
         {

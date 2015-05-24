@@ -167,8 +167,25 @@
                             <p class="forum-overview-poster jumbotron">
                                 <strong class="forum-overview-black">Poster:</strong> <a href="#">{username}</a>
                             </p>
+                            <a href="<?php echo base_url(); ?>forum/editThread/{categorieID}"><span class="forum-button">Wijzigen</span></a>
+                            <a href="<?php echo base_url(); ?>forum/deleteThread/{categorieID}"><span class="forum-button">Verwijderen</span></a>
                         </div><!--event box-->
                         {/subforum}
+                        {subforumNoPost}
+                        <div class="forumoverview-box event-box jumbotron">
+                            <h3 class="forum-wrap">
+                                <a href="<?php echo base_url(); ?>forum/thread/{topicID}" class="forum-overview-naam jumbotron">{titel}</a> {bericht}
+                            </h3>
+                            <p class="forum-overview-post jumbotron">
+                                <strong>Er zijn nog geen posts</strong>
+                            </p>
+                            <a href="<?php echo base_url(); ?>forum/editThread/{categorieID}"><span class="forum-button">Wijzigen</span></a>
+                            <a href="<?php echo base_url(); ?>forum/deleteThread/{categorieID}"><span class="forum-button">Verwijderen</span></a>
+                        </div><!--event box-->
+                        {/subforumNoPost}
+                        <div>
+                            <a href="<?php echo base_url(); ?>forum/addThread/{addButtonID}"><span class="forum-button-right">Toevoegen</span></a>
+                        </div><!--toevoegen knop-->
                     </div>
                 </div>
             </div>
