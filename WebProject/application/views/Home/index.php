@@ -88,29 +88,41 @@
                         <li class="dropdown">
                             <a href="#" class=" dropdown-toggle" data-toggle="dropdown"><i class="fa fa-lock"></i></a>
                             <div class="dropdown-menu dropdown-menu-right dropdown-login-box animated fadeInUp">
-                                <form role="form">
-                                    <h4>Signin</h4>
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                            <input type="text" class="form-control" placeholder="Username">
+                                <form role="form" action='../login/index' method='post'>
+                                    <?php
+                                    if (!($this->session->has_userdata('user') && $this->session->has_userdata('logged_in') && $this->session->logged_in && $this->session->has_userdata('rolID'))) {
+                                        ?>
+                                        <h4>Aanmelden</h4>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                                <input type="text" class="form-control" name="gebruikersnaam" placeholder="Username"  required="required">
+                                            </div>
+                                            <br>
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                                <input type="password" class="form-control"  name="password" placeholder="Password"  required="required">
+                                            </div>
+                                            <div class="checkbox pull-left">
+                                                <label>
+                                                    <input type="checkbox"> Onthoud mij
+                                                </label>
+                                            </div>                                   
+                                            <input type="submit" class="btn btn-theme-bg pull-right" name="btn-inlog" value="Aanmelden"/>
+                                            <div class="clearfix"></div>
+                                            <hr>
+                                            <p>Nog geen lid! <a href="<?php echo base_url(); ?>login/register">Registereer nu!</a></p>
                                         </div>
-                                        <br>
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                            <input type="password" class="form-control" placeholder="Password">
-                                        </div>
-                                        <div class="checkbox pull-left">
-                                            <label>
-                                                <input type="checkbox"> Remember me
-                                            </label>
-                                        </div>
-                                        <a class="btn btn-theme-bg pull-right" href="<?php echo base_url(); ?>login/index">Login</a>
-                                        <!--                                        <button type="submit" class="btn btn-theme pull-right">Login</button>                 -->
-                                        <div class="clearfix"></div>
-                                        <hr>
-                                        <p>Don't have an account! <a href="<?php echo base_url(); ?>login/register">Register Now</a></p>
-                                    </div>
+                                        <?php
+                                    } else {
+                                        ?>                                      
+                                        <h4>Afmelden</h4>
+
+                                        <input type="submit" class="btn btn-theme-bg" name="btn-logoff" value="Afmelden"/>
+
+                                        <?php
+                                    }
+                                    ?>
                                 </form>
                             </div>
                         </li> <!--menu login li end here-->

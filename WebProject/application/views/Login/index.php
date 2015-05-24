@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <?php
+        $this->load->library('session');
+        $this->load->library('user_agent');
+        $this->load->helper('url');
+        ?>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -52,7 +57,7 @@
                 <div class="top-bar">
                     <div class="pull-left sample-1right">
                         <a><i class="fa fa-phone"></i> Any questions? Call us: <span class="colored-text">+02 34543454</span> </a> 
-                         <a><i class="fa fa-envelope"></i> Mail us: <span class="colored-text">Support@domain.com</span> </a>
+                        <a><i class="fa fa-envelope"></i> Mail us: <span class="colored-text">Support@domain.com</span> </a>
                     </div>
                     <div class="pull-right">
                         <ul class="list-inline top-social">
@@ -116,29 +121,43 @@
                         <li class="dropdown">
                             <a href="#" class=" dropdown-toggle" data-toggle="dropdown"><i class="fa fa-lock"></i></a>
                             <div class="dropdown-menu dropdown-menu-right dropdown-login-box animated fadeInUp">
-                                <form role="form">
-                                    <h4>Signin</h4>
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                            <input type="text" class="form-control" placeholder="Username">
+                                <form role="form" action='index' method='post'>
+                                    <?php
+                                    if (!($this->session->has_userdata('user') && $this->session->has_userdata('logged_in') && $this->session->logged_in && $this->session->has_userdata('rolID'))) {
+                                        ?>
+                                        <h4>Aanmelden</h4>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                                <input type="text" class="form-control" name="gebruikersnaam" placeholder="Username"  required="required">
+                                            </div>
+                                            <br>
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                                <input type="password" class="form-control"  name="password" placeholder="Password"  required="required">
+                                            </div>
+                                            <div class="checkbox pull-left">
+                                                <label>
+                                                    <input type="checkbox"> Onthoud mij
+                                                </label>
+                                            </div>                                   
+                                            <input type="submit" class="btn btn-theme-bg pull-right" name="btn-inlog" value="Aanmelden"/>
+                                            <div class="clearfix"></div>
+                                            <hr>
+                                            <p>Nog geen lid! <a href="<?php echo base_url(); ?>login/register">Registereer nu!</a></p>
                                         </div>
-                                        <br>
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                            <input type="password" class="form-control" placeholder="Password">
-                                        </div>
-                                        <div class="checkbox pull-left">
-                                            <label>
-                                                <input type="checkbox"> Remember me
-                                            </label>
-                                        </div>
-                                        <a class="btn btn-theme-bg pull-right" href="<?php echo base_url(); ?>login/index">Login</a>
-                                        <!--                                        <button type="submit" class="btn btn-theme pull-right">Login</button>                 -->
-                                        <div class="clearfix"></div>
-                                        <hr>
-                                        <p>Don't have an account! <a href="<?php echo base_url(); ?>login/register">Register Now</a></p>
-                                    </div>
+                                        <?php
+                                    } else {
+                                        ?>
+
+                                        {melding}
+                                        <h3>Afmelden</h3>
+
+                                        <input type="submit" class="btn btn-theme-bg" name="btn-logoff" value="Afmelden"/>
+
+                                        <?php
+                                    }
+                                    ?>
                                 </form>
                             </div>
                         </li> <!--menu login li end here-->
@@ -150,7 +169,16 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h4>Sign in or Sign up</h4>
+                        <?php
+                        if (!($this->session->has_userdata('user') && $this->session->has_userdata('logged_in') && $this->session->logged_in && $this->session->has_userdata('rolID'))) {
+                            ?>
+                            <h4>AANMELDEN OF REGISTEREN</h4>
+                            } else {
+                            ?>
+                            <h4>AFMELDEN</h4>
+                            <?php
+                        }
+                        ?>
                     </div>
                     <div class="col-sm-6 hidden-xs text-right">
                         <ol class="breadcrumb">
@@ -162,36 +190,56 @@
             </div>
         </div><!--breadcrumbs-->
         <div class="divide80"></div>
+
         <div class="container">
             <div class="row">  
                 <div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
                     <div class="login-form">
-                        {melding}
-                        <h3>Sign In <span>Or Sign Up</span></h3>
-                         <form role="form" action='index' method='post' >
-                        <div class="form-group">
-                            <label for="gebruikersnaam">Gebruikersnaam</label>
-                            <input type="text" class="form-control" name="gebruikersnaam" id="gebruikersnaam" placeholder="Gebruikersnaam" required="required">
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" class="form-control" name="password" id="password" placeholder="Password" required="required">
-                        </div>                   
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox"> Remember Me
-                            </label>
-                        </div>
-                        <input type="submit" class="btn btn-theme-bg" name="btn-inlog" value="Login"/>
-                        <a href="#" class="btn btn-fb-login"><i class="fa fa-facebook"></i> Login With Facebook</a>
-                        <a href="#">Forget Password?</a>
-                    </form>
+                        <?php
+                        if (!($this->session->has_userdata('user') && $this->session->has_userdata('logged_in') && $this->session->logged_in && $this->session->has_userdata('rolID'))) {
+                            ?>
+                            {melding}
+                            <h3>Aanmelden <span>Of registreren</span></h3>
+                            <form role="form" action='index' method='post' >
+                                <div class="form-group">
+                                    <label for="gebruikersnaam">Gebruikersnaam</label>
+                                    <input type="text" class="form-control" name="gebruikersnaam" id="gebruikersnaam" placeholder="Gebruikersnaam" required="required">
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Wachtwoord</label>
+                                    <input type="password" class="form-control" name="password" id="password" placeholder="Password" required="required">
+                                </div>                   
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox"> Onthoud mij
+                                    </label>
+                                </div>
+                                <input type="submit" class="btn btn-theme-bg" name="btn-inlog" value="Aanmelden"/>
+                                <a href="#" class="btn btn-fb-login"><i class="fa fa-facebook"></i> Aanmelden met Facebook</a>
+                                <a href="#">Wachtwoord vergeten?</a>
+                            </form>
+                            <?php
+                        } else {
+                            ?>
+
+                            {melding}
+                            <h3>Afmelden</h3>
+                            <form role="form" action='index' method='post' >
+
+                                <input type="submit" class="btn btn-theme-bg" name="btn-logoff" value="Afmelden"/>
+
+                            </form>                   
+
+                            <?php
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
         </div>
+
         <div class="divide60"></div>
-             <footer id="footer">
+        <footer id="footer">
             <div class="container">
 
                 <div class="row">
@@ -267,7 +315,7 @@
                 </div>
             </div>
         </footer><!--default footer end here-->
-       <!--scripts and plugins -->
+        <!--scripts and plugins -->
         <!--must need plugin jquery-->
         <script src="js/jquery.min.js"></script>        
         <!--bootstrap js plugin-->
@@ -280,8 +328,8 @@
         <script src="js/jquery.flexslider-min.js" type="text/javascript"></script>
         <!--parallax background plugin-->
         <script src="js/jquery.stellar.min.js" type="text/javascript"></script>
-        
-        
+
+
         <!--digit countdown plugin-->
         <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
         <!--digit countdown plugin-->
@@ -294,8 +342,8 @@
         <script src="js/jquery.magnific-popup.min.js" type="text/javascript"></script>
         <!--you tube player-->
         <script src="js/jquery.mb.YTPlayer.min.js" type="text/javascript"></script>
-        
-        
+
+
         <!--customizable plugin edit according to your needs-->
         <script src="js/custom.js" type="text/javascript"></script>
 
