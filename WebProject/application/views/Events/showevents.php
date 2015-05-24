@@ -123,12 +123,17 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h4>Left sidebar</h4>
+                        {getMaandNaam}
+                        <h4>Events in {maandNaam}</h4>
                     </div>
                     <div class="col-sm-6 hidden-xs text-right">
                         <ol class="breadcrumb">
-                            <li><a href="index.html">Home</a></li>
-                            <li>left sidebar</li>
+                            <li><a href="index">Home</a></li>
+                            <li><a href="<?php echo base_url(); ?>Events/index">Events</a></li>
+                            
+                            <li>{maandNaam}</li>
+                            {/getMaandNaam}
+                            
                         </ol>
                     </div>
                 </div>
@@ -139,16 +144,10 @@
 
             <div class="row">
                 <div class="col-sm-3 ">
-                    <div class="sidebar-box margin40">
-                        <h4>Search</h4>
-                        <form role="form" class="search-widget">
-                            <input type="text" class="form-control">
-                            <i class="fa fa-search"></i>
-                        </form>
-                    </div><!--sidebar-box-->
-                    
-                    <div class="sidebar-box margin40">
 
+
+                    <div class="sidebar-box margin40">
+                        <h4>Kalender</h4>
                         <div class="panel-group" id="accordion">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
@@ -161,18 +160,9 @@
                                 <div id="collapseOne" class="panel-collapse collapse in">
                                     <div class="panel-body">
                                         <ul class="list-unstyled cat-list">
-                                        <li> <a href="#">Januari (3)</a></li>
-                                        <li> <a href="#">Februari (5)</a></li>
-                                        <li> <a href="#">Maart (2)</a></li>
-                                        <li> <a href="#">April (2)</a></li>
-                                        <li> <a href="#">Mei (4)</a></li>
-                                        <li> <a href="#">Juni (6)</a></li>
-                                        <li> <a href="#">Juli (1)</a></li>
-                                        <li> <a href="#">Augustus (3)</a></li>
-                                        <li> <a href="#">September (1)</a></li>
-                                        <li> <a href="#">Oktober (5)</a></li>
-                                        <li> <a href="#">November (2)</a></li>
-                                        <li> <a href="#">December (3)</a></li>
+                                            {maanden}
+                                            <li> <a href="<?php echo base_url(); ?>Events/showevents/{maandID}">{maandNaam}</a></li>
+                                            {/maanden}
                                         </ul>
                                     </div>
                                 </div>
@@ -188,18 +178,9 @@
                                 <div id="collapseTwo" class="panel-collapse collapse">
                                     <div class="panel-body">
                                         <ul class="list-unstyled cat-list">
-                                        <li> <a href="#">Januari (3)</a></li>
-                                        <li> <a href="#">Februari (5)</a></li>
-                                        <li> <a href="#">Maart (2)</a></li>
-                                        <li> <a href="#">April (2)</a></li>
-                                        <li> <a href="#">Mei (4)</a></li>
-                                        <li> <a href="#">Juni (6)</a></li>
-                                        <li> <a href="#">Juli (1)</a></li>
-                                        <li> <a href="#">Augustus (3)</a></li>
-                                        <li> <a href="#">September (1)</a></li>
-                                        <li> <a href="#">Oktober (5)</a></li>
-                                        <li> <a href="#">November (2)</a></li>
-                                        <li> <a href="#">December (3)</a></li>
+                                            {maanden}
+                                            <li> <a href="<?php echo base_url(); ?>Events/showevents/{maandID}">{maandNaam}</a></li>
+                                            {/maanden}
                                         </ul>
                                     </div>
                                 </div>
@@ -215,142 +196,60 @@
                                 <div id="collapseThree" class="panel-collapse collapse">
                                     <div class="panel-body">
                                         <ul class="list-unstyled cat-list">
-                                        <li> <a href="#">Januari (3)</a></li>
-                                        <li> <a href="#">Februari (5)</a></li>
-                                        <li> <a href="#">Maart (2)</a></li>
-                                        <li> <a href="#">April (2)</a></li>
-                                        <li> <a href="#">Mei (4)</a></li>
-                                        <li> <a href="#">Juni (6)</a></li>
-                                        <li> <a href="#">Juli (1)</a></li>
-                                        <li> <a href="#">Augustus (3)</a></li>
-                                        <li> <a href="#">September (1)</a></li>
-                                        <li> <a href="#">Oktober (5)</a></li>
-                                        <li> <a href="#">November (2)</a></li>
-                                        <li> <a href="#">December (3)</a></li>
+                                            {maanden}
+                                            <li> <a href="<?php echo base_url(); ?>Events/showevents/{maandID}">{maandNaam}</a></li>
+                                            {/maanden}
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-
                     </div><!--sidebar-box-->
                     <div class="sidebar-box margin40">
-                        <h4>Popular Post</h4>
-                        <ul class="list-unstyled popular-post">
-                            <li>
-                                <div class="popular-img">
-                                    <a href="#"> <img src="img/img-7.jpg" class="img-responsive" alt=""></a>
-                                </div>
-                                <div class="popular-desc">
-                                    <h5> <a href="#">blog post image</a></h5>
-                                    <h6>31st july 2014</h6>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="popular-img">
-                                    <a href="#"> <img src="img/img-8.jpg" class="img-responsive" alt=""></a>
-                                </div>
-                                <div class="popular-desc">
-                                    <h5> <a href="#">blog post image</a></h5>
-                                    <h6>31st july 2014</h6>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="popular-img">
-                                    <a href="#"> <img src="img/img-9.jpg" class="img-responsive" alt=""></a>
-                                </div>
-                                <div class="popular-desc">
-                                    <h5> <a href="#">blog post image</a></h5>
-                                    <h6>31st july 2014</h6>
-                                </div>
-                            </li>
-                        </ul>
+                        <h4>Search Events</h4>
+                        <form role="form" class="search-widget">
+                            <input type="text" class="form-control">
+                            <i class="fa fa-search"></i>
+                        </form>
                     </div><!--sidebar-box-->
-                    <div class="sidebar-box margin40">
-                        <h4>Tag Cloud</h4>
-                        <div class="tag-list">
-                            <a href="#">Wordpress</a>
-                            <a href="#">Design</a>
-                            <a href="#">Graphics</a>
-                            <a href="#">Seo</a>
-                            <a href="#">Development</a>
-                            <a href="#">Marketing</a>
-                            <a href="#">fashion</a>
-                            <a href="#">Media</a>
-                            <a href="#">Photoshop</a>
-                        </div>
-                    </div>
+
+                    
+                    
                 </div><!--sidebar col end-->
-                <div class="col-sm-9">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <p>
-                                Donec sed odio dui. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Duis mollis, est non commodo luctus. Aenean lacinia bibendum nulla sed consectetur. Cras mattis consectetur purus sit amet fermentum. Donec id elit non mi porta gravida at eget metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula porta felis euismod semper.
-                            </p>
+                <div class="col-md-9">
+                    <div class="blog-post">
+
+                        <div class="row">
+                            <div class="col-md-3 margin20">
+                                <a href="#">
+                                    <div class="item-img-wrap">
+                                        <img src="img/img-6.jpg" class="img-responsive" alt="workimg">
+                                        <div class="item-img-overlay">
+                                            <span></span>
+                                        </div>
+                                    </div>                       
+                                </a><!--work link--> 
+                            </div>
+                            <div class="col-md-9 margin20">
+                                <ul class="list-inline post-detail">
+                                    <li>by <a href="#">assan</a></li>
+                                    <li><i class="fa fa-calendar"></i> 31st july 2014</li>
+                                    <li><i class="fa fa-tag"></i> <a href="#">Sports</a></li>
+                                </ul>
+                                <h2><a href="#">Lorem ipsum dollor sit amet</a></h2>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam, adipiscing condimentum tristique vel, eleifend sed turpis. Pellentesque cursus arcu id magna euismod in elementum purus molestie
+                                </p>
+                                <p><a href="blog-single.html" class="btn btn-theme-dark">Read More...</a></p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="divide30"></div>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <h4>1/2 Col</h4>
-                            <p>
-                                Donec sed odio dui. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Duis mollis, est non commodo luctus. Aenean lacinia bibendum nulla sed consectetur. Cras mattis consectetur purus sit amet fermentum. Donec id elit non mi porta gravida at eget metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula porta felis euismod semper.
-                            </p>
-                        </div>
-                        <div class="col-sm-6">
-                            <h4>1/2 Col</h4>
-                            <p>
-                                Donec sed odio dui. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Duis mollis, est non commodo luctus. Aenean lacinia bibendum nulla sed consectetur. Cras mattis consectetur purus sit amet fermentum. Donec id elit non mi porta gravida at eget metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula porta felis euismod semper.
-                            </p>
-                        </div>
-                    </div><!--1/2 row end-->
-                    <div class="divide30"></div>
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <h4>1/3 Col</h4>
-                            <p>
-                                Duis mollis, est non commodo luctus. Aenean lacinia bibendum nulla sed consectetur. Cras mattis consectetur purus sit amet fermentum. Donec id elit non mi porta gravida at eget metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula porta felis euismod semper.
-                            </p>
-                        </div>
-                        <div class="col-sm-8">
-                            <h4>2/3 Col</h4>
-                            <p>
-                                Duis mollis, est non commodo luctus. Aenean lacinia bibendum nulla sed consectetur. Cras mattis consectetur purus sit amet fermentum. Donec id elit non mi porta gravida at eget metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula porta felis euismod semper.
-                                Donec id elit non mi porta gravida at eget metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula porta felis euismod semper.
-                            </p>
-                        </div>
-                    </div><!--1/3 row end-->
-                    <div class="divide30"></div>
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <h4>1/3 Col</h4>
-                            <p>
-                                Duis mollis, est non commodo luctus. Aenean lacinia bibendum nulla sed consectetur. Cras mattis consectetur purus sit amet fermentum. Donec id elit non mi porta gravida at eget metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula porta felis euismod semper.
-                            </p>
-                        </div>
-                        <div class="col-sm-4">
-                            <h4>1/3 Col</h4>
-                            <p>
-                                Duis mollis, est non commodo luctus. Aenean lacinia bibendum nulla sed consectetur. Cras mattis consectetur purus sit amet fermentum. Donec id elit non mi porta gravida at eget metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula porta felis euismod semper.
-                            </p>
-                        </div>
-                        <div class="col-sm-4">
-                            <h4>1/3 Col</h4>
-                            <p>
-                                Duis mollis, est non commodo luctus. Aenean lacinia bibendum nulla sed consectetur. Cras mattis consectetur purus sit amet fermentum. Donec id elit non mi porta gravida at eget metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula porta felis euismod semper.
-                            </p>
-                        </div>
-                    </div><!--1/3 row end-->
-                    <div class="divide30"></div>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <p>
-                                Donec sed odio dui. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Duis mollis, est non commodo luctus. Aenean lacinia bibendum nulla sed consectetur. Cras mattis consectetur purus sit amet fermentum. Donec id elit non mi porta gravida at eget metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula porta felis euismod semper.
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                    </div><!--blog post-->
+                       
+                    <ul class="pager">
+                        <li class="previous"><a href="#">&larr; Previous Page</a></li>
+                        <li class="next"><a href="#">Next Page &rarr;</a></li>
+                    </ul><!--pager-->
+                </div><!--col-->
             </div>
         </div><!--left sidebar container-->
         <div class="divide60"></div>
