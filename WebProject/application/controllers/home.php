@@ -55,7 +55,7 @@ class Home extends CI_Controller {
                 $this->data['captchaError'] = form_error('captchaText', "<p class='alert alert-danger'>");
                 $this->parser->parse('home/contact.php', $this->data);
             } else {
-                $to = 'wefknrise@gmail.com';
+                $to = 'pxltedx@gmail.com';
                 $subject = $this->input->post('onderwerp');
                 $message = $this->input->post('bericht') . "\n\nNaam verzender: " . $this->input->post('naam') . "\n\nE-mail: " . $this->input->post('email');
                 $headers = 'From: ' . $this->input->post('email');
