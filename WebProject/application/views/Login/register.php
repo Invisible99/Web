@@ -56,7 +56,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="<?php echo base_url(); ?>home/index"><img src="<?php echo base_url(); ?>img/logo.png" alt="ASSAN"></a>
+                    <a class="navbar-brand" href="<?php echo base_url(); ?>home/index"><img src="<?php echo base_url(); ?>img/TEDx_logo.png" alt="ASSAN"></a>
 
                 </div>
                 <div class="navbar-collapse collapse">
@@ -146,31 +146,43 @@
                     <div role="tabpanel">
                         <div role="tabpanel" class="tab-pane" id="profile">
                             {melding}
+                            {captchaError}
                             <?php
                             echo "<div class='error_msg'>";
                             echo validation_errors();
                             echo "</div>";
-                            
                             ?>
                             <?php echo form_open("login/register"); ?>
                             <div class="form-group">
-                                <label for="voornaam">Voornaam</label>
+                                <label for="voornaam">Voornaam<span>*</span></label>
                                 <input type="text" class="form-control" name="voornaam" id="voornaam" value="{voornaam}" required="required">
                             </div>
                             <div class="form-group">
-                                <label for="familienaam">Familienaam</label>
+                                <label for="familienaam">Familienaam<span>*</span></label>
                                 <input type="text" class="form-control" name="familienaam" id="familienaam" value="{familienaam}" required="required">
                             </div>
                             <div class="form-group">
-                                <label for="gebruikersnaam">Gebruikersnaam</label>
+                                <label for="gebruikersnaam">Gebruikersnaam<span>*</span></label>
                                 <input type="text" class="form-control" name="gebruikersnaam" id="gebruikersnaam" value="{gebruikersnaam}" required="required">
                             </div>    
                             <div class="form-group">
-                                <label for="email">E-mail adres</label>
+                                <label for="email">E-mail adres<span>*</span></label>
                                 <input type="email" class="form-control" name="email" id="email" value="{email}" required="required">
                             </div>
+                            <div class="row control-group">
+                                <div class="form-group col-xs-12 controls">
+                                    {captcha}
+                                </div>
+                            </div> 
+                            <div class="row control-group">
+                                <div class="form-group col-xs-12 controls">
+                                    <label>Geef de tekst uit de afbeelding hieronder in.<span>*</span></label>
+                                    <input type="text" class="form-control" name="captchaText" placeholder="Captcha" id="captchaText" value="{captchaText}">
+                                    <p class="help-block"></p>
+                                </div>
+                            </div>
                             <div class="pull-right">
-                                <input type="submit" class="btn btn-theme-dark btn-lg" name="btn-reg" value="Sign Up"/>
+                                <input type="submit" class="btn btn-theme-dark btn-lg" name="btn-reg" value="Registreer"/>
                             </div>
                             <div class="clearfix"></div>
                             <!-- !!!!!!!! voor koen moet hier een ketchup :D staan !!!!!!! -->
@@ -183,13 +195,12 @@
         <div class="divide80"></div>
         <footer id="footer">
             <div class="container">
-
                 <div class="row">
-                    <div class="col-md-3 col-sm-6 margin30">
+                    <div class="col-md-4 col-sm-6 col-md-offset-1 margin30">
                         <div class="footer-col">
-                            <h3>About assan</h3>
+                            <h3>Over TEDx</h3>
                             <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam, adipiscing condimentum tristique vel, eleifend sed turpis. Pellentesque cursus arcu id magna euismod in elementum purus molestie.
+                                TEDxPXL is een onafhankelijk georganiseerd TED conferentie waar sprekers uit de hele wereld hun cutting-edge ideeën kunnen delen.
                             </p>
                             <ul class="list-inline social-1">
                                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -200,50 +211,18 @@
                             </ul>
                         </div>                        
                     </div><!--footer col-->
-                    <div class="col-md-3 col-sm-6 margin30">
+                    <div class="col-md-4 col-sm-6 col-md-offset-3 margin30">
                         <div class="footer-col">
                             <h3>Contact</h3>
 
                             <ul class="list-unstyled contact">
-                                <li><p><strong><i class="fa fa-map-marker"></i> Address:</strong>  Elfde-Liniestraat 24, B-3500 Hasselt</p></li> 
-                                <li><p><strong><i class="fa fa-envelope"></i> Mail Us:</strong> <a href="#">pxltedx@gmail.com</a></p></li>
-                                <li> <p><strong><i class="fa fa-phone"></i> Phone:</strong>+32 474 21 21 25</p></li>
-                            </ul>
-                        </div>                        
-                    </div><!--footer col-->
-                    <div class="col-md-3 col-sm-6 margin30">
-                        <div class="footer-col">
-                            <h3>Featured Work</h3>
-                            <ul class="list-inline f2-work">
-                                <li><a href="portfolio-single.html"><img src="<?php echo base_url(); ?>img/img-1.jpg" class="img-responsive" alt=""></a></li>
-                                <li><a href="portfolio-single.html"><img src="<?php echo base_url(); ?>img/img-2.jpg" class="img-responsive" alt=""></a></li>
-                                <li><a href="portfolio-single.html"><img src="<?php echo base_url(); ?>img/img-3.jpg" class="img-responsive" alt=""></a></li>
-                                <li><a href="portfolio-single.html"><img src="<?php echo base_url(); ?>img/img-4.jpg" class="img-responsive" alt=""></a></li>
-                                <li><a href="portfolio-single.html"><img src="<?php echo base_url(); ?>img/img-5.jpg" class="img-responsive" alt=""></a></li>
-                                <li><a href="portfolio-single.html"><img src="<?php echo base_url(); ?>img/img-6.jpg" class="img-responsive" alt=""></a></li>
-                                <li><a href="portfolio-single.html"><img src="<?php echo base_url(); ?>img/img-7.jpg" class="img-responsive" alt=""></a></li>
-                                <li><a href="portfolio-single.html"><img src="<?php echo base_url(); ?>img/img-8.jpg" class="img-responsive" alt=""></a></li>
-                                <li><a href="portfolio-single.html"><img src="<?php echo base_url(); ?>img/img-9.jpg" class="img-responsive" alt=""></a></li>
-                            </ul>
-                        </div>                        
-                    </div><!--footer col-->
-                    <div class="col-md-3 col-sm-6 margin30">
-                        <div class="footer-col">
-                            <h3>Newsletter</h3>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam, 
-                            </p>
-                            <form role="form" class="subscribe-form">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Enter email to subscribe">
-                                    <span class="input-group-btn">
-                                        <button class="btn  btn-theme-dark btn-lg" type="submit">Ok</button>
-                                    </span>
-                                </div>
-                            </form>
-                        </div>                        
-                    </div><!--footer col-->
+                                <li><p><strong><i class="fa fa-map-marker"></i> Adres:</strong> Elfde-Liniestraat 24, 3500 Hasselt, België</p></li> 
+                                <li><p><strong><i class="fa fa-envelope"></i> Mail Ons:</strong> <a href="#">pxltedx@gmail.com</a></p></li>
+                                <li> <p><strong><i class="fa fa-phone"></i> Telefoon:</strong>+32 474 21 21 25</p></li>
 
+                            </ul>
+                        </div>                        
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12 text-center">

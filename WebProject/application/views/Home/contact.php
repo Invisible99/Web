@@ -202,7 +202,7 @@
                         </div> 
                         <div class="row control-group">
                             <div class="form-group col-xs-12 controls">
-                                <label>Enter the text from the image above.<span>*</span></label>
+                                <label>Geef de tekst uit de afbeelding hieronder in.<span>*</span></label>
                                 <input type="text" class="form-control" name="captchaText" placeholder="Captcha" id="captchaText" value="{captchaText}">
                                 <p class="help-block"></p>
                             </div>
