@@ -216,12 +216,13 @@ class Forum extends CI_Controller {
             }
             //$this->index();
         } else if (isset($_POST['btn-prfWzg'])) {
-            //print($this->session->userdata('user'));
+            print($this->session->userdata('user'));
             $this->data['error'] = "";
 
             $this->data['user'] = $this->users_model->find($this->session->userdata('gebruikerID'));
             $this->data['foto'] = base_url() . "img/team-1.jpg";
 
+            //print_r($this->data);
             if (empty($this->data['user'])) {
                 //de alert-error is vn bootstrap
                 $this->data['error'] = "<div class='alert alert-error'>De gebruiker is niet gevonden</div>";
