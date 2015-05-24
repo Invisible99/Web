@@ -153,7 +153,10 @@
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
                                         <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                                            {curYear}
+                                            <?php 
+                                                $huidigJaar=date('Y');
+                                                echo $huidigJaar;
+                                            ?>
                                         </a>
                                     </h4>
                                 </div>
@@ -161,7 +164,7 @@
                                     <div class="panel-body">
                                         <ul class="list-unstyled cat-list">
                                             {maanden}
-                                            <li> <a href="<?php echo base_url(); ?>Events/showevents/{maandID}/<?php echo date('Y'); ?>">{maandNaam} </a></li>
+                                            <li> <a href="<?php echo base_url(); ?>Events/showevents/{maandID}/<?php echo $huidigJaar; ?>">{maandNaam}</a></li>
                                             {/maanden}
                                         </ul>
                                     </div>
@@ -171,7 +174,10 @@
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
                                         <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-                                           {nextYear} 
+                                           <?php 
+                                                $huidigJaar=date('Y')+1;
+                                                echo $huidigJaar;
+                                            ?> 
                                         </a>
                                     </h4>
                                 </div>
@@ -180,7 +186,7 @@
                                         <ul class="list-unstyled cat-list">
                                             
                                             {maanden}
-                                            <li> <a href="<?php echo base_url(); ?>Events/showevents/{maandID}/<?php echo date('Y'); ?> ">{maandNaam}</a></li>
+                                            <li> <a href="<?php echo base_url(); ?>Events/showevents/{maandID}/<?php echo $huidigJaar; ?>">{maandNaam}</a></li>
                                             
                                             {/maanden}
                                             
@@ -192,7 +198,10 @@
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
                                         <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-                                            {nextNextYear} 
+                                            <?php 
+                                                $huidigJaar=date('Y')+2;
+                                                echo $huidigJaar;
+                                            ?>
                                         </a>
                                     </h4>
                                 </div>
@@ -200,7 +209,7 @@
                                     <div class="panel-body">
                                         <ul class="list-unstyled cat-list">
                                             {maanden}
-                                            <li> <a href="<?php echo base_url(); ?>Events/showevents/{maandID}/<?php echo date('Y'); ?>">{maandNaam}</a></li>
+                                            <li> <a href="<?php echo base_url(); ?>Events/showevents/{maandID}/<?php echo $huidigJaar; ?>">{maandNaam}</a></li>
                                             {/maanden}
                                         </ul>
                                     </div>
@@ -219,7 +228,7 @@
 
 
                 </div><!--sidebar col end-->
-                <div class="col-md-9">
+                <div class="col-sm-9">
 
                     <div class="blog-post animated fadeInLeft">
                         {error}
@@ -240,7 +249,7 @@
                                 <p>
                                     {bericht}
                                 </p>
-                                <p><a href="blog-single.html" class="btn btn border-theme btn-xs">Read More...</a></p>
+                                <p><a href="<?php echo base_url(); ?>forum/thread/{topicID}" class="btn btn border-theme btn-xs">Read More...</a></p>
 
                             </div>
                         </div>

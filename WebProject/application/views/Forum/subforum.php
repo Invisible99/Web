@@ -154,10 +154,10 @@
                     {/dezeSub}
                 </div> 
                 <div class="row">
-                    <div class="col-sm-12">
+                    <div class="col-sm-12 animated fadeInLeft">
                         {error}
                         {subforum}
-                        <div class="forumoverview-box event-box animated fadeInLeft jumbotron">
+                        <div class="forumoverview-box event-box jumbotron">
                             <h3 class="forum-wrap">
                                 <a href="<?php echo base_url(); ?>forum/thread/{thrtopicID}" class="forum-overview-naam jumbotron">{thrtitel}</a> {bericht}
                             </h3>

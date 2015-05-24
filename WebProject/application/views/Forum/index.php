@@ -171,10 +171,10 @@
                 </div> 
 
                 <div class="row">
-                    <div class="col-sm-12">
+                    <div class="col-sm-12 animated fadeInLeft">
                         {error}
                         {forum}
-                        <div class="forumoverview-box event-box animated fadeInLeft jumbotron">
+                        <div class="forumoverview-box event-box jumbotron">
                             <h3 class="forum-wrap">
                                 <a href="<?php echo base_url(); ?>forum/subforum/{categorieID}" class="forum-overview-naam jumbotron">{titel}:</a> {omschrijving}
                             </h3>
@@ -185,12 +185,12 @@
                                 <strong class="forum-overview-black">Poster:</strong> <a href="#">{username}</a>
                                 <a href="http://google.com">
                             </p>
-                            <a href="<?php echo base_url(); ?>forum/editSubforum/{categorieID}"><span class="forum-button animated fadeInLeft">Wijzigen</span></a>
-                            <a href="<?php echo base_url(); ?>forum/deleteSubforum/{categorieID}"><span class="forum-button animated fadeInLeft">Verwijderen</span></a>
+                            <a href="<?php echo base_url(); ?>forum/editSubforum/{categorieID}"><span class="forum-button">Wijzigen</span></a>
+                            <a href="<?php echo base_url(); ?>forum/deleteSubforum/{categorieID}"><span class="forum-button">Verwijderen</span></a>
                         </div><!--event box-->
                         {/forum}
                         <div>
-                            <a href="<?php echo base_url(); ?>forum/addSubforum/{categorieID}"><span class="forum-button-right animated fadeInLeft">Toevoegen</span></a>
+                            <a href="<?php echo base_url(); ?>forum/addSubforum/{categorieID}"><span class="forum-button-right">Toevoegen</span></a>
                         </div><!--toevoegen knop-->
                     </div>
                 </div>

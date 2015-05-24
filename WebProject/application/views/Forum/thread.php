@@ -156,10 +156,10 @@
                     {/dezeThread}
                 </div> 
                 <div class="row">
-                    <div class="col-sm-12">
+                    <div class="col-sm-12 animated fadeInLeft">
                         {error}
                         {thread}
-                        <div class="forumoverview-box event-box animated fadeInLeft">
+                        <div class="forumoverview-box event-box">
                             <p class="forum-overview-post">
                                 <strong>({berichtID}) Posted on {postDate}: </strong> {bericht}
                                 </p>

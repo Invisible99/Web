@@ -28,5 +28,4 @@ class MY_Model extends CI_Model{
         return $this->db->update($this->tableName, $dataArray, $idArray);
     }
 }
-
 ?>

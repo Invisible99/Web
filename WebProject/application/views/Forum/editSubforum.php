@@ -143,7 +143,7 @@
         <div class="schedule">
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-12">
+                    <div class="col-sm-12 animated fadeInLeft">
                         {error}
                         {categorie}
                         <div class="forumoverview-box event-box animated fadeInLeft jumbotron">
