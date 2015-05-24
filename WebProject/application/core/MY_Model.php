@@ -11,7 +11,7 @@ class MY_Model extends CI_Model{
     function find($id){
         $this->db->from($this->tableName)->where($this->primkey,$id);
         $query=$this->db->get();
-        return $query->row_array();
+        return $query->result_array();
     }
     function findall(){
         $this->db->from($this->tableName);

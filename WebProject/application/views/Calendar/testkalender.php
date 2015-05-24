@@ -11,6 +11,3 @@ echo $this->calendar->generate($year, $month);
 ?>
 </body>
 </html>
-
-
-

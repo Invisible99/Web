@@ -223,6 +223,49 @@ div.forumoverview-box{
     color: #000;            
     background-color: #f6f6f6;
 }
+
+.forum-button{
+    color: #000;
+    background-color: #DCDCDC;
+    border: 1px solid #333;
+    color: #000;
+    background-color: transparent;
+    display: inline-block;
+    padding-bottom: 6px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 6px;
+    border-bottom-style: solid;
+}
+
+.forum-button-right{
+    color: #000;
+    background-color: #DCDCDC;
+    float:right;
+    border: 1px solid #333;
+    color: #000;
+    background-color: transparent;
+    display: inline-block;
+    padding-bottom: 6px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 6px;
+    border-bottom-style: solid;
+}
+
+.forum-wrap{
+    line-height: 45px;
+}
+
+.forum-label{
+}
+
+.forum-textarea{
+    resize: none;
+    width:100%;
+    height:100px;
+    margin-bottom:15px
+}
 /*******section heading**********/
 .center-heading{
     text-align: center;

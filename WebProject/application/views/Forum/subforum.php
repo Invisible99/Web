@@ -145,24 +145,26 @@
             <div class="container">
                 <div class="center-heading">
                     {error2}
+                    {dezeSub}
                     <h2>{titel}</h2>
                     <span class="center-line"></span>
                     <p class="margin40">
                         {omschrijving}
                     </p>
+                    {/dezeSub}
                 </div> 
                 <div class="row">
                     <div class="col-sm-12">
                         {error}
                         {subforum}
-                        <div class="forumoverview-box event-box animated fadeInLeft">
-                            <h3>
-                                <a href="<?php echo base_url(); ?>forum/thread/{thrtopicID}" class="forum-overview-naam">{thrtitel}</a>
+                        <div class="forumoverview-box event-box animated fadeInLeft jumbotron">
+                            <h3 class="forum-wrap">
+                                <a href="<?php echo base_url(); ?>forum/thread/{thrtopicID}" class="forum-overview-naam jumbotron">{thrtitel}</a> {bericht}
                             </h3>
-                            <p class="forum-overview-post">
+                            <p class="forum-overview-post jumbotron">
                                 <strong>Laatste post:</strong> {lastpost} 
                             </p>
-                            <p class="forum-overview-poster">
+                            <p class="forum-overview-poster jumbotron">
                                 <strong class="forum-overview-black">Poster:</strong> <a href="#">{username}</a>
                             </p>
                         </div><!--event box-->

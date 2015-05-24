@@ -153,18 +153,24 @@
                     <div class="col-sm-12">
                         {error}
                         {forum}
-                        <div class="forumoverview-box event-box animated fadeInLeft">
-                            <h3>
-                                <a href="<?php echo base_url(); ?>forum/subforum/{categorieID}" class="forum-overview-naam">{titel}:</a> {omschrijving}
+                        <div class="forumoverview-box event-box animated fadeInLeft jumbotron">
+                            <h3 class="forum-wrap">
+                                <a href="<?php echo base_url(); ?>forum/subforum/{categorieID}" class="forum-overview-naam jumbotron">{titel}:</a> {omschrijving}
                             </h3>
-                            <p class="forum-overview-post">
+                            <p class="forum-overview-post jumbotron">
                                 <strong>Laatste post in </strong><strong class="forum-overview-red"><a href="<?php echo base_url(); ?>forum/thread/{topicID}">{thrtitel}</a></strong>: {bericht} 
                             </p>
-                            <p class="forum-overview-poster">
+                            <p class="forum-overview-poster jumbotron">
                                 <strong class="forum-overview-black">Poster:</strong> <a href="#">{username}</a>
+                                <a href="http://google.com">
                             </p>
+                            <a href="<?php echo base_url(); ?>forum/editSubforum/{categorieID}"><span class="forum-button animated fadeInLeft">Wijzigen</span></a>
+                            <a href="<?php echo base_url(); ?>forum/deleteSubforum/{categorieID}"><span class="forum-button animated fadeInLeft">Verwijderen</span></a>
                         </div><!--event box-->
                         {/forum}
+                        <div>
+                            <a href="<?php echo base_url(); ?>forum/addSubforum/{categorieID}"><span class="forum-button-right animated fadeInLeft">Toevoegen</span></a>
+                        </div><!--toevoegen knop-->
                     </div>
                 </div>
             </div>
@@ -232,7 +238,6 @@
                             </form>
                         </div>                        
                     </div><!--footer col-->
-
                 </div>
                 <div class="row">
                     <div class="col-md-12 text-center">
