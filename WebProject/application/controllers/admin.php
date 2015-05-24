@@ -26,11 +26,18 @@ class Admin extends CI_Controller {
             if (empty($this->data['gebruikers'])) {
                 $this->data['melding'] = "<div class='alert alert-danger'>Er zijn geen records in de tabel users.</div>";
             }
-            $this->parser->parse('admin/overzicht_gebruikers.php', $this->data);
+            $this->parser->parse('admin/overzicht_gebruikers.php', $this->data); //op de vieuw zelf nog controleren of hij wel admin is? kan je rechtstreeks met de url naar die pagina?
+        }
+        else{
+            redirect(base_url() ."login/index");
         }
         
     }
 
+    function activeerGebruiker($gebruikerID) {
+        
+    }
+    
     function evenementOverzicht() {
         
     }
