@@ -24,7 +24,7 @@ class Login extends CI_Controller {
             $this->data['inloggen'] = $this->users_model->login($this->input->post('gebruikersnaam'));
 
             if (!empty($this->data['inloggen'])) {
-                if ($this->data['inloggen']["al_ingelogd"] == 0) { 
+                if ($this->data['inloggen']["al_ingelogd"] == 0) {
                     if ($this->data['inloggen']["password"] == $this->input->post('password')) {
                         $this->firstlogin($this->data['inloggen']["gebruikerID"]);
                         return;
@@ -203,19 +203,40 @@ class Login extends CI_Controller {
 
     function wachtwoordReset() {
         if (isset($_POST['btn-reset'])) {
-            $this->data['emailVanDB'] = $this->users_model->doesEmailExist($this->input->post('email'));
+            $this->data['user'] = $this->users_model->doesEmailExist($this->input->post('email'));
 
-            if (!empty($this->data['emailVanDB'])) {
-                 $this->_mailToUser($this->input->post('email'));
-                $this->data['melding'] = "<p class='alert alert-succes'>U zal zodadelijk een mail krijgen om uw wachtwoord te veranderen.</p>";
+            if (!empty($this->data['user'])) {
+                if ($this->data['user']["actief"] == 1) {
+                    $randomPaswoord = $this->_genereerPaswoord();
+                    $this->users_model->updateID(array('al_ingelogd' => 0, 'password' => $randomPaswoord), array('gebruikerID' => $this->data['user']['gebruikerID']));
+
+                    $this->_mailToUserWWReset($this->data['user']['voornaam'], $this->data['user']['familienaam'], $this->input->post('email'), $randomPaswoord);
+
+                    $this->data['melding'] = "<p class='alert alert-success'>U zal zodadelijk een mail krijgen om uw wachtwoord te veranderen.</p>";
+                    $this->parser->parse('login/wachtwoordReset.php', $this->data);
+                }
+                else{
+                    $this->data['melding'] = "<p class='alert alert-danger'>Er is geen geldige gebruiker met dit email adres.</p>";
+                    $this->parser->parse('login/wachtwoordReset.php', $this->data);
+                }
+            } else {
+                $this->data['melding'] = "<p class='alert alert-danger'>Er is geen geldige gebruiker mesdfqsdfqsdt dit email adres.</p>";
+                $this->parser->parse('login/wachtwoordReset.php', $this->data);
             }
-            else{
-                $this->data['melding'] = "<p class='alert alert-danger'>Dit e-mail bestaat niet.</p>";
-            }
-            
         } else {
             $this->data['melding'] = "";
             $this->parser->parse('login/wachtwoordReset.php', $this->data);
         }
     }
+
+    function _mailToUserWWReset($userVoornaam, $userAchternaam, $userEmail, $generatedPassword) {
+        $to = $userEmail;
+        $subject = 'TEDxPXL password reset';
+        $message = "Beste " . $userVoornaam . " " . $userAchternaam . "\n\nUw nieuw wachtwoord is " . $generatedPassword . "\nU zal uw wachtwoord moeten wijzigen bij de eerste keer inloggen.\n\nMet vriendelijke groet\n\nTEDxPXL Administratie";
+        $headers = 'From: pxltedx@gmail.com';
+        if (!mail($to, $subject, $message, $headers)) {
+            //echo "Email sending failed";
+        }
+    }
+
 }
