@@ -221,74 +221,38 @@
                     
                 </div><!--sidebar col end-->
                 <div class="col-sm-9">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <p>
-                                Donec sed odio dui. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Duis mollis, est non commodo luctus. Aenean lacinia bibendum nulla sed consectetur. Cras mattis consectetur purus sit amet fermentum. Donec id elit non mi porta gravida at eget metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula porta felis euismod semper.
-                            </p>
+
+                    <div class="blog-post animated fadeInLeft">
+                        {error}
+                        {allEvents}
+                        <div class="row  event-box">
+                            <div class="col-md-3 margin20"> 
+                                
+                                <h4>{eventDate}</h4>                       
+                               
+                            </div>
+                            <div class="col-md-9 margin20">
+
+                                <ul class="list-inline post-detail">                                  
+                                    <li>by <a href="#">{username}</a></li>
+
+                                </ul>
+                                <h2><a href="#">{titel}</a></h2>
+                                <p>
+                                    {bericht}
+                                </p>
+                                <p><a href="<?php echo base_url(); ?>forum/thread/{topicID}" class="btn btn border-theme btn-xs">Read More...</a></p>
+
+                            </div>
                         </div>
-                    </div>
-                    <div class="divide30"></div>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <h4>1/2 Col</h4>
-                            <p>
-                                Donec sed odio dui. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Duis mollis, est non commodo luctus. Aenean lacinia bibendum nulla sed consectetur. Cras mattis consectetur purus sit amet fermentum. Donec id elit non mi porta gravida at eget metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula porta felis euismod semper.
-                            </p>
-                        </div>
-                        <div class="col-sm-6">
-                            <h4>1/2 Col</h4>
-                            <p>
-                                Donec sed odio dui. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Duis mollis, est non commodo luctus. Aenean lacinia bibendum nulla sed consectetur. Cras mattis consectetur purus sit amet fermentum. Donec id elit non mi porta gravida at eget metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula porta felis euismod semper.
-                            </p>
-                        </div>
-                    </div><!--1/2 row end-->
-                    <div class="divide30"></div>
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <h4>1/3 Col</h4>
-                            <p>
-                                Duis mollis, est non commodo luctus. Aenean lacinia bibendum nulla sed consectetur. Cras mattis consectetur purus sit amet fermentum. Donec id elit non mi porta gravida at eget metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula porta felis euismod semper.
-                            </p>
-                        </div>
-                        <div class="col-sm-8">
-                            <h4>2/3 Col</h4>
-                            <p>
-                                Duis mollis, est non commodo luctus. Aenean lacinia bibendum nulla sed consectetur. Cras mattis consectetur purus sit amet fermentum. Donec id elit non mi porta gravida at eget metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula porta felis euismod semper.
-                                Donec id elit non mi porta gravida at eget metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula porta felis euismod semper.
-                            </p>
-                        </div>
-                    </div><!--1/3 row end-->
-                    <div class="divide30"></div>
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <h4>1/3 Col</h4>
-                            <p>
-                                Duis mollis, est non commodo luctus. Aenean lacinia bibendum nulla sed consectetur. Cras mattis consectetur purus sit amet fermentum. Donec id elit non mi porta gravida at eget metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula porta felis euismod semper.
-                            </p>
-                        </div>
-                        <div class="col-sm-4">
-                            <h4>1/3 Col</h4>
-                            <p>
-                                Duis mollis, est non commodo luctus. Aenean lacinia bibendum nulla sed consectetur. Cras mattis consectetur purus sit amet fermentum. Donec id elit non mi porta gravida at eget metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula porta felis euismod semper.
-                            </p>
-                        </div>
-                        <div class="col-sm-4">
-                            <h4>1/3 Col</h4>
-                            <p>
-                                Duis mollis, est non commodo luctus. Aenean lacinia bibendum nulla sed consectetur. Cras mattis consectetur purus sit amet fermentum. Donec id elit non mi porta gravida at eget metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula porta felis euismod semper.
-                            </p>
-                        </div>
-                    </div><!--1/3 row end-->
-                    <div class="divide30"></div>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <p>
-                                Donec sed odio dui. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Duis mollis, est non commodo luctus. Aenean lacinia bibendum nulla sed consectetur. Cras mattis consectetur purus sit amet fermentum. Donec id elit non mi porta gravida at eget metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula porta felis euismod semper.
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                        {/allEvents}
+                    </div><!--blog post-->
+                    
+                    <ul class="pager">
+                        <li class="previous"><a href="#">&larr; Previous Page</a></li>
+                        <li class="next"><a href="#">Next Page &rarr;</a></li>
+                    </ul><!--pager-->
+                </div><!--col-->
             </div>
         </div><!--left sidebar container-->
         <div class="divide60"></div>
