@@ -147,12 +147,12 @@
                         {error}
                         {user}
                         <div class="forumoverview-box event-box animated fadeInLeft jumbotron">
-                            <form id="editcat" action="<?php echo base_url(); ?>forum/wijzigProfiel/{gebruikerID}" method="POST">
+                            <form id="editcat" action="<?php echo base_url(); ?>forum/wijzigProfiel" method="POST">
                                 <div><p class="forum-label">Gebruikersnaam:</p> <input type="text" class="form-control" name="gebruikersnaam" value="{username}"placeholder="Username"  required="required"></div>
                                 <div><p class="forum-label">E-mail adres:</p><input type="text" class="form-control" name="email" placeholder="Email" value="{email}" required="required"></div>
                                 <div><p class="forum-label">Voornaam:</p> <input type="text" class="form-control" name="voornaam" placeholder="Voornaam"  value="{voornaam}" required="required"></div>
                                 <div><p class="forum-label">Familienaam:</p><input type="text" class="form-control" name="familienaam" placeholder="Familienaam" value="{familienaam}" required="required"></div>
-                                <div><p class="forum-label">Profielfoto:</p><input type="text" class="form-control" name="profielfoto" placeholder="Profielfoto" value="{profielfoto}" required="required"></div> <!-- iets file picker ofzo iets hier -->
+                                <div><p class="forum-label">Profielfoto:</p><input type="text" class="form-control" name="profielfoto" placeholder="Profielfoto" value="{profielfoto}" ></div> <!-- iets file picker ofzo iets hier -->
                                 <div><input type="submit" name="editProfile" value="Klaar met wijzigen" class="btn"></div>
                             </form>
                         </div><!--event box-->
