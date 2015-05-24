@@ -148,7 +148,10 @@
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
                                         <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                                            2015
+                                            <?php 
+                                                $huidigJaar=date('Y');
+                                                echo $huidigJaar;
+                                            ?>
                                         </a>
                                     </h4>
                                 </div>
@@ -156,7 +159,7 @@
                                     <div class="panel-body">
                                         <ul class="list-unstyled cat-list">
                                             {maanden}
-                                            <li> <a href="<?php echo base_url(); ?>Events/showevents/{maandID}">{maandNaam}</a></li>
+                                            <li> <a href="<?php echo base_url(); ?>Events/showevents/{maandID}/<?php echo $huidigJaar; ?>">{maandNaam}</a></li>
                                             {/maanden}
                                         </ul>
                                     </div>
@@ -166,7 +169,10 @@
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
                                         <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-                                            2016
+                                            <?php 
+                                                $huidigJaar=date('Y')+1;
+                                                echo $huidigJaar;
+                                            ?>
                                         </a>
                                     </h4>
                                 </div>
@@ -174,7 +180,7 @@
                                     <div class="panel-body">
                                         <ul class="list-unstyled cat-list">
                                             {maanden}
-                                            <li> <a href="<?php echo base_url(); ?>Events/showevents/{maandID}">{maandNaam}</a></li>
+                                            <li> <a href="<?php echo base_url(); ?>Events/showevents/{maandID}/<?php echo $huidigJaar; ?>">{maandNaam}</a></li>
                                             {/maanden}
                                         </ul>
                                     </div>
@@ -184,7 +190,10 @@
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
                                         <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-                                            2017
+                                            <?php 
+                                                $huidigJaar=date('Y')+2;
+                                                echo $huidigJaar;
+                                            ?>
                                         </a>
                                     </h4>
                                 </div>
@@ -192,7 +201,7 @@
                                     <div class="panel-body">
                                         <ul class="list-unstyled cat-list">
                                             {maanden}
-                                            <li> <a href="<?php echo base_url(); ?>Events/showevents/{maandID}">{maandNaam}</a></li>
+                                            <li> <a href="<?php echo base_url(); ?>Events/showevents/{maandID}/<?php echo $huidigJaar; ?>">{maandNaam}</a></li>
                                             {/maanden}
                                         </ul>
                                     </div>

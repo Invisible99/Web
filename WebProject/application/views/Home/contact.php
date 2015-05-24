@@ -91,7 +91,7 @@
                             <a href="#" class=" dropdown-toggle" data-toggle="dropdown"><i class="fa fa-lock"></i></a>
                             <div class="dropdown-menu dropdown-menu-right dropdown-login-box animated fadeInUp">
                                 <form role="form">
-                                    <h4>Signin</h4>
+                                    <h4>Login</h4>
                                     <div class="form-group">
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class="fa fa-user"></i></span>
@@ -202,7 +202,7 @@
                         </div> 
                         <div class="row control-group">
                             <div class="form-group col-xs-12 controls">
-                                <label>Enter the text from the image above.<span>*</span></label>
+                                <label>Geef de tekst uit de afbeelding hieronder in.<span>*</span></label>
                                 <input type="text" class="form-control" name="captchaText" placeholder="Captcha" id="captchaText" value="{captchaText}">
                                 <p class="help-block"></p>
                             </div>

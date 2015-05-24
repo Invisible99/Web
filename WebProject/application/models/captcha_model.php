@@ -39,12 +39,7 @@ class Captcha_model extends CI_Model {
 
         $img = create_captcha($captcha);
 
-        $value = array(
-            'img' => $img['image'],
-            'word' => $captcha['word']
-        );
-
-        return $data = $value;
+        return $data = $img['image'];
     }
 
 }

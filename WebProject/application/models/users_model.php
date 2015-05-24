@@ -29,7 +29,7 @@ class users_model extends MY_Model {
         $query=$this->db->get();
         return $query->row_array();
     }
-    
+
     function findUser($username){
         $this->db->from($this->tableName)->where($this->usernameColName,$username);
         $query=$this->db->get();

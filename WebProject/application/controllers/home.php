@@ -29,9 +29,7 @@ class Home extends CI_Controller {
 
     //Show contact page
     function contact() {
-        $captchaValues = $this->captcha_model->create_image();
-        $this->data['captcha'] = $captchaValues['img'];
-        $word = $captchaValues['word'];
+        $this->data['captcha'] = $this->captcha_model->create_image();
 
         //Form rules
         $this->form_validation->set_rules('naam', 'naam', 'trim|strip_tags|required');
@@ -55,7 +53,7 @@ class Home extends CI_Controller {
                 $this->data['captchaError'] = form_error('captchaText', "<p class='alert alert-danger'>");
                 $this->parser->parse('home/contact.php', $this->data);
             } else {
-                $to = 'wefknrise@gmail.com';
+                $to = 'pxltedx@gmail.com';
                 $subject = $this->input->post('onderwerp');
                 $message = $this->input->post('bericht') . "\n\nNaam verzender: " . $this->input->post('naam') . "\n\nE-mail: " . $this->input->post('email');
                 $headers = 'From: ' . $this->input->post('email');
@@ -82,7 +80,7 @@ class Home extends CI_Controller {
             $this->data['onderwerp'] = "";
             $this->data['bericht'] = "";
             $this->data['captchaText'] = "";
-            $this->data['melding'] = $word;
+            $this->data['melding'] = "";
             $this->data['naamError'] = "";
             $this->data['emailError'] = "";
             $this->data['onderwerpError'] = "";
