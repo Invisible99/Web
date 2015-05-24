@@ -140,37 +140,82 @@
             </div>
         </div><!--breadcrumbs-->
         <div class="divide80"></div>
-        <div class="schedule">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12">
-                        {error}
-                        {user}
-                        <div class="forumoverview-box event-box animated fadeInLeft jumbotron">
-                            <form id="editcat" action="<?php echo base_url(); ?>forum/wijzigProfiel" method="POST">
-                                <div><p class="forum-label">Gebruikersnaam:</p> <input type="text" class="form-control" name="gebruikersnaam" value="{username}"placeholder="Username"  required="required"></div>
-                                <div><p class="forum-label">E-mail adres:</p><input type="text" class="form-control" name="email" placeholder="Email" value="{email}" required="required"></div>
-                                <div><p class="forum-label">Voornaam:</p> <input type="text" class="form-control" name="voornaam" placeholder="Voornaam"  value="{voornaam}" required="required"></div>
-                                <div><p class="forum-label">Familienaam:</p><input type="text" class="form-control" name="familienaam" placeholder="Familienaam" value="{familienaam}" required="required"></div>
-                                <div><p class="forum-label">Profielfoto:</p><input type="text" class="form-control" name="profielfoto" placeholder="Profielfoto" value="{profielfoto}" ></div> <!-- iets file picker ofzo iets hier -->
-                                <div><input type="submit" name="editProfile" value="Klaar met wijzigen" class="btn"></div>
-                            </form>
-                        </div><!--event box-->
-                        {/user}
+        <div class="container">
+            <div class="row">
+                {error}
+                {user}
+                <form id="editcat" action="<?php echo base_url(); ?>forum/wijzigProfiel" method="POST">
+                    <div class="animated fadeInLeft">
+                        <div class="col-md-2"> 
+                            <div class="row control-group">
+                                <div class="form-group col-xs-12 controls">
+                                    <label>Profielfoto:</label>
+                                    <ul class="list-inline f3-work">
+                                        <li><a href="portfolio-single.html"><img src="<?php echo base_url(); ?>img/stef.jpg" class="img-responsive" alt=""></a></li>
+                                    </ul>
+                                    <p class="help-block"></p>
+                                </div>
+                            </div> 
+                            <div class="row">
+                                <div class="form-group col-xs-12">
+                                    <input type="submit" name="contactBtn" class="btn btn-theme-bg btn-lg" value="Wijzig profiel" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8 col-md-offset-2">
+                            <div class="col-md-12 margin30">
+                                <div class="row control-group">
+                                    <div class="form-group col-xs-12 controls">
+                                        <label>Gebruikersnaam:</label>
+                                        <input type="text" class="form-control" name="gebruikersnaam" value="{username}" placeholder="Username" required="required">
+                                        <p class="help-block"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 margin30">
+                                <div class="row control-group">
+                                    <div class="form-group col-xs-12 controls">
+                                        <label>Voornaam:</label>
+                                        <input type="text" class="form-control" name="voornaam" placeholder="Voornaam"  value="{voornaam}" required="required">
+                                        <p class="help-block"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 margin30">
+                                <div class="row control-group">
+                                    <div class="form-group col-xs-12 controls">
+                                        <label>Familienaam:</label>
+                                        <input type="text" class="form-control" name="familienaam" placeholder="Familienaam" value="{familienaam}" required="required">
+                                        <p class="help-block"></p>
+                                    </div>
+                                </div> 
+                            </div>
+                            <div class="col-md-12 margin30">
+                                <div class="row control-group">
+                                    <div class="form-group col-xs-12 controls">
+                                        <label>E-mailadres:</label>
+                                        <input type="text" class="form-control" name="email" placeholder="Email" value="{email}" required="required">
+                                        <p class="help-block"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div id="success"></div>
+                        </div>
                     </div>
-                </div>
+                    {/user}
+                </form>
             </div>
-        </div><!--schedule end-->
+        </div>
         <div class="divide80"></div>
         <footer id="footer">
             <div class="container">
-
                 <div class="row">
-                    <div class="col-md-3 col-sm-6 margin30">
+                    <div class="col-md-4 col-sm-6 col-md-offset-1 margin30">
                         <div class="footer-col">
-                            <h3>About assan</h3>
+                            <h3>Over TEDx</h3>
                             <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam, adipiscing condimentum tristique vel, eleifend sed turpis. Pellentesque cursus arcu id magna euismod in elementum purus molestie.
+                                TEDxPXL is een onafhankelijk georganiseerd TED conferentie waar sprekers uit de hele wereld hun cutting-edge ideeën kunnen delen.
                             </p>
                             <ul class="list-inline social-1">
                                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -181,49 +226,18 @@
                             </ul>
                         </div>                        
                     </div><!--footer col-->
-                    <div class="col-md-3 col-sm-6 margin30">
+                    <div class="col-md-4 col-sm-6 col-md-offset-3 margin30">
                         <div class="footer-col">
                             <h3>Contact</h3>
 
                             <ul class="list-unstyled contact">
-                                <li><p><strong><i class="fa fa-map-marker"></i> Address:</strong>  Elfde-Liniestraat 24, B-3500 Hasselt</p></li> 
-                                <li><p><strong><i class="fa fa-envelope"></i> Mail Us:</strong> <a href="#">pxltedx@gmail.com</a></p></li>
-                                <li> <p><strong><i class="fa fa-phone"></i> Phone:</strong>+32 474 21 21 25</p></li>
+                                <li><p><strong><i class="fa fa-map-marker"></i> Adres:</strong> Elfde-Liniestraat 24, 3500 Hasselt, België</p></li> 
+                                <li><p><strong><i class="fa fa-envelope"></i> Mail Ons:</strong> <a href="#">pxltedx@gmail.com</a></p></li>
+                                <li> <p><strong><i class="fa fa-phone"></i> Telefoon:</strong>+32 474 21 21 25</p></li>
+
                             </ul>
                         </div>                        
-                    </div><!--footer col-->
-                    <div class="col-md-3 col-sm-6 margin30">
-                        <div class="footer-col">
-                            <h3>Featured Work</h3>
-                            <ul class="list-inline f2-work">
-                                <li><a href="portfolio-single.html"><img src="<?php echo base_url(); ?>img/img-1.jpg" class="img-responsive" alt=""></a></li>
-                                <li><a href="portfolio-single.html"><img src="<?php echo base_url(); ?>img/img-2.jpg" class="img-responsive" alt=""></a></li>
-                                <li><a href="portfolio-single.html"><img src="<?php echo base_url(); ?>img/img-3.jpg" class="img-responsive" alt=""></a></li>
-                                <li><a href="portfolio-single.html"><img src="<?php echo base_url(); ?>img/img-4.jpg" class="img-responsive" alt=""></a></li>
-                                <li><a href="portfolio-single.html"><img src="<?php echo base_url(); ?>img/img-5.jpg" class="img-responsive" alt=""></a></li>
-                                <li><a href="portfolio-single.html"><img src="<?php echo base_url(); ?>img/img-6.jpg" class="img-responsive" alt=""></a></li>
-                                <li><a href="portfolio-single.html"><img src="<?php echo base_url(); ?>img/img-7.jpg" class="img-responsive" alt=""></a></li>
-                                <li><a href="portfolio-single.html"><img src="<?php echo base_url(); ?>img/img-8.jpg" class="img-responsive" alt=""></a></li>
-                                <li><a href="portfolio-single.html"><img src="<?php echo base_url(); ?>img/img-9.jpg" class="img-responsive" alt=""></a></li>
-                            </ul>
-                        </div>                        
-                    </div><!--footer col-->
-                    <div class="col-md-3 col-sm-6 margin30">
-                        <div class="footer-col">
-                            <h3>Newsletter</h3>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam, 
-                            </p>
-                            <form role="form" class="subscribe-form">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Enter email to subscribe">
-                                    <span class="input-group-btn">
-                                        <button class="btn  btn-theme-dark btn-lg" type="submit">Ok</button>
-                                    </span>
-                                </div>
-                            </form>
-                        </div>                        
-                    </div><!--footer col-->
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12 text-center">
