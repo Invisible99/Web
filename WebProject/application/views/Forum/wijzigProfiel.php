@@ -94,54 +94,30 @@
                         <li class="dropdown">
                             <a href="#" class=" dropdown-toggle" data-toggle="dropdown"><i class="fa fa-lock"></i></a>
                             <div class="dropdown-menu dropdown-menu-right dropdown-login-box animated fadeInUp">
-
-                                <?php
-                                if (!($this->session->has_userdata('user') && $this->session->has_userdata('logged_in') && $this->session->logged_in && $this->session->has_userdata('rolID'))) {
-                                    ?>
-                                    <form role="form" action='<?php echo base_url(); ?>/login/index' method='post'>
-                                        <h4>Aanmelden</h4>
-                                        <div class="form-group">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                                <input type="text" class="form-control" name="gebruikersnaam" placeholder="Username"  required="required">
-                                            </div>
-                                            <br>
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                                <input type="password" class="form-control"  name="password" placeholder="Password"  required="required">
-                                            </div>
-                                            <div class="checkbox pull-left">
-                                                <label>
-                                                    <input type="checkbox"> Onthoud mij
-                                                </label>
-                                            </div>                                   
-                                            <input type="submit" class="btn btn-theme-bg pull-right" name="btn-inlog" value="Aanmelden"/>
-                                            <div class="clearfix"></div>
-                                            <hr>
-                                            <p>Nog geen lid! <a href="<?php echo base_url(); ?>login/register">Registereer nu!</a></p>
-                                    </form>
-                                </div>
-                                <?php
-                            } else {
-                                ?> 
-                                <div class="row">
-                                    <form role="form" action='<?php echo base_url(); ?>/forum/wijzigProfiel' method='post'>
-                                        <h4>Profiel wijzigen</h4>
-
-                                        <input type="submit" class="btn btn-theme-bg pull-right" name="btn-prfWzg" value="Profiel wijzigen"/>
-                                    </form>
-                                </div>
-                                <div class="row">
-                                    <form role="form" action='<?php echo base_url(); ?>/login/index' method='post'>
-                                        <h4>Afmelden</h4>
-
-                                        <input type="submit" class="btn btn-theme-bg pull-right" name="btn-logoff" value="Afmelden"/>
-                                    </form>
-                                </div>
-                                <?php
-                            }
-                            ?>
-
+                                <form role="form">
+                                    <h4>Signin</h4>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                            <input type="text" class="form-control" placeholder="Username">
+                                        </div>
+                                        <br>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                            <input type="password" class="form-control" placeholder="Password">
+                                        </div>
+                                        <div class="checkbox pull-left">
+                                            <label>
+                                                <input type="checkbox"> Remember me
+                                            </label>
+                                        </div>
+                                        <a class="btn btn-theme-bg pull-right" href="<?php echo base_url(); ?>login/index">Login</a>
+                                        <!--                                        <button type="submit" class="btn btn-theme pull-right">Login</button>                 -->
+                                        <div class="clearfix"></div>
+                                        <hr>
+                                        <p>Don't have an account! <a href="<?php echo base_url(); ?>login/register">Register Now</a></p>
+                                    </div>
+                                </form>
                             </div>
                         </li> <!--menu login li end here-->
                     </ul>
@@ -166,41 +142,26 @@
         <div class="divide80"></div>
         <div class="schedule">
             <div class="container">
-                <div class="center-heading">
-                    <h2>Welkom op het TEDxPXL forum</h2>
-                    <span class="center-line"></span>
-                    <p class="margin40">
-                        Gelieve naar hartelust deel te nemen aan onze vele interessante topics.
-                    </p>
-                </div> 
-
                 <div class="row">
                     <div class="col-sm-12">
                         {error}
-                        {forum}
+                        {user}
                         <div class="forumoverview-box event-box animated fadeInLeft jumbotron">
-                            <h3 class="forum-wrap">
-                                <a href="<?php echo base_url(); ?>forum/subforum/{categorieID}" class="forum-overview-naam jumbotron">{titel}:</a> {omschrijving}
-                            </h3>
-                            <p class="forum-overview-post jumbotron">
-                                <strong>Laatste post in </strong><strong class="forum-overview-red"><a href="<?php echo base_url(); ?>forum/thread/{topicID}">{thrtitel}</a></strong>: {bericht} 
-                            </p>
-                            <p class="forum-overview-poster jumbotron">
-                                <strong class="forum-overview-black">Poster:</strong> <a href="#">{username}</a>
-                                <a href="http://google.com">
-                            </p>
-                            <a href="<?php echo base_url(); ?>forum/editSubforum/{categorieID}"><span class="forum-button animated fadeInLeft">Wijzigen</span></a>
-                            <a href="<?php echo base_url(); ?>forum/deleteSubforum/{categorieID}"><span class="forum-button animated fadeInLeft">Verwijderen</span></a>
+                            <form id="editcat" action="<?php echo base_url(); ?>forum/wijzigProfiel/{gebruikerID}" method="POST">
+                                <div><p class="forum-label">Gebruikersnaam:</p> <input type="text" class="form-control" name="gebruikersnaam" value="{username}"placeholder="Username"  required="required"></div>
+                                <div><p class="forum-label">E-mail adres:</p><input type="text" class="form-control" name="email" placeholder="Email" value="{email}" required="required"></div>
+                                <div><p class="forum-label">Voornaam:</p> <input type="text" class="form-control" name="voornaam" placeholder="Voornaam"  value="{voornaam}" required="required"></div>
+                                <div><p class="forum-label">Familienaam:</p><input type="text" class="form-control" name="familienaam" placeholder="Familienaam" value="{familienaam}" required="required"></div>
+                                <div><p class="forum-label">Profielfoto:</p><input type="text" class="form-control" name="profielfoto" placeholder="Profielfoto" value="{profielfoto}" required="required"></div> <!-- iets file picker ofzo iets hier -->
+                                <div><input type="submit" name="editProfile" value="Klaar met wijzigen" class="btn"></div>
+                            </form>
                         </div><!--event box-->
-                        {/forum}
-                        <div>
-                            <a href="<?php echo base_url(); ?>forum/addSubforum/{categorieID}"><span class="forum-button-right animated fadeInLeft">Toevoegen</span></a>
-                        </div><!--toevoegen knop-->
+                        {/user}
                     </div>
                 </div>
             </div>
         </div><!--schedule end-->
-        <div class="divide80"></div> 
+        <div class="divide80"></div>
         <footer id="footer">
             <div class="container">
 

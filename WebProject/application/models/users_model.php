@@ -6,8 +6,8 @@ class users_model extends MY_Model {
     
     var $emailColName="email";
     var $usernameColName="username";    
-    var $passwordColName="password";
-    
+    var $passwordColName="password";       
+
     function doesEmailExist($email){
         $this->db->from($this->tableName)->where($this->emailColName,$email);
         $query=$this->db->get();
@@ -24,5 +24,11 @@ class users_model extends MY_Model {
         $this->db->from($this->tableName)->where($this->usernameColName,$username);
         $query=$this->db->get();
         return $query->row_array();
+    }
+    
+    function findUser($username){
+        $this->db->from($this->tableName)->where($this->usernameColName,$username);
+        $query=$this->db->get();
+        return $query->result_array();
     }
 }

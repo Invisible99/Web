@@ -114,7 +114,7 @@ class Login extends CI_Controller {
             $this->data['email'] = $this->input->post('email');
 
             $this->data['emailVanDB'] = $this->users_model->doesEmailExist($this->input->post('email'));
-            $this->data['usernameVanDB'] = $this->users_model->doesUsernameExist($this->input->post('gebruikersnaam'));
+            $this->data['usernameVanDB'] = $this->users_model->doesUsernameExist($this->input->post('gebruikersnaam')); 
 
             if (!empty($this->data['usernameVanDB'])) {
                 $this->data['melding'] .= "<p class='alert alert-danger'>Deze gebruikersnaam is al in gebruik.</p>";

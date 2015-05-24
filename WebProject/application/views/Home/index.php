@@ -88,7 +88,7 @@
                         <li class="dropdown">
                             <a href="#" class=" dropdown-toggle" data-toggle="dropdown"><i class="fa fa-lock"></i></a>
                             <div class="dropdown-menu dropdown-menu-right dropdown-login-box animated fadeInUp">
-                                <form role="form" action='../login/index' method='post'>
+                                <form role="form" action='<?php echo base_url(); ?>/login/index' method='post'>
                                     <?php
                                     if (!($this->session->has_userdata('user') && $this->session->has_userdata('logged_in') && $this->session->logged_in && $this->session->has_userdata('rolID'))) {
                                         ?>
