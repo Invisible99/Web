@@ -116,6 +116,27 @@ class Forum extends CI_Controller {
             $this->forum_model->insert(array('titel' => $this->input->post('formtitel'),'omschrijving' => $this->input->post('formomschrijving')));
             redirect(base_url()."forum/index");
         }
+        if (isset($_POST['editthr'])) {
+            $this->load->model("forum_model");
+            $this->data['forum'] = $this->forum_model->findSubforums();
+            $this->forum_model->updateID(array('titel' => $this->input->post('formtitel'), 'omschrijving' => $this->input->post('formomschrijving')), array('categorieID' => $categorieID));
+            redirect(base_url()."forum/index");
+        }
+        if (isset($_POST['deletethryes'])) {
+            $this->load->model("forum_model");
+            $this->data['forum'] = $this->forum_model->findSubforums();
+            $this->forum_model->deleteID(array('categorieID' => $categorieID));
+            redirect(base_url()."forum/index");
+        }
+        if (isset($_POST['deletethrno'])) {
+            redirect(base_url()."forum/index");
+        }
+        if (isset($_POST['addthr'])) {
+            $this->load->model("forum_model");
+            $this->data['forum'] = $this->forum_model->findSubforums();
+            $this->forum_model->insert(array('titel' => $this->input->post('formtitel'),'omschrijving' => $this->input->post('formomschrijving')));
+            redirect(base_url()."forum/index");
+        }
         else
         {
             redirect(base_url()."forum/index");
