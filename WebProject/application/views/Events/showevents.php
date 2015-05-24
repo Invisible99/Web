@@ -130,10 +130,10 @@
                         <ol class="breadcrumb">
                             <li><a href="index">Home</a></li>
                             <li><a href="<?php echo base_url(); ?>Events/index">Events</a></li>
-                            
+
                             <li>{maandNaam}</li>
                             {/getMaandNaam}
-                            
+
                         </ol>
                     </div>
                 </div>
@@ -153,7 +153,7 @@
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
                                         <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                                            2015
+                                            {curYear}
                                         </a>
                                     </h4>
                                 </div>
@@ -161,7 +161,7 @@
                                     <div class="panel-body">
                                         <ul class="list-unstyled cat-list">
                                             {maanden}
-                                            <li> <a href="<?php echo base_url(); ?>Events/showevents/{maandID}">{maandNaam}</a></li>
+                                            <li> <a href="<?php echo base_url(); ?>Events/showevents/{maandID}/<?php echo date('Y'); ?>">{maandNaam} </a></li>
                                             {/maanden}
                                         </ul>
                                     </div>
@@ -171,16 +171,19 @@
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
                                         <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-                                            2016
+                                           {nextYear} 
                                         </a>
                                     </h4>
                                 </div>
                                 <div id="collapseTwo" class="panel-collapse collapse">
                                     <div class="panel-body">
                                         <ul class="list-unstyled cat-list">
+                                            
                                             {maanden}
-                                            <li> <a href="<?php echo base_url(); ?>Events/showevents/{maandID}">{maandNaam}</a></li>
+                                            <li> <a href="<?php echo base_url(); ?>Events/showevents/{maandID}/<?php echo date('Y'); ?> ">{maandNaam}</a></li>
+                                            
                                             {/maanden}
+                                            
                                         </ul>
                                     </div>
                                 </div>
@@ -189,7 +192,7 @@
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
                                         <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-                                            2017
+                                            {nextNextYear} 
                                         </a>
                                     </h4>
                                 </div>
@@ -197,7 +200,7 @@
                                     <div class="panel-body">
                                         <ul class="list-unstyled cat-list">
                                             {maanden}
-                                            <li> <a href="<?php echo base_url(); ?>Events/showevents/{maandID}">{maandNaam}</a></li>
+                                            <li> <a href="<?php echo base_url(); ?>Events/showevents/{maandID}/<?php echo date('Y'); ?>">{maandNaam}</a></li>
                                             {/maanden}
                                         </ul>
                                     </div>
@@ -213,38 +216,37 @@
                         </form>
                     </div><!--sidebar-box-->
 
-                    
-                    
+
+
                 </div><!--sidebar col end-->
                 <div class="col-md-9">
-                    <div class="blog-post">
 
-                        <div class="row">
-                            <div class="col-md-3 margin20">
-                                <a href="#">
-                                    <div class="item-img-wrap">
-                                        <img src="img/img-6.jpg" class="img-responsive" alt="workimg">
-                                        <div class="item-img-overlay">
-                                            <span></span>
-                                        </div>
-                                    </div>                       
-                                </a><!--work link--> 
+                    <div class="blog-post animated fadeInLeft">
+                        {error}
+                        {events}
+                        <div class="row  event-box">
+                            <div class="col-md-3 margin20"> 
+                                
+                                <h4>{eventDate}</h4>                       
+                               
                             </div>
                             <div class="col-md-9 margin20">
-                                <ul class="list-inline post-detail">
-                                    <li>by <a href="#">assan</a></li>
-                                    <li><i class="fa fa-calendar"></i> 31st july 2014</li>
-                                    <li><i class="fa fa-tag"></i> <a href="#">Sports</a></li>
+
+                                <ul class="list-inline post-detail">                                  
+                                    <li>by <a href="#">{username}</a></li>
+
                                 </ul>
-                                <h2><a href="#">Lorem ipsum dollor sit amet</a></h2>
+                                <h2><a href="#">{titel}</a></h2>
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam, adipiscing condimentum tristique vel, eleifend sed turpis. Pellentesque cursus arcu id magna euismod in elementum purus molestie
+                                    {bericht}
                                 </p>
-                                <p><a href="blog-single.html" class="btn btn-theme-dark">Read More...</a></p>
+                                <p><a href="blog-single.html" class="btn btn border-theme btn-xs">Read More...</a></p>
+
                             </div>
                         </div>
+                        {/events}
                     </div><!--blog post-->
-                       
+                    
                     <ul class="pager">
                         <li class="previous"><a href="#">&larr; Previous Page</a></li>
                         <li class="next"><a href="#">Next Page &rarr;</a></li>
