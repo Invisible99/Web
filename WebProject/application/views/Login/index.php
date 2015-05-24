@@ -230,7 +230,7 @@
                                 </div>
                                 <input type="submit" class="btn btn-theme-bg" name="btn-inlog" value="Aanmelden"/>
                                 <a href="#" class="btn btn-fb-login"><i class="fa fa-facebook"></i> Aanmelden met Facebook</a>
-                                <a href="#">Wachtwoord vergeten?</a>
+                                <a href="<?php echo base_url(); ?>login/wachtwoordReset">Wachtwoord vergeten?</a>
                             </form>
                             <?php
                         } else {

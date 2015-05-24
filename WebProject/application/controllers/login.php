@@ -201,4 +201,21 @@ class Login extends CI_Controller {
         }
     }
 
+    function wachtwoordReset() {
+        if (isset($_POST['btn-reset'])) {
+            $this->data['emailVanDB'] = $this->users_model->doesEmailExist($this->input->post('email'));
+
+            if (!empty($this->data['emailVanDB'])) {
+                 $this->_mailToUser($this->input->post('email'));
+                $this->data['melding'] = "<p class='alert alert-succes'>U zal zodadelijk een mail krijgen om uw wachtwoord te veranderen.</p>";
+            }
+            else{
+                $this->data['melding'] = "<p class='alert alert-danger'>Dit e-mail bestaat niet.</p>";
+            }
+            
+        } else {
+            $this->data['melding'] = "";
+            $this->parser->parse('login/wachtwoordReset.php', $this->data);
+        }
+    }
 }
