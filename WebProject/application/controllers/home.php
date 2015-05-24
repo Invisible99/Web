@@ -1,15 +1,19 @@
 <?php
 
-define("KEY_FOR_RC4", "adadaNchsadagadgakk342eiejfiejifje4234MnUUK25fjiNNBZBZNAkdaasd8sadhHZKZJnGREQhhsdjdksdsde");
-
 class Home extends CI_Controller {
+
+    function __construct() {
+        parent::__construct();
+        $this->load->helper('captcha');
+        $this->load->model('captcha_model');
+    }
 
     //Show index page
     function index() {
         $this->load->library('session');
-            $this->load->library('user_agent');
-            $this->load->helper('url');
-            $this->session->sess_destroy();
+        $this->load->library('user_agent');
+        $this->load->helper('url');
+        $this->session->sess_destroy();
         $this->load->view('Home/index');
     }
 
@@ -25,23 +29,75 @@ class Home extends CI_Controller {
 
     //Show contact page
     function contact() {
-        $this->captcha();
+        $captchaValues = $this->captcha_model->create_image();
+        $this->data['captcha'] = $captchaValues['img'];
+        $word = $captchaValues['word'];
+
+        //Form rules
+        $this->form_validation->set_rules('naam', 'naam', 'trim|strip_tags|required');
+        $this->form_validation->set_rules('email', 'email', 'trim|strip_tags|required|valid_email');
+        $this->form_validation->set_rules('onderwerp', 'onderwerp', 'trim|strip_tags|required');
+        $this->form_validation->set_rules('bericht', 'bericht', 'trim|strip_tags|required');
+        $this->form_validation->set_rules('captchaText', 'captchaText', 'trim|strip_tags|required|callback_captcha_check|match_captcha[captcha.captcha]');
         if (isset($_POST['contactBtn'])) {
             $this->data['melding'] = "";
-
-            if ($this->data['melding'] == "") {
+            $this->data['bericht'] = $this->input->post('bericht');
+            $this->data['naam'] = $this->input->post('naam');
+            $this->data['email'] = $this->input->post('email');
+            $this->data['onderwerp'] = $this->input->post('onderwerp');
+            $this->data['captchaText'] = "";
+            if ($this->form_validation->run() === false) {
+                $this->data['melding'] = $this->input->post('bericht');
+                $this->data['naamError'] = form_error('naam', "<p class='alert alert-danger'>");
+                $this->data['emailError'] = form_error('email', "<p class='alert alert-danger'>");
+                $this->data['onderwerpError'] = form_error('onderwerp', "<p class='alert alert-danger'>");
+                $this->data['berichtError'] = form_error('bericht', "<p class='alert alert-danger'>");
+                $this->data['captchaError'] = form_error('captchaText', "<p class='alert alert-danger'>");
+                $this->parser->parse('home/contact.php', $this->data);
+            } else {
                 $to = 'wefknrise@gmail.com';
                 $subject = $this->input->post('onderwerp');
-                $message = $this->input->post('bericht') . "\n\nNaam verzender: " . $this->input->post('naam') . "\n\nTelefoonnummer: " . $this->input->post('telefoon') . "\n\nE-mail: " . $this->input->post('email');
+                $message = $this->input->post('bericht') . "\n\nNaam verzender: " . $this->input->post('naam') . "\n\nE-mail: " . $this->input->post('email');
                 $headers = 'From: ' . $this->input->post('email');
-                mail($to, $subject, $message, $headers);
-                $this->data['melding'] .= "<p class='alert alert-success'>Uw e-mail is met succes verzonden.</p>";
+                if (mail($to, $subject, $message, $headers)) {
+                    $this->data['melding'] .= "<p class='alert alert-success'>Uw e-mail is met succes verzonden.</p>";
+                    $this->data['naamError'] = "";
+                    $this->data['emailError'] = "";
+                    $this->data['onderwerpError'] = "";
+                    $this->data['berichtError'] = "";
+                    $this->data['captchaError'] = "";
+                } else {
+                    $this->data['melding'] .= "<p class='alert alert-danger'>Uw e-mail is niet met succes verzonden.</p>";
+                    $this->data['naamError'] = "";
+                    $this->data['emailError'] = "";
+                    $this->data['onderwerpError'] = "";
+                    $this->data['berichtError'] = "";
+                    $this->data['captchaError'] = "";
+                }
+                $this->parser->parse('home/contact.php', $this->data);
             }
-            $this->parser->parse('home/contact.php', $this->data);
         } else {
-            //$this->data['melding'] .= "<p class='alert alert-danger'>Gelieve het formulier in te vullen.</p>";
-            $this->data['melding'] = "";
+            $this->data['naam'] = "";
+            $this->data['email'] = "";
+            $this->data['onderwerp'] = "";
+            $this->data['bericht'] = "";
+            $this->data['captchaText'] = "";
+            $this->data['melding'] = $word;
+            $this->data['naamError'] = "";
+            $this->data['emailError'] = "";
+            $this->data['onderwerpError'] = "";
+            $this->data['berichtError'] = "";
+            $this->data['captchaError'] = "";
             $this->parser->parse('home/contact.php', $this->data);
+        }
+    }
+
+    function captcha_check($value) {
+        if ($value == "") {
+            $this->form_validation->set_message('captcha_check', 'Please enter the text from the image in the captcha field.');
+            return false;
+        } else {
+            return true;
         }
     }
 
@@ -49,10 +105,10 @@ class Home extends CI_Controller {
     /* $this->data['captcha'] = "<img src='captcha_images.php?width=120&height=40&code=<?php echo $code ?>' />"; */
     //eerste testqry uitvoeren
     function query() {
-        
+
         $this->load->library('session');
-            $this->load->library('user_agent');
-            $this->load->helper('url');
+        $this->load->library('user_agent');
+        $this->load->helper('url');
         /* $this->load->model("testModelUsers");
 
           $this->data['user'] = $this->testModelUsers->getUsers(); //dit is niet 100% juist eigenlijk zou de model enkel de QRY moeten uitvoeren en dan hier controle of het resultaat niet leeg is
@@ -65,7 +121,7 @@ class Home extends CI_Controller {
           }
 
           $this->parser->parse('inloggen_view.html',  $this->data); */
-        if($this->session->has_userdata('user') && $this->session->has_userdata('logged_in') && $this->session->logged_in && $this->session->has_userdata('rolID')){
+        if ($this->session->has_userdata('user') && $this->session->has_userdata('logged_in') && $this->session->logged_in && $this->session->has_userdata('rolID')) {
             $this->load->model("tblgebruikers_model"); //model laden
             $this->data['error'] = "";
             $this->data['gebruikers'] = $this->tblgebruikers_model->findall(); //alle records uit de DB halen zie koen voor uitleg
@@ -74,23 +130,6 @@ class Home extends CI_Controller {
             }
             $this->parser->parse('home/overzichtUsers_view.html', $this->data);
         }
-    }
-
-    function captcha() {
-        $this->load->helper('captcha');
-
-        $captcha = array(
-            'word' => '',
-            'img_path' => './img/captcha/',
-            'img_url' => base_url().'img/captcha/',
-            'font_path' => base_url().'fonts/impact.ttf',
-            'img_width' => '150',
-            'img_height' => 30,
-            'expiration' => 7200
-        );
-        
-        $img = create_captcha($captcha);
-        $this->data['captcha'] = $img['image'];
     }
 
 }
