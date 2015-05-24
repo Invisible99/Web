@@ -19,8 +19,8 @@ class subforum_model extends MY_Model{
         );
     }
     
-    function findThreadsNoPost(){
-        $query = $this->db->query("SELECT * FROM threads WHERE (SELECT COUNT(subpo.latestPost) FROM posts subpo WHERE subpo.latestPost = 1 AND subpo.topicID = threads.topicID) = 0 ORDER BY threads.categorieID ASC");
+    function findThreadsNoPost($id){
+        $query = $this->db->query("SELECT * FROM threads WHERE (SELECT COUNT(subpo.latestPost) FROM posts subpo WHERE subpo.latestPost = 1 AND subpo.topicID = threads.topicID) = 0 AND threads.categorieID =$id ORDER BY threads.categorieID ASC");
         $result = array();
 
         return $query->result();

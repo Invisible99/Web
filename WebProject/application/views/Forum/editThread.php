@@ -145,15 +145,15 @@
                 <div class="row">
                     <div class="col-sm-12 animated fadeInLeft">
                         {error}
-                        {categorie}
+                        {thread}
                         <div class="forumoverview-box event-box animated fadeInLeft jumbotron">
-                            <form id="editcat" action="<?php echo base_url(); ?>forum/doneEditing/{categorieID}" method="POST">
-                                <div><p class="forum-label">Titel:</p><textarea name="formtitel" form="editcat" class="forum-textarea">{titel}</textarea></div>
-                                <div><p class="forum-label">Omschrijving:</p><textarea name="formomschrijving" form="editcat" class="forum-textarea">{omschrijving}</textarea></div>
-                                <div><input type="submit" name="editcat" value="Klaar met wijzigen" class="btn"></div>
+                            <form id="editthr" action="<?php echo base_url(); ?>forum/doneEditing/{topicID}" method="POST">
+                                <div><p class="forum-label">Titel:</p><textarea name="formtitel" form="editthr" class="forum-textarea">{titel}</textarea></div>
+                                <div><p class="forum-label">Inhoud van de top post:</p><textarea name="formbericht" form="editthr" class="forum-textarea">{bericht}</textarea></div>
+                                <div><input type="submit" name="editthr" value="Klaar met wijzigen" class="btn"></div>
                             </form>
                         </div><!--event box-->
-                        {/categorie}
+                        {/thread}
                     </div>
                 </div>
             </div>

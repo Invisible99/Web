@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Subforum</title>
+        <title>Forum</title>
 
         <!-- Bootstrap -->
         <link href="<?php echo base_url(); ?>bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -128,13 +128,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h4>Subforum</h4>
+                        <h4>Forum</h4>
                     </div>
                     <div class="col-sm-6 hidden-xs text-right">
                         <ol class="breadcrumb">
                             <li><a href="<?php echo base_url(); ?>home/index">Home</a></li>
-                            <li><a href="<?php echo base_url(); ?>forum/index">Forum</a></li>
-                            <li>Subforum</li>
+                            <li>Forum</li>
                         </ol>
                     </div>
                 </div>
@@ -143,49 +142,22 @@
         <div class="divide80"></div>
         <div class="schedule">
             <div class="container">
-                <div class="center-heading">
-                    {error2}
-                    {dezeSub}
-                    <h2>{titel}</h2>
-                    <span class="center-line"></span>
-                    <p class="margin40">
-                        {omschrijving}
-                    </p>
-                    {/dezeSub}
-                </div> 
                 <div class="row">
                     <div class="col-sm-12 animated fadeInLeft">
                         {error}
-                        {subforum}
+                        {thread}
                         <div class="forumoverview-box event-box jumbotron">
                             <h3 class="forum-wrap">
-                                <a href="<?php echo base_url(); ?>forum/thread/{thrtopicID}" class="forum-overview-naam jumbotron">{thrtitel}</a> {bericht}
+                                <a href="<?php echo base_url(); ?>forum/thread/{topicID}" class="forum-overview-naam jumbotron">{titel}:</a> {bericht}
                             </h3>
-                            <p class="forum-overview-post jumbotron">
-                                <strong>Laatste post:</strong> {lastpost} 
-                            </p>
-                            <p class="forum-overview-poster jumbotron">
-                                <strong class="forum-overview-black">Poster:</strong> <a href="#">{username}</a>
-                            </p>
-                            <a href="<?php echo base_url(); ?>forum/editThread/{thrtopicID}"><span class="forum-button">Wijzigen</span></a>
-                            <a href="<?php echo base_url(); ?>forum/deleteThread/{thrtopicID}"><span class="forum-button">Verwijderen</span></a>
                         </div><!--event box-->
-                        {/subforum}
-                        {subforumNoPost}
                         <div class="forumoverview-box event-box jumbotron">
-                            <h3 class="forum-wrap">
-                                <a href="<?php echo base_url(); ?>forum/thread/{topicID}" class="forum-overview-naam jumbotron">{titel}</a> {bericht}
-                            </h3>
-                            <p class="forum-overview-post jumbotron">
-                                <strong>Er zijn nog geen posts</strong>
-                            </p>
-                            <a href="<?php echo base_url(); ?>forum/editThread/{topicID}"><span class="forum-button">Wijzigen</span></a>
-                            <a href="<?php echo base_url(); ?>forum/deleteThread/{topicID}"><span class="forum-button">Verwijderen</span></a>
+                            <div><p class="forum-label">Bent u zeker dat u deze thread wilt verwijderen?:</p></div>
+                            <form id="deletecat" action="<?php echo base_url(); ?>forum/doneEditing/{topicID}" method="POST">
+                                <div><input type="submit" name="deletethryes" value="Ja" class="btn"> of <input type="submit" name="deletethrno" value="Nee" class="btn"></div>
+                            </form>
                         </div><!--event box-->
-                        {/subforumNoPost}
-                        <div>
-                            <a href="<?php echo base_url(); ?>forum/addThread/{addButtonID}"><span class="forum-button-right">Toevoegen</span></a>
-                        </div><!--toevoegen knop-->
+                        {/thread}
                     </div>
                 </div>
             </div>
@@ -253,7 +225,6 @@
                             </form>
                         </div>                        
                     </div><!--footer col-->
-
                 </div>
                 <div class="row">
                     <div class="col-md-12 text-center">

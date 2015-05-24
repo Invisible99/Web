@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 24, 2015 at 08:54 PM
+-- Generation Time: May 24, 2015 at 10:02 PM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -209,30 +209,31 @@ CREATE TABLE IF NOT EXISTS `threads` (
   `gebruikerID` int(11) NOT NULL COMMENT 'gebruiker die deze topic heeft aangemaakt',
   `categorieID` int(11) NOT NULL,
   `latestThread` tinyint(4) NOT NULL DEFAULT '1',
-  `eventDate` date DEFAULT NULL COMMENT 'enkel nodig bij topics over events'
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
+  `eventDate` date DEFAULT NULL COMMENT 'enkel nodig bij topics over events',
+  `postDate` date DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `threads`
 --
 
-INSERT INTO `threads` (`topicID`, `titel`, `bericht`, `gebruikerID`, `categorieID`, `latestThread`, `eventDate`) VALUES
-(1, 'Support', 'Stel hier je vragen!', 4, 2, 1, '0000-00-00'),
-(2, 'Welkom leden', 'Maak kennis met de andere leden hier', 4, 3, 1, '0000-00-00'),
-(3, 'Website launch party', 'De party van het jaar! De nieuwe website wordt gelauncht!', 4, 1, 1, '0000-00-00'),
-(4, 'Nieuwe website in de maak', 'We zijn een nieuwe website aan het maken. Woop Woop!', 4, 4, 1, '0000-00-00'),
-(5, 'Dit is een test event', 'lqjsdlmfjazlerjmljlkjlmsdjfmljsd\r\nfmljsmdfljmlksqdf\r\nmlsdjfmlqsjfmlkjqdf\r\nmjsdmlfjmqlsdjf', 4, 1, 0, '2015-05-14'),
-(6, 'nog een test event', 'lqjsdlmfjazlerjmljlkjlmsdjfmljsd\r\nfmljsmdfljmlksqdf\r\nmlsdjfmlqsjfmlkjqdf\r\nmjsdmlfjmqlsdjf', 4, 1, 0, '2015-06-03'),
-(9, 'zoveelste test event', 'lqjsdlmfjazlerjmljlkjlmsdjfmljsd\r\nfmljsmdfljmlksqdf\r\nmlsdjfmlqsjfmlkjqdf\r\nmjsdmlfjmqlsdjf', 4, 1, 0, '2015-07-14'),
-(11, 'hupla nog wa testen', 'bladieblablabla', 4, 1, 0, '2015-06-10'),
-(13, 'nog ewa meer events', 'tralalalalalalalala', 2, 1, 0, '2015-08-06'),
-(14, 'hier zijn we alweer', 'trolololol', 3, 1, 0, '2015-09-13'),
-(15, 'dit wordt saai', 'wa moet ne mens nog zeggen omdenduur', 1, 1, 0, '2015-11-21'),
-(16, 'ee kijk, een vlieg', 'PETS dood', 2, 1, 0, '2015-12-10'),
-(17, 'kerstmis!!!', 'ho ho ho', 1, 1, 0, '2015-12-25'),
-(18, 'de sint is er ook bij ', 'zie ginds komt de stoomboot', 6, 1, 0, '2015-12-06'),
-(19, 'het nieuwe jaar', 'happy newyear !', 2, 1, 0, '2016-01-01'),
-(20, 'nog 1tje voor 2016 se', 'pffffffffffffffffffffffffffffffffffff', 3, 1, 0, '2016-04-05');
+INSERT INTO `threads` (`topicID`, `titel`, `bericht`, `gebruikerID`, `categorieID`, `latestThread`, `eventDate`, `postDate`) VALUES
+(1, 'Support', 'Stel hier je vragen!', 4, 2, 1, '0000-00-00', '2015-05-24'),
+(2, 'Welkom leden', 'Maak kennis met de andere leden hier', 4, 3, 1, '0000-00-00', '2015-05-24'),
+(3, 'Website launch party', 'De party van het jaar! De nieuwe website wordt gelauncht!', 4, 1, 1, '0000-00-00', '2015-05-24'),
+(4, 'Nieuwe website in de maak', 'We zijn een nieuwe website aan het maken. Woop Woop!', 4, 4, 1, '0000-00-00', '2015-05-24'),
+(5, 'Het grote wijzig-event', 'Lekker body dit!', 4, 1, 0, '2015-05-14', '0000-00-00'),
+(6, 'nog een test event', 'lqjsdlmfjazlerjmljlkjlmsdjfmljsd\r\nfmljsmdfljmlksqdf\r\nmlsdjfmlqsjfmlkjqdf\r\nmjsdmlfjmqlsdjf', 4, 1, 0, '2015-06-03', '0000-00-00'),
+(9, 'zoveelste test event', 'lqjsdlmfjazlerjmljlkjlmsdjfmljsd\r\nfmljsmdfljmlksqdf\r\nmlsdjfmlqsjfmlkjqdf\r\nmjsdmlfjmqlsdjf', 4, 1, 0, '2015-07-14', '0000-00-00'),
+(11, 'hupla nog wa testen', 'bladieblablabla', 4, 1, 0, '2015-06-10', '0000-00-00'),
+(13, 'nog ewa meer events', 'tralalalalalalalala', 2, 1, 0, '2015-08-06', '0000-00-00'),
+(14, 'hier zijn we alweer', 'trolololol', 3, 1, 0, '2015-09-13', '0000-00-00'),
+(15, 'dit wordt saai', 'wa moet ne mens nog zeggen omdenduur', 1, 1, 0, '2015-11-21', '0000-00-00'),
+(16, 'ee kijk, een vlieg', 'PETS dood', 2, 1, 0, '2015-12-10', '0000-00-00'),
+(17, 'kerstmis!!!', 'ho ho ho', 1, 1, 0, '2015-12-25', '0000-00-00'),
+(18, 'de sint is er ook bij ', 'zie ginds komt de stoomboot', 6, 1, 0, '2015-12-06', '0000-00-00'),
+(19, 'het nieuwe jaar', 'happy newyear !', 2, 1, 0, '2016-01-01', '0000-00-00'),
+(24, 'fre masterrace', 'officiele fanclub hier!', 1, 7, 1, '0000-00-00', '2015-05-24');
 
 -- --------------------------------------------------------
 
@@ -348,7 +349,7 @@ MODIFY `rolID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 -- AUTO_INCREMENT for table `threads`
 --
 ALTER TABLE `threads`
-MODIFY `topicID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
+MODIFY `topicID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT for table `users`
 --
