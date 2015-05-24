@@ -171,11 +171,11 @@
                          <form role="form" action='index' method='post' >
                         <div class="form-group">
                             <label for="gebruikersnaam">Gebruikersnaam</label>
-                            <input type="text" class="form-control" name="gebruikersnaam" id="gebruikersnaam" placeholder="Gebruikersnaam">
+                            <input type="text" class="form-control" name="gebruikersnaam" id="gebruikersnaam" placeholder="Gebruikersnaam" required="required">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" name="password" id="password" placeholder="Password" required="required">
                         </div>                   
                         <div class="checkbox">
                             <label>

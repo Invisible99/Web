@@ -2,31 +2,48 @@
 
 class Login extends CI_Controller {
 
+    function __construct() {
+        parent::__construct();
+        $this->load->model('users_model');
+    }
+
     //Show login page
     function index() {
-          if (isset($_POST['btn-inlog'])) {          
-            
-            $this->load->model("users_model");
+        $this->data['inloggen'] = $this->users_model->login('pxl2');
+        print_r($this->data['inloggen']["al_ingelogd"]);
+        
+        if (isset($_POST['btn-inlog'])) {
+
             $this->data['melding'] = "";
             $this->data['username'] = $this->input->post('gebruikersnaam');
             $this->data['password'] = $this->input->post('password');
-          
+            
+            print_r($this->data['username']);
+
             $this->data['inloggen'] = $this->users_model->login($this->input->post('gebruikersnaam'));
 
             if (!empty($this->data['inloggen'])) {
-                $hash = $this->data['inloggen']["password"];
-                
-                if(password_verify($this->input->post('password'), $hash)){
-                    $this->data['melding'] = "<p class='alert alert-success'>Bedankt voor uw inloggen.</p>";
+                //print_r($this->data['inloggen']["al_ingelogd"]);
+                if ($this->data['inloggen']["al_ingelogd"] == 0) { //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!hier moet nog controle bij of de gebruiker al geactiveerd is en dus wel mag inloggen!
+                    if ($this->data['inloggen']["password"] == $this->input->post('password')) {
+                        $this->firstlogin($this->data['inloggen']["gebruikerID"]);
+                        return;
+                    } else {
+                        $this->data['melding'] = "<p class='alert alert-danger'>De gebruikersnaam en wachtwoord komen niet overeen.</p>";
+                    }
+                } else {
+                    $hash = $this->data['inloggen']["password"];
+
+                    if (password_verify($this->input->post('password'), $hash)) {
+                        $this->data['melding'] = "<p class='alert alert-success'>Bedankt voor uw inloggen.</p>";
+                    } else {
+                        $this->data['melding'] = "<p class='alert alert-danger'>De gebruikersnaam en wachtwoord komen niet overeen.</p>";
+                    }
                 }
-                else{
-                    $this->data['melding'] = "<p class='alert alert-danger'>De gebruikersnaam of wachtwoord bestaat niet.</p>";
-                }
+            } else {
+                $this->data['melding'] = "<p class='alert alert-danger'>De gebruikersnaam en wachtwoord komen niet overeen.</p>";
             }
-            else{
-                $this->data['melding'] = "<p class='alert alert-danger'>De gebruikersnaam of wachtwoord bestaat niet.</p>";
-            }
- 
+
             $this->parser->parse('login/index.php', $this->data);
         } else {
             $this->data['melding'] = "";
@@ -37,6 +54,34 @@ class Login extends CI_Controller {
         }
     }
 
+    function firstlogin($gebruikerID) {
+        if (isset($_POST['btn-opslaan'])) {
+
+            $this->data['melding'] = "";
+            $this->data['gebruikerID'] = $gebruikerID;
+            if ($this->input->post('newPassword') != $this->input->post('repeatPassword')) {
+                $this->data['melding'] .= "<p class='alert alert-danger'>De wachtwoorden komen niet overeen.</p>";
+                
+                $this->data['gebruikerID'] = $gebruikerID;
+                $this->parser->parse('login/firstlogin.php', $this->data);
+            } else {
+                //hash het wachtwoord
+                $hash = password_hash($this->input->post('newPassword'), PASSWORD_DEFAULT);
+
+                //update wachtw van gebruiker met ID
+                $this->users_model->updateID(array('password' => $hash, 'al_ingelogd' => 1), array('gebruikerID' => $gebruikerID));
+
+                $this->data['melding'] = "<p class='alert alert-success'>Uw wactwoord is vervangen, u kan nu inloggen met uw nieuw wachtwoord.</p>";
+
+                $this->parser->parse('login/index.php', $this->data);
+            }
+        } else {
+            $this->data['melding'] = "";
+            $this->data['gebruikerID'] = $gebruikerID;
+            $this->parser->parse('login/firstlogin.php', $this->data);
+        }
+    }
+
     function register() {
         //CAPTCHA NG DOEN!!!!!!!!!!!!!!
         //hier nog invoercontrole, alle velden zijn wel via html required. CI doet anti-sqlinjectie automatisch
@@ -44,8 +89,6 @@ class Login extends CI_Controller {
         //ook controle of de gebruikersnaam en e-mailadres al in gebruik zijn!
 
         if (isset($_POST['btn-reg'])) {
-            $this->load->model("users_model");
-
             $this->data['melding'] = "";
 
             $this->data['voornaam'] = $this->input->post('voornaam');
@@ -104,7 +147,7 @@ class Login extends CI_Controller {
         $subject = 'TEDxPXL registratie';
         $message = "Beste " . $userVoornaam . " " . $userAchternaam . "\n\nBedankt voor uw registratie bij TEDxPXL.\nU kan nu inloggen met " . $userUsername . " met als wachtwoord " . $generatedPassword . "\nU zal uw wachtwoord moeten wijzigen bij de eerste keer inloggen.\n\nMet vriendelijke groet\n\nTEDxPXL Administratie";
         $headers = 'From: pxltedx@gmail.com';
-        if (!mail($to, $subject, $message, $headers)){
+        if (!mail($to, $subject, $message, $headers)) {
             //echo "Email sending failed";
         }
     }
@@ -115,10 +158,9 @@ class Login extends CI_Controller {
         $subject = 'Nieuwe TEDxPXL gebruiker';
         $message = "Beste Admin \n\n" . $userVoornaam . " " . $userAchternaam . " wil zich registreren met gebruikersnaam: " . $userUsername . " en het e-mail adres " . $userEmail . "\nGa naar de website om dit te bevestigen of af te keuren.";
         $headers = 'From: pxltedx@gmail.com';
-        if (!mail($to, $subject, $message, $headers)){
+        if (!mail($to, $subject, $message, $headers)) {
             //echo "Email sending failed";
         }
-
     }
 
 }
