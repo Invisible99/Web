@@ -222,9 +222,11 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-9 text-center">
+                                    {volgendEvent}
                                     <h2>Next event:</h2>
-                                    <h2> event Assan 2016</h2>
-                                    <h4>January 01-03, 2016 in sydney</h4>
+                                    <h2> {titel}</h2>
+                                    <h4 id="volgendEventID">{datum}</h4>
+                                    {/volgendEvent}
                                 </div>
                             </div>
                             <div class="row">
@@ -351,7 +353,8 @@
         <script type="text/javascript">
             $(function () {
                 var austDay = new Date();
-                austDay = new Date(austDay.getFullYear() + 1, 1 - 1, 26);
+                var i = $('#volgendEventID').text()
+                austDay = new Date(i);
                 $('#defaultCountdown').countdown({until: austDay});
                 $('#year').text(austDay.getFullYear());
             });

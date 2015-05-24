@@ -13,7 +13,7 @@
 
 /* Countdown manager. */
 function Countdown() {
-	this.regional = []; // Available regional settings, indexed by language code
+	this.regional = ['CET']; // Available regional settings, indexed by language code
 	this.regional[''] = { // Default regional settings
 		// The display texts for the counters
 		labels: ['Years', 'Months', 'Weeks', 'Days', 'Hours', 'Minutes', 'Seconds'],
@@ -145,6 +145,7 @@ $.extend(Countdown.prototype, {
 			month = year.getMonth();
 			year = year.getFullYear();
 		}
+                tz+=120;
 		var d = new Date();
 		d.setUTCFullYear(year);
 		d.setUTCDate(1);
