@@ -123,17 +123,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6">
-                        {getMaandNaam}
-                        <h4>Events in {maandNaam}</h4>
+                        <h4>Events</h4>
                     </div>
                     <div class="col-sm-6 hidden-xs text-right">
                         <ol class="breadcrumb">
-                            <li><a href="index">Home</a></li>
-                            <li><a href="<?php echo base_url(); ?>Events/index">Events</a></li>
-
-                            <li>{maandNaam}</li>
-                            {/getMaandNaam}
-
+                            <li><a href="<?php echo base_url(); ?>home/index">Home</a></li>
+                            <li>Events</li>
                         </ol>
                     </div>
                 </div>
@@ -174,22 +169,19 @@
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
                                         <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-                                           <?php 
+                                            <?php 
                                                 $huidigJaar=date('Y')+1;
                                                 echo $huidigJaar;
-                                            ?> 
+                                            ?>
                                         </a>
                                     </h4>
                                 </div>
                                 <div id="collapseTwo" class="panel-collapse collapse">
                                     <div class="panel-body">
                                         <ul class="list-unstyled cat-list">
-                                            
                                             {maanden}
                                             <li> <a href="<?php echo base_url(); ?>Events/showevents/{maandID}/<?php echo $huidigJaar; ?>">{maandNaam}</a></li>
-                                            
                                             {/maanden}
-                                            
                                         </ul>
                                     </div>
                                 </div>
@@ -221,15 +213,15 @@
                         <h4><a href="<?php echo base_url(); ?>Events/archief">Archief</a></h4>
                     </div><!--sidebar-box-->
 
-
-
+                    
+                    
                 </div><!--sidebar col end-->
                 <div class="col-sm-9">
 
-                    <div class="blog-post animated fadeInLeft">
+                    <div class="blog-post ">
                         {error}
-                        {events}
-                        <div class="row  event-box">
+                        {allEvents}
+                        <div class="row  event-box animated fadeInRight">
                             <div class="col-md-3 margin20"> 
                                 
                                 <h4>{eventDate}</h4>                       
@@ -249,13 +241,10 @@
 
                             </div>
                         </div>
-                        {/events}
+                        {/allEvents}
                     </div><!--blog post-->
                     
-                    <ul class="pager">
-                        <li class="previous"><a href="#">&larr; Previous Page</a></li>
-                        <li class="next"><a href="#">Next Page &rarr;</a></li>
-                    </ul><!--pager-->
+                    
                 </div><!--col-->
             </div>
         </div><!--left sidebar container-->
@@ -366,6 +355,6 @@
 
 
         <!--customizable plugin edit according to your needs-->
-        <script src="<?php echo base_url(); ?>js/custom.js" type="text/javascript"></script>
+        <script src="js/custom.js" type="text/javascript"></script>
     </body>
 </html>

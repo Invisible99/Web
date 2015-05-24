@@ -148,9 +148,9 @@
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
                                         <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                                            <?php 
-                                                $huidigJaar=date('Y');
-                                                echo $huidigJaar;
+                                            <?php
+                                            $huidigJaar = date('Y');
+                                            echo $huidigJaar;
                                             ?>
                                         </a>
                                     </h4>
@@ -169,9 +169,9 @@
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
                                         <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-                                            <?php 
-                                                $huidigJaar=date('Y')+1;
-                                                echo $huidigJaar;
+                                            <?php
+                                            $huidigJaar = date('Y') + 1;
+                                            echo $huidigJaar;
                                             ?>
                                         </a>
                                     </h4>
@@ -190,9 +190,9 @@
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
                                         <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-                                            <?php 
-                                                $huidigJaar=date('Y')+2;
-                                                echo $huidigJaar;
+                                            <?php
+                                            $huidigJaar = date('Y') + 2;
+                                            echo $huidigJaar;
                                             ?>
                                         </a>
                                     </h4>
@@ -210,45 +210,32 @@
                         </div>
                     </div><!--sidebar-box-->
                     <div class="sidebar-box margin40">
-                        <h4>Search Events</h4>
-                        <form role="form" class="search-widget">
-                            <input type="text" class="form-control">
-                            <i class="fa fa-search"></i>
-                        </form>
+                        <h4><a href="<?php echo base_url(); ?>Events/archief">Archief</a></h4>
                     </div><!--sidebar-box-->
 
-                    
-                    
+
+
                 </div><!--sidebar col end-->
                 <div class="col-sm-9">
 
-                    <div class="blog-post ">
-                        {error}
-                        {allEvents}
-                        <div class="row  event-box animated fadeInLeft">
-                            <div class="col-md-3 margin20"> 
-                                
-                                <h4>{eventDate}</h4>                       
-                               
+                    <div class="parallax events-bg" data-stellar-background-ratio="0.5">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-9 text-center">
+                                    <h2>Next event:</h2>
+                                    <h2> event Assan 2016</h2>
+                                    <h4>January 01-03, 2016 in sydney</h4>
+                                </div>
                             </div>
-                            <div class="col-md-9 margin20">
-
-                                <ul class="list-inline post-detail">                                  
-                                    <li>by <a href="#">{username}</a></li>
-
-                                </ul>
-                                <h2><a href="#">{titel}</a></h2>
-                                <p>
-                                    {bericht}
-                                </p>
-                                <p><a href="<?php echo base_url(); ?>forum/thread/{topicID}" class="btn btn border-theme btn-xs">Read More...</a></p>
-
+                            <div class="row">
+                                <div class="col-md-9 text-center">
+                                    <div id="defaultCountdown"></div>
+                                </div>
                             </div>
                         </div>
-                        {/allEvents}
-                    </div><!--blog post-->
-                    
-                    
+                    </div><!--events slider end-->
+
+
                 </div><!--col-->
             </div>
         </div><!--left sidebar container-->
@@ -359,6 +346,15 @@
 
 
         <!--customizable plugin edit according to your needs-->
-        <script src="js/custom.js" type="text/javascript"></script>
+        <script src="<?php echo base_url(); ?>js/custom.js" type="text/javascript"></script>
+        <script src="<?php echo base_url(); ?>js/jquery.countdown.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            $(function () {
+                var austDay = new Date();
+                austDay = new Date(austDay.getFullYear() + 1, 1 - 1, 26);
+                $('#defaultCountdown').countdown({until: austDay});
+                $('#year').text(austDay.getFullYear());
+            });
+        </script>
     </body>
 </html>

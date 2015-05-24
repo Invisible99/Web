@@ -37,6 +37,18 @@ class Events extends CI_Controller {
         $this->parser->parse('Events/showevents',$this->data);
     }
 
-
+function archief() {
+        
+        $this->load->model("maand_model");
+        $this ->data['maanden'] = $this->maand_model->get_months();  
+        $this->load->model("subforum_model");
+        $this->data['error']="";
+        $this->data['allEvents']=$this->subforum_model->selectAllEvents();
+        if (empty($this->data['allEvents'])) {
+            //de alert-error is vn bootstrap
+            $this->data['error'] = "<div class='alert alert-error'>Er zijn nog geen events deze maand!</div>";
+        }
+        $this->parser->parse('Events/archief.php',$this->data);
+    }
 }
 
