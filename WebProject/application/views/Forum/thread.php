@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Login - Register</title>
+        <title>Thread</title>
 
         <!-- Bootstrap -->
         <link href="<?php echo base_url(); ?>bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -288,7 +288,9 @@
                     <div class="col-sm-6 hidden-xs text-right">
                         <ol class="breadcrumb">
                             <li><a href="index">Home</a></li>
-                            <li>Forum</li>
+                            <li><a href="<?php echo base_url(); ?>forum/index">Forum</a></li>
+                            <li><a href="<?php echo base_url(); ?>forum/subforum/{categorieID}">Subforum</a></li>
+                            <li>Thread</li>
                         </ol>
                     </div>
                 </div>
@@ -298,16 +300,16 @@
         <div class="schedule">
             <div class="container">
                 <div class="center-heading">
-                    <h2>Welkom op het TEDxPXL forum</h2>
+                    <h2>{thrtitel}</h2>
                     <span class="center-line"></span>
                     <p class="margin40">
-                        Gelieve naar hartelust deel te nemen aan onze vele interessante topics.
+                        {thrbericht}
                     </p>
                 </div> 
                 <div class="row">
                     <div class="col-sm-12">
                         {error}
-                        {posts}
+                        {thread}
                         <div class="forumoverview-box event-box animated fadeInLeft">
                             <p class="forum-overview-post">
                                 <strong>({berichtID}) Posted on {postDate}: </strong> {bericht}
@@ -316,7 +318,7 @@
                                 <strong>Poster:</strong> {username}
                             </p>
                         </div><!--event box-->
-                        {/posts}
+                        {/thread}
                     </div>
                 </div>
             </div>

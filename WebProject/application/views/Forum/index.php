@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Login - Register</title>
+        <title>Forum</title>
 
         <!-- Bootstrap -->
         <link href="<?php echo base_url(); ?>bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -287,7 +287,7 @@
                     </div>
                     <div class="col-sm-6 hidden-xs text-right">
                         <ol class="breadcrumb">
-                            <li><a href="index">Home</a></li>
+                            <li><a href="<?php echo base_url(); ?>home/index">Home</a></li>
                             <li>Forum</li>
                         </ol>
                     </div>
@@ -307,22 +307,19 @@
                 <div class="row">
                     <div class="col-sm-12">
                         {error}
-                        {subforums}
+                        {forum}
                         <div class="forumoverview-box event-box animated fadeInLeft">
-                            <h3 class="forum-overview-naam margin40">
-                                <a href="<?php echo base_url(); ?>/forum/subforum/{categorieID}">{titel}</a>
-                            </h3>                        
+                            <h3>
+                                <a href="<?php echo base_url(); ?>forum/subforum/{categorieID}" class="forum-overview-naam">{titel}:</a> {omschrijving}
+                            </h3>
                             <p class="forum-overview-post">
-                                {omschrijving} 
-                            </p>
-                            <p class="forum-overview-post">
-                                <strong>Laatste post:</strong> blablabla <strong>in:</strong> balblabllalblalbal 
+                                <strong>Laatste post in </strong><strong class="forum-overview-red"><a href="<?php echo base_url(); ?>forum/thread/{topicID}">{thrtitel}</a></strong>: {bericht} 
                             </p>
                             <p class="forum-overview-poster">
-                                <strong>Poster:</strong> Piet.Vandeput
+                                <strong class="forum-overview-black">Poster:</strong> <a href="#">{username}</a>
                             </p>
                         </div><!--event box-->
-                        {/subforums}
+                        {/forum}
                     </div>
                 </div>
             </div>

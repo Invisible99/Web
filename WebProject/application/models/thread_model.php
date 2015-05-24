@@ -1,11 +1,11 @@
 <?php
 
 class thread_model extends MY_Model{
-    var $tableName="threads";
+    var $tableName="posts";
     var $primkey="categorieID";
     
-    function findThreads($id){
-        $query = $this->db->query("SELECT threads.topicID, threads.titel, threads.bericht, users.username FROM threads LEFT JOIN users ON threads.gebruikerID = users.gebruikerID WHERE threads.categorieID = $id");
+    function findPosts($id){
+        $query = $this->db->query("SELECT posts.berichtID, posts.bericht, posts.postDate, users.username FROM posts LEFT JOIN users ON posts.gebruikerID = users.gebruikerID WHERE posts.topicID = $id ORDER BY posts.berichtID ASC");
         $result = array();
 
         return $query->result();

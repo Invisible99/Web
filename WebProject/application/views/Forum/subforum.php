@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Login - Register</title>
+        <title>Subforum</title>
 
         <!-- Bootstrap -->
         <link href="<?php echo base_url(); ?>bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -283,12 +283,13 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h4>Forum</h4>
+                        <h4>Subforum</h4>
                     </div>
                     <div class="col-sm-6 hidden-xs text-right">
                         <ol class="breadcrumb">
-                            <li><a href="index">Home</a></li>
-                            <li>Forum</li>
+                            <li><a href="<?php echo base_url(); ?>home/index">Home</a></li>
+                            <li><a href="<?php echo base_url(); ?>forum/index">Forum</a></li>
+                            <li>Subforum</li>
                         </ol>
                     </div>
                 </div>
@@ -298,28 +299,29 @@
         <div class="schedule">
             <div class="container">
                 <div class="center-heading">
-                    <h2>Welkom op het TEDxPXL forum</h2>
+                    {error2}
+                    <h2>{titel}</h2>
                     <span class="center-line"></span>
                     <p class="margin40">
-                        Gelieve naar hartelust deel te nemen aan onze vele interessante topics.
+                        {omschrijving}
                     </p>
                 </div> 
                 <div class="row">
                     <div class="col-sm-12">
                         {error}
-                        {threads}
+                        {subforum}
                         <div class="forumoverview-box event-box animated fadeInLeft">
-                            <h3 class="forum-overview-naam margin40">
-                                <a href="<?php echo base_url(); ?>/forum/thread/{topicID}">{{titel}</a>
-                            </h3>                        
+                            <h3>
+                                <a href="<?php echo base_url(); ?>forum/thread/{thrtopicID}" class="forum-overview-naam">{thrtitel}</a>
+                            </h3>
                             <p class="forum-overview-post">
-                                <strong>Laatste post:</strong> {bericht}
-                                </p>
+                                <strong>Laatste post:</strong> {lastpost} 
+                            </p>
                             <p class="forum-overview-poster">
-                                <strong>Poster:</strong> {username}
+                                <strong class="forum-overview-black">Poster:</strong> <a href="#">{username}</a>
                             </p>
                         </div><!--event box-->
-                        {/threads}
+                        {/subforum}
                     </div>
                 </div>
             </div>
