@@ -65,7 +65,7 @@
                             <a href="<?php echo base_url(); ?>home/index">Home</a>
                         </li>
                         <!--menu Portfolio li end here-->
-                        <li class="active">
+                        <li class="dropdown">
                             <a href="<?php echo base_url(); ?>forum/index">Forum</a>
                         </li>
                         <li class="dropdown">
@@ -78,7 +78,7 @@
                         <?php
                         if ($this->session->has_userdata('user') && $this->session->has_userdata('logged_in') && $this->session->logged_in && $this->session->has_userdata('rolID') && $this->session->userdata['rolID'] == 1) {
                             ?>
-                            <li class="dropdown">
+                            <li class="active">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <i class="fa fa-angle-down"></i></a>
                                 <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
                                     <li><a href="<?php echo base_url(); ?>admin/gebruikerOverzicht">Gebruikers</a></li>
@@ -87,6 +87,7 @@
                             </li>
 
                         <?php } ?>
+                            
                         <li class="dropdown " data-animate="animated fadeInUp" style="z-index:500;">
                             <a href="#" class="dropdown-toggle " data-toggle="dropdown"><i class="fa fa-search"></i></a>
                             <ul class="dropdown-menu search-dropdown animated fadeInUp">
@@ -133,11 +134,13 @@
                             } else {
                                 ?> 
                                 <form role="form" action='<?php echo base_url(); ?>forum/wijzigProfiel' method='post'>
+                                    <h4 class="center-heading">Profiel wijzigen</h4>
                                     <input type="submit" class="btn btn-theme-bg center-block" name="btn-prfWzg" value="Profiel wijzigen"/>
                                     <div class="clearfix"></div>
                                 </form>
                                 <hr>
                                 <form role="form" action='<?php echo base_url(); ?>login/index' method='post'>
+                                    <h4 class="center-heading">Afmelden</h4>
                                     <input type="submit" class="btn btn-theme-bg center-block" name="btn-logoff" value="Afmelden"/>
                                 </form>
                                 <?php
@@ -176,22 +179,21 @@
                             <div class="form-group col-xs-12 controls">
                                 <p class="text-center"><label for="foto">Profielfoto:</label></p>
                                 <ul class="list-inline f3-work">
-                                    <?php echo form_open_multipart('forum/do_upload'); ?>
-                                    <li><a href="" onclick="document.getElementById('userfile').click();
-                                            return false"><img id="img" src="{/user}{profielfoto}{user}" name="foto" class="img-responsive center-block" alt="profielfoto"></a></li>
+                                    <?php echo form_open('admin/do_upload/{gebruikerID}'); ?>
+                                    <li><img id="img" src="{/user}{profielfoto}{user}" name="foto" class="img-responsive center-block" alt="profielfoto"></li>
                                 </ul>
-                                <input type="file" name="userfile" id="userfile" size="20" onchange="readURL(this);" class="hidden" />
+                                
                                 <p class="help-block"></p>
                             </div>
                         </div> 
                         <div class="row">
                             <div class="form-group col-xs-12">
-                                <input type="submit" name="submit" class="btn btn-theme-bg btn-lg center-block" value="Wijzig foto" />
+                                <input type="submit" name="submit" class="btn btn-theme-bg btn-lg center-block" value="Reset profielfoto" />
                             </div>
                         </div>
                     </div>
                     <?php echo form_close(); ?>
-                    <?php echo form_open("forum/wijzigProfiel"); ?>
+                    <?php echo form_open("admin/wijzigProfiel/{gebruikerID}"); ?>
                     <div class="col-md-8 col-md-offset-2">
                         <div class="col-md-12 margin30">
                             <div class="row control-group">
@@ -206,7 +208,7 @@
                             <div class="row control-group">
                                 <div class="form-group col-xs-12 controls">
                                     <label>Voornaam:</label>
-                                    <input type="text" class="form-control" name="voornaam" placeholder="Voornaam"  value="{voornaam}" required="required">
+                                    <input type="text" class="form-control" name="voornaam" placeholder="Voornaam"  value="{voornaam}" required="required" readonly>
                                     <p class="help-block"></p>
                                 </div>
                             </div>
@@ -215,7 +217,7 @@
                             <div class="row control-group">
                                 <div class="form-group col-xs-12 controls">
                                     <label>Familienaam:</label>
-                                    <input type="text" class="form-control" name="familienaam" placeholder="Familienaam" value="{familienaam}" required="required">
+                                    <input type="text" class="form-control" name="familienaam" placeholder="Familienaam" value="{familienaam}" required="required" readonly>
                                     <p class="help-block"></p>
                                 </div>
                             </div> 
@@ -224,7 +226,7 @@
                             <div class="row control-group">
                                 <div class="form-group col-xs-12 controls">
                                     <label>E-mailadres:</label>
-                                    <input type="text" class="form-control" name="email" placeholder="Email" value="{email}" required="required">
+                                    <input type="text" class="form-control" name="email" placeholder="Email" value="{email}" required="required" readonly >
                                     <p class="help-block"></p>
                                 </div>
                             </div>
@@ -233,6 +235,7 @@
                         <div class="row">
                             <div class="form-group col-xs-12">
                                 <input type="submit" name="editProfile" class="btn btn-theme-bg btn-lg" value="Wijzig profiel" />
+                                <a class="btn btn-theme-bg btn-lg pull-right" href="<?php echo base_url(); ?>admin/gebruikerOverzicht">Terug naar overzicht</a>
                             </div>
                         </div>
                         <div id="success"></div>
@@ -253,10 +256,11 @@
                                 TEDxPXL is een onafhankelijk georganiseerd TED conferentie waar sprekers uit de hele wereld hun cutting-edge ideeën kunnen delen.
                             </p>
                             <ul class="list-inline social-1">
-                                <li><a href="https://www.facebook.com/TEDxEvents?fref=ts"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="https://twitter.com/tedx"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="https://plus.google.com/+TEDx"><i class="fa fa-google-plus"></i></a></li>
-                                <li><a href="https://www.pinterest.com/tednews/"><i class="fa fa-pinterest"></i></a></li>
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
                             </ul>
                         </div>                        
                     </div><!--footer col-->
@@ -266,8 +270,8 @@
 
                             <ul class="list-unstyled contact">
                                 <li><p><strong><i class="fa fa-map-marker"></i> Adres:</strong> Elfde-Liniestraat 24, 3500 Hasselt, België</p></li> 
-                                <li><p><strong><i class="fa fa-envelope"></i> Mail Ons:</strong> <a href="index/contact">pxltedx@gmail.com</a></p></li>
-                                <li> <p><strong><i class="fa fa-phone"></i> Telefoon:</strong>+ 32 11 77 55 55</p></li>
+                                <li><p><strong><i class="fa fa-envelope"></i> Mail Ons:</strong> <a href="#">pxltedx@gmail.com</a></p></li>
+                                <li> <p><strong><i class="fa fa-phone"></i> Telefoon:</strong>+32 474 21 21 25</p></li>
 
                             </ul>
                         </div>                        

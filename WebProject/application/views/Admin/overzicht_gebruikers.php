@@ -77,7 +77,7 @@
                         <?php
                         if ($this->session->has_userdata('user') && $this->session->has_userdata('logged_in') && $this->session->logged_in && $this->session->has_userdata('rolID') && $this->session->userdata['rolID'] == 1) {
                             ?>
-                            <li class="dropdown">
+                            <li class="active">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <i class="fa fa-angle-down"></i></a>
                                 <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
                                     <li><a href="<?php echo base_url(); ?>admin/gebruikerOverzicht">Gebruikers</a></li>
@@ -189,7 +189,7 @@
                         <tr> <td>{username}</td> <td>{email}</td> <td>{voornaam}</td> <td>{familienaam}</td>
                             <td> <a href="<?php echo base_url(); ?>admin/deactivateGebruiker/{gebruikerID}" onclick="return confirm('Weet u zeker dat u {username} wil verwijderen?')"></i>Verwijderen</a></td>
                             <td> <a href="<?php echo base_url(); ?>admin/banGebruiker/{gebruikerID}" onclick="return confirm('Weet u zeker dat u {username} wil bannen?')"></i>Bannen</a></td>
-                            <td> <a href="<?php echo base_url(); ?>admin/bewerkGebruiker/{gebruikerID}">Bewerken</a></td>
+                            <td> <a href="<?php echo base_url(); ?>admin/wijzigProfiel/{gebruikerID}">Bewerken</a></td>
                             {/actieveGebruikers}
                         </tr>                        
                     </table>
