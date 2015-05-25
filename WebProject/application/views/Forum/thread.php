@@ -169,6 +169,7 @@
                                     <strong> Posted on {<?php echo $post->postDate; ?>}: </strong> <?php echo $post->bericht; ?>
                                 </p>
                                 <p class="forum-overview-poster jumbotron">
+                                    <img id="img" src="<?php echo (base_url()."userpic/".$post->profielfoto); ?>" name="foto" class="border-black forum-picture" alt="profielfoto">
                                     <strong class="forum-overview-black">Poster:</strong> <a href="#"><?php echo $post->username; ?></a>
                                 </p>
                                  <?php

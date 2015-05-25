@@ -5,7 +5,7 @@ class thread_model extends MY_Model{
     var $primkey="berichtID";
     
     function findPosts($id){
-        $query = $this->db->query("SELECT posts.berichtID, posts.bericht, posts.postDate, users.username, posts.gebruikerID FROM posts LEFT JOIN users ON posts.gebruikerID = users.gebruikerID WHERE posts.topicID = $id ORDER BY posts.berichtID ASC");
+        $query = $this->db->query("SELECT posts.berichtID, posts.bericht, posts.postDate, users.username, posts.gebruikerID, users.profielfoto FROM posts LEFT JOIN users ON posts.gebruikerID = users.gebruikerID WHERE posts.topicID = $id ORDER BY posts.berichtID ASC");
         $result = array();
 
         return $query->result();

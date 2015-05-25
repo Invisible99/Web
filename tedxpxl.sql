@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.14
+-- version 4.2.11
 -- http://www.phpmyadmin.net
 --
--- Machine: 127.0.0.1
--- Gegenereerd op: 25 mei 2015 om 15:10
--- Serverversie: 5.6.17
--- PHP-versie: 5.5.12
+-- Host: 127.0.0.1
+-- Generation Time: May 25, 2015 at 06:35 PM
+-- Server version: 5.6.21
+-- PHP Version: 5.6.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,25 +17,24 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Databank: `tedxpxl`
+-- Database: `tedxpxl`
 --
 
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `captcha`
+-- Table structure for table `captcha`
 --
 
 CREATE TABLE IF NOT EXISTS `captcha` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+`id` int(11) unsigned NOT NULL,
   `tijd` int(11) unsigned NOT NULL,
   `ip_adres` varchar(16) NOT NULL,
-  `captcha` varchar(10) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=113 ;
+  `captcha` varchar(10) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=116 DEFAULT CHARSET=latin1;
 
 --
--- Gegevens worden geëxporteerd voor tabel `captcha`
+-- Dumping data for table `captcha`
 --
 
 INSERT INTO `captcha` (`id`, `tijd`, `ip_adres`, `captcha`) VALUES
@@ -94,51 +93,48 @@ INSERT INTO `captcha` (`id`, `tijd`, `ip_adres`, `captcha`) VALUES
 (109, 1432474570, '::1', 'T8FDAS4T'),
 (110, 1432474577, '::1', 'JZUWJCJH'),
 (111, 1432474830, '::1', '6X7YWRHR'),
-(112, 1432476305, '::1', 'HGWHU7QP');
+(112, 1432476305, '::1', 'HGWHU7QP'),
+(114, 1432563740, '::1', '93XEOZGC'),
+(115, 1432563831, '::1', 'QEBZRWXY');
 
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `categories`
+-- Table structure for table `categories`
 --
 
 CREATE TABLE IF NOT EXISTS `categories` (
-  `categorieID` int(11) NOT NULL AUTO_INCREMENT,
+`categorieID` int(11) NOT NULL,
   `titel` varchar(75) NOT NULL,
   `omschrijving` varchar(255) NOT NULL,
   `magZienTot` int(11) NOT NULL DEFAULT '2',
   `magPosten` int(11) NOT NULL,
-  `magThreadsBewerken` int(11) NOT NULL,
-  PRIMARY KEY (`categorieID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
+  `magThreadsBewerken` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 
 --
--- Gegevens worden geëxporteerd voor tabel `categories`
+-- Dumping data for table `categories`
 --
 
 INSERT INTO `categories` (`categorieID`, `titel`, `omschrijving`, `magZienTot`, `magPosten`, `magThreadsBewerken`) VALUES
-(1, 'Evenementen', 'Hier komen alle geplande en voorbije evenementen.', 2, 2, 1),
-(2, 'Gasten forum', 'forum voor de gasten', 3, 3, 2),
-(3, 'Leden forum', 'forum voor de leden', 2, 2, 2),
-(4, 'Nieuws', 'Al het nieuws van TedxPxl', 2, 2, 1),
-(12, 'Piet''s testforum', 'Don''t mind this place', 2, 2, 2),
-(13, 'Een leeg testforum', 'Nevermind me, I''m empty', 2, 2, 2),
-(14, 'nog een leeg forum', 'jaja, nog eeeeeeeeeeen!', 2, 2, 2);
+(1, 'Nieuws', 'De laatste weetjes!', 2, 2, 1),
+(2, 'Evenementen', 'Events, parties, etc!', 2, 2, 1),
+(3, 'Public', 'Deel je kennis met iedereen!', 3, 3, 2),
+(4, 'Members', 'Voor alles wat de gasten niet aangaat!', 2, 2, 2);
 
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `maanden`
+-- Table structure for table `maanden`
 --
 
 CREATE TABLE IF NOT EXISTS `maanden` (
-  `maandID` int(11) NOT NULL AUTO_INCREMENT,
-  `maandNaam` varchar(10) NOT NULL,
-  PRIMARY KEY (`maandID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+`maandID` int(11) NOT NULL,
+  `maandNaam` varchar(10) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 --
--- Gegevens worden geëxporteerd voor tabel `maanden`
+-- Dumping data for table `maanden`
 --
 
 INSERT INTO `maanden` (`maandID`, `maandNaam`) VALUES
@@ -158,52 +154,42 @@ INSERT INTO `maanden` (`maandID`, `maandNaam`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `posts`
+-- Table structure for table `posts`
 --
 
 CREATE TABLE IF NOT EXISTS `posts` (
-  `berichtID` int(11) NOT NULL AUTO_INCREMENT,
+`berichtID` int(11) NOT NULL,
   `topicID` int(11) NOT NULL,
   `gebruikerID` int(11) NOT NULL,
   `bericht` text NOT NULL,
   `postDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `latestPost` tinyint(4) NOT NULL,
-  PRIMARY KEY (`berichtID`),
-  KEY `gebruikerID` (`gebruikerID`),
-  KEY `topicID` (`topicID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=45 ;
+  `latestPost` tinyint(4) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=latin1;
 
 --
--- Gegevens worden geëxporteerd voor tabel `posts`
+-- Dumping data for table `posts`
 --
 
 INSERT INTO `posts` (`berichtID`, `topicID`, `gebruikerID`, `bericht`, `postDate`, `latestPost`) VALUES
-(1, 1, 4, 'Wanneer werkt het forum?', '2015-05-23 00:00:00', 1),
-(2, 2, 4, 'heheheh nice', '2015-05-23 00:00:00', 1),
-(3, 3, 4, 'vreeed nice. kan niet wachten! naicuuuu', '2015-05-23 00:00:00', 0),
-(4, 4, 4, 'hohohohohho, werk dan maar snel door', '2015-05-23 00:00:00', 1),
-(11, 3, 4, 'vreeed nice. kan niet wachten! naicuuuu azda dazfazefa z faz fazf afa', '2015-05-23 00:00:00', 1),
-(37, 31, 1, 'dit is een testbericht', '2015-05-25 00:00:00', 0),
-(39, 31, 1, 'hoipiepeloi', '2015-05-25 02:59:23', 1),
-(41, 36, 1, 'een eerste test? :O\r\n\r\nEDIT: Tijd is nu later dan de rest muahahahahahah ^^', '2015-05-25 03:56:02', 0),
-(42, 36, 1, 'het ziet er naar uit ja dat dit wederom een test is', '2015-05-25 03:52:37', 0),
-(43, 36, 1, 'Het lijk wel te werken. Nice!', '2015-05-25 03:56:19', 0),
-(44, 36, 1, 'Too StronK!', '2015-05-25 03:56:19', 1);
+(45, 41, 2, 'Just passing by. Het forum werkt wel vlotjes!', '2015-05-25 16:19:34', 0),
+(46, 41, 2, 'Firefox user hier. Werkt allemaal tiptop', '2015-05-25 16:20:26', 0),
+(47, 41, 34, 'Net een account aangemaakt. Werkt goed!', '2015-05-25 16:27:05', 1),
+(48, 40, 34, 'Hopelijk geraakt het af op tijd', '2015-05-25 16:28:00', 1),
+(49, 42, 34, 'Hoi ik ben Piet Vandeput', '2015-05-25 16:28:26', 1);
 
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `roles`
+-- Table structure for table `roles`
 --
 
 CREATE TABLE IF NOT EXISTS `roles` (
-  `rolID` int(11) NOT NULL AUTO_INCREMENT,
-  `rolNaam` varchar(75) NOT NULL,
-  PRIMARY KEY (`rolID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+`rolID` int(11) NOT NULL,
+  `rolNaam` varchar(75) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
--- Gegevens worden geëxporteerd voor tabel `roles`
+-- Dumping data for table `roles`
 --
 
 INSERT INTO `roles` (`rolID`, `rolNaam`) VALUES
@@ -216,108 +202,168 @@ INSERT INTO `roles` (`rolID`, `rolNaam`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `threads`
+-- Table structure for table `threads`
 --
 
 CREATE TABLE IF NOT EXISTS `threads` (
-  `topicID` int(11) NOT NULL AUTO_INCREMENT,
+`topicID` int(11) NOT NULL,
   `titel` varchar(75) NOT NULL,
   `bericht` text NOT NULL,
   `gebruikerID` int(11) NOT NULL COMMENT 'gebruiker die deze topic heeft aangemaakt',
   `categorieID` int(11) NOT NULL,
   `eventDate` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'enkel nodig bij topics over events',
   `postDate` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`topicID`),
-  KEY `gebruikerID` (`gebruikerID`),
-  KEY `categorieID` (`categorieID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=40 ;
+  `eventFoto` varchar(20) DEFAULT NULL,
+  `locatie` varchar(9999) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=latin1;
 
 --
--- Gegevens worden geëxporteerd voor tabel `threads`
+-- Dumping data for table `threads`
 --
 
-INSERT INTO `threads` (`topicID`, `titel`, `bericht`, `gebruikerID`, `categorieID`, `eventDate`, `postDate`) VALUES
-(1, 'Support', 'Stel hier je vragen!', 4, 2, '0000-00-00 00:00:00', '2015-05-24 00:00:00'),
-(2, 'Welkom leden', 'Maak kennis met de andere leden hier', 4, 3, '0000-00-00 00:00:00', '2015-05-24 00:00:00'),
-(3, 'Website launch party', 'De party van het jaar! De nieuwe website wordt gelauncht!', 4, 1, '0000-00-00 00:00:00', '2015-05-24 00:00:00'),
-(4, 'Nieuwe website in de maak', 'We zijn een nieuwe website aan het maken. Woop Woop!', 4, 4, '0000-00-00 00:00:00', '2015-05-24 00:00:00'),
-(5, 'Het grote wijzig-event', 'Lekker body dit!', 4, 1, '2015-05-14 00:00:00', '0000-00-00 00:00:00'),
-(6, 'nog een test event', 'lqjsdlmfjazlerjmljlkjlmsdjfmljsd\r\nfmljsmdfljmlksqdf\r\nmlsdjfmlqsjfmlkjqdf\r\nmjsdmlfjmqlsdjf', 4, 1, '2015-06-03 00:00:00', '0000-00-00 00:00:00'),
-(9, 'zoveelste test event', 'lqjsdlmfjazlerjmljlkjlmsdjfmljsd\r\nfmljsmdfljmlksqdf\r\nmlsdjfmlqsjfmlkjqdf\r\nmjsdmlfjmqlsdjf', 4, 1, '2015-07-14 00:00:00', '0000-00-00 00:00:00'),
-(11, 'hupla nog wa testen', 'bladieblablabla', 4, 1, '2015-06-10 00:00:00', '0000-00-00 00:00:00'),
-(13, 'nog ewa meer events', 'tralalalalalalalala', 2, 1, '2015-08-06 00:00:00', '0000-00-00 00:00:00'),
-(14, 'hier zijn we alweer', 'trolololol', 3, 1, '2015-09-13 00:00:00', '0000-00-00 00:00:00'),
-(15, 'dit wordt saai', 'wa moet ne mens nog zeggen omdenduur', 1, 1, '2015-11-21 00:00:00', '0000-00-00 00:00:00'),
-(16, 'ee kijk, een vlieg', 'PETS dood', 2, 1, '2015-12-10 00:00:00', '0000-00-00 00:00:00'),
-(17, 'kerstmis!!!', 'ho ho ho', 1, 1, '2015-12-25 00:00:00', '0000-00-00 00:00:00'),
-(18, 'de sint is er ook bij ', 'zie ginds komt de stoomboot', 6, 1, '2015-12-06 00:00:00', '0000-00-00 00:00:00'),
-(19, 'het nieuwe jaar', 'happy newyear !', 2, 1, '2016-01-01 00:00:00', '0000-00-00 00:00:00'),
-(31, 'gastenboek2', 'post hier maar iets', 30, 2, '2015-05-25 14:41:21', '2015-05-25 14:41:21'),
-(36, 'Piet''s awesome test topic', 'There can only be one who''s the test!', 1, 12, '2015-05-25 03:39:41', '2015-05-25 03:39:41'),
-(37, 'Piet''s test topic numero dos', 'Veel plezier met testen', 1, 12, '2015-05-25 03:39:47', '2015-05-25 03:39:47'),
-(39, 'Dit moet werken', 'Yaay', 30, 2, '2015-05-25 15:08:59', '2015-05-25 15:08:59');
+INSERT INTO `threads` (`topicID`, `titel`, `bericht`, `gebruikerID`, `categorieID`, `eventDate`, `postDate`, `eventFoto`, `locatie`) VALUES
+(40, 'De website is bijna af!', 'We zijn hard aan het werk om de website aan de praat te krijgen tegen de deadline!', 1, 1, '2015-05-25 16:13:45', '2015-05-25 16:13:45', NULL, NULL),
+(41, 'Gastenboek', 'Heb je een mening over de website?', 1, 3, '2015-05-25 16:17:04', '2015-05-25 16:17:04', NULL, NULL),
+(42, 'Kennismakings hoekje', 'Stel je voor aan de andere leden', 1, 4, '2015-05-25 16:17:59', '2015-05-25 16:17:59', NULL, NULL),
+(44, 'Mijn mening', 'Dit forum werkt best goed eigenlijk!', 34, 4, '2015-05-25 16:30:58', '2015-05-25 16:30:58', NULL, NULL),
+(45, 'Verdediging op de PXL', 'Tijd om het webproject eens voor te stellen!', 1, 2, '2015-05-25 17:42:08', '2015-05-25 17:42:08', NULL, '<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d20116.462080856676!2d5.347562596253314!3d50.93189728834362!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1spxl!5e0!3m2!1snl!2s!4v1432566863523" width="400" height="300" frameborder="0" style="border:0"></iframe>');
 
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE IF NOT EXISTS `users` (
-  `gebruikerID` int(11) NOT NULL AUTO_INCREMENT,
+`gebruikerID` int(11) NOT NULL,
   `rolID` int(11) NOT NULL,
   `username` varchar(75) NOT NULL COMMENT 'Ding wat gegenereerd wordt bij aanvraag nieuwe user',
   `password` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `profielfoto` varchar(20) DEFAULT NULL,
+  `profielfoto` varchar(20) DEFAULT 'default.jpg',
   `voornaam` varchar(75) NOT NULL,
   `familienaam` varchar(75) NOT NULL,
   `al_ingelogd` tinyint(4) NOT NULL DEFAULT '0',
-  `actief` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0=nog niet geactiveerd door admin( en mag dus niet inloggen), 1 = wel',
-  PRIMARY KEY (`gebruikerID`),
-  UNIQUE KEY `email` (`email`),
-  KEY `rolID` (`rolID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=34 ;
+  `actief` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0=nog niet geactiveerd door admin( en mag dus niet inloggen), 1 = wel'
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=latin1;
 
 --
--- Gegevens worden geëxporteerd voor tabel `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`gebruikerID`, `rolID`, `username`, `password`, `email`, `profielfoto`, `voornaam`, `familienaam`, `al_ingelogd`, `actief`) VALUES
-(1, 1, 'admin.admin', '$2y$10$X67Tp9c2MqMkmgXDhpyUI.27b03m6B59kHOFaGnxk9Xf6guUAqe8y', 'admin.admin@admin.be', NULL, '', '', 1, 1),
-(2, 2, 'lid.lid', 'pxl', 'lid.lid@lid.be', NULL, '', '', 0, 0),
-(3, 3, 'guest.guest', 'pxl', 'guest.guest@guest.be', NULL, '', '', 0, 0),
-(4, 2, 'pxl', '$2y$10$mqocqqNZ00FffJdJX3VadeCdodBKPKtaTBrD0eKTQLj3uG5yn5N5O', 'aaaaaaaaaaaaaaaa@aaaaaaaaaaaaaa', NULL, 'koen', 'vaes', 1, 0),
-(6, 2, 'pxl', 'test', 'neen@swek.com', NULL, 'koen', 'vaes', 0, 0),
-(7, 2, 'pxl', 'test', 'ja@swek.com', NULL, 'koen', 'vaes', 0, 0),
-(12, 2, '"--', 'test', 'koekje@eigendeeg.com', NULL, '"--', '"--', 0, 0),
-(29, 2, 'stef.janssens', '$2y$10$e8zRdxlExduRS.YXlTAbJuDTYrlTNLMmh/1Y385WcOaApJEG3d41C', 's.j@hotmail', NULL, 'stef', 'janssens', 1, 0),
-(30, 2, 'pxl2', '$2y$10$YmR/SN7H5gnj0LJB4LIoX.ubCp0YkO/UUo4XHHeH1y6GgTpU8pq5m', 's.j@hotmail.com', NULL, 'a', 'a', 1, 1),
-(33, 2, 'koen.vaes', 'SP9UE06I', 'koen895@hotmail.com', NULL, 'koen', 'vaes', 0, 0);
+(1, 1, 'admin.tedxpxl', '$2y$10$X67Tp9c2MqMkmgXDhpyUI.27b03m6B59kHOFaGnxk9Xf6guUAqe8y', 'admin.tedxpxl@admin.be', 'default.jpg', 'admin', 'tedxpxl', 1, 1),
+(2, 3, 'guest', 'guest', 'guest.guest@guest.be', 'default.jpg', 'guest', 'guest', 0, 0),
+(34, 2, 'piet.vandeput', '$2y$10$VwUNr3U5FC95zX6HrVVijuemXL97jCa4LZLtIbc7I4SVkPRuZyTq2', 'piet-v@live.com', '34.png', 'piet', 'vandeput', 1, 1);
 
 --
--- Beperkingen voor geëxporteerde tabellen
+-- Indexes for dumped tables
 --
 
 --
--- Beperkingen voor tabel `posts`
+-- Indexes for table `captcha`
+--
+ALTER TABLE `captcha`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `categories`
+--
+ALTER TABLE `categories`
+ ADD PRIMARY KEY (`categorieID`);
+
+--
+-- Indexes for table `maanden`
+--
+ALTER TABLE `maanden`
+ ADD PRIMARY KEY (`maandID`);
+
+--
+-- Indexes for table `posts`
 --
 ALTER TABLE `posts`
-  ADD CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`topicID`) REFERENCES `threads` (`topicID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `posts_ibfk_3` FOREIGN KEY (`gebruikerID`) REFERENCES `users` (`gebruikerID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ ADD PRIMARY KEY (`berichtID`), ADD KEY `gebruikerID` (`gebruikerID`), ADD KEY `topicID` (`topicID`);
 
 --
--- Beperkingen voor tabel `threads`
+-- Indexes for table `roles`
+--
+ALTER TABLE `roles`
+ ADD PRIMARY KEY (`rolID`);
+
+--
+-- Indexes for table `threads`
 --
 ALTER TABLE `threads`
-  ADD CONSTRAINT `threads_ibfk_1` FOREIGN KEY (`gebruikerID`) REFERENCES `users` (`gebruikerID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `threads_ibfk_2` FOREIGN KEY (`categorieID`) REFERENCES `categories` (`categorieID`) ON DELETE CASCADE ON UPDATE CASCADE;
+ ADD PRIMARY KEY (`topicID`), ADD KEY `gebruikerID` (`gebruikerID`), ADD KEY `categorieID` (`categorieID`);
 
 --
--- Beperkingen voor tabel `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`rolID`) REFERENCES `roles` (`rolID`) ON DELETE NO ACTION ON UPDATE CASCADE;
+ ADD PRIMARY KEY (`gebruikerID`), ADD UNIQUE KEY `email` (`email`), ADD KEY `rolID` (`rolID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `captcha`
+--
+ALTER TABLE `captcha`
+MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=116;
+--
+-- AUTO_INCREMENT for table `categories`
+--
+ALTER TABLE `categories`
+MODIFY `categorieID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=20;
+--
+-- AUTO_INCREMENT for table `maanden`
+--
+ALTER TABLE `maanden`
+MODIFY `maandID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+--
+-- AUTO_INCREMENT for table `posts`
+--
+ALTER TABLE `posts`
+MODIFY `berichtID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=50;
+--
+-- AUTO_INCREMENT for table `roles`
+--
+ALTER TABLE `roles`
+MODIFY `rolID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `threads`
+--
+ALTER TABLE `threads`
+MODIFY `topicID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=46;
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+MODIFY `gebruikerID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=35;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `posts`
+--
+ALTER TABLE `posts`
+ADD CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`topicID`) REFERENCES `threads` (`topicID`) ON DELETE CASCADE ON UPDATE CASCADE,
+ADD CONSTRAINT `posts_ibfk_3` FOREIGN KEY (`gebruikerID`) REFERENCES `users` (`gebruikerID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `threads`
+--
+ALTER TABLE `threads`
+ADD CONSTRAINT `threads_ibfk_1` FOREIGN KEY (`gebruikerID`) REFERENCES `users` (`gebruikerID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+ADD CONSTRAINT `threads_ibfk_2` FOREIGN KEY (`categorieID`) REFERENCES `categories` (`categorieID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `users`
+--
+ALTER TABLE `users`
+ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`rolID`) REFERENCES `roles` (`rolID`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
