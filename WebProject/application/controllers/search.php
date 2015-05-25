@@ -21,17 +21,9 @@ class Search extends CI_Controller {
                 $this->data['subforums'] = $this->forum_model->searchSubforums($this->data['searchstring']);
                 $this->data['threads'] = $this->subforum_model->searchThreads($this->data['searchstring']);
                 $this->data['posts'] = $this->thread_model->searchPosts($this->data['searchstring']);
-                if (empty($this->data['searchstring'])){
+                if (empty($this->data['searchstring']) && empty($this->data['threads']) && empty($this->data['posts'])){
                     //de alert-error is vn bootstrap
-                    $this->data['error'] = "<div class='alert alert-error'>Geen resultaten in categorien!</div>";
-                }
-                if (empty($this->data['threads'])){
-                    //de alert-error is vn bootstrap
-                    $this->data['error'] = "<div class='alert alert-error'>Geen resultaten in threads!</div>";
-                }
-                if (empty($this->data['posts'])){
-                    //de alert-error is vn bootstrap
-                    $this->data['error'] = "<div class='alert alert-error'>Geen resultaten in posts!</div>";
+                    $this->data['error'] = "<div class='alert alert-error'>Deze zoekterm bestaat niet!</div>";
                 }
                 $this->parser->parse('search/index', $this->data);
             } else{

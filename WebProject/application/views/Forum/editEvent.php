@@ -179,7 +179,6 @@
                                 <div><p class="forum-label">Titel:</p><textarea name="formtitel" form="editevent" class="forum-textarea">{titel}</textarea></div>
                                 <div><p class="forum-label">Inhoud van de top post:</p><textarea name="formbericht" form="editevent" class="forum-textarea">{bericht}</textarea></div>
                                 <div><p class="forum-label">Optioneel kan u een hier een iframe toevoegen van google maps voor de locatie:</p><textarea name="formlocatie" form="editevent" class="forum-textarea">{locatie}</textarea></div>
-                                <div><p class="forum-label">Optioneel kan u een foto toevoegen:</p><textarea name="formafbeelding" form="editevent" class="forum-textarea">{eventFoto}</textarea></div>
                                 <div><p class="forum-label">Wanneer is het event?</p><input type="datetime-local" name="formdate" form="editevent"/></div>
                                 <div><input type="submit" name="editevent" value="Klaar met wijzigen" class="btn"></div>
                             </form>

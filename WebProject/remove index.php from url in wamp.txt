@@ -1,5 +1,3 @@
-Before this fucking thing works in WAMP
-
 1) Create .htacess file in parallel to application holder and just copy past the following code:
 
 RewriteEngine On

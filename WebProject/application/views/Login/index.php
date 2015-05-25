@@ -241,7 +241,7 @@
                         <div class="footer-col">
                             <h3>Over TEDx</h3>
                             <p>
-                                TEDxPXL is een onafhankelijk georganiseerd TED conferentie waar sprekers uit de hele wereld hun cutting-edge ideeën kunnen delen.
+                                TEDxPXL is een onafhankelijk georganiseerde TED conferentie waar sprekers uit de hele wereld hun cutting-edge ideeën kunnen delen.
                             </p>
                             <ul class="list-inline social-1">
                                 <li><a href="https://www.facebook.com/TEDxEvents?fref=ts"><i class="fa fa-facebook"></i></a></li>

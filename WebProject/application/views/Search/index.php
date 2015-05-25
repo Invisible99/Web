@@ -203,6 +203,9 @@
                             {threads}
                             <h3 class="forum-wrap">
                                 <a href="<?php echo base_url(); ?>forum/thread/{topicID}" class="forum-overview-naam jumbotron">{titel}</a> {bericht}
+                                <p class="forum-overview-post jumbotron">
+                                    <strong>Gemaakt door: </strong><a href="#">{username}</a>
+                                </p>
                             </h3>
                             {/threads}
                         </div><!--event box-->

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 25, 2015 at 06:37 PM
+-- Generation Time: May 25, 2015 at 10:34 PM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -164,7 +164,7 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `bericht` text NOT NULL,
   `postDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `latestPost` tinyint(4) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `posts`
@@ -175,7 +175,9 @@ INSERT INTO `posts` (`berichtID`, `topicID`, `gebruikerID`, `bericht`, `postDate
 (46, 41, 2, 'Firefox user hier. Werkt allemaal tiptop', '2015-05-25 16:20:26', 0),
 (47, 41, 34, 'Net een account aangemaakt. Werkt goed!', '2015-05-25 16:27:05', 1),
 (48, 40, 34, 'Hopelijk geraakt het af op tijd', '2015-05-25 16:28:00', 1),
-(49, 42, 34, 'Hoi ik ben Piet Vandeput', '2015-05-25 16:28:26', 1);
+(49, 42, 34, 'Hoi ik ben Piet Vandeput', '2015-05-25 16:28:26', 1),
+(50, 51, 34, 'Ik zal er zeker zijn!', '2015-05-25 22:12:13', 1),
+(51, 45, 34, 'Aanwezig :D', '2015-05-25 22:12:46', 1);
 
 -- --------------------------------------------------------
 
@@ -215,7 +217,7 @@ CREATE TABLE IF NOT EXISTS `threads` (
   `postDate` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `eventFoto` varchar(20) DEFAULT NULL,
   `locatie` varchar(9999) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `threads`
@@ -226,7 +228,9 @@ INSERT INTO `threads` (`topicID`, `titel`, `bericht`, `gebruikerID`, `categorieI
 (41, 'Gastenboek', 'Heb je een mening over de website?', 1, 3, '2015-05-25 16:17:04', '2015-05-25 16:17:04', NULL, NULL),
 (42, 'Kennismakings hoekje', 'Stel je voor aan de andere leden', 1, 4, '2015-05-25 16:17:59', '2015-05-25 16:17:59', NULL, NULL),
 (44, 'Mijn mening', 'Dit forum werkt best goed eigenlijk!', 34, 4, '2015-05-25 16:30:58', '2015-05-25 16:30:58', NULL, NULL),
-(45, 'Verdediging op de PXL', 'Tijd om het webproject eens voor te stellen!', 1, 2, '2015-05-25 17:42:08', '2015-05-25 17:42:08', NULL, '<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d20116.462080856676!2d5.347562596253314!3d50.93189728834362!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1spxl!5e0!3m2!1snl!2s!4v1432566863523" width="400" height="300" frameborder="0" style="border:0"></iframe>');
+(45, 'Verdediging op de PXL', 'Tijd om het webproject eens voor te stellen!', 1, 2, '2015-05-25 17:42:08', '2015-05-25 17:42:08', NULL, '<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d20116.462080856676!2d5.347562596253314!3d50.93189728834362!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1spxl!5e0!3m2!1snl!2s!4v1432566863523" width="400" height="300" frameborder="0" style="border:0"></iframe>'),
+(49, 'Forum birthday bash', 'We vieren het eenjarig bestaan van het forum!', 1, 2, '2015-05-21 17:27:16', '2015-05-25 22:33:56', NULL, '<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d24564.984042976885!2d-31.11678582574234!3d39.68069419993875!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbe!4v1432578861547" width="600" height="450" frameborder="0" style="border:0"></iframe>'),
+(51, '''We kapen een gratis bus'' Event', 'Kom naar het Dusart in Hasselt voor een gratisbus rit!', 1, 2, '2015-05-31 23:59:00', '2015-05-25 22:10:29', NULL, '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5028.945080688592!2d5.3348788056207335!3d50.9334735231601!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c1218279f024a9%3A0xc044a3a863d3225a!2sKolonel+Dusartplein+34%2C+3500+Hasselt!5e0!3m2!1sen!2sbe!4v1432584518644" width="600" height="450" frameborder="0" style="border:0"></iframe>');
 
 -- --------------------------------------------------------
 
@@ -325,7 +329,7 @@ MODIFY `maandID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-MODIFY `berichtID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=50;
+MODIFY `berichtID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=52;
 --
 -- AUTO_INCREMENT for table `roles`
 --
@@ -335,7 +339,7 @@ MODIFY `rolID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 -- AUTO_INCREMENT for table `threads`
 --
 ALTER TABLE `threads`
-MODIFY `topicID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=46;
+MODIFY `topicID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=53;
 --
 -- AUTO_INCREMENT for table `users`
 --

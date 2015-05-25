@@ -59,7 +59,7 @@ class subforum_model extends MY_Model{
     
     function searchThreads($searchstring){
         //pakt alle categorien waar een latestthread aanstaat. hij pakt ook de content van deze de laatste thread in deze categorie
-        $query = $this->db->query("SELECT thr.titel, thr.topicID, thr.bericht FROM threads thr WHERE thr.titel LIKE '%$searchstring%' OR thr.bericht LIKE '%$searchstring%' OR thr.eventdate LIKE '%$searchstring%' OR thr.postDate LIKE '%$searchstring%'");
+        $query = $this->db->query("SELECT thr.titel, thr.topicID, thr.bericht, users.username FROM threads thr LEFT JOIN users ON thr.gebruikerID = users.gebruikerID WHERE thr.titel LIKE '%$searchstring%' OR thr.bericht LIKE '%$searchstring%' OR thr.eventdate LIKE '%$searchstring%' OR thr.postDate LIKE '%$searchstring%' OR users.username LIKE '%$searchstring%'");
         
         $result = array();
 

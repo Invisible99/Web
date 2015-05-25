@@ -177,7 +177,6 @@
                                 <div><p class="forum-label">Titel:</p><textarea name="formtitel" form="addevent" class="forum-textarea"></textarea></div>
                                 <div><p class="forum-label">Inhoud van de top post:</p><textarea name="formbericht" form="addevent" class="forum-textarea"></textarea></div>
                                 <div><p class="forum-label">Optioneel kan u een hier een iframe toevoegen van google maps voor de locatie:</p><textarea name="formlocatie" form="addevent" class="forum-textarea"></textarea></div>
-                                <div><p class="forum-label">Optioneel kan u een foto toevoegen:</p><textarea name="formafbeelding" form="addevent" class="forum-textarea"></textarea></div>
                                 <div><p class="forum-label">Wanneer is het event?</p><input type="datetime-local" name="formdate" form="addevent"/></div>
                                 <div><input type="submit" name="addevent" value="Toevoegen" class="btn"></div>
                             </form>
