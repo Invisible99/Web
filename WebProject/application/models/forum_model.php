@@ -26,4 +26,13 @@ ORDER BY cat.categorieID ASC");
 
         return $query->result();
     }
+    
+    function searchSubforums($searchstring){
+        //pakt alle categorien waar een latestthread aanstaat. hij pakt ook de content van deze de laatste thread in deze categorie
+        $query = $this->db->query("SELECT cat.categorieID, cat.titel, cat.omschrijving FROM categories cat WHERE cat.titel LIKE '%$searchstring%' OR cat.omschrijving LIKE '%$searchstring%'");
+    
+        $result = array();
+
+        return $query->result();
+    }
 }

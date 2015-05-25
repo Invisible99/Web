@@ -161,7 +161,7 @@
                         {thread}
                         <div class="forumoverview-box event-box">
                             <p class="forum-overview-post">
-                                <strong>({berichtID}) Posted on {postDate}: </strong> {bericht}
+                                ({berichtID})<strong> Posted on {postDate}: </strong> {bericht}
                                 </p>
                             <p class="forum-overview-poster">
                                 <strong class="forum-overview-black">Poster:</strong> <a href="#">{username}</a>

@@ -5,7 +5,7 @@ class subforum_model extends MY_Model{
     var $primkey="topicID";
     
     function findThreads($id){
-        $query = $this->db->query("SELECT thr.titel 'thrtitel', thr.topicID 'thrtopicID', thr.bericht, posts.bericht 'lastpost', posts.gebruikerID, posts.postDate, users.username FROM posts LEFT JOIN threads thr ON posts.topicID = thr.topicID LEFT JOIN users ON posts.gebruikerID = users.gebruikerID WHERE posts.latestPost = 1 AND thr.categorieID = $id");
+        $query = $this->db->query("SELECT thr.titel 'thrtitel', thr.topicID 'thrtopicID', thr.bericht, posts.bericht 'lastpost', posts.gebruikerID, posts.postDate, users.username FROM posts LEFT JOIN threads thr ON posts.topicID = thr.topicID LEFT JOIN users ON posts.gebruikerID = users.gebruikerID WHERE posts.latestPost = 1 AND thr.categorieID = $id ORDER BY posts.postDate DESC");
         $result = array();
 
         return $query->result();
@@ -54,6 +54,15 @@ class subforum_model extends MY_Model{
     
     function selectNextEvent(){
         $query = $this->db->query("SELECT titel, min(Date_Format(eventDate,'%M %d-%m, %Y')) 'eventDate', eventDate 'datum' FROM threads WHERE categorieID = 1 AND eventDate >= NOW()");
+        return $query->result();
+    }
+    
+    function searchThreads($searchstring){
+        //pakt alle categorien waar een latestthread aanstaat. hij pakt ook de content van deze de laatste thread in deze categorie
+        $query = $this->db->query("SELECT thr.titel, thr.topicID, thr.bericht FROM threads thr WHERE thr.titel LIKE '%$searchstring%' OR thr.bericht LIKE '%$searchstring%' OR thr.eventdate LIKE '%$searchstring%' OR thr.postDate LIKE '%$searchstring%'");
+        
+        $result = array();
+
         return $query->result();
     }
 }

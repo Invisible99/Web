@@ -98,7 +98,7 @@
                             <ul class="dropdown-menu search-dropdown animated fadeInUp">
                                 <li id="dropdownForm">
                                     <div class="dropdown-form">
-                                        <form class=" form-inline" action="<?php echo base_url(); ?>search/index" method="POST" >
+                                        <form role="form" class=" form-inline" action="<?php echo base_url(); ?>search/index" method="POST" >
                                             <div class="input-group ">
                                                 <input type="text" name="searchstring" class="form-control" placeholder="search...">
                                                 <span class="input-group-btn">
@@ -182,46 +182,49 @@
         <div class="schedule">
             <div class="container">
                 <div class="center-heading">
-                    <h2>Welkom op het TEDxPXL forum</h2>
+                    <h2>Uw zoekresultaten voor:</h2>
                     <span class="center-line"></span>
                     <p class="margin40">
-                        Gelieve naar hartelust deel te nemen aan onze vele interessante topics.
+                        {searchstring}
                     </p>
                 </div> 
 
                 <div class="row">
                     <div class="col-sm-12 animated fadeInLeft">
                         {error}
-                        {forum}
                         <div class="forumoverview-box event-box jumbotron">
+                            <p class="forum-overview-post jumbotron">
+                            <strong>Subforums:</strong>
+                            </p>
+                            {subforums}
                             <h3 class="forum-wrap">
                                 <a href="<?php echo base_url(); ?>forum/subforum/{categorieID}" class="forum-overview-naam jumbotron">{titel}:</a> {omschrijving}
                             </h3>
-                            <p class="forum-overview-post jumbotron">
-                                <strong>Laatste post in </strong><strong class="forum-overview-red"><a href="<?php echo base_url(); ?>forum/thread/{topicID}">{thrtitel}</a></strong>: {bericht} 
-                            </p>
-                            <p class="forum-overview-poster jumbotron">
-                                <strong class="forum-overview-black">Poster:</strong> <a href="#">{username}</a><strong class="forum-overview-black"> op {postDate}</strong>
-                            </p>
-                            <a href="<?php echo base_url(); ?>forum/editSubforum/{categorieID}"><span class="forum-button">Wijzigen</span></a>
-                            <a href="<?php echo base_url(); ?>forum/deleteSubforum/{categorieID}"><span class="forum-button">Verwijderen</span></a>
+                            {/subforums}
                         </div><!--event box-->
-                        {/forum}
-                        {forumNoThread}
                         <div class="forumoverview-box event-box jumbotron">
-                            <h3 class="forum-wrap">
-                                <a href="<?php echo base_url(); ?>forum/subforum/{categorieID}" class="forum-overview-naam jumbotron">{titel}:</a> {omschrijving}
-                            </h3>
                             <p class="forum-overview-post jumbotron">
-                                <strong>Er zijn nog geen posts</strong>
+                            <strong>Threads:</strong>
                             </p>
-                            <a href="<?php echo base_url(); ?>forum/editSubforum/{categorieID}"><span class="forum-button">Wijzigen</span></a>
-                            <a href="<?php echo base_url(); ?>forum/deleteSubforum/{categorieID}"><span class="forum-button">Verwijderen</span></a>
+                            {threads}
+                            <h3 class="forum-wrap">
+                                <a href="<?php echo base_url(); ?>forum/thread/{topicID}" class="forum-overview-naam jumbotron">{titel}</a> {bericht}
+                            </h3>
+                            {/threads}
                         </div><!--event box-->
-                        {/forumNoThread}
-                        <div>
-                            <a href="<?php echo base_url(); ?>forum/addSubforum/{addButtonID}"><span class="forum-button-right">Subforum toevoegen</span></a>
-                        </div><!--toevoegen knop-->
+                        <div class="forumoverview-box event-box jumbotron">
+                            <p class="forum-overview-post jumbotron">
+                            <strong>Posts:</strong>
+                            </p>
+                            {posts}
+                            <p class="forum-overview-post">
+                                ({berichtID})<strong> Posted on {postDate}: </strong> {bericht}
+                                </p>
+                            <p class="forum-overview-poster">
+                                <strong class="forum-overview-black">Poster:</strong> <a href="#">{username}</a>
+                            </p>
+                            {/posts}
+                        </div><!--event box-->
                     </div>
                 </div>
             </div>
