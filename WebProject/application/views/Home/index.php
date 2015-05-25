@@ -157,7 +157,7 @@
                 <ul>
                     <li>
                         <!-- MAIN IMAGE -->
-                        <img src="<?php echo base_url(); ?>img/lightbulb2.jpg"  alt="balloons" data-bgposition="left top" data-bgrepeat="no-repeat">
+                        <img src="<?php echo base_url(); ?>img/lightbulb.jpg"  alt="balloons" data-bgposition="left top" data-bgrepeat="no-repeat">
                     </li>
                 </ul>
             </div>
