@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.11
+-- version 4.1.14
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: May 25, 2015 at 04:35 AM
--- Server version: 5.6.21
--- PHP Version: 5.6.3
+-- Machine: 127.0.0.1
+-- Gegenereerd op: 25 mei 2015 om 11:12
+-- Serverversie: 5.6.17
+-- PHP-versie: 5.5.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,24 +17,25 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `tedxpxl`
+-- Databank: `tedxpxl`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `captcha`
+-- Tabelstructuur voor tabel `captcha`
 --
 
 CREATE TABLE IF NOT EXISTS `captcha` (
-`id` int(11) unsigned NOT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `tijd` int(11) unsigned NOT NULL,
   `ip_adres` varchar(16) NOT NULL,
-  `captcha` varchar(10) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=113 DEFAULT CHARSET=latin1;
+  `captcha` varchar(10) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=113 ;
 
 --
--- Dumping data for table `captcha`
+-- Gegevens worden geëxporteerd voor tabel `captcha`
 --
 
 INSERT INTO `captcha` (`id`, `tijd`, `ip_adres`, `captcha`) VALUES
@@ -98,17 +99,18 @@ INSERT INTO `captcha` (`id`, `tijd`, `ip_adres`, `captcha`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categories`
+-- Tabelstructuur voor tabel `categories`
 --
 
 CREATE TABLE IF NOT EXISTS `categories` (
-`categorieID` int(11) NOT NULL,
+  `categorieID` int(11) NOT NULL AUTO_INCREMENT,
   `titel` varchar(75) NOT NULL,
-  `omschrijving` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+  `omschrijving` varchar(255) NOT NULL,
+  PRIMARY KEY (`categorieID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
 
 --
--- Dumping data for table `categories`
+-- Gegevens worden geëxporteerd voor tabel `categories`
 --
 
 INSERT INTO `categories` (`categorieID`, `titel`, `omschrijving`) VALUES
@@ -123,16 +125,17 @@ INSERT INTO `categories` (`categorieID`, `titel`, `omschrijving`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `maanden`
+-- Tabelstructuur voor tabel `maanden`
 --
 
 CREATE TABLE IF NOT EXISTS `maanden` (
-`maandID` int(11) NOT NULL,
-  `maandNaam` varchar(10) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+  `maandID` int(11) NOT NULL AUTO_INCREMENT,
+  `maandNaam` varchar(10) NOT NULL,
+  PRIMARY KEY (`maandID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
--- Dumping data for table `maanden`
+-- Gegevens worden geëxporteerd voor tabel `maanden`
 --
 
 INSERT INTO `maanden` (`maandID`, `maandNaam`) VALUES
@@ -152,20 +155,23 @@ INSERT INTO `maanden` (`maandID`, `maandNaam`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `posts`
+-- Tabelstructuur voor tabel `posts`
 --
 
 CREATE TABLE IF NOT EXISTS `posts` (
-`berichtID` int(11) NOT NULL,
+  `berichtID` int(11) NOT NULL AUTO_INCREMENT,
   `topicID` int(11) NOT NULL,
   `gebruikerID` int(11) NOT NULL,
   `bericht` text NOT NULL,
   `postDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `latestPost` tinyint(4) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=latin1;
+  `latestPost` tinyint(4) NOT NULL,
+  PRIMARY KEY (`berichtID`),
+  KEY `gebruikerID` (`gebruikerID`),
+  KEY `topicID` (`topicID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=45 ;
 
 --
--- Dumping data for table `posts`
+-- Gegevens worden geëxporteerd voor tabel `posts`
 --
 
 INSERT INTO `posts` (`berichtID`, `topicID`, `gebruikerID`, `bericht`, `postDate`, `latestPost`) VALUES
@@ -184,16 +190,17 @@ INSERT INTO `posts` (`berichtID`, `topicID`, `gebruikerID`, `bericht`, `postDate
 -- --------------------------------------------------------
 
 --
--- Table structure for table `roles`
+-- Tabelstructuur voor tabel `roles`
 --
 
 CREATE TABLE IF NOT EXISTS `roles` (
-`rolID` int(11) NOT NULL,
-  `rolNaam` varchar(75) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+  `rolID` int(11) NOT NULL AUTO_INCREMENT,
+  `rolNaam` varchar(75) NOT NULL,
+  PRIMARY KEY (`rolID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
--- Dumping data for table `roles`
+-- Gegevens worden geëxporteerd voor tabel `roles`
 --
 
 INSERT INTO `roles` (`rolID`, `rolNaam`) VALUES
@@ -206,21 +213,24 @@ INSERT INTO `roles` (`rolID`, `rolNaam`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `threads`
+-- Tabelstructuur voor tabel `threads`
 --
 
 CREATE TABLE IF NOT EXISTS `threads` (
-`topicID` int(11) NOT NULL,
+  `topicID` int(11) NOT NULL AUTO_INCREMENT,
   `titel` varchar(75) NOT NULL,
   `bericht` text NOT NULL,
   `gebruikerID` int(11) NOT NULL COMMENT 'gebruiker die deze topic heeft aangemaakt',
   `categorieID` int(11) NOT NULL,
   `eventDate` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'enkel nodig bij topics over events',
-  `postDate` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1;
+  `postDate` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`topicID`),
+  KEY `gebruikerID` (`gebruikerID`),
+  KEY `categorieID` (`categorieID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=39 ;
 
 --
--- Dumping data for table `threads`
+-- Gegevens worden geëxporteerd voor tabel `threads`
 --
 
 INSERT INTO `threads` (`topicID`, `titel`, `bericht`, `gebruikerID`, `categorieID`, `eventDate`, `postDate`) VALUES
@@ -246,24 +256,27 @@ INSERT INTO `threads` (`topicID`, `titel`, `bericht`, `gebruikerID`, `categorieI
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Tabelstructuur voor tabel `users`
 --
 
 CREATE TABLE IF NOT EXISTS `users` (
-`gebruikerID` int(11) NOT NULL,
+  `gebruikerID` int(11) NOT NULL AUTO_INCREMENT,
   `rolID` int(11) NOT NULL,
   `username` varchar(75) NOT NULL COMMENT 'Ding wat gegenereerd wordt bij aanvraag nieuwe user',
   `password` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `profielfoto` mediumblob,
+  `profielfoto` varchar(20) DEFAULT NULL,
   `voornaam` varchar(75) NOT NULL,
   `familienaam` varchar(75) NOT NULL,
   `al_ingelogd` tinyint(4) NOT NULL DEFAULT '0',
-  `actief` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0=nog niet geactiveerd door admin( en mag dus niet inloggen), 1 = wel'
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=latin1;
+  `actief` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0=nog niet geactiveerd door admin( en mag dus niet inloggen), 1 = wel',
+  PRIMARY KEY (`gebruikerID`),
+  UNIQUE KEY `email` (`email`),
+  KEY `rolID` (`rolID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=34 ;
 
 --
--- Dumping data for table `users`
+-- Gegevens worden geëxporteerd voor tabel `users`
 --
 
 INSERT INTO `users` (`gebruikerID`, `rolID`, `username`, `password`, `email`, `profielfoto`, `voornaam`, `familienaam`, `al_ingelogd`, `actief`) VALUES
@@ -279,113 +292,28 @@ INSERT INTO `users` (`gebruikerID`, `rolID`, `username`, `password`, `email`, `p
 (33, 2, 'koen.vaes', 'SP9UE06I', 'koen895@hotmail.com', NULL, 'koen', 'vaes', 0, 0);
 
 --
--- Indexes for dumped tables
+-- Beperkingen voor geëxporteerde tabellen
 --
 
 --
--- Indexes for table `captcha`
---
-ALTER TABLE `captcha`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `categories`
---
-ALTER TABLE `categories`
- ADD PRIMARY KEY (`categorieID`);
-
---
--- Indexes for table `maanden`
---
-ALTER TABLE `maanden`
- ADD PRIMARY KEY (`maandID`);
-
---
--- Indexes for table `posts`
+-- Beperkingen voor tabel `posts`
 --
 ALTER TABLE `posts`
- ADD PRIMARY KEY (`berichtID`), ADD KEY `gebruikerID` (`gebruikerID`), ADD KEY `topicID` (`topicID`);
+  ADD CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`topicID`) REFERENCES `threads` (`topicID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `posts_ibfk_3` FOREIGN KEY (`gebruikerID`) REFERENCES `users` (`gebruikerID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Indexes for table `roles`
---
-ALTER TABLE `roles`
- ADD PRIMARY KEY (`rolID`);
-
---
--- Indexes for table `threads`
+-- Beperkingen voor tabel `threads`
 --
 ALTER TABLE `threads`
- ADD PRIMARY KEY (`topicID`), ADD KEY `gebruikerID` (`gebruikerID`), ADD KEY `categorieID` (`categorieID`);
+  ADD CONSTRAINT `threads_ibfk_1` FOREIGN KEY (`gebruikerID`) REFERENCES `users` (`gebruikerID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `threads_ibfk_2` FOREIGN KEY (`categorieID`) REFERENCES `categories` (`categorieID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Indexes for table `users`
+-- Beperkingen voor tabel `users`
 --
 ALTER TABLE `users`
- ADD PRIMARY KEY (`gebruikerID`), ADD UNIQUE KEY `email` (`email`), ADD KEY `rolID` (`rolID`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `captcha`
---
-ALTER TABLE `captcha`
-MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=113;
---
--- AUTO_INCREMENT for table `categories`
---
-ALTER TABLE `categories`
-MODIFY `categorieID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
---
--- AUTO_INCREMENT for table `maanden`
---
-ALTER TABLE `maanden`
-MODIFY `maandID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
---
--- AUTO_INCREMENT for table `posts`
---
-ALTER TABLE `posts`
-MODIFY `berichtID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=45;
---
--- AUTO_INCREMENT for table `roles`
---
-ALTER TABLE `roles`
-MODIFY `rolID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
---
--- AUTO_INCREMENT for table `threads`
---
-ALTER TABLE `threads`
-MODIFY `topicID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=39;
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-MODIFY `gebruikerID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=34;
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `posts`
---
-ALTER TABLE `posts`
-ADD CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`topicID`) REFERENCES `threads` (`topicID`) ON DELETE CASCADE ON UPDATE CASCADE,
-ADD CONSTRAINT `posts_ibfk_3` FOREIGN KEY (`gebruikerID`) REFERENCES `users` (`gebruikerID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `threads`
---
-ALTER TABLE `threads`
-ADD CONSTRAINT `threads_ibfk_1` FOREIGN KEY (`gebruikerID`) REFERENCES `users` (`gebruikerID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-ADD CONSTRAINT `threads_ibfk_2` FOREIGN KEY (`categorieID`) REFERENCES `categories` (`categorieID`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `users`
---
-ALTER TABLE `users`
-ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`rolID`) REFERENCES `roles` (`rolID`) ON DELETE NO ACTION ON UPDATE CASCADE;
+  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`rolID`) REFERENCES `roles` (`rolID`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
