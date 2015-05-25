@@ -101,33 +101,5 @@ class Home extends CI_Controller {
 
     //$code = $this->str_encrypt($this->generateCode(6));
     /* $this->data['captcha'] = "<img src='captcha_images.php?width=120&height=40&code=<?php echo $code ?>' />"; */
-    //eerste testqry uitvoeren
-    function query() {
-
-        $this->load->library('session');
-        $this->load->library('user_agent');
-        $this->load->helper('url');
-        /* $this->load->model("testModelUsers");
-
-          $this->data['user'] = $this->testModelUsers->getUsers(); //dit is niet 100% juist eigenlijk zou de model enkel de QRY moeten uitvoeren en dan hier controle of het resultaat niet leeg is
-
-          if(empty($this->data['user'])){
-          $this->data['error'] = "Er zijn geen records gevonden in de tabel.";
-          }
-          else{
-          $this->data['error'] = "";
-          }
-
-          $this->parser->parse('inloggen_view.html',  $this->data); */
-        if ($this->session->has_userdata('user') && $this->session->has_userdata('logged_in') && $this->session->logged_in && $this->session->has_userdata('rolID')) {
-            $this->load->model("tblgebruikers_model"); //model laden
-            $this->data['error'] = "";
-            $this->data['gebruikers'] = $this->tblgebruikers_model->findall(); //alle records uit de DB halen zie koen voor uitleg
-            if (empty($this->data['gebruikers'])) {
-                $this->data['error'] = "<div class='alert alert-error'>Er zijn geen records in de tabel users.</div>"; //de alert-error is vn bootstrap
-            }
-            $this->parser->parse('home/overzichtUsers_view.html', $this->data);
-        }
-    }
 
 }
