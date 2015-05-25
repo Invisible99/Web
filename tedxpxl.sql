@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Machine: 127.0.0.1
--- Gegenereerd op: 25 mei 2015 om 11:12
+-- Gegenereerd op: 25 mei 2015 om 13:56
 -- Serverversie: 5.6.17
 -- PHP-versie: 5.5.12
 
@@ -106,21 +106,22 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `categorieID` int(11) NOT NULL AUTO_INCREMENT,
   `titel` varchar(75) NOT NULL,
   `omschrijving` varchar(255) NOT NULL,
+  `magZienTot` int(11) NOT NULL DEFAULT '2',
   PRIMARY KEY (`categorieID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `categories`
 --
 
-INSERT INTO `categories` (`categorieID`, `titel`, `omschrijving`) VALUES
-(1, 'Evenementen', 'Hier komen alle geplande en voorbije evenementen.'),
-(2, 'Gasten forum', 'forum voor de gasten'),
-(3, 'Leden forum', 'forum voor de leden'),
-(4, 'Nieuws', 'Al het nieuws van TedxPxl'),
-(12, 'Piet''s testforum', 'Don''t mind this place'),
-(13, 'Een leeg testforum', 'Nevermind me, I''m empty'),
-(14, 'nog een leeg forum', 'jaja, nog eeeeeeeeeeen!');
+INSERT INTO `categories` (`categorieID`, `titel`, `omschrijving`, `magZienTot`) VALUES
+(1, 'Evenementen', 'Hier komen alle geplande en voorbije evenementen.', 2),
+(2, 'Gasten forum', 'forum voor de gasten', 3),
+(3, 'Leden forum', 'forum voor de leden', 2),
+(4, 'Nieuws', 'Al het nieuws van TedxPxl', 2),
+(12, 'Piet''s testforum', 'Don''t mind this place', 2),
+(13, 'Een leeg testforum', 'Nevermind me, I''m empty', 2),
+(14, 'nog een leeg forum', 'jaja, nog eeeeeeeeeeen!', 2);
 
 -- --------------------------------------------------------
 
@@ -280,7 +281,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`gebruikerID`, `rolID`, `username`, `password`, `email`, `profielfoto`, `voornaam`, `familienaam`, `al_ingelogd`, `actief`) VALUES
-(1, 1, 'admin.admin', 'pxl', 'admin.admin@admin.be', NULL, '', '', 0, 0),
+(1, 1, 'admin.admin', '$2y$10$X67Tp9c2MqMkmgXDhpyUI.27b03m6B59kHOFaGnxk9Xf6guUAqe8y', 'admin.admin@admin.be', NULL, '', '', 1, 1),
 (2, 2, 'lid.lid', 'pxl', 'lid.lid@lid.be', NULL, '', '', 0, 0),
 (3, 3, 'guest.guest', 'pxl', 'guest.guest@guest.be', NULL, '', '', 0, 0),
 (4, 2, 'pxl', '$2y$10$mqocqqNZ00FffJdJX3VadeCdodBKPKtaTBrD0eKTQLj3uG5yn5N5O', 'aaaaaaaaaaaaaaaa@aaaaaaaaaaaaaa', NULL, 'koen', 'vaes', 1, 0),
@@ -288,7 +289,7 @@ INSERT INTO `users` (`gebruikerID`, `rolID`, `username`, `password`, `email`, `p
 (7, 2, 'pxl', 'test', 'ja@swek.com', NULL, 'koen', 'vaes', 0, 0),
 (12, 2, '"--', 'test', 'koekje@eigendeeg.com', NULL, '"--', '"--', 0, 0),
 (29, 2, 'stef.janssens', '$2y$10$e8zRdxlExduRS.YXlTAbJuDTYrlTNLMmh/1Y385WcOaApJEG3d41C', 's.j@hotmail', NULL, 'stef', 'janssens', 1, 0),
-(30, 2, 'pxl2', '$2y$10$YmR/SN7H5gnj0LJB4LIoX.ubCp0YkO/UUo4XHHeH1y6GgTpU8pq5m', 's.j@hotmail.com', NULL, 'a', 'a', 1, 0),
+(30, 2, 'pxl2', '$2y$10$YmR/SN7H5gnj0LJB4LIoX.ubCp0YkO/UUo4XHHeH1y6GgTpU8pq5m', 's.j@hotmail.com', NULL, 'a', 'a', 1, 1),
 (33, 2, 'koen.vaes', 'SP9UE06I', 'koen895@hotmail.com', NULL, 'koen', 'vaes', 0, 0);
 
 --

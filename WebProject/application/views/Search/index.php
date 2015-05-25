@@ -212,7 +212,7 @@
                             </p>
                             {posts}
                             <p class="forum-overview-post">
-                                ({berichtID})<strong> Posted on {postDate}: </strong> {bericht}
+                                <a href="<?php echo base_url(); ?>forum/thread/{topicID}">({berichtID})</a><strong> Posted on {postDate}: </strong> {bericht}
                             </p>
                             <p class="forum-overview-poster">
                                 <strong class="forum-overview-black">Poster:</strong> <a href="#">{username}</a>

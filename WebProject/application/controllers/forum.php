@@ -20,6 +20,7 @@ class Forum extends CI_Controller {
             //de alert-error is vn bootstrap
             $this->data['error'] = "<div class='alert alert-error'>Er zijn geen subforums!</div>";
         }
+        
         $this->parser->parse('forum/index', $this->data);
     }
 

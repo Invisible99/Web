@@ -187,35 +187,69 @@
                 <div class="row">
                     <div class="col-sm-12 animated fadeInLeft">
                         {error}
-                        {forum}
-                        <div class="forumoverview-box event-box jumbotron">
-                            <h3 class="forum-wrap">
-                                <a href="<?php echo base_url(); ?>forum/subforum/{categorieID}" class="forum-overview-naam jumbotron">{titel}:</a> {omschrijving}
-                            </h3>
-                            <p class="forum-overview-post jumbotron">
-                                <strong>Laatste post in </strong><strong class="forum-overview-red"><a href="<?php echo base_url(); ?>forum/thread/{topicID}">{thrtitel}</a></strong>: {bericht} 
-                            </p>
-                            <p class="forum-overview-poster jumbotron">
-                                <strong class="forum-overview-black">Poster:</strong> <a href="#">{username}</a><strong class="forum-overview-black"> op {postDate}</strong>
-                            </p>
-                            <a href="<?php echo base_url(); ?>forum/editSubforum/{categorieID}"><span class="forum-button">Wijzigen</span></a>
-                            <a href="<?php echo base_url(); ?>forum/deleteSubforum/{categorieID}"><span class="forum-button">Verwijderen</span></a>
-                        </div><!--event box-->
-                        {/forum}
-                        {forumNoThread}
-                        <div class="forumoverview-box event-box jumbotron">
-                            <h3 class="forum-wrap">
-                                <a href="<?php echo base_url(); ?>forum/subforum/{categorieID}" class="forum-overview-naam jumbotron">{titel}:</a> {omschrijving}
-                            </h3>
-                            <p class="forum-overview-post jumbotron">
-                                <strong>Er zijn nog geen posts</strong>
-                            </p>
-                            <a href="<?php echo base_url(); ?>forum/editSubforum/{categorieID}"><span class="forum-button">Wijzigen</span></a>
-                            <a href="<?php echo base_url(); ?>forum/deleteSubforum/{categorieID}"><span class="forum-button">Verwijderen</span></a>
-                        </div><!--event box-->
-                        {/forumNoThread}
+                       <?php
+                        foreach ($forum as $subforum) {
+
+                            if (($this->session->has_userdata('rolID') && $this->session->userdata['rolID'] <= $subforum->magZienTot) || $subforum->magZienTot == 3) {
+                                ?>    
+
+                                <div class="forumoverview-box event-box jumbotron">
+                                    <h3 class="forum-wrap">
+                                        <a href="<?php echo base_url(); ?>forum/subforum/<?php echo $subforum->categorieID; ?>" class="forum-overview-naam jumbotron"><?php echo $subforum->titel; ?>:</a> <?php echo $subforum->omschrijving; ?>
+                                    </h3>
+                                    <p class="forum-overview-post jumbotron">
+                                        <strong>Laatste post in </strong><strong class="forum-overview-red"><a href="<?php echo base_url(); ?>forum/thread/<?php echo $subforum->topicID; ?>"><?php echo $subforum->thrtitel; ?></a></strong>: <?php echo $subforum->bericht; ?>
+                                    </p>
+                                    <p class="forum-overview-poster jumbotron">
+                                        <strong class="forum-overview-black">Poster:</strong> <a href="#"><?php echo $subforum->username; ?></a><strong class="forum-overview-black"> op <?php echo $subforum->postDate; ?></strong>
+                                    </p>
+                                    <?php
+                                    if ($this->session->has_userdata('user') && $this->session->has_userdata('logged_in') && $this->session->logged_in && $this->session->has_userdata('rolID') && $this->session->userdata['rolID'] == 1) {
+                                        ?>
+                                        <a href="<?php echo base_url(); ?>forum/editSubforum/<?php echo $subforum->categorieID; ?>"><span class="forum-button">Wijzigen</span></a>
+                                        <a href="<?php echo base_url(); ?>forum/deleteSubforum/<?php echo $subforum->categorieID; ?>"><span class="forum-button">Verwijderen</span></a>
+                                        <?php
+                                    }
+                                    ?>
+                                </div><!--event box-->
+                                <?php
+                            }
+                        }
+                        ?>
+                        <?php
+                        foreach ($forumNoThread as $subforum) {
+
+                            if (($this->session->has_userdata('rolID') && $this->session->userdata['rolID'] <= $subforum->magZienTot) || $subforum->magZienTot == 3) {
+                                ?>    
+
+                                <div class="forumoverview-box event-box jumbotron">
+                                    <h3 class="forum-wrap">
+                                        <a href="<?php echo base_url(); ?>forum/subforum/<?php echo $subforum->categorieID; ?>" class="forum-overview-naam jumbotron"><?php echo $subforum->titel; ?>:</a> <?php echo $subforum->omschrijving; ?>
+                                    </h3>
+                                    <p class="forum-overview-post jumbotron">
+                                        <strong>Er zijn nog geen posts</strong>
+                                    </p>
+                                    <?php
+                                    if ($this->session->has_userdata('user') && $this->session->has_userdata('logged_in') && $this->session->logged_in && $this->session->has_userdata('rolID') && $this->session->userdata['rolID'] == 1) {
+                                        ?>
+                                        <a href="<?php echo base_url(); ?>forum/editSubforum/<?php echo $subforum->categorieID; ?>"><span class="forum-button">Wijzigen</span></a>
+                                        <a href="<?php echo base_url(); ?>forum/deleteSubforum/<?php echo $subforum->categorieID; ?>"><span class="forum-button">Verwijderen</span></a>
+                                        <?php
+                                    }
+                                    ?>
+                                </div><!--event box-->
+                                <?php
+                            }
+                        }
+                        ?>
                         <div>
-                            <a href="<?php echo base_url(); ?>forum/addSubforum/{addButtonID}"><span class="forum-button-right">Subforum toevoegen</span></a>
+                            <?php
+                            if ($this->session->has_userdata('user') && $this->session->has_userdata('logged_in') && $this->session->logged_in && $this->session->has_userdata('rolID') && $this->session->userdata['rolID'] == 1) {
+                                ?>
+                                    <a href="<?php echo base_url(); ?>forum/addSubforum/{addButtonID}"><span class="forum-button-right">Subforum toevoegen</span></a>
+                                <?php
+                            }
+                            ?>
                         </div><!--toevoegen knop-->
                     </div>
                 </div>
