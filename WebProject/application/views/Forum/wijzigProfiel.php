@@ -144,7 +144,6 @@
             <div class="row">
                 {error}
                 {user}
-
                 <div class="animated fadeInLeft">
                     <div class="col-md-2"> 
                         <div class="row">
@@ -153,7 +152,7 @@
                                 <ul class="list-inline f3-work">
                                     <?php echo form_open_multipart('forum/do_upload'); ?>
                                     <li><a href="" onclick="document.getElementById('userfile').click();
-                                            return false"><img id="img" src="{profielfoto}" name="foto" class="img-responsive center-block" alt=""></a></li>
+                                            return false"><img id="img" src="{/user}{profielfoto}{user}" name="foto" class="img-responsive center-block" alt="profielfoto"></a></li>
                                 </ul>
                                 <input type="file" name="userfile" id="userfile" size="20" onchange="readURL(this);" class="hidden" />
                                 <p class="help-block"></p>
@@ -165,7 +164,7 @@
                             </div>
                         </div>
                     </div>
-                    <?php form_close(); ?>
+                    <?php echo form_close(); ?>
                     <?php echo form_open("forum/wijzigProfiel"); ?>
                     <div class="col-md-8 col-md-offset-2">
                         <div class="col-md-12 margin30">
