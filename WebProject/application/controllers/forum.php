@@ -309,9 +309,20 @@ class Forum extends CI_Controller {
 
         if (isset($_POST['editProfile'])) {
             $this->data['error'] = "";
-            $this->data['emailVanDB'] = $this->users_model->doesEmailExist($this->input->post('email'));
-            $this->data['usernameVanDB'] = $this->users_model->doesUsernameExist($this->input->post('gebruikersnaam'));
 
+            //qry uitvoeren om alles van de user met het userid uit de serrion op te halen om te controleren of de username en email gewijzigd zijn
+            $this->data['user'] = $this->users_model->find($this->session->userdata('gebruikerID'));
+
+            if (empty($this->data['user'])) {
+                $this->data['error'] .= "<p class='alert alert-danger'>Kon uw gegevens niet ophalen aan de hand van de sessie.</p>";
+            }
+
+            if ($this->data['user'][0]['username'] != $this->input->post('gebruikersnaam')) {
+                $this->data['usernameVanDB'] = $this->users_model->doesUsernameExist($this->input->post('gebruikersnaam'));
+            }
+            if ($this->data['user'][0]['email'] != $this->input->post('email')) {
+                $this->data['emailVanDB'] = $this->users_model->doesEmailExist($this->input->post('email'));
+            }
 
             if (!empty($this->data['usernameVanDB'])) {
                 $this->data['error'] .= "<p class='alert alert-danger'>Deze gebruikersnaam is al in gebruik.</p>";
@@ -338,9 +349,14 @@ class Forum extends CI_Controller {
                     } else {
                         $this->data['profielfoto'] = base_url() . '/userpic/' . $this->data['user'][0]['profielfoto'];
                     }
-                    
                 } else {
                     $this->data['error'] .= "<div class='alert alert-error'>Kon de gebruiker niet updaten.</div>";
+                }
+            } else {
+                if ($this->data['user'][0]['profielfoto'] == null) {
+                    $this->data['profielfoto'] = base_url() . '/img/team-1.jpg';
+                } else {
+                    $this->data['profielfoto'] = base_url() . '/userpic/' . $this->data['user'][0]['profielfoto'];
                 }
             }
 
