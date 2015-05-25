@@ -103,7 +103,6 @@ class Login extends CI_Controller {
     }
 
     function register() {
-        //CAPTCHA NG DOEN!!!!!!!!!!!!!!
         //hier nog invoercontrole, alle velden zijn wel via html required. CI doet anti-sqlinjectie automatisch
         //met de parser kan je de ingevulde velden teruggeven in de value van het tekstvak zodat ze niet alles opnieuw moeten invullen
         //ook controle of de gebruikersnaam en e-mailadres al in gebruik zijn!
@@ -151,6 +150,7 @@ class Login extends CI_Controller {
                     $this->data['familienaam'] = "";
                     $this->data['gebruikersnaam'] = "";
                     $this->data['email'] = "";
+                    $this->data['captchaError'] = "";
                     $this->data['melding'] .= "<p class='alert alert-success'>Bedankt voor uw registratie, een admin zal uw account zo snel mogelijk activeren.</p>";
                 }
                 //stuur door naar registerpagina en laat de errors of gelukte insert melding zien

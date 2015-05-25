@@ -1374,15 +1374,15 @@ class CI_Form_validation {
      * @param field
      * @return bool
      */
-    public function match_captcha($str, $field, $expiration = 60) {
+    public function match_captcha($str, $field, $expiration = 7200) {
         list($table, $field) = explode('.', $field);
 
         $expire = time() - $expiration;
+        //Delete expired captchas
+        $this->CI->db->where('tijd <', $expire);
+        $this->CI->db->delete($table);
 
         $query = $this->CI->db->limit(1)->get_where($table, array($field => $str));
-        //Delete expired captchas
-        //$this->CI->db->where(array('tijd <' => $expire, 'captcha' => $field));
-        $this->CI->db->delete($table, array('tijd <' => $expire, 'captcha' => $str));
 
         if ($query->num_rows() == 0) {
             return false;
