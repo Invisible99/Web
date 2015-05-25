@@ -249,7 +249,8 @@
                                     {volgendEvent}
                                     <h2>Next event:</h2>
                                     <h2> {titel}</h2>
-                                    <h4 id="volgendEventID">{datum}</h4>
+                                    <h4>{eventDate}</h4>
+                                    <span class="hidden" id="volgendEventID">{datum}</span>
                                     {/volgendEvent}
                                 </div>
                             </div>
