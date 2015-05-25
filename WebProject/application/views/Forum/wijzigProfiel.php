@@ -56,7 +56,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="<?php echo base_url(); ?>home/index"><img src="<?php echo base_url(); ?>img/logo.png" alt="ASSAN"></a>
+                    <a class="navbar-brand" href="<?php echo base_url(); ?>home/index"><img src="<?php echo base_url(); ?>img/TEDx_logo.png" alt="ASSAN"></a>
 
                 </div>
                 <div class="navbar-collapse collapse">
@@ -153,7 +153,7 @@
                                 <ul class="list-inline f3-work">
                                     <?php echo form_open_multipart('forum/do_upload'); ?>
                                     <li><a href="" onclick="document.getElementById('userfile').click();
-                                            return false"><img id="img" src="<?php echo base_url(); ?>/userpic/{profielfoto}" name="foto" class="img-responsive center-block" alt=""></a></li>
+                                            return false"><img id="img" src="{profielfoto}" name="foto" class="img-responsive center-block" alt=""></a></li>
                                 </ul>
                                 <input type="file" name="userfile" id="userfile" size="20" onchange="readURL(this);" class="hidden" />
                                 <p class="help-block"></p>

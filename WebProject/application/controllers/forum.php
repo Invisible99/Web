@@ -346,7 +346,9 @@ class Forum extends CI_Controller {
             $this->data['error'] = "";
 
             $this->data['user'] = $this->users_model->find($this->session->userdata('gebruikerID'));
-          
+            if (empty($this->data['user'][0]['profielfoto'])) {
+                $this->data['profielfoto'] = base_url() . 'img/stef.jpg';
+            }
             if (empty($this->data['user'])) {
                 //de alert-error is vn bootstrap
                 $this->data['error'] = "<div class='alert alert-error'>De gebruiker is niet gevonden</div>";
