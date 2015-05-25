@@ -14,7 +14,10 @@ class Home extends CI_Controller {
           $this->load->library('user_agent');
           $this->load->helper('url');
           $this->session->sess_destroy(); */
-        $this->load->view('Home/index');
+        //$this->load->view('Home/index');
+        $this->load->model("subforum_model");
+        $this->data['latestNews']=$this->subforum_model->getLatestNews();
+        $this->parser->parse('Home/index.php',$this->data);
     }
 
     //Show events page

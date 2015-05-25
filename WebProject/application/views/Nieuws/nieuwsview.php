@@ -149,7 +149,7 @@
                         <p><a href="<?php echo base_url(); ?>forum/thread/{topicID}" class="btn btn border-theme btn-xs">Read More...</a></p>
                         <ul class="list-inline post-detail">
                             <li>by <a href="#">{username}</a></li>
-                            <li><i class="fa fa-calendar"></i>{postDate}</li>
+                            <li><i class="fa fa-calendar"></i> {postDate}</li>
                         </ul>
                     </div><!--blog post-->
                     {/nieuws}

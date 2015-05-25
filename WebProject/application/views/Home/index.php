@@ -145,7 +145,7 @@
                                 <?php
                             }
                             ?>
-                                
+
                             </div>
                         </li> <!--menu login li end here-->
                     </ul>
@@ -275,65 +275,31 @@
         <div class="divide70"></div>
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-sm-12">
                     <div class="center-heading">
                         <h2><strong>latest</strong> news</h2>
                         <span class="center-line"></span>
                     </div>
                 </div>                   
             </div>
-            <div class="row">
-                <div class="col-sm-4 margin30">
+            <div class="row text-center">
+                <div class="col-md-12 margin30">
                     <div>
-                        <a href="#">
-                            <div class="item-img-wrap">
-                                <img src="<?php echo base_url(); ?>img/img-8.jpg" class="img-responsive" alt="workimg">
-                                <div class="item-img-overlay">
-                                    <span></span>
-                                </div>
-                            </div>                       
-                        </a><!--news link--> 
+
                         <div class="news-desc">
-                            <span>Sports</span>
-                            <h4><a href="#">Lorem ipsum dollor Sit amet</a></h4>
-                            <span>By <a href="#">Author</a> on 24 july 2014</span> <span><a href="#">Read more...</a></span>
+                            {latestNews}
+
+                            <h3><a href="<?php echo base_url(); ?>forum/thread/{topicID}">{titel}</a></h3>
+                            
+                            <p>
+                                {bericht}
+                            </p>
+                            {/latestNews}
                         </div><!--news desc-->
                     </div> 
                 </div><!--news col-->
-                <div class="col-sm-4 margin30">
-                    <div>
-                        <a href="#">
-                            <div class="item-img-wrap">
-                                <img src="<?php echo base_url(); ?>img/img-3.jpg" class="img-responsive" alt="workimg">
-                                <div class="item-img-overlay">
-                                    <span></span>
-                                </div>
-                            </div>                       
-                        </a><!--news link--> 
-                        <div class="news-desc">
-                            <span>Sports</span>
-                            <h4><a href="#">Lorem ipsum dollor Sit amet</a></h4>
-                            <span>By <a href="#">Author</a> on 24 july 2014</span> <span><a href="#">Read more...</a></span>
-                        </div><!--news desc-->
-                    </div> 
-                </div><!--news col-->
-                <div class="col-sm-4 margin30">
-                    <div>
-                        <a href="#">
-                            <div class="item-img-wrap">
-                                <img src="<?php echo base_url(); ?>img/img-6.jpg" class="img-responsive" alt="workimg">
-                                <div class="item-img-overlay">
-                                    <span></span>
-                                </div>
-                            </div>                       
-                        </a><!--news link--> 
-                        <div class="news-desc">
-                            <span>Sports</span>
-                            <h4><a href="#">Lorem ipsum dollor Sit amet</a></h4>
-                            <span>By <a href="#">Author</a> on 24 july 2014</span> <span><a href="#">Read more...</a></span>
-                        </div><!--news desc-->
-                    </div> 
-                </div><!--news col-->
+
+
             </div>
         </div><!--latest news-->
 
@@ -362,7 +328,7 @@
                             <ul class="list-unstyled contact">
                                 <li><p><strong><i class="fa fa-map-marker"></i> Adres:</strong> Elfde-Liniestraat 24, 3500 Hasselt, België</p></li> 
                                 <li><p><strong><i class="fa fa-envelope"></i> Mail Ons:</strong> <a href="<?php echo base_url(); ?>home/contact">pxltedx@gmail.com</a></p></li>
-                                <li> <p><strong><i class="fa fa-phone"></i> Telefoon:</strong>+32 474 21 21 25</p></li>
+                                <li> <p><strong><i class="fa fa-phone"></i> Telefoon:</strong>+ 32 11 77 55 55</p></li>
 
                             </ul>
                         </div>                        

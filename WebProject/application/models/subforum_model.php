@@ -65,4 +65,9 @@ class subforum_model extends MY_Model{
 
         return $query->result();
     }
+    
+    function getLatestNews(){
+        $query = $this->db->query("SELECT thr.topicID, thr.titel, thr.bericht, thr.gebruikerID, thr.categorieID, Date_Format(thr.postDate,'%d-%m-%Y') 'postDate', users.username FROM threads thr LEFT JOIN users ON thr.gebruikerID = users.gebruikerID WHERE categorieID = 4 and  thr.topicID=(select max(topicID) from threads)");
+        return $query->result();
+    }
 }
