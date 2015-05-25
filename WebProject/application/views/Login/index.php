@@ -212,7 +212,7 @@
                                 </div>
                                 <input type="submit" class="btn btn-theme-bg" name="btn-inlog" value="Aanmelden"/>
                                 <a href="<?php echo base_url(); ?>login/register" class="btn btn-theme-bg">Registreren</a>
-                                <a href="#" class="btn btn-fb-login"><i class="fa fa-facebook"></i> Aanmelden met Facebook</a>
+                                <!--<a href="#" class="btn btn-fb-login"><i class="fa fa-facebook"></i> Aanmelden met Facebook</a>-->
                                 <a href="<?php echo base_url(); ?>login/wachtwoordReset">Wachtwoord vergeten?</a>
                             </form>
                             <?php
