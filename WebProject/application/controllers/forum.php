@@ -295,7 +295,13 @@ class Forum extends CI_Controller {
             //alle latestpost voor deze thread op nul zetten
             $this->thread_model->resetAllLatestPost($id);
             //toevoegen als laatste en latest op 1 zetten
-            $this->thread_model->insert(array('gebruikerID' => $this->session->userdata['gebruikerID'], 'topicID' => $id, 'bericht' => $this->input->post('formbericht'), 'latestPost' => 1));
+            if($this->session->has_userdata('gebruikerID')){
+                $gebruikerID = $this->session->userdata['gebruikerID'];
+            }
+            else{
+                $gebruikerID = 3;
+            }
+            $this->thread_model->insert(array('gebruikerID' => $gebruikerID, 'topicID' => $id, 'bericht' => $this->input->post('formbericht'), 'latestPost' => 1));
             //doorsturen naar de thread
             redirect(base_url() . "forum/thread/" . $id);
         } else {
