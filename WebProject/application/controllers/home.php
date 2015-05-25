@@ -24,6 +24,11 @@ class Home extends CI_Controller {
     function events() {
         $this->load->view('Home/events');
     }
+    
+    //Show events page
+    function lidWorden() {
+        $this->load->view('Home/lidWorden');
+    }
 
     //Show register page
     function register() {

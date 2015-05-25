@@ -10,7 +10,6 @@ class Events extends CI_Controller {
         $this->load->model("subforum_model");
         $this->data['error']="";
         $this->data['volgendEvent']=$this->subforum_model->selectNextEvent();
-        print_r($this->data['volgendEvent']);
         if ($this->data['volgendEvent'][0]->datum == null) {
             //de alert-error is vn bootstrap
             $this->data['error'] = "<div class='alert alert-error'>Er zijn voorlopig geen events gepland.</div>";

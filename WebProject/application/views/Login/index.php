@@ -78,6 +78,9 @@
                         <li class="">
                             <a href="<?php echo base_url(); ?>nieuws/index">Nieuws</a>
                         </li>
+                        <li>
+                            <a href="<?php echo base_url(); ?>home/lidWorden">Lid Worden</a>
+                        </li>
                         <!--dit enkel laten zien als een admin is ingelogd-->
                         <?php
                         if ($this->session->has_userdata('user') && $this->session->has_userdata('logged_in') && $this->session->logged_in && $this->session->has_userdata('rolID') && $this->session->userdata['rolID'] == 1) {
@@ -86,7 +89,7 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <i class="fa fa-angle-down"></i></a>
                                 <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
                                     <li><a href="<?php echo base_url(); ?>admin/gebruikerOverzicht">Gebruikers</a></li>
-                                    <li><a href="<?php echo base_url(); ?>admin/evenementOverzicht">Evenementen</a></li><!--doorsturen naar pagina om de evenementen te beheren-->
+                                    <li><a href="<?php echo base_url(); ?>forum/subforum/2">Evenementen</a></li><!--doorsturen naar pagina om de evenementen te beheren-->
                                 </ul>
                             </li>
 
@@ -210,7 +213,6 @@
                                 </div>
                                 <input type="submit" class="btn btn-theme-bg" name="btn-inlog" value="Aanmelden"/>
                                 <a href="<?php echo base_url(); ?>login/register" class="btn btn-theme-bg">Registreren</a>
-                                <!--<a href="#" class="btn btn-fb-login"><i class="fa fa-facebook"></i> Aanmelden met Facebook</a>-->
                                 <a href="<?php echo base_url(); ?>login/wachtwoordReset">Wachtwoord vergeten?</a>
                             </form>
                             <?php

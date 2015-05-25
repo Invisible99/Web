@@ -63,7 +63,6 @@
                         <li class="active ">
                             <a href="<?php echo base_url(); ?>home/index">Home</a>
                         </li>
-                        <!--menu Portfolio li end here-->
                         <li>
                             <a href="<?php echo base_url(); ?>forum/index">Forum</a>
                         </li>
@@ -73,7 +72,9 @@
                         <li>
                             <a href="<?php echo base_url(); ?>nieuws/index">Nieuws</a>
                         </li>
-                        <!--dit enkel laten zien als een admin is ingelogd-->
+                        <li>
+                            <a href="<?php echo base_url(); ?>home/lidWorden">Lid Worden</a>
+                        </li>
                         <?php
                         if ($this->session->has_userdata('user') && $this->session->has_userdata('logged_in') && $this->session->logged_in && $this->session->has_userdata('rolID') && $this->session->userdata['rolID'] == 1) {
                             ?>
@@ -81,7 +82,7 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <i class="fa fa-angle-down"></i></a>
                                 <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
                                     <li><a href="<?php echo base_url(); ?>admin/gebruikerOverzicht">Gebruikers</a></li>
-                                    <li><a href="<?php echo base_url(); ?>admin/evenementOverzicht">Evenementen</a></li><!--doorsturen naar pagina om de evenementen te beheren-->
+                                    <li><a href="<?php echo base_url(); ?>forum/subforum/2">Evenementen</a></li><!--doorsturen naar pagina om de evenementen te beheren-->
                                 </ul>
                             </li>
 

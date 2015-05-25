@@ -4,10 +4,10 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Index</title>
+        <title>Lid worden</title>
 
         <!-- Bootstrap -->
-        <link href="<?php echo base_url(); ?>bootstrap/css/bootstrap.css" rel="stylesheet">
+        <link href="<?php echo base_url(); ?>bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <!-- custom css-->
         <link href="<?php echo base_url(); ?>css/style-red.css" rel="stylesheet" type="text/css" media="screen">
 
@@ -37,8 +37,10 @@
           <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
+
     </head>
     <body>
+
         <!--navigation -->
         <!-- Static navbar -->
         <div class="navbar navbar-default navbar-static-top yamm sticky" role="navigation">
@@ -55,7 +57,7 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="active ">
+                        <li>
                             <a href="<?php echo base_url(); ?>home/index">Home</a>
                         </li>
                         <!--menu Portfolio li end here-->
@@ -67,6 +69,9 @@
                         </li> 
                         <li>
                             <a href="<?php echo base_url(); ?>nieuws/index">Nieuws</a>
+                        </li>
+                        <li class="active">
+                            <a href="<?php echo base_url(); ?>home/lidWorden">Lid Worden</a>
                         </li>
                         <li>
                             <a href="<?php echo base_url(); ?>home/lidWorden">Lid Worden</a>
@@ -141,7 +146,7 @@
                                 <?php
                             }
                             ?>
-
+                                
                             </div>
                         </li> <!--menu login li end here-->
                     </ul>
@@ -152,17 +157,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6">
-                        {getMaandNaam}
-                        <h4>Events in {maandNaam}</h4>
+                        <h4>Lid worden</h4>
                     </div>
                     <div class="col-sm-6 hidden-xs text-right">
                         <ol class="breadcrumb">
                             <li><a href="index">Home</a></li>
-                            <li><a href="<?php echo base_url(); ?>Events/index">Evenementen</a></li>
-
-                            <li>{maandNaam}</li>
-                            {/getMaandNaam}
-
+                            <li>Lid worden</li>
                         </ol>
                     </div>
                 </div>
@@ -170,122 +170,21 @@
         </div><!--breadcrumbs-->
         <div class="divide80"></div>
         <div class="container">
-
             <div class="row">
-                <div class="col-md-3 ">
-
-
-                    <div class="sidebar-box margin40">
-                        <h4>Kalender</h4>
-                        <div class="panel-group" id="accordion">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                                            <?php
-                                            $huidigJaar = date('Y');
-                                            echo $huidigJaar;
-                                            ?>
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseOne" class="panel-collapse collapse in">
-                                    <div class="panel-body">
-                                        <ul class="list-unstyled cat-list">
-                                            {maanden}
-                                            <li> <a href="<?php echo base_url(); ?>Events/showevents/{maandID}/<?php echo $huidigJaar; ?>">{maandNaam}</a></li>
-                                            {/maanden}
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-                                            <?php
-                                            $huidigJaar = date('Y') + 1;
-                                            echo $huidigJaar;
-                                            ?> 
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseTwo" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        <ul class="list-unstyled cat-list">
-
-                                            {maanden}
-                                            <li> <a href="<?php echo base_url(); ?>Events/showevents/{maandID}/<?php echo $huidigJaar; ?>">{maandNaam}</a></li>
-
-                                            {/maanden}
-
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-                                            <?php
-                                            $huidigJaar = date('Y') + 2;
-                                            echo $huidigJaar;
-                                            ?>
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseThree" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        <ul class="list-unstyled cat-list">
-                                            {maanden}
-                                            <li> <a href="<?php echo base_url(); ?>Events/showevents/{maandID}/<?php echo $huidigJaar; ?>">{maandNaam}</a></li>
-                                            {/maanden}
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!--sidebar-box-->
-                    <div class="sidebar-box margin40">
-                        <h4><a href="<?php echo base_url(); ?>Events/archief">Archief</a></h4>
-                    </div><!--sidebar-box-->
-
-
-
-                </div><!--sidebar col end-->
-                <div class="col-md-9">
-
-                    <div class="blog-post animated fadeInLeft">
-                        {error}
-                        {events}
-                        <div class="row  event-box">
-                            <div class="col-md-3 margin20"> 
-
-                                <h4>{eventDate}</h4>                       
-
-                            </div>
-                            <div class="col-md-9 margin20">
-
-                                <ul class="list-inline post-detail">                                  
-                                    <li>by <a href="#">{username}</a></li>
-
-                                </ul>
-                                <h2><a href="#">{titel}</a></h2>
-                                <p>
-                                    {bericht}
-                                </p>
-                                <p><a href="<?php echo base_url(); ?>forum/thread/{topicID}" class="btn btn border-theme btn-xs">Read More...</a></p>
-
-                            </div>
-                        </div>
-                        {/events}
-                    </div><!--blog post-->
-
-
-                </div><!--col-->
+                <div class="col-md-12 margin30">
+                    <h3 class="heading">Ledenvoordelen</h3>
+                    <p>
+                        TEDxPXL leden kunnen een profiel maken en aanpassen waarbij ze onder andere een profielfoto kunnen instellen of hun gegevens kunnen veranderen. Met dit profiel kunnen ze met hun gebruikersnaam op het forum posten. Leden krijgen alle evenementen samen met alle info en/of afbeelding te zien. Als lid kan je ook alles op het forum bekijken, threads aanmaken, posten op threads en deze op een later tijdstip aanpassen. Leden kunnen ook op het forum posten zonder telkens een captcha in te vullen.
+                    </p>
+                </div>
             </div>
-        </div><!--left sidebar container-->
-        <div class="divide60"></div>
+            <div class="row">
+                <div class="col-md-12 margin30">
+                    <a href="<?php echo base_url(); ?>login/register" class="btn btn-theme-bg btn-lg pull-right">Registreer nu</a>
+                </div>
+            </div>
+        </div>
+        <div class="divide40"></div>
         <footer id="footer">
             <div class="container">
                 <div class="row">
@@ -309,8 +208,9 @@
 
                             <ul class="list-unstyled contact">
                                 <li><p><strong><i class="fa fa-map-marker"></i> Adres:</strong> Elfde-Liniestraat 24, 3500 Hasselt, België</p></li> 
-                                <li><p><strong><i class="fa fa-envelope"></i> Mail Ons:</strong> <a href="<?php echo base_url(); ?>home/contact">pxltedx@gmail.com</a></p></li>
+                                <li><p><strong><i class="fa fa-envelope"></i> Mail Ons:</strong> <a href="index/contact">pxltedx@gmail.com</a></p></li>
                                 <li> <p><strong><i class="fa fa-phone"></i> Telefoon:</strong>+ 32 11 77 55 55</p></li>
+
                             </ul>
                         </div>                        
                     </div>
@@ -355,5 +255,12 @@
 
         <!--customizable plugin edit according to your needs-->
         <script src="<?php echo base_url(); ?>js/custom.js" type="text/javascript"></script>
+
+
+        <!--cantact form script-->
+        <!--<script src="<?php echo base_url(); ?>js/contact_me.js" type="text/javascript"></script>-->
+        <script src="<?php echo base_url(); ?>js/jqBootstrapValidation.js" type="text/javascript"></script>
+        <!--gmap js-->
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>
     </body>
 </html>
