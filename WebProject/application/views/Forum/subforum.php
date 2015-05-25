@@ -165,7 +165,7 @@
                                 <strong>Laatste post:</strong> {lastpost} 
                             </p>
                             <p class="forum-overview-poster jumbotron">
-                                <strong class="forum-overview-black">Poster:</strong> <a href="#">{username}</a>
+                                <strong class="forum-overview-black">Poster:</strong> <a href="#">{username}</a><strong class="forum-overview-black"> op {postDate}</strong>
                             </p>
                             <a href="<?php echo base_url(); ?>forum/editThread/{thrtopicID}"><span class="forum-button">Wijzigen</span></a>
                             <a href="<?php echo base_url(); ?>forum/deleteThread/{thrtopicID}"><span class="forum-button">Verwijderen</span></a>
