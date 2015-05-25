@@ -206,24 +206,37 @@ class Login extends CI_Controller {
     }
 
     function wachtwoordReset() {
+        $this->data['captchaError'] = "";
+        $this->data['captcha'] = $this->captcha_model->create_image();
+
+        //Form validation captcha
+        $this->form_validation->set_rules('captchaText', 'captchaText', 'trim|strip_tags|required|callback_captcha_check|match_captcha[captcha.captcha]');
+
         if (isset($_POST['btn-reset'])) {
             $this->data['user'] = $this->users_model->doesEmailExist($this->input->post('email'));
 
+            $this->data['captchaText'] = "";
             if (!empty($this->data['user'])) {
                 if ($this->data['user']["actief"] == 1) {
-                    $randomPaswoord = $this->_genereerPaswoord();
-                    $this->users_model->updateID(array('al_ingelogd' => 0, 'password' => $randomPaswoord), array('gebruikerID' => $this->data['user']['gebruikerID']));
+                    if ($this->form_validation->run() === false) {
+                        $this->data['melding'] = "";
+                        $this->data['captchaError'] = form_error('captchaText', "<p class='alert alert-danger'>");
+                        $this->parser->parse('login/wachtwoordReset', $this->data);
+                    } else {
+                        $randomPaswoord = $this->_genereerPaswoord();
+                        $this->users_model->updateID(array('al_ingelogd' => 0, 'password' => $randomPaswoord), array('gebruikerID' => $this->data['user']['gebruikerID']));
 
-                    $this->_mailToUserWWReset($this->data['user']['voornaam'], $this->data['user']['familienaam'], $this->input->post('email'), $randomPaswoord);
+                        $this->_mailToUserWWReset($this->data['user']['voornaam'], $this->data['user']['familienaam'], $this->input->post('email'), $randomPaswoord);
 
-                    $this->data['melding'] = "<p class='alert alert-success'>U zal zodadelijk een mail krijgen om uw wachtwoord te veranderen.</p>";
-                    $this->parser->parse('login/wachtwoordReset.php', $this->data);
+                        $this->data['melding'] = "<p class='alert alert-success'>U zal zodadelijk een mail krijgen om uw wachtwoord te veranderen.</p>";
+                        $this->parser->parse('login/wachtwoordReset.php', $this->data);
+                    }
                 } else {
-                    $this->data['melding'] = "<p class='alert alert-danger'>Er is geen geldige gebruiker met dit email adres.</p>";
+                    $this->data['melding'] = "<p class='alert alert-danger'>Dit account is nog niet geactiveerd, gelieve nog even te wachten.</p>";
                     $this->parser->parse('login/wachtwoordReset.php', $this->data);
                 }
             } else {
-                $this->data['melding'] = "<p class='alert alert-danger'>Er is geen geldige gebruiker mesdfqsdfqsdt dit email adres.</p>";
+                $this->data['melding'] = "<p class='alert alert-danger'>Er is geen geldige gebruiker met dit email adres.</p>";
                 $this->parser->parse('login/wachtwoordReset.php', $this->data);
             }
         } else {

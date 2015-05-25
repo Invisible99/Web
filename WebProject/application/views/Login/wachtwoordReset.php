@@ -176,13 +176,25 @@
                 <div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
                     <div class="login-form">
                         {melding}
+                        {captchaError}
                         <h3>Wachtwoord veranderen</h3>
                         <form role="form" action='<?php echo base_url(); ?>login/wachtwoordReset' method='post' >
                             <div class="form-group">
                                 <label for="email">E-mail adres</label>
                                 <input type="email" class="form-control" name="email" id="email" placeholder="email" required="required">
                             </div>
-
+                            <div class="row control-group">
+                                <div class="form-group col-xs-12 controls">
+                                    {captcha}
+                                </div>
+                            </div> 
+                            <div class="row control-group">
+                                <div class="form-group col-xs-12 controls">
+                                    <label>Geef de tekst uit de afbeelding hieronder in.<span>*</span></label>
+                                    <input type="text" class="form-control" name="captchaText" placeholder="Captcha" id="captchaText" value="{captchaText}">
+                                    <p class="help-block"></p>
+                                </div>
+                            </div>
                             <input type="submit" class="btn btn-theme-bg" name="btn-reset" value="Reset"/>
 
                         </form>
