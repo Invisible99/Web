@@ -299,7 +299,7 @@ class Forum extends CI_Controller {
                 $gebruikerID = $this->session->userdata['gebruikerID'];
             }
             else{
-                $gebruikerID = 3;
+                $gebruikerID = 2;
             }
             $this->thread_model->insert(array('gebruikerID' => $gebruikerID, 'topicID' => $id, 'bericht' => $this->input->post('formbericht'), 'latestPost' => 1));
             //doorsturen naar de thread

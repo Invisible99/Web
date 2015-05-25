@@ -5,7 +5,7 @@ class subforum_model extends MY_Model{
     var $primkey="topicID";
     
     function findThreads($id){
-        $query = $this->db->query("SELECT thr.titel 'thrtitel', thr.topicID 'thrtopicID', thr.bericht, posts.bericht 'lastpost', thr.gebruikerID 'thrGebruikerID', posts.gebruikerID 'postGebruikerID', posts.postDate, users.username FROM posts LEFT JOIN threads thr ON posts.topicID = thr.topicID LEFT JOIN users ON posts.gebruikerID = users.gebruikerID WHERE posts.latestPost = 1 AND thr.categorieID = $id ORDER BY posts.postDate DESC");
+        $query = $this->db->query("SELECT thr.titel 'thrtitel', thr.topicID 'thrtopicID', thr.bericht, posts.bericht 'lastpost', thr.gebruikerID 'thrGebruikerID', posts.gebruikerID 'postGebruikerID', posts.postDate, users.username, creator.username 'creatorNaam' FROM posts LEFT JOIN threads thr ON posts.topicID = thr.topicID LEFT JOIN users ON posts.gebruikerID = users.gebruikerID LEFT JOIN users creator ON thr.gebruikerID = creator.gebruikerID WHERE posts.latestPost = 1 AND thr.categorieID = $id ORDER BY posts.postDate DESC");
         $result = array();
 
         return $query->result();
@@ -20,7 +20,7 @@ class subforum_model extends MY_Model{
     }
     
     function findThreadsNoPost($id){
-        $query = $this->db->query("SELECT * FROM threads WHERE (SELECT COUNT(subpo.latestPost) FROM posts subpo WHERE subpo.latestPost = 1 AND subpo.topicID = threads.topicID) = 0 AND threads.categorieID =$id ORDER BY threads.categorieID ASC");
+        $query = $this->db->query("SELECT * FROM threads LEFT JOIN users on threads.gebruikerID = users.gebruikerID WHERE (SELECT COUNT(subpo.latestPost) FROM posts subpo WHERE subpo.latestPost = 1 AND subpo.topicID = threads.topicID) = 0 AND threads.categorieID =$id ORDER BY threads.categorieID ASC");
         $result = array();
 
         return $query->result();

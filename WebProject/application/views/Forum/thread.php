@@ -153,6 +153,7 @@
                     <p class="margin40">
                         {bericht}
                     </p>
+                    {locatie}
                     {/dezeThread}
                 </div> 
                 <div class="row">

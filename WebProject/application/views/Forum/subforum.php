@@ -165,6 +165,9 @@
                                     <a href="<?php echo base_url(); ?>forum/thread/<?php echo $threads->thrtopicID; ?>" class="forum-overview-naam jumbotron"><?php echo $threads->thrtitel; ?></a> <?php echo $threads->bericht; ?>
                                 </h3>
                                 <p class="forum-overview-post jumbotron">
+                                    <strong>Gemaakt door: </strong><a href="#"><?php echo $threads->creatorNaam; ?></a>
+                                </p>
+                                <p class="forum-overview-post jumbotron">
                                     <strong>Laatste post:</strong> <?php echo $threads->lastpost; ?>
                                 </p>
                                 <p class="forum-overview-poster jumbotron">
@@ -195,6 +198,9 @@
                                 <h3 class="forum-wrap">
                                     <a href="<?php echo base_url(); ?>forum/thread/<?php echo $threads->topicID; ?>" class="forum-overview-naam jumbotron"><?php echo $threads->titel; ?></a> <?php echo $threads->bericht; ?>
                                 </h3>
+                                <p class="forum-overview-post jumbotron">
+                                    <strong>Gemaakt door: </strong><a href="#"><?php echo $threads->username; ?></a>
+                                </p>
                                 <p class="forum-overview-post jumbotron">
                                     <strong>Er zijn nog geen posts</strong>
                                 </p>
