@@ -118,6 +118,23 @@ class Forum extends CI_Controller {
 
         $this->parser->parse('forum/editThread', $this->data);
     }
+    
+    //Show index page
+    function editEvent($topicID) {
+        //model laden
+        $this->load->model("subforum_model");
+        $this->data['error'] = "";
+        $this->data['topicID'] = $topicID;
+        //alle subforums opvragen samen met laatste post en thread
+        $this->data['thread'] = $this->subforum_model->find($topicID);
+
+        if (empty($this->data['thread'])) {
+            //de alert-error is vn bootstrap
+            $this->data['error'] = "<div class='alert alert-error'>Dit event kan je niet wijzigen!</div>";
+        }
+
+        $this->parser->parse('forum/editEvent', $this->data);
+    }
 
     //Show index page
     function deleteThread($topicID) {
@@ -141,6 +158,13 @@ class Forum extends CI_Controller {
         //model laden
         $this->data['categorieID'] = $categorieID;
         $this->parser->parse('forum/addThread', $this->data);
+    }
+    
+    //Show index page
+    function addEvent($categorieID) {
+        //model laden
+        $this->data['categorieID'] = $categorieID;
+        $this->parser->parse('forum/addEvent', $this->data);
     }
 
     //Show index page
@@ -208,6 +232,15 @@ class Forum extends CI_Controller {
             $this->data['thread'] = $this->subforum_model->find($id);
             //thread updaten
             $this->subforum_model->updateID(array('titel' => $this->input->post('formtitel'), 'bericht' => $this->input->post('formbericht')), array('topicID' => $id));
+            redirect(base_url() . "forum/subforum/" . $this->data['thread'][0]['categorieID']);
+        }
+        if (isset($_POST['editevent'])) {
+            //$id is threadid
+            $this->load->model("subforum_model");
+            //Huidige post opvragen
+            $this->data['thread'] = $this->subforum_model->find($id);
+            //thread updaten
+            $this->subforum_model->updateID(array('titel' => $this->input->post('formtitel'), 'bericht' => $this->input->post('formbericht'), 'eventDate' => $this->input->post('formdate'), 'locatie' => $_POST['formlocatie']), array('topicID' => $id));
             redirect(base_url() . "forum/subforum/" . $this->data['thread'][0]['categorieID']);
         }
         if (isset($_POST['deletethryes'])) {
@@ -282,6 +315,11 @@ class Forum extends CI_Controller {
         if (isset($_POST['addthr'])) {
             $this->load->model("subforum_model");
             $this->subforum_model->insert(array('gebruikerID' => $this->session->userdata['gebruikerID'], 'categorieID' => $id, 'titel' => $this->input->post('formtitel'), 'bericht' => $this->input->post('formbericht')));
+            redirect(base_url() . "forum/subforum/" . $id);
+        }
+        if (isset($_POST['addevent'])) {
+            $this->load->model("subforum_model");
+            $this->subforum_model->insert(array('gebruikerID' => $this->session->userdata['gebruikerID'], 'categorieID' => $id, 'titel' => $this->input->post('formtitel'), 'bericht' => $this->input->post('formbericht'), 'eventDate' => $this->input->post('formdate'), 'locatie' => $_POST['formlocatie']));
             redirect(base_url() . "forum/subforum/" . $id);
         }
         if (isset($_POST['addcat'])) {
