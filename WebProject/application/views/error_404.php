@@ -14,7 +14,7 @@
         <!-- Bootstrap -->
         <link href="<?php echo base_url(); ?>bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <!-- custom css-->
-        <link href="<?php echo base_url(); ?>css/style.css" rel="stylesheet" type="text/css" media="screen">
+        <link href="<?php echo base_url(); ?>css/style-red.css" rel="stylesheet" type="text/css" media="screen">
 
         <!-- font awesome for icons -->
         <link href="<?php echo base_url(); ?>font-awesome-4.3.0/css/font-awesome.min.css" rel="stylesheet">
@@ -55,7 +55,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="<?php echo base_url(); ?>home/index"><img src="<?php echo base_url(); ?>img/logo.png" alt="TEDxPXL"></a>
+                    <a class="navbar-brand" href="<?php echo base_url(); ?>home/index"><img src="<?php echo base_url(); ?>img/TEDx_logo.png" alt="TEDxPXL"></a>
 
                 </div>
                 <div class="navbar-collapse collapse">
@@ -76,7 +76,7 @@
                         <?php
                         if ($this->session->has_userdata('user') && $this->session->has_userdata('logged_in') && $this->session->logged_in && $this->session->has_userdata('rolID') && $this->session->userdata['rolID'] == 1) {
                             ?>
-                            <li class="active">
+                            <li>
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <i class="fa fa-angle-down"></i></a>
                                 <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
                                     <li><a href="<?php echo base_url(); ?>admin/gebruikerOverzicht">Gebruikers</a></li>
@@ -121,12 +121,7 @@
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="fa fa-lock"></i></span>
                                                 <input type="password" class="form-control"  name="password" placeholder="Password"  required="required">
-                                            </div>
-                                            <div class="checkbox pull-left">
-                                                <label>
-                                                    <input type="checkbox"> Onthoud mij
-                                                </label>
-                                            </div>                                   
+                                            </div>                                 
                                             <input type="submit" class="btn btn-theme-bg pull-right" name="btn-inlog" value="Aanmelden"/>
                                             <div class="clearfix"></div>
                                             <hr>
@@ -150,7 +145,7 @@
             </div><!--container-->
         </div><!--navbar-default-->
 
-        
+
         <div class="breadcrumb-wrap">
             <div class="container">
                 <div class="row">
@@ -178,15 +173,14 @@
             </div>
         </div>
         <div class="divide60"></div>
-              <footer id="footer">
+        <footer id="footer">
             <div class="container">
-
                 <div class="row">
-                    <div class="col-md-3 col-sm-6 margin30">
+                    <div class="col-md-4 col-sm-6 col-md-offset-1 margin30">
                         <div class="footer-col">
-                            <h3>About assan</h3>
+                            <h3>Over TEDx</h3>
                             <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam, adipiscing condimentum tristique vel, eleifend sed turpis. Pellentesque cursus arcu id magna euismod in elementum purus molestie.
+                                TEDxPXL is een onafhankelijk georganiseerd TED conferentie waar sprekers uit de hele wereld hun cutting-edge ideeën kunnen delen.
                             </p>
                             <ul class="list-inline social-1">
                                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -197,93 +191,58 @@
                             </ul>
                         </div>                        
                     </div><!--footer col-->
-                    <div class="col-md-3 col-sm-6 margin30">
+                    <div class="col-md-4 col-sm-6 col-md-offset-3 margin30">
                         <div class="footer-col">
                             <h3>Contact</h3>
 
                             <ul class="list-unstyled contact">
-                                <li><p><strong><i class="fa fa-map-marker"></i> Address:</strong> vaisahali, jaipur, 302012</p></li> 
-                                <li><p><strong><i class="fa fa-envelope"></i> Mail Us:</strong> <a href="#">Support@designmylife.com</a></p></li>
-                                <li> <p><strong><i class="fa fa-phone"></i> Phone:</strong> +91 1800 2345 2132</p></li>
-                                <li> <p><strong><i class="fa fa-print"></i> Fax</strong> 1800 2345 2132</p></li>
-                                <li> <p><strong><i class="fa fa-skype"></i> Skype</strong> assan.856</p></li>
+                                <li><p><strong><i class="fa fa-map-marker"></i> Adres:</strong> Elfde-Liniestraat 24, 3500 Hasselt, België</p></li> 
+                                <li><p><strong><i class="fa fa-envelope"></i> Mail Ons:</strong> <a href="#">pxltedx@gmail.com</a></p></li>
+                                <li> <p><strong><i class="fa fa-phone"></i> Telefoon:</strong>+32 474 21 21 25</p></li>
 
                             </ul>
                         </div>                        
-                    </div><!--footer col-->
-                    <div class="col-md-3 col-sm-6 margin30">
-                        <div class="footer-col">
-                            <h3>Featured Work</h3>
-                            <ul class="list-inline f2-work">
-                                <li><a href="portfolio-single.html"><img src="img/img-1.jpg" class="img-responsive" alt=""></a></li>
-                                <li><a href="portfolio-single.html"><img src="img/img-2.jpg" class="img-responsive" alt=""></a></li>
-                                <li><a href="portfolio-single.html"><img src="img/img-3.jpg" class="img-responsive" alt=""></a></li>
-                                <li><a href="portfolio-single.html"><img src="img/img-4.jpg" class="img-responsive" alt=""></a></li>
-                                <li><a href="portfolio-single.html"><img src="img/img-5.jpg" class="img-responsive" alt=""></a></li>
-                                <li><a href="portfolio-single.html"><img src="img/img-6.jpg" class="img-responsive" alt=""></a></li>
-                                <li><a href="portfolio-single.html"><img src="img/img-7.jpg" class="img-responsive" alt=""></a></li>
-                                <li><a href="portfolio-single.html"><img src="img/img-8.jpg" class="img-responsive" alt=""></a></li>
-                                <li><a href="portfolio-single.html"><img src="img/img-9.jpg" class="img-responsive" alt=""></a></li>
-                            </ul>
-                        </div>                        
-                    </div><!--footer col-->
-                    <div class="col-md-3 col-sm-6 margin30">
-                        <div class="footer-col">
-                            <h3>Newsletter</h3>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam, 
-                            </p>
-                            <form role="form" class="subscribe-form">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Enter email to subscribe">
-                                    <span class="input-group-btn">
-                                        <button class="btn  btn-theme-dark btn-lg" type="submit">Ok</button>
-                                    </span>
-                                </div>
-                            </form>
-                        </div>                        
-                    </div><!--footer col-->
-
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12 text-center">
                         <div class="footer-btm">
-                            <span>&copy;2014. Theme by Design_mylife</span>
+                            <span>&copy;2015. Theme by Jarno, Stef, Koen, Piet, Frederik</span>
                         </div>
                     </div>
                 </div>
             </div>
         </footer><!--default footer end here-->
-       <!--scripts and plugins -->
+        <!--scripts and plugins -->
         <!--must need plugin jquery-->
-        <script src="js/jquery.min.js"></script>        
+        <script src="<?php echo base_url(); ?>js/jquery.min.js"></script>        
         <!--bootstrap js plugin-->
-        <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>       
+        <script src="<?php echo base_url(); ?>bootstrap/js/bootstrap.min.js" type="text/javascript"></script>       
         <!--easing plugin for smooth scroll-->
-        <script src="js/jquery.easing.1.3.min.js" type="text/javascript"></script>
+        <script src="<?php echo base_url(); ?>js/jquery.easing.1.3.min.js" type="text/javascript"></script>
         <!--sticky header-->
-        <script type="text/javascript" src="js/jquery.sticky.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>js/jquery.sticky.js"></script>
         <!--flex slider plugin-->
-        <script src="js/jquery.flexslider-min.js" type="text/javascript"></script>
+        <script src="<?php echo base_url(); ?>js/jquery.flexslider-min.js" type="text/javascript"></script>
         <!--parallax background plugin-->
-        <script src="js/jquery.stellar.min.js" type="text/javascript"></script>
-        
-        
+        <script src="<?php echo base_url(); ?>js/jquery.stellar.min.js" type="text/javascript"></script>
+
+
         <!--digit countdown plugin-->
         <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
         <!--digit countdown plugin-->
-        <script src="js/jquery.counterup.min.js" type="text/javascript"></script>
+        <script src="<?php echo base_url(); ?>js/jquery.counterup.min.js" type="text/javascript"></script>
         <!--on scroll animation-->
-        <script src="js/wow.min.js" type="text/javascript"></script> 
+        <script src="<?php echo base_url(); ?>js/wow.min.js" type="text/javascript"></script> 
         <!--owl carousel slider-->
-        <script src="js/owl.carousel.min.js" type="text/javascript"></script>
+        <script src="<?php echo base_url(); ?>js/owl.carousel.min.js" type="text/javascript"></script>
         <!--popup js-->
-        <script src="js/jquery.magnific-popup.min.js" type="text/javascript"></script>
+        <script src="<?php echo base_url(); ?>js/jquery.magnific-popup.min.js" type="text/javascript"></script>
         <!--you tube player-->
-        <script src="js/jquery.mb.YTPlayer.min.js" type="text/javascript"></script>
-        
-        
+        <script src="<?php echo base_url(); ?>js/jquery.mb.YTPlayer.min.js" type="text/javascript"></script>
+
+
         <!--customizable plugin edit according to your needs-->
-        <script src="js/custom.js" type="text/javascript"></script>
+        <script src="<?php echo base_url(); ?>js/custom.js" type="text/javascript"></script>
     </body>
 </html>

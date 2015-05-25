@@ -178,6 +178,92 @@ p.sub-text{
     font-weight:400;
     color:#555;
 }
+/******forum overview*********/
+.forum-overview-poster{
+    color: #FF2B06;
+    padding: 6px 12px;
+    margin: 0 0 0 0;
+    background-color: #DCDCDC;
+}
+
+.forum-overview-red{
+    color: #FF2B06;  
+}
+
+.forum-overview-black{
+    color: #000;  
+}
+
+.forum-overview-post{
+    color: #000;
+    background-color: #DCDCDC;
+    padding: 6px 12px;
+    margin: 0 0 0;
+    background-image: url(../img/shadow-bg.png);
+}
+
+.forum-overview-naam{
+    line-height: 40px;
+    padding: 6px 10px;
+    margin:  0 0 0 0;
+    color: #FF2B06;
+    display: inline-block;
+    background-color: #DCDCDC;
+}
+
+.forum-overview-omschrijving{
+    background-color: #DCDCDC;
+    padding: 12px 12px;
+    display: inline-block;
+}
+
+div.forumoverview-box{
+    color: #000;            
+    background-color: #f6f6f6;
+}
+
+.forum-button{
+    color: #000;
+    background-color: #DCDCDC;
+    border: 1px solid #333;
+    color: #000;
+    background-color: transparent;
+    display: inline-block;
+    padding-bottom: 6px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 6px;
+    border-bottom-style: solid;
+}
+
+.forum-button-right{
+    color: #000;
+    background-color: #DCDCDC;
+    float:right;
+    border: 1px solid #333;
+    color: #000;
+    background-color: transparent;
+    display: inline-block;
+    padding-bottom: 6px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 6px;
+    border-bottom-style: solid;
+}
+
+.forum-wrap{
+    line-height: 45px;
+}
+
+.forum-label{
+}
+
+.forum-textarea{
+    resize: none;
+    width:100%;
+    height:100px;
+    margin-bottom:15px
+}
 /*******section heading**********/
 .center-heading{
     text-align: center;
@@ -682,7 +768,7 @@ TOP BARS
     border-color: #FF2D06;
     color: #fff;
     background-color: #FF2D06;
-     box-shadow: 0px 1px 1px rgba(0,0,0,0.2);
+    box-shadow: 0px 1px 1px rgba(0,0,0,0.2);
     -webkit-box-shadow: 0px 1px 1px rgba(0,0,0,0.2);
 }
 .btn i{
@@ -708,7 +794,7 @@ TOP BARS
     border: 1px solid #333;
     color:#000;
     background-color: transparent;
-     box-shadow: 0px 1px 1px rgba(0,0,0,0.2);
+    box-shadow: 0px 1px 1px rgba(0,0,0,0.2);
     -webkit-box-shadow: 0px 1px 1px rgba(0,0,0,0.2);
 }
 .border-black:hover{
@@ -720,7 +806,7 @@ TOP BARS
 .border-white{
     border: 1px solid #fff;
     color:#fff;
-     box-shadow: 0px 1px 1px rgba(0,0,0,0.2);
+    box-shadow: 0px 1px 1px rgba(0,0,0,0.2);
     -webkit-box-shadow: 0px 1px 1px rgba(0,0,0,0.2);
 }
 .border-white:hover{
@@ -1151,15 +1237,15 @@ h1.typed-text{
     top: 5px;
 }
 .services-box-icon i{
-width: 50px;
-  height: 50px;
-  line-height: 50px;
-  text-align: center;
-  background-color: #FF2D06;
-  color: #fff;
-  font-size: 17px;
-  border-radius: 50%;
-  -webkit-border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    background-color: #FF2D06;
+    color: #fff;
+    font-size: 17px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
 }
 .services-box-info{
     padding-left: 65px;
@@ -2719,7 +2805,7 @@ label span{
 }
 .popular-desc h5{
     font-size: 17px;
-margin-bottom: 6px;
+    margin-bottom: 6px;
 }
 .popular-desc h5 a{
     color: #000;
@@ -2730,10 +2816,10 @@ margin-bottom: 6px;
     color:#FF2D06;
 }
 .popular-desc h6{
- color: #777;
-  font-style: normal;
-  font-size: 12px;
-  font-weight: 600;
+    color: #777;
+    font-style: normal;
+    font-size: 12px;
+    font-weight: 600;
 }
 .tag-list a{
     display: inline-block;
@@ -4348,9 +4434,9 @@ table.shopping-cart-table tr th, table.shopping-cart-table tr td {
 }
 .intro-text-1 h4{
     color: #fff;
-  font-size: 20px;
-  text-transform: uppercase;
-  font-weight: 700;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: 700;
 }
 .intro-text-1 h4 strong{
     color:#FF2D06;
@@ -4369,9 +4455,9 @@ table.shopping-cart-table tr th, table.shopping-cart-table tr td {
     background-color: #f5f5f5;
 }
 .intro-text-1.light h4{
-      color: #333;
-  text-transform: uppercase;
-  font-weight: 700;
+    color: #333;
+    text-transform: uppercase;
+    font-weight: 700;
 }
 
 
@@ -4884,8 +4970,8 @@ table.shopping-cart-table tr th, table.shopping-cart-table tr td {
     padding: 40px 20px;
 }
 .dark-version.offcanvas-container .offcanvas {
-     background-color: #fff;
-  border-color: #f5f5f5;
+    background-color: #fff;
+    border-color: #f5f5f5;
 }
 .offcanvas-toggle-left {
     display: block;
