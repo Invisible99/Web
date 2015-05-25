@@ -154,8 +154,8 @@
                     </div>
                     <div class="col-sm-6 hidden-xs text-right">
                         <ol class="breadcrumb">
-                            <li><a href="<?php echo base_url(); ?>events/index">Evenementen</a></li>
-                            <li>Toon Evenementen</li>
+                            <li><a href="<?php echo base_url(); ?>home/index">Home</a></li>
+                            <li>Evenementen</li>
                         </ol>
                     </div>
                 </div>
@@ -238,18 +238,20 @@
                         <h4><a href="<?php echo base_url(); ?>Events/archief">Archief</a></h4>
                     </div><!--sidebar-box-->
                 </div><!--sidebar col end-->
-                <div class="col-md-9">
 
+                <div class="col-md-9">
+                                    {error}
+                    {volgendEvent}
                     <div class="parallax events-bg" data-stellar-background-ratio="0.5">
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-9 text-center">
-                                    {volgendEvent}
+
                                     <h2>Next event:</h2>
                                     <h2> {titel}</h2>
                                     <h4>{eventDate}</h4>
                                     <span class="hidden" id="volgendEventID">{datum}</span>
-                                    {/volgendEvent}
+
                                 </div>
                             </div>
                             <div class="row">
@@ -259,9 +261,10 @@
                             </div>
                         </div>
                     </div><!--events slider end-->
-
+                    {/volgendEvent}
 
                 </div><!--col-->
+                
             </div>
         </div><!--left sidebar container-->
         <div class="divide60"></div>

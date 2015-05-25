@@ -379,10 +379,10 @@ class Forum extends CI_Controller {
             //print_r($this->data);
             if (empty($this->data['user'])) {
                 //de alert-error is vn bootstrap
-                $this->data['error'] = "<div class='alert alert-error'>De gebruiker is niet gevonden</div>";
+                $this->data['error'] = "<div class='alert alert-danger'>De gebruiker is niet gevonden</div>";
             }
             if ($this->data['user'][0]['profielfoto'] == null) {
-                $this->data['profielfoto'] = base_url() . 'img/default.jpg';
+                $this->data['profielfoto'] = base_url() . 'userpic/default.jpg';
             } else {
                 $this->data['profielfoto'] = base_url() . 'userpic/' . $this->data['user'][0]['profielfoto'];
             }
@@ -424,7 +424,7 @@ class Forum extends CI_Controller {
             'allowed_types' => "jpg|png|jpeg",
             'overwrite' => TRUE,
             'max_size' => "2048000", // Can be set to particular file size , here it is 2 MB(2048 Kb)
-            'max_height' => "768",
+            'max_height' => "1024",
             'max_width' => "1024"
         );
 
@@ -441,7 +441,23 @@ class Forum extends CI_Controller {
 
             redirect(base_url() . 'forum/wijzigProfiel', 'refresh');
         } else {
-            redirect(base_url() . 'forum/wijzigProfiel', 'refresh');
+            $this->data['error'] = "";
+
+            $this->data['user'] = $this->users_model->find($this->session->userdata('gebruikerID'));
+            if (empty($this->data['user'])) {
+                $this->data['profielfoto'] = "";
+                $this->data['error'] .= "<div class='alert alert-danger'>De gebruiker is niet gevonden</div>";
+            } else {
+                if ($this->data['user'][0]['profielfoto'] == null) {
+                    $this->data['profielfoto'] = base_url() . 'userpic/default.jpg';
+                } else {
+                    $this->data['profielfoto'] = base_url() . 'userpic/' . $this->data['user'][0]['profielfoto'];
+                }
+            }
+            
+            $this->data['error'] .= "<div class='alert alert-danger'>Kon de afbeelding niet uploaden, een afbeelding mag maximum 2MB groot zijn en moet kleiner zijn dan 1024px op 1024px.</div>";
+            $this->parser->parse('forum/wijzigProfiel.php', $this->data);
+            //redirect(base_url() . 'forum/wijzigProfiel', 'refresh');
         }
     }
 

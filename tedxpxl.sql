@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 25, 2015 at 06:35 PM
+-- Generation Time: May 25, 2015 at 06:37 PM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -254,7 +254,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 INSERT INTO `users` (`gebruikerID`, `rolID`, `username`, `password`, `email`, `profielfoto`, `voornaam`, `familienaam`, `al_ingelogd`, `actief`) VALUES
 (1, 1, 'admin.tedxpxl', '$2y$10$X67Tp9c2MqMkmgXDhpyUI.27b03m6B59kHOFaGnxk9Xf6guUAqe8y', 'admin.tedxpxl@admin.be', 'default.jpg', 'admin', 'tedxpxl', 1, 1),
 (2, 3, 'guest', 'guest', 'guest.guest@guest.be', 'default.jpg', 'guest', 'guest', 0, 0),
-(34, 2, 'piet.vandeput', '$2y$10$VwUNr3U5FC95zX6HrVVijuemXL97jCa4LZLtIbc7I4SVkPRuZyTq2', 'piet-v@live.com', '34.png', 'piet', 'vandeput', 1, 1);
+(34, 2, 'piet.vandeput', '$2y$10$VwUNr3U5FC95zX6HrVVijuemXL97jCa4LZLtIbc7I4SVkPRuZyTq2', 'piet-v@live.com', 'default.jpg', 'piet', 'vandeput', 1, 1);
 
 --
 -- Indexes for dumped tables

@@ -155,7 +155,7 @@
                     <div class="col-sm-6 hidden-xs text-right">
                         <ol class="breadcrumb">
                             <li><a href="index">Home</a></li>
-                            <li><a href="<?php echo base_url(); ?>Events/index">Events</a></li>
+                            <li><a href="<?php echo base_url(); ?>Events/index">Evenementen</a></li>
 
                             <li>{maandNaam}</li>
                             {/getMaandNaam}
@@ -278,10 +278,7 @@
                         {/events}
                     </div><!--blog post-->
 
-                    <ul class="pager">
-                        <li class="previous"><a href="#">&larr; Previous Page</a></li>
-                        <li class="next"><a href="#">Next Page &rarr;</a></li>
-                    </ul><!--pager-->
+
                 </div><!--col-->
             </div>
         </div><!--left sidebar container-->
