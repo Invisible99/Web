@@ -92,11 +92,11 @@
                             <ul class="dropdown-menu search-dropdown animated fadeInUp">
                                 <li id="dropdownForm">
                                     <div class="dropdown-form">
-                                        <form class=" form-inline">
-                                            <div class="input-group">
-                                                <input type="text" class="form-control" placeholder="search...">
+                                        <form class=" form-inline" action="<?php echo base_url(); ?>search/index" method="POST" >
+                                            <div class="input-group ">
+                                                <input type="text" name="searchstring" class="form-control" placeholder="search...">
                                                 <span class="input-group-btn">
-                                                    <button class="btn btn-theme-bg" type="button">Go!</button>
+                                                    <button type="submit" class="btn btn-theme-bg" name="searchbutton">Go!</button>
                                                 </span>
                                             </div><!--input group-->
                                         </form><!--form-->
@@ -108,11 +108,10 @@
                             <a href="#" class=" dropdown-toggle" data-toggle="dropdown"><i class="fa fa-lock"></i></a>
                             <div class="dropdown-menu dropdown-menu-right dropdown-login-box animated fadeInUp">
 
-                                <form role="form" action='<?php echo base_url(); ?>login/index' method='post'>
-
-                                    <?php
-                                    if (!($this->session->has_userdata('user') && $this->session->has_userdata('logged_in') && $this->session->logged_in && $this->session->has_userdata('rolID'))) {
-                                        ?>
+                                <?php
+                                if (!($this->session->has_userdata('user') && $this->session->has_userdata('logged_in') && $this->session->logged_in && $this->session->has_userdata('rolID'))) {
+                                    ?>
+                                    <form role="form" action='<?php echo base_url(); ?>login/index' method='post'>
                                         <h4>Aanmelden</h4>
                                         <div class="form-group">
                                             <div class="input-group">
@@ -132,27 +131,32 @@
                                             <input type="submit" class="btn btn-theme-bg pull-right" name="btn-inlog" value="Aanmelden"/>
                                             <div class="clearfix"></div>
                                             <hr>
-                                            <p>Nog geen lid! <a href="<?php echo base_url(); ?>login/register">Registereer nu!</a></p>
-                                        </div>
-                                        <?php
-                                    } else {
-                                        ?>                                      
-                                        <form role="form" action='<?php echo base_url(); ?>login/index' method='post'>
-                                            <h4 class="center-heading">Afmelden</h4>
-                                            <input type="submit" class="btn btn-theme-bg center-block" name="btn-logoff" value="Afmelden"/>
-                                        </form>
-
-                                        <?php
-                                    }
-                                    ?>
+                                            <p>Nog geen lid! <a href="<?php echo base_url(); ?>login/register">Registreer nu!</a></p>
+                                    </form>
+                                </div>
+                                <?php
+                            } else {
+                                ?> 
+                                <form role="form" action='<?php echo base_url(); ?>forum/wijzigProfiel' method='post'>
+                                    <h4 class="center-heading">Profiel wijzigen</h4>
+                                    <input type="submit" class="btn btn-theme-bg center-block" name="btn-prfWzg" value="Profiel wijzigen"/>
+                                    <div class="clearfix"></div>
                                 </form>
+                                <hr>
+                                <form role="form" action='<?php echo base_url(); ?>login/index' method='post'>
+                                    <h4 class="center-heading">Afmelden</h4>
+                                    <input type="submit" class="btn btn-theme-bg center-block" name="btn-logoff" value="Afmelden"/>
+                                </form>
+                                <?php
+                            }
+                            ?>
+                                
                             </div>
                         </li> <!--menu login li end here-->
                     </ul>
                 </div><!--/.nav-collapse -->
             </div><!--container-->
         </div><!--navbar-default-->
-        <!--rev slider start-->
         <div class="fullwidthbanner">
             <div class="tp-banner">
                 <ul>
