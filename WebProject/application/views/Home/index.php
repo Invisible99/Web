@@ -259,7 +259,7 @@
                             <img src="<?php echo base_url(); ?>img/teamImg/frederik.jpg" class="img-responsive" alt="">
                             <div class="person-desc-v2">
                                 <h3>Frederik<br>Thuysbaert</h3>
-                                <em>Adviser</em>
+                                <em>Advisor</em>
                                 <ul class="list-inline top-social">
                                     <li><a href="https://www.facebook.com/frederikthuysbaert"><i class="fa fa-facebook"></i></a></li>
                                     <li><a href="#"><i class="fa fa-twitter"></i></a></li>
