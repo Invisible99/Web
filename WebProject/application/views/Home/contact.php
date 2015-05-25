@@ -9,7 +9,7 @@
         <!-- Bootstrap -->
         <link href="<?php echo base_url(); ?>bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <!-- custom css-->
-        <link href="<?php echo base_url(); ?>css/style.css" rel="stylesheet" type="text/css" media="screen">
+        <link href="<?php echo base_url(); ?>css/style-red.css" rel="stylesheet" type="text/css" media="screen">
 
         <!-- font awesome for icons -->
         <link href="<?php echo base_url(); ?>font-awesome-4.3.0/css/font-awesome.min.css" rel="stylesheet">
@@ -57,19 +57,33 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="active ">
+                        <li>
                             <a href="<?php echo base_url(); ?>home/index">Home</a>
                         </li>
                         <!--menu Portfolio li end here-->
-                        <li class="dropdown">
+                        <li>
                             <a href="<?php echo base_url(); ?>forum/index">Forum</a>
                         </li>
-                        <li class="dropdown">
+                        <li>
                             <a href="<?php echo base_url(); ?>events/index">Evenementen</a>
                         </li> 
-                        <li class="dropdown">
+                        <li>
                             <a href="<?php echo base_url(); ?>nieuws/index">Nieuws</a>
                         </li>
+                        <!--dit enkel laten zien als een admin is ingelogd-->
+                        <?php
+                        if ($this->session->has_userdata('user') && $this->session->has_userdata('logged_in') && $this->session->logged_in && $this->session->has_userdata('rolID') && $this->session->userdata['rolID'] == 1) {
+                            ?>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <i class="fa fa-angle-down"></i></a>
+                                <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+                                    <li><a href="<?php echo base_url(); ?>admin/gebruikerOverzicht">Gebruikers</a></li>
+                                    <li><a href="<?php echo base_url(); ?>admin/evenementOverzicht">Evenementen</a></li><!--doorsturen naar pagina om de evenementen te beheren-->
+                                </ul>
+                            </li>
+
+                        <?php } ?>
+
                         <li class="dropdown " data-animate="animated fadeInUp" style="z-index:500;">
                             <a href="#" class="dropdown-toggle " data-toggle="dropdown"><i class="fa fa-search"></i></a>
                             <ul class="dropdown-menu search-dropdown animated fadeInUp">
@@ -90,29 +104,44 @@
                         <li class="dropdown">
                             <a href="#" class=" dropdown-toggle" data-toggle="dropdown"><i class="fa fa-lock"></i></a>
                             <div class="dropdown-menu dropdown-menu-right dropdown-login-box animated fadeInUp">
-                                <form role="form">
-                                    <h4>Login</h4>
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                            <input type="text" class="form-control" placeholder="Username">
+
+                                <form role="form" action='<?php echo base_url(); ?>login/index' method='post'>
+
+                                    <?php
+                                    if (!($this->session->has_userdata('user') && $this->session->has_userdata('logged_in') && $this->session->logged_in && $this->session->has_userdata('rolID'))) {
+                                        ?>
+                                        <h4>Aanmelden</h4>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                                <input type="text" class="form-control" name="gebruikersnaam" placeholder="Username"  required="required">
+                                            </div>
+                                            <br>
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                                <input type="password" class="form-control"  name="password" placeholder="Password"  required="required">
+                                            </div>
+                                            <div class="checkbox pull-left">
+                                                <label>
+                                                    <input type="checkbox"> Onthoud mij
+                                                </label>
+                                            </div>                                   
+                                            <input type="submit" class="btn btn-theme-bg pull-right" name="btn-inlog" value="Aanmelden"/>
+                                            <div class="clearfix"></div>
+                                            <hr>
+                                            <p>Nog geen lid! <a href="<?php echo base_url(); ?>login/register">Registereer nu!</a></p>
                                         </div>
-                                        <br>
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                            <input type="password" class="form-control" placeholder="Password">
-                                        </div>
-                                        <div class="checkbox pull-left">
-                                            <label>
-                                                <input type="checkbox"> Remember me
-                                            </label>
-                                        </div>
-                                        <a class="btn btn-theme-bg pull-right" href="<?php echo base_url(); ?>login/index">Login</a>
-                                        <!--                                        <button type="submit" class="btn btn-theme pull-right">Login</button>                 -->
-                                        <div class="clearfix"></div>
-                                        <hr>
-                                        <p>Don't have an account! <a href="<?php echo base_url(); ?>login/register">Register Now</a></p>
-                                    </div>
+                                        <?php
+                                    } else {
+                                        ?>                                      
+                                        <form role="form" action='<?php echo base_url(); ?>login/index' method='post'>
+                                            <h4 class="center-heading">Afmelden</h4>
+                                            <input type="submit" class="btn btn-theme-bg center-block" name="btn-logoff" value="Afmelden"/>
+                                        </form>
+
+                                        <?php
+                                    }
+                                    ?>
                                 </form>
                             </div>
                         </li> <!--menu login li end here-->
@@ -120,7 +149,7 @@
                 </div><!--/.nav-collapse -->
             </div><!--container-->
         </div><!--navbar-default-->
-
+        <!--rev slider start-->
         <div class="breadcrumb-wrap">
             <div class="container">
                 <div class="row">
@@ -224,15 +253,6 @@
                         <li><p><strong><i class="fa fa-envelope"></i> Mail Us:</strong> <a href="home/contact">pxltedx@gmail.com</a></p></li>
                         <li> <p><strong><i class="fa fa-phone"></i> Phone:</strong>+32 474 21 21 25</p></li>
                     </ul>
-                    <div class="divide40"></div>
-                    <h4>Wordt sociaal</h4>
-                    <ul class="list-inline social-1">
-                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                        <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                        <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                    </ul>
                 </div>
             </div>
         </div>
@@ -247,11 +267,10 @@
                                 TEDxPXL is een onafhankelijk georganiseerd TED conferentie waar sprekers uit de hele wereld hun cutting-edge ideeën kunnen delen.
                             </p>
                             <ul class="list-inline social-1">
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                                <li><a href="https://www.facebook.com/TEDxEvents?fref=ts"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="https://twitter.com/tedx"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="https://plus.google.com/+TEDx"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a href="https://www.pinterest.com/tednews/"><i class="fa fa-pinterest"></i></a></li>
                             </ul>
                         </div>                        
                     </div><!--footer col-->
@@ -261,7 +280,7 @@
 
                             <ul class="list-unstyled contact">
                                 <li><p><strong><i class="fa fa-map-marker"></i> Adres:</strong> Elfde-Liniestraat 24, 3500 Hasselt, België</p></li> 
-                                <li><p><strong><i class="fa fa-envelope"></i> Mail Ons:</strong> <a href="#">pxltedx@gmail.com</a></p></li>
+                                <li><p><strong><i class="fa fa-envelope"></i> Mail Ons:</strong> <a href="index/contact">pxltedx@gmail.com</a></p></li>
                                 <li> <p><strong><i class="fa fa-phone"></i> Telefoon:</strong>+32 474 21 21 25</p></li>
 
                             </ul>
@@ -271,7 +290,7 @@
                 <div class="row">
                     <div class="col-md-12 text-center">
                         <div class="footer-btm">
-                            <span>&copy;2014. Theme by Jarno</span>
+                            <span>&copy;2014. Theme by Jarno, Stef, Koen, Piet, Frederik</span>
                         </div>
                     </div>
                 </div>

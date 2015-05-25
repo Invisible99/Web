@@ -24,7 +24,7 @@ class Login extends CI_Controller {
             $this->data['inloggen'] = $this->users_model->login($this->input->post('gebruikersnaam'));
 
             if (!empty($this->data['inloggen'])) {
-                if ($this->data['inloggen']["al_ingelogd"] == 0) { //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!hier moet nog controle bij of de gebruiker al geactiveerd is en dus wel mag inloggen!
+                if ($this->data['inloggen']["al_ingelogd"] == 0) {
                     if ($this->data['inloggen']["password"] == $this->input->post('password')) {
                         $this->firstlogin($this->data['inloggen']["gebruikerID"]);
                         return;
@@ -38,7 +38,7 @@ class Login extends CI_Controller {
                     $hash = $this->data['inloggen']["password"];
 
                     if (password_verify($this->input->post('password'), $hash)) {
-                        $this->data['melding'] = "<p class='alert alert-success'>Bedankt voor uw inloggen.</p>";
+                        //$this->data['melding'] = "<p class='alert alert-success'>Bedankt voor uw inloggen.</p>";
                         $data = array('user' => $this->data['inloggen']["username"], 'logged_in' => true, 'rolID' => $this->data['inloggen']["rolID"], 'gebruikerID' => $this->data['inloggen']["gebruikerID"]);
 
                         $this->session->set_userdata($data);
@@ -50,7 +50,11 @@ class Login extends CI_Controller {
                 $this->data['melding'] = "<p class='alert alert-danger'>De gebruikersnaam en wachtwoord komen niet overeen.</p>";
             }
 
-            $this->parser->parse('login/index.php', $this->data);
+            if ($this->data['melding'] == "") {
+                redirect($this->agent->referrer());
+            } else {
+                $this->parser->parse('login/index.php', $this->data);
+            }
         } else if (isset($_POST['btn-logoff'])) {
             $this->session->sess_destroy();
             redirect($this->agent->referrer());
@@ -139,8 +143,8 @@ class Login extends CI_Controller {
                     $this->users_model->insert(array('rolID' => 2, 'username' => $this->input->post('gebruikersnaam'), 'password' => $randomPaswoord, 'email' => $this->input->post('email'), 'voornaam' => $this->input->post('voornaam'), 'familienaam' => $this->input->post('familienaam')));
 
                     //roep hier method aan die mail stuurt (met random passwd) indien insert gelukt is, zowel naar admin die moet activeren als naar persoon die zich wil registreren
-                    $this->_mailToUser($this->input->post('voornaam'), $this->input->post('familienaam'), $this->input->post('gebruikersnaam'), $this->input->post('email'), $randomPaswoord);
-                    $this->_mailToAdmin($this->input->post('voornaam'), $this->input->post('familienaam'), $this->input->post('gebruikersnaam'), $this->input->post('email'));
+                    //$this->_mailToUser($this->input->post('voornaam'), $this->input->post('familienaam'), $this->input->post('gebruikersnaam'), $this->input->post('email'), $randomPaswoord);
+                    //$this->_mailToAdmin($this->input->post('voornaam'), $this->input->post('familienaam'), $this->input->post('gebruikersnaam'), $this->input->post('email'));
 
                     $this->data['melding'] = "";
                     $this->data['voornaam'] = "";
@@ -198,6 +202,43 @@ class Login extends CI_Controller {
             return false;
         } else {
             return true;
+        }
+    }
+
+    function wachtwoordReset() {
+        if (isset($_POST['btn-reset'])) {
+            $this->data['user'] = $this->users_model->doesEmailExist($this->input->post('email'));
+
+            if (!empty($this->data['user'])) {
+                if ($this->data['user']["actief"] == 1) {
+                    $randomPaswoord = $this->_genereerPaswoord();
+                    $this->users_model->updateID(array('al_ingelogd' => 0, 'password' => $randomPaswoord), array('gebruikerID' => $this->data['user']['gebruikerID']));
+
+                    $this->_mailToUserWWReset($this->data['user']['voornaam'], $this->data['user']['familienaam'], $this->input->post('email'), $randomPaswoord);
+
+                    $this->data['melding'] = "<p class='alert alert-success'>U zal zodadelijk een mail krijgen om uw wachtwoord te veranderen.</p>";
+                    $this->parser->parse('login/wachtwoordReset.php', $this->data);
+                } else {
+                    $this->data['melding'] = "<p class='alert alert-danger'>Er is geen geldige gebruiker met dit email adres.</p>";
+                    $this->parser->parse('login/wachtwoordReset.php', $this->data);
+                }
+            } else {
+                $this->data['melding'] = "<p class='alert alert-danger'>Er is geen geldige gebruiker mesdfqsdfqsdt dit email adres.</p>";
+                $this->parser->parse('login/wachtwoordReset.php', $this->data);
+            }
+        } else {
+            $this->data['melding'] = "";
+            $this->parser->parse('login/wachtwoordReset.php', $this->data);
+        }
+    }
+
+    function _mailToUserWWReset($userVoornaam, $userAchternaam, $userEmail, $generatedPassword) {
+        $to = $userEmail;
+        $subject = 'TEDxPXL password reset';
+        $message = "Beste " . $userVoornaam . " " . $userAchternaam . "\n\nUw nieuw wachtwoord is " . $generatedPassword . "\nU zal uw wachtwoord moeten wijzigen bij de eerste keer inloggen.\n\nMet vriendelijke groet\n\nTEDxPXL Administratie";
+        $headers = 'From: pxltedx@gmail.com';
+        if (!mail($to, $subject, $message, $headers)) {
+            //echo "Email sending failed";
         }
     }
 

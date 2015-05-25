@@ -150,7 +150,6 @@
                         <ul class="list-inline post-detail">
                             <li>by <a href="#">{username}</a></li>
                             <li><i class="fa fa-calendar"></i>{postDate}</li>
-                            <li><i class="fa fa-comment"></i> <a href="#">6 Comments</a></li>
                         </ul>
                     </div><!--blog post-->
                     {/nieuws}

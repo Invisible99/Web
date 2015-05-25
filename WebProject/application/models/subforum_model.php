@@ -51,4 +51,9 @@ class subforum_model extends MY_Model{
 
         return $query->row();
     }
+    
+    function selectNextEvent(){
+        $query = $this->db->query("SELECT titel, min(Date_Format(eventDate,'%M %d-%m, %Y')) 'eventDate', eventDate 'datum' FROM threads WHERE categorieID = 1 AND eventDate >= NOW()");
+        return $query->result();
+    }
 }

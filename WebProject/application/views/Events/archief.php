@@ -4,28 +4,22 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Forum</title>
+        <title>Index</title>
 
         <!-- Bootstrap -->
-        <link href="<?php echo base_url(); ?>bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <!-- custom css (blue color by default) -->
+        <link href="<?php echo base_url(); ?>bootstrap/css/bootstrap.css" rel="stylesheet">
+        <!-- custom css-->
         <link href="<?php echo base_url(); ?>css/style.css" rel="stylesheet" type="text/css" media="screen">
-        <!-- custom css (green color ) -->
-        <!--      <link href="css/style-green.css" rel="stylesheet" type="text/css" media="screen">-->
-        <!-- custom css (red color ) -->
-        <!--        <link href="css/style-red.css" rel="stylesheet" type="text/css" media="screen">-->
-        <!-- custom css (yellow color ) -->
-        <!--       <link href="css/style-yellow.css" rel="stylesheet" type="text/css" media="screen">-->
-        <!-- custom css (sea-greean color ) -->
-        <!--      <link href="css/style-sea-green.css" rel="stylesheet" type="text/css" media="screen">-->
-        <!-- custom css (style-gold color ) -->
-        <!--       <link href="css/style-gold.css" rel="stylesheet" type="text/css" media="screen">-->
+
         <!-- font awesome for icons -->
         <link href="<?php echo base_url(); ?>font-awesome-4.3.0/css/font-awesome.min.css" rel="stylesheet">
         <!-- flex slider css -->
         <link href="<?php echo base_url(); ?>css/flexslider.css" rel="stylesheet" type="text/css" media="screen">
         <!-- animated css  -->
-        <link href="<?php echo base_url(); ?>css/animate.css" rel="stylesheet" type="text/css" media="screen">
+        <link href="<?php echo base_url(); ?>css/animate.css" rel="stylesheet" type="text/css" media="screen"> 
+        <!--Revolution slider css-->
+        <link href="<?php echo base_url(); ?>rs-plugin/css/settings.css" rel="stylesheet" type="text/css" media="screen">
+        <link href="<?php echo base_url(); ?>css/rev-style.css" rel="stylesheet" type="text/css" media="screen">
         <!--google fonts-->
 
 
@@ -43,9 +37,9 @@
           <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
-
     </head>
     <body>
+        <!--navigation -->
         <!-- Static navbar -->
         <div class="navbar navbar-default navbar-static-top yamm sticky" role="navigation">
             <div class="container">
@@ -124,16 +118,17 @@
                 </div><!--/.nav-collapse -->
             </div><!--container-->
         </div><!--navbar-default-->
+
         <div class="breadcrumb-wrap">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h4>Forum</h4>
+                        <h4>Events</h4>
                     </div>
                     <div class="col-sm-6 hidden-xs text-right">
                         <ol class="breadcrumb">
                             <li><a href="<?php echo base_url(); ?>home/index">Home</a></li>
-                            <li>Forum</li>
+                            <li>Events</li>
                         </ol>
                     </div>
                 </div>
@@ -141,88 +136,128 @@
         </div><!--breadcrumbs-->
         <div class="divide80"></div>
         <div class="container">
+
             <div class="row">
-                {error}
-                {user}
-               
-                <div class="animated fadeInLeft">
-                    <div class="col-md-2"> 
-                        <div class="row control-group">
-                            <div class="form-group col-xs-12 controls">
-                                <label>Profielfoto:</label>
-                                <ul class="list-inline f3-work">
-                                    <?php echo form_open_multipart('forum/do_upload'); ?>
-                                    <?php echo "<input type='file' name='userfile' size='20' />"; ?>{profielfoto} <!-- krijgt de naam van de file -->
-                                    <?php echo "<input type='submit' name='submit' value='upload' /> "; ?>
-                                    <?php echo "</form>" ?>
-                                    <!--<li><a href="" onclick="document.getElementById('userfile').click();
-                                            return false"><img id="img" src="{/user}{foto}{user}" name="foto" class="img-responsive" alt=""></a></li>
-                                    <input type="file" name="userfile" id="userfile" onchange="readURL(this);" class="hidden" />-->
+                <div class="col-sm-3 ">
+
+
+                    <div class="sidebar-box margin40">
+                        <h4>Kalender</h4>
+                        <div class="panel-group" id="accordion">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                            <?php 
+                                                $huidigJaar=date('Y');
+                                                echo $huidigJaar;
+                                            ?>
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseOne" class="panel-collapse collapse in">
+                                    <div class="panel-body">
+                                        <ul class="list-unstyled cat-list">
+                                            {maanden}
+                                            <li> <a href="<?php echo base_url(); ?>Events/showevents/{maandID}/<?php echo $huidigJaar; ?>">{maandNaam}</a></li>
+                                            {/maanden}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                                            <?php 
+                                                $huidigJaar=date('Y')+1;
+                                                echo $huidigJaar;
+                                            ?>
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseTwo" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul class="list-unstyled cat-list">
+                                            {maanden}
+                                            <li> <a href="<?php echo base_url(); ?>Events/showevents/{maandID}/<?php echo $huidigJaar; ?>">{maandNaam}</a></li>
+                                            {/maanden}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                                            <?php 
+                                                $huidigJaar=date('Y')+2;
+                                                echo $huidigJaar;
+                                            ?>
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseThree" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul class="list-unstyled cat-list">
+                                            {maanden}
+                                            <li> <a href="<?php echo base_url(); ?>Events/showevents/{maandID}/<?php echo $huidigJaar; ?>">{maandNaam}</a></li>
+                                            {/maanden}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--sidebar-box-->
+                    <div class="sidebar-box margin40">
+                        <h4><a href="<?php echo base_url(); ?>Events/archief">Archief</a></h4>
+                    </div><!--sidebar-box-->
+
+                    
+                    
+                </div><!--sidebar col end-->
+                <div class="col-sm-9">
+
+                    <div class="blog-post ">
+                        {error}
+                        {allEvents}
+                        <div class="row  event-box animated fadeInRight">
+                            <div class="col-md-3 margin20"> 
+                                
+                                <h4>{eventDate}</h4>                       
+                               
+                            </div>
+                            <div class="col-md-9 margin20">
+
+                                <ul class="list-inline post-detail">                                  
+                                    <li>by <a href="#">{username}</a></li>
+
                                 </ul>
-                                <p class="help-block"></p>
-                            </div>
-                        </div> 
-                        <div class="row">
-                            <div class="form-group col-xs-12">
-                                <input type="submit" name="editProfile" class="btn btn-theme-bg btn-lg" value="Wijzig profiel" />
-                            </div>
-                        </div>
-                    </div>
-                     <?php echo form_open("forum/wijzigProfiel"); ?>
-                    <div class="col-md-8 col-md-offset-2">
-                        <div class="col-md-12 margin30">
-                            <div class="row control-group">
-                                <div class="form-group col-xs-12 controls">
-                                    <label>Gebruikersnaam:</label>
-                                    <input type="text" class="form-control" name="gebruikersnaam" value="{username}" placeholder="Username" required="required">
-                                    <p class="help-block"></p>
-                                </div>
+                                <h2><a href="#">{titel}</a></h2>
+                                <p>
+                                    {bericht}
+                                </p>
+                                <p><a href="<?php echo base_url(); ?>forum/thread/{topicID}" class="btn btn border-theme btn-xs">Read More...</a></p>
+
                             </div>
                         </div>
-                        <div class="col-md-6 margin30">
-                            <div class="row control-group">
-                                <div class="form-group col-xs-12 controls">
-                                    <label>Voornaam:</label>
-                                    <input type="text" class="form-control" name="voornaam" placeholder="Voornaam"  value="{voornaam}" required="required">
-                                    <p class="help-block"></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 margin30">
-                            <div class="row control-group">
-                                <div class="form-group col-xs-12 controls">
-                                    <label>Familienaam:</label>
-                                    <input type="text" class="form-control" name="familienaam" placeholder="Familienaam" value="{familienaam}" required="required">
-                                    <p class="help-block"></p>
-                                </div>
-                            </div> 
-                        </div>
-                        <div class="col-md-12 margin30">
-                            <div class="row control-group">
-                                <div class="form-group col-xs-12 controls">
-                                    <label>E-mailadres:</label>
-                                    <input type="text" class="form-control" name="email" placeholder="Email" value="{email}" required="required">
-                                    <p class="help-block"></p>
-                                </div>
-                            </div>
-                        </div>
-                        <br>
-                        <div id="success"></div>
-                    </div>
-                </div>
-                <?php form_close(); ?>
-                {/user}
+                        {/allEvents}
+                    </div><!--blog post-->
+                    
+                    
+                </div><!--col-->
             </div>
-        </div>
-        <div class="divide80"></div>
+        </div><!--left sidebar container-->
+        <div class="divide60"></div>
         <footer id="footer">
             <div class="container">
+
                 <div class="row">
-                    <div class="col-md-4 col-sm-6 col-md-offset-1 margin30">
+                    <div class="col-md-3 col-sm-6 margin30">
                         <div class="footer-col">
-                            <h3>Over TEDx</h3>
+                            <h3>About assan</h3>
                             <p>
-                                TEDxPXL is een onafhankelijk georganiseerd TED conferentie waar sprekers uit de hele wereld hun cutting-edge ideeën kunnen delen.
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam, adipiscing condimentum tristique vel, eleifend sed turpis. Pellentesque cursus arcu id magna euismod in elementum purus molestie.
                             </p>
                             <ul class="list-inline social-1">
                                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -233,23 +268,58 @@
                             </ul>
                         </div>                        
                     </div><!--footer col-->
-                    <div class="col-md-4 col-sm-6 col-md-offset-3 margin30">
+                    <div class="col-md-3 col-sm-6 margin30">
                         <div class="footer-col">
                             <h3>Contact</h3>
 
                             <ul class="list-unstyled contact">
-                                <li><p><strong><i class="fa fa-map-marker"></i> Adres:</strong> Elfde-Liniestraat 24, 3500 Hasselt, België</p></li> 
-                                <li><p><strong><i class="fa fa-envelope"></i> Mail Ons:</strong> <a href="#">pxltedx@gmail.com</a></p></li>
-                                <li> <p><strong><i class="fa fa-phone"></i> Telefoon:</strong>+32 474 21 21 25</p></li>
+                                <li><p><strong><i class="fa fa-map-marker"></i> Address:</strong> vaisahali, jaipur, 302012</p></li> 
+                                <li><p><strong><i class="fa fa-envelope"></i> Mail Us:</strong> <a href="#">Support@designmylife.com</a></p></li>
+                                <li> <p><strong><i class="fa fa-phone"></i> Phone:</strong> +91 1800 2345 2132</p></li>
+                                <li> <p><strong><i class="fa fa-print"></i> Fax</strong> 1800 2345 2132</p></li>
+                                <li> <p><strong><i class="fa fa-skype"></i> Skype</strong> assan.856</p></li>
 
                             </ul>
                         </div>                        
-                    </div>
+                    </div><!--footer col-->
+                    <div class="col-md-3 col-sm-6 margin30">
+                        <div class="footer-col">
+                            <h3>Featured Work</h3>
+                            <ul class="list-inline f2-work">
+                                <li><a href="portfolio-single.html"><img src="img/img-1.jpg" class="img-responsive" alt=""></a></li>
+                                <li><a href="portfolio-single.html"><img src="img/img-2.jpg" class="img-responsive" alt=""></a></li>
+                                <li><a href="portfolio-single.html"><img src="img/img-3.jpg" class="img-responsive" alt=""></a></li>
+                                <li><a href="portfolio-single.html"><img src="img/img-4.jpg" class="img-responsive" alt=""></a></li>
+                                <li><a href="portfolio-single.html"><img src="img/img-5.jpg" class="img-responsive" alt=""></a></li>
+                                <li><a href="portfolio-single.html"><img src="img/img-6.jpg" class="img-responsive" alt=""></a></li>
+                                <li><a href="portfolio-single.html"><img src="img/img-7.jpg" class="img-responsive" alt=""></a></li>
+                                <li><a href="portfolio-single.html"><img src="img/img-8.jpg" class="img-responsive" alt=""></a></li>
+                                <li><a href="portfolio-single.html"><img src="img/img-9.jpg" class="img-responsive" alt=""></a></li>
+                            </ul>
+                        </div>                        
+                    </div><!--footer col-->
+                    <div class="col-md-3 col-sm-6 margin30">
+                        <div class="footer-col">
+                            <h3>Newsletter</h3>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam, 
+                            </p>
+                            <form role="form" class="subscribe-form">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Enter email to subscribe">
+                                    <span class="input-group-btn">
+                                        <button class="btn  btn-theme-dark btn-lg" type="submit">Ok</button>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>                        
+                    </div><!--footer col-->
+
                 </div>
                 <div class="row">
                     <div class="col-md-12 text-center">
                         <div class="footer-btm">
-                            <span>&copy;2014. Theme by Jarno</span>
+                            <span>&copy;2014. Theme by Design_mylife</span>
                         </div>
                     </div>
                 </div>
@@ -285,22 +355,6 @@
 
 
         <!--customizable plugin edit according to your needs-->
-        <script src="<?php echo base_url(); ?>js/custom.js" type="text/javascript"></script>
-        <!--<script type="text/javascript">
-                                            function readURL(input) {
-                                                if (input.files && input.files[0]) {
-                                                    var reader = new FileReader();
-
-                                                    reader.onload = function (e) {
-                                                        $('#img')
-                                                                .attr('src', e.target.result)
-                                                                .width(160)
-                                                                .height(160);
-                                                    };
-
-                                                    reader.readAsDataURL(input.files[0]);
-                                                }
-                                            }
-        </script>-->
+        <script src="js/custom.js" type="text/javascript"></script>
     </body>
 </html>

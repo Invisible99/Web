@@ -218,11 +218,7 @@
                         </div>
                     </div><!--sidebar-box-->
                     <div class="sidebar-box margin40">
-                        <h4>Search Events</h4>
-                        <form role="form" class="search-widget">
-                            <input type="text" class="form-control">
-                            <i class="fa fa-search"></i>
-                        </form>
+                        <h4><a href="<?php echo base_url(); ?>Events/archief">Archief</a></h4>
                     </div><!--sidebar-box-->
 
 
@@ -370,6 +366,6 @@
 
 
         <!--customizable plugin edit according to your needs-->
-        <script src="js/custom.js" type="text/javascript"></script>
+        <script src="<?php echo base_url(); ?>js/custom.js" type="text/javascript"></script>
     </body>
 </html>

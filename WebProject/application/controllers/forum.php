@@ -2,6 +2,11 @@
 
 class Forum extends CI_Controller {
 
+    public function __construct() {
+        parent::__construct();
+        $this->load->helper(array('form', 'url'));
+    }
+
     //Show index page
     function index() {
         //model laden
@@ -69,7 +74,7 @@ class Forum extends CI_Controller {
 
         $this->parser->parse('forum/editSubforum', $this->data);
     }
-    
+
     //Show index page
     function deleteSubforum($categorieID) {
         //model laden
@@ -86,16 +91,15 @@ class Forum extends CI_Controller {
 
         $this->parser->parse('forum/deleteSubforum', $this->data);
     }
-    
-     //Show index page
+
+    //Show index page
     function addSubforum($categorieID) {
         //model laden
         $this->data['categorieID'] = $categorieID;
         $this->parser->parse('forum/addSubforum', $this->data);
     }
 
-        
-     //Show index page
+    //Show index page
     function editThread($topicID) {
         //model laden
         $this->load->model("subforum_model");
@@ -111,8 +115,8 @@ class Forum extends CI_Controller {
 
         $this->parser->parse('forum/editThread', $this->data);
     }
-    
-        //Show index page
+
+    //Show index page
     function deleteThread($topicID) {
         //model laden
         $this->load->model("subforum_model");
@@ -128,7 +132,7 @@ class Forum extends CI_Controller {
 
         $this->parser->parse('forum/deleteThread', $this->data);
     }
-    
+
     //Show index page
     function addThread($categorieID) {
         //model laden
@@ -182,16 +186,16 @@ class Forum extends CI_Controller {
             //$id is categorieid
             $this->load->model("forum_model");
             $this->forum_model->updateID(array('titel' => $this->input->post('formtitel'), 'omschrijving' => $this->input->post('formomschrijving')), array('categorieID' => $id));
-            redirect(base_url()."forum/index");
+            redirect(base_url() . "forum/index");
         }
         if (isset($_POST['deletecatyes'])) {
             //$id is categorieid
             $this->load->model("forum_model");
             $this->forum_model->deleteID(array('categorieID' => $id));
-            redirect(base_url()."forum/index");
+            redirect(base_url() . "forum/index");
         }
         if (isset($_POST['deletecatno'])) {
-            redirect(base_url()."forum/index");
+            redirect(base_url() . "forum/index");
         }
         if (isset($_POST['editthr'])) {
             //$id is threadid
@@ -210,7 +214,6 @@ class Forum extends CI_Controller {
             //Kijken of dit dat laatste thread is
             $this->data['countID']=$this->subforum_model->countID($this->data['thread'][0]['categorieID']);
             $this->subforum_model->deleteID(array('topicID' => $id));
-            redirect(base_url()."forum/subforum/".$this->data['thread'][0]['categorieID']);
             redirect(base_url()."forum/subforum/".$this->data['thread'][0]['categorieID']);
         }
         if (isset($_POST['deletethrno'])) {
@@ -294,7 +297,7 @@ class Forum extends CI_Controller {
         }
         else
         {
-            redirect(base_url());
+            redirect(base_url() . "forum/index");
         }
     }
 
@@ -302,38 +305,90 @@ class Forum extends CI_Controller {
         $this->load->library('session');
         $this->load->library('user_agent');
         $this->load->helper('url');
+        $this->load->helper('path');
         $this->load->model("users_model");
-        if (isset($_POST['editProfile'])) {
-            $wijzigArray = array('username' => $this->input->post('gebruikersnaam'), 'email' => $this->input->post('email'), 'voornaam' => $this->input->post('voornaam'), 'familienaam' => $this->input->post('familienaam'));
-            $teWijzigen = array('gebruikerID' => $this->session->userdata('gebruikerID'));
-            $result = $this->users_model->updateID($wijzigArray, $teWijzigen);
-            if ($result == 1) {
-                $this->data['user'] = $this->users_model->find($this->session->userdata('gebruikerID'));
-                $this->data['error'] = "<div class='alert alert-success'>Gegevens zijn opgeslagen</div>";
-                
-                if (empty($this->data['user'])) {
-                    //de alert-error is vn bootstrap
-                    $this->data['error'] = "<div class='alert alert-error'>De gebruiker is niet gevonden</div>";
-                }
 
-                $this->parser->parse('forum/wijzigProfiel', $this->data);
-            }
+        if (isset($_POST['editProfile'])) {
+
+              $wijzigArray = array('username' => $this->input->post('gebruikersnaam'), 'email' => $this->input->post('email'), 'voornaam' => $this->input->post('voornaam'), 'familienaam' => $this->input->post('familienaam'));
+              $teWijzigen = array('gebruikerID' => $this->session->userdata('gebruikerID'));
+              $result = $this->users_model->updateID($wijzigArray, $teWijzigen);
+              if ($result == 1) {
+              $this->data['user'] = $this->users_model->find($this->session->userdata('gebruikerID'));
+              $this->data['error'] = "<div class='alert alert-success'>Gegevens zijn opgeslagen</div>";
+
+              if (empty($this->data['user'])) {
+              //de alert-error is vn bootstrap
+              $this->data['error'] = "<div class='alert alert-error'>De gebruiker is niet gevonden</div>";
+              }
+
+              $this->parser->parse('forum/wijzigProfiel', $this->data);
+              } 
             //$this->index();
         } else if (isset($_POST['btn-prfWzg'])) {
             //print($this->session->userdata('user'));
             $this->data['error'] = "";
 
             $this->data['user'] = $this->users_model->find($this->session->userdata('gebruikerID'));
+            //$this->data['foto'] = base_url() . "img/team-1.jpg";
 
+            //print_r($this->data);
             if (empty($this->data['user'])) {
                 //de alert-error is vn bootstrap
                 $this->data['error'] = "<div class='alert alert-error'>De gebruiker is niet gevonden</div>";
             }
 
-            $this->parser->parse('forum/wijzigProfiel', $this->data);
+            $this->parser->parse('forum/wijzigProfiel.php', $this->data);
             //$this->load->view('forum/wijzigProfiel');
         } else {
-            redirect('home/index/', 'refresh');
+            $this->data['error'] = "";
+
+            $this->data['user'] = $this->users_model->find($this->session->userdata('gebruikerID'));
+          
+            if (empty($this->data['user'])) {
+                //de alert-error is vn bootstrap
+                $this->data['error'] = "<div class='alert alert-error'>De gebruiker is niet gevonden</div>";
+            }
+
+            $this->parser->parse('forum/wijzigProfiel.php', $this->data);
         }
     }
+
+    public function do_upload() {
+        $this->load->library('session');
+        $this->load->library('user_agent');
+        $this->load->helper('url');
+        $this->load->helper('path');
+        $this->load->model("users_model");
+ 
+        
+        $filename = $this->session->userdata('gebruikerID');
+
+        $config = array(
+            'file_name' => $filename,
+            'upload_path' => "./userpic/",
+            'allowed_types' => "jpg|png|jpeg",
+            'overwrite' => TRUE,
+            'max_size' => "2048000", // Can be set to particular file size , here it is 2 MB(2048 Kb)
+            'max_height' => "768",
+            'max_width' => "1024"
+        );
+        
+        $this->load->library('upload', $config);
+        
+        
+        if ($this->upload->do_upload()) {
+            $fileArray = $this->upload->data();
+            $filename .= $fileArray['file_ext'];
+                    
+         $wijzigArray = array('profielfoto' => $filename);
+        $teWijzigen = array('gebruikerID' => $this->session->userdata('gebruikerID'));
+        $result = $this->users_model->updateID($wijzigArray, $teWijzigen);
+        
+            redirect(base_url() . 'forum/wijzigProfiel', 'refresh');
+        } else {
+            redirect(base_url() . 'forum/wijzigProfiel', 'refresh');
+        }
+    }
+
 }
