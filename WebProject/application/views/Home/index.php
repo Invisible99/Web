@@ -64,13 +64,13 @@
                             <a href="<?php echo base_url(); ?>home/index">Home</a>
                         </li>
                         <!--menu Portfolio li end here-->
-                        <li class="dropdown">
+                        <li>
                             <a href="<?php echo base_url(); ?>forum/index">Forum</a>
                         </li>
-                        <li class="dropdown">
+                        <li>
                             <a href="<?php echo base_url(); ?>events/index">Evenementen</a>
                         </li> 
-                        <li class="dropdown">
+                        <li>
                             <a href="<?php echo base_url(); ?>nieuws/index">Nieuws</a>
                         </li>
                         <!--dit enkel laten zien als een admin is ingelogd-->
@@ -362,7 +362,7 @@
 
                             <ul class="list-unstyled contact">
                                 <li><p><strong><i class="fa fa-map-marker"></i> Adres:</strong> Elfde-Liniestraat 24, 3500 Hasselt, België</p></li> 
-                                <li><p><strong><i class="fa fa-envelope"></i> Mail Ons:</strong> <a href="home/contact">pxltedx@gmail.com</a></p></li>
+                                <li><p><strong><i class="fa fa-envelope"></i> Mail Ons:</strong> <a href="<?php echo base_url(); ?>home/contact">pxltedx@gmail.com</a></p></li>
                                 <li> <p><strong><i class="fa fa-phone"></i> Telefoon:</strong>+32 474 21 21 25</p></li>
 
                             </ul>
