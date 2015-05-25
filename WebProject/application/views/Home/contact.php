@@ -9,7 +9,7 @@
         <!-- Bootstrap -->
         <link href="<?php echo base_url(); ?>bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <!-- custom css-->
-        <link href="<?php echo base_url(); ?>css/style.css" rel="stylesheet" type="text/css" media="screen">
+        <link href="<?php echo base_url(); ?>css/style-red.css" rel="stylesheet" type="text/css" media="screen">
 
         <!-- font awesome for icons -->
         <link href="<?php echo base_url(); ?>font-awesome-4.3.0/css/font-awesome.min.css" rel="stylesheet">
@@ -223,15 +223,6 @@
                         <li><p><strong><i class="fa fa-map-marker"></i> Address:</strong> Elfde-Liniestraat 24, 3500 Hasselt, België</p></li> 
                         <li><p><strong><i class="fa fa-envelope"></i> Mail Us:</strong> <a href="home/contact">pxltedx@gmail.com</a></p></li>
                         <li> <p><strong><i class="fa fa-phone"></i> Phone:</strong>+32 474 21 21 25</p></li>
-                    </ul>
-                    <div class="divide40"></div>
-                    <h4>Wordt sociaal</h4>
-                    <ul class="list-inline social-1">
-                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                        <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                        <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
                     </ul>
                 </div>
             </div>
