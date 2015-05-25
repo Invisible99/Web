@@ -329,8 +329,6 @@
                                 <li><p><strong><i class="fa fa-map-marker"></i> Adres:</strong> Elfde-Liniestraat 24, 3500 Hasselt, België</p></li> 
                                 <li><p><strong><i class="fa fa-envelope"></i> Mail Ons:</strong> <a href="<?php echo base_url(); ?>home/contact">pxltedx@gmail.com</a></p></li>
                                 <li> <p><strong><i class="fa fa-phone"></i> Telefoon:</strong>+ 32 11 77 55 55</p></li>
-                                
-
                             </ul>
                         </div>                        
                     </div>
@@ -353,7 +351,7 @@
         <!--easing plugin for smooth scroll-->
         <script src="<?php echo base_url(); ?>js/jquery.easing.1.3.min.js" type="text/javascript"></script>
         <!--sticky header-->
-        <script type="<?php echo base_url(); ?>text/javascript" src="js/jquery.sticky.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>js/jquery.sticky.js"></script>
         <!--flex slider plugin-->
         <script src="<?php echo base_url(); ?>js/jquery.flexslider-min.js" type="text/javascript"></script>
         <!--parallax background plugin-->
