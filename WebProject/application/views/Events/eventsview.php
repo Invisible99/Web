@@ -240,7 +240,13 @@
                 </div><!--sidebar col end-->
 
                 <div class="col-md-9">
-                                    {error}
+                    <?php if($volgendEvent[0]->datum == null){
+                        ?>
+                    
+                    {error}
+                    <?php 
+                    }else{
+                    ?>
                     {volgendEvent}
                     <div class="parallax events-bg" data-stellar-background-ratio="0.5">
                         <div class="container">
@@ -262,7 +268,7 @@
                         </div>
                     </div><!--events slider end-->
                     {/volgendEvent}
-
+                    <?php } ?>
                 </div><!--col-->
                 
             </div>
