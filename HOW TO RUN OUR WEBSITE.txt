@@ -1,0 +1,11 @@
+In PHPMyAdmin: maak een database met de naam tedxpxl en importeer onze database uit het bestand: tedxpxl.sql
+Plaats de map uit de zip "WebProject_2tinG" onder de map www van wamp
+
+We gebruiken "sendmail"  om mails te sturen met wamp voor bv. als een gebruiker zijn wachtwoord vergeten is.
+Om dit te testen moet u de map "sendmail" plaatsen onder C:\wamp\ én moet u onze php.ini kopiëren naar C:\wamp\bin\apache\apache2.4.9\bin\
+Daarna moet u de Apache module ssl_module aanvinken en de php extensions php_sockets en php_openssl aanvinken en wamp herstarten.
+Als u daarna nog problemen heeft kan u dit filmpje volgen: https://www.youtube.com/watch?v=qXvGKnWXH5A
+
+4/5e van onze groep gebruikte Wamp, dus we hebben de mail module van wamp gebruikt.
+
+Groetjes 2tinG
