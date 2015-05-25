@@ -382,7 +382,7 @@ class Forum extends CI_Controller {
                 $this->data['error'] = "<div class='alert alert-error'>De gebruiker is niet gevonden</div>";
             }
             if ($this->data['user'][0]['profielfoto'] == null) {
-                $this->data['profielfoto'] = base_url() . 'img/default.jpg';
+                $this->data['profielfoto'] = base_url() . 'userpic/default.jpg';
             } else {
                 $this->data['profielfoto'] = base_url() . 'userpic/' . $this->data['user'][0]['profielfoto'];
             }
