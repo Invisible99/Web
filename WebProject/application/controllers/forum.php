@@ -312,6 +312,7 @@ class Forum extends CI_Controller {
             $this->data['emailVanDB'] = $this->users_model->doesEmailExist($this->input->post('email'));
             $this->data['usernameVanDB'] = $this->users_model->doesUsernameExist($this->input->post('gebruikersnaam'));
 
+
             if (!empty($this->data['usernameVanDB'])) {
                 $this->data['error'] .= "<p class='alert alert-danger'>Deze gebruikersnaam is al in gebruik.</p>";
             }
@@ -331,14 +332,19 @@ class Forum extends CI_Controller {
                         //de alert-error is vn bootstrap
                         $this->data['error'] .= "<div class='alert alert-error'>De gebruiker is niet gevonden</div>";
                     }
-                }
-                else{
+
+                    if ($this->data['user'][0]['profielfoto'] == null) {
+                        $this->data['profielfoto'] = base_url() . '/img/team-1.jpg';
+                    } else {
+                        $this->data['profielfoto'] = base_url() . '/userpic/' . $this->data['user'][0]['profielfoto'];
+                    }
+                    
+                } else {
                     $this->data['error'] .= "<div class='alert alert-error'>Kon de gebruiker niet updaten.</div>";
                 }
             }
-            
+
             $this->parser->parse('forum/wijzigProfiel', $this->data);
-            //$this->index();
         } else if (isset($_POST['btn-prfWzg'])) {
             //print($this->session->userdata('user'));
             $this->data['error'] = "";
@@ -350,6 +356,11 @@ class Forum extends CI_Controller {
                 //de alert-error is vn bootstrap
                 $this->data['error'] = "<div class='alert alert-error'>De gebruiker is niet gevonden</div>";
             }
+            if ($this->data['user'][0]['profielfoto'] == null) {
+                $this->data['profielfoto'] = base_url() . '/img/team-1.jpg';
+            } else {
+                $this->data['profielfoto'] = base_url() . '/userpic/' . $this->data['user'][0]['profielfoto'];
+            }
 
             $this->parser->parse('forum/wijzigProfiel.php', $this->data);
             //$this->load->view('forum/wijzigProfiel');
@@ -357,8 +368,10 @@ class Forum extends CI_Controller {
             $this->data['error'] = "";
 
             $this->data['user'] = $this->users_model->find($this->session->userdata('gebruikerID'));
-            if (empty($this->data['user'][0]['profielfoto'])) {
-                $this->data['profielfoto'] = base_url() . 'img/stef.jpg';
+            if ($this->data['user'][0]['profielfoto'] == null) {
+                $this->data['profielfoto'] = base_url() . '/img/team-1.jpg';
+            } else {
+                $this->data['profielfoto'] = base_url() . '/userpic/' . $this->data['user'][0]['profielfoto'];
             }
             if (empty($this->data['user'])) {
                 //de alert-error is vn bootstrap

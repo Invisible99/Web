@@ -79,11 +79,11 @@
                             <ul class="dropdown-menu search-dropdown animated fadeInUp">
                                 <li id="dropdownForm">
                                     <div class="dropdown-form">
-                                        <form class=" form-inline">
-                                            <div class="input-group">
-                                                <input type="text" class="form-control" placeholder="search...">
+                                        <form class=" form-inline" action="<?php echo base_url(); ?>search/index" method="POST" >
+                                            <div class="input-group ">
+                                                <input type="text" name="searchstring" class="form-control" placeholder="search...">
                                                 <span class="input-group-btn">
-                                                    <button class="btn btn-theme-bg" type="button">Go!</button>
+                                                    <button type="submit" class="btn btn-theme-bg" name="searchbutton">Go!</button>
                                                 </span>
                                             </div><!--input group-->
                                         </form><!--form-->
@@ -94,30 +94,50 @@
                         <li class="dropdown">
                             <a href="#" class=" dropdown-toggle" data-toggle="dropdown"><i class="fa fa-lock"></i></a>
                             <div class="dropdown-menu dropdown-menu-right dropdown-login-box animated fadeInUp">
-                                <form role="form">
-                                    <h4>Signin</h4>
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                            <input type="text" class="form-control" placeholder="Username">
-                                        </div>
-                                        <br>
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                            <input type="password" class="form-control" placeholder="Password">
-                                        </div>
-                                        <div class="checkbox pull-left">
-                                            <label>
-                                                <input type="checkbox"> Remember me
-                                            </label>
-                                        </div>
-                                        <a class="btn btn-theme-bg pull-right" href="<?php echo base_url(); ?>login/index">Login</a>
-                                        <!--                                        <button type="submit" class="btn btn-theme pull-right">Login</button>                 -->
-                                        <div class="clearfix"></div>
-                                        <hr>
-                                        <p>Don't have an account! <a href="<?php echo base_url(); ?>login/register">Register Now</a></p>
-                                    </div>
+
+                                <?php
+                                if (!($this->session->has_userdata('user') && $this->session->has_userdata('logged_in') && $this->session->logged_in && $this->session->has_userdata('rolID'))) {
+                                    ?>
+                                    <form role="form" action='<?php echo base_url(); ?>login/index' method='post'>
+                                        <h4>Aanmelden</h4>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                                <input type="text" class="form-control" name="gebruikersnaam" placeholder="Username"  required="required">
+                                            </div>
+                                            <br>
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                                <input type="password" class="form-control"  name="password" placeholder="Password"  required="required">
+                                            </div>
+                                            <div class="checkbox pull-left">
+                                                <label>
+                                                    <input type="checkbox"> Onthoud mij
+                                                </label>
+                                            </div>                                   
+                                            <input type="submit" class="btn btn-theme-bg pull-right" name="btn-inlog" value="Aanmelden"/>
+                                            <div class="clearfix"></div>
+                                            <hr>
+                                            <p>Nog geen lid! <a href="<?php echo base_url(); ?>login/register">Registreer nu!</a></p>
+                                    </form>
+                                </div>
+                                <?php
+                            } else {
+                                ?> 
+                                <form role="form" action='<?php echo base_url(); ?>forum/wijzigProfiel' method='post'>
+                                    <h4 class="center-heading">Profiel wijzigen</h4>
+                                    <input type="submit" class="btn btn-theme-bg center-block" name="btn-prfWzg" value="Profiel wijzigen"/>
+                                    <div class="clearfix"></div>
                                 </form>
+                                <hr>
+                                <form role="form" action='<?php echo base_url(); ?>login/index' method='post'>
+                                    <h4 class="center-heading">Afmelden</h4>
+                                    <input type="submit" class="btn btn-theme-bg center-block" name="btn-logoff" value="Afmelden"/>
+                                </form>
+                                <?php
+                            }
+                            ?>
+                                
                             </div>
                         </li> <!--menu login li end here-->
                     </ul>
@@ -132,8 +152,8 @@
                     </div>
                     <div class="col-sm-6 hidden-xs text-right">
                         <ol class="breadcrumb">
-                            <li><a href="<?php echo base_url(); ?>home/index">Home</a></li>
-                            <li>Forum</li>
+                            <li><a href="<?php echo base_url(); ?>forum/index">Forum</a></li>
+                            <li>Wijzig profiel</li>
                         </ol>
                     </div>
                 </div>
@@ -144,7 +164,6 @@
             <div class="row">
                 {error}
                 {user}
-
                 <div class="animated fadeInLeft">
                     <div class="col-md-2"> 
                         <div class="row">
@@ -153,7 +172,7 @@
                                 <ul class="list-inline f3-work">
                                     <?php echo form_open_multipart('forum/do_upload'); ?>
                                     <li><a href="" onclick="document.getElementById('userfile').click();
-                                            return false"><img id="img" src="{profielfoto}" name="foto" class="img-responsive center-block" alt=""></a></li>
+                                            return false"><img id="img" src="{/user}{profielfoto}{user}" name="foto" class="img-responsive center-block" alt="profielfoto"></a></li>
                                 </ul>
                                 <input type="file" name="userfile" id="userfile" size="20" onchange="readURL(this);" class="hidden" />
                                 <p class="help-block"></p>
@@ -165,7 +184,7 @@
                             </div>
                         </div>
                     </div>
-                    <?php form_close(); ?>
+                    <?php echo form_close(); ?>
                     <?php echo form_open("forum/wijzigProfiel"); ?>
                     <div class="col-md-8 col-md-offset-2">
                         <div class="col-md-12 margin30">
@@ -252,7 +271,7 @@
                 <div class="row">
                     <div class="col-md-12 text-center">
                         <div class="footer-btm">
-                            <span>&copy;2014. Theme by Jarno</span>
+                            <span>&copy;2014. Theme by Jarno, Stef, Koen, Piet, Frederik</span>
                         </div>
                     </div>
                 </div>
