@@ -73,9 +73,6 @@
                         <li class="active">
                             <a href="<?php echo base_url(); ?>home/lidWorden">Lid Worden</a>
                         </li>
-                        <li>
-                            <a href="<?php echo base_url(); ?>home/lidWorden">Lid Worden</a>
-                        </li>
                         <!--dit enkel laten zien als een admin is ingelogd-->
                         <?php
                         if ($this->session->has_userdata('user') && $this->session->has_userdata('logged_in') && $this->session->logged_in && $this->session->has_userdata('rolID') && $this->session->userdata['rolID'] == 1) {
