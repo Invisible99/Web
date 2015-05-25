@@ -128,13 +128,11 @@
                             } else {
                                 ?> 
                                 <form role="form" action='<?php echo base_url(); ?>forum/wijzigProfiel' method='post'>
-                                    <h4 class="center-heading">Profiel wijzigen</h4>
                                     <input type="submit" class="btn btn-theme-bg center-block" name="btn-prfWzg" value="Profiel wijzigen"/>
                                     <div class="clearfix"></div>
                                 </form>
                                 <hr>
                                 <form role="form" action='<?php echo base_url(); ?>login/index' method='post'>
-                                    <h4 class="center-heading">Afmelden</h4>
                                     <input type="submit" class="btn btn-theme-bg center-block" name="btn-logoff" value="Afmelden"/>
                                 </form>
                                 <?php
