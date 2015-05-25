@@ -31,13 +31,13 @@ class thread_model extends MY_Model{
     }
     
     function resetAllLatestPost($id){
-        $query = $this->db->query("UPDATE tedxpxl.posts SET latestPost = 0 WHERE posts.topicID = $id");
+        $query = $this->db->query("UPDATE tedxpxl.posts SET latestPost = 0, postDate = postDate WHERE posts.topicID = $id");
         return $query;
     }
     
     function searchPosts($searchstring){
         //pakt alle categorien waar een latestthread aanstaat. hij pakt ook de content van deze de laatste thread in deze categorie
-        $query = $this->db->query("SELECT posts.berichtID, posts.bericht, posts.postDate, users.username FROM posts LEFT JOIN users ON posts.gebruikerID = users.gebruikerID WHERE posts.bericht LIKE '%$searchstring%' OR posts.postDate LIKE '%$searchstring%' OR users.username LIKE '%$searchstring%'");
+        $query = $this->db->query("SELECT posts.berichtID, posts.bericht, posts.postDate, posts.topicID, users.username FROM posts LEFT JOIN users ON posts.gebruikerID = users.gebruikerID WHERE posts.bericht LIKE '%$searchstring%' OR posts.postDate LIKE '%$searchstring%' OR users.username LIKE '%$searchstring%'");
         
         $result = array();
 
