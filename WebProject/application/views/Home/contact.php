@@ -52,7 +52,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index"><img src="<?php echo base_url(); ?>img/TEDx_logo.png" alt="TEDx"></a>
+                    <a class="navbar-brand" href="index"><img src="<?php echo base_url(); ?>img/TEDx_logo.png" alt="TEDxPXL"></a>
 
                 </div>
                 <div class="navbar-collapse collapse">
@@ -119,12 +119,7 @@
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="fa fa-lock"></i></span>
                                                 <input type="password" class="form-control"  name="password" placeholder="Password"  required="required">
-                                            </div>
-                                            <div class="checkbox pull-left">
-                                                <label>
-                                                    <input type="checkbox"> Onthoud mij
-                                                </label>
-                                            </div>                                   
+                                            </div>                                 
                                             <input type="submit" class="btn btn-theme-bg pull-right" name="btn-inlog" value="Aanmelden"/>
                                             <div class="clearfix"></div>
                                             <hr>
@@ -294,7 +289,7 @@
                 <div class="row">
                     <div class="col-md-12 text-center">
                         <div class="footer-btm">
-                            <span>&copy;2014. Theme by Jarno, Stef, Koen, Piet, Frederik</span>
+                            <span>&copy;2015. Theme by Jarno, Stef, Koen, Piet, Frederik</span>
                         </div>
                     </div>
                 </div>
