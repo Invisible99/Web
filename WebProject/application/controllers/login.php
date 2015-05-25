@@ -38,7 +38,7 @@ class Login extends CI_Controller {
                     $hash = $this->data['inloggen']["password"];
 
                     if (password_verify($this->input->post('password'), $hash)) {
-                        $this->data['melding'] = "<p class='alert alert-success'>Bedankt voor uw inloggen.</p>";
+                        //$this->data['melding'] = "<p class='alert alert-success'>Bedankt voor uw inloggen.</p>";
                         $data = array('user' => $this->data['inloggen']["username"], 'logged_in' => true, 'rolID' => $this->data['inloggen']["rolID"], 'gebruikerID' => $this->data['inloggen']["gebruikerID"]);
 
                         $this->session->set_userdata($data);
@@ -50,7 +50,11 @@ class Login extends CI_Controller {
                 $this->data['melding'] = "<p class='alert alert-danger'>De gebruikersnaam en wachtwoord komen niet overeen.</p>";
             }
 
-            $this->parser->parse('login/index.php', $this->data);
+            if ($this->data['melding'] == "") {
+                redirect($this->agent->referrer());
+            } else {
+                $this->parser->parse('login/index.php', $this->data);
+            }
         } else if (isset($_POST['btn-logoff'])) {
             $this->session->sess_destroy();
             redirect($this->agent->referrer());
@@ -214,8 +218,7 @@ class Login extends CI_Controller {
 
                     $this->data['melding'] = "<p class='alert alert-success'>U zal zodadelijk een mail krijgen om uw wachtwoord te veranderen.</p>";
                     $this->parser->parse('login/wachtwoordReset.php', $this->data);
-                }
-                else{
+                } else {
                     $this->data['melding'] = "<p class='alert alert-danger'>Er is geen geldige gebruiker met dit email adres.</p>";
                     $this->parser->parse('login/wachtwoordReset.php', $this->data);
                 }

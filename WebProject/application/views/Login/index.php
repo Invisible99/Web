@@ -237,7 +237,7 @@
                             ?>
 
                             {melding}
-                            <h3>Afmelden</h3>
+                            <h3>U bent nu ingelogd, klik hier om af te melden.</h3>
                             <form role="form" action='index' method='post' >
 
                                 <input type="submit" class="btn btn-theme-bg" name="btn-logoff" value="Afmelden"/>
