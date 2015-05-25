@@ -71,18 +71,18 @@ hr {
     padding: 3px 6px;
 }
 a {
-    color: #333;
+    color: #FF2D06;
     -webkit-transition: all 200ms ease-in;
     -o-transition: all 200ms ease-in;
     -moz-transition: all 200ms ease-in;
 }
 a:hover,
 a:focus {
-    color: #FF2D06;
+    color: #333;
     text-decoration: none;
 }
 .colored-text{
-    color:#FF2D06;
+    color:#333;
 }
 
 /* Headings */
@@ -178,6 +178,7 @@ p.sub-text{
     font-weight:400;
     color:#555;
 }
+
 /******forum overview*********/
 .forum-overview-poster{
     color: #FF2B06;

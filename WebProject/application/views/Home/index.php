@@ -170,7 +170,7 @@
                         <h2><strong>Wat</strong> doen we</h2>
                         <span class="center-line"></span>
                         <p class="sub-text margin40">
-                            TEDxPXL is een onafhankelijk georganiseerd TED conferentie waar sprekers uit de hele wereld hun cutting-edge ideeën kunnen delen.</p>
+                            TEDxPXL is een onafhankelijk georganiseerde TED conferentie waar sprekers uit de hele wereld hun cutting-edge ideeën kunnen delen.</p>
                     </div>
                 </div>
             </div>

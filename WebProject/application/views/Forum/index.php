@@ -62,7 +62,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index"><img src="<?php echo base_url(); ?>img/TEDx_logo.png" alt="TEDxPXL"></a>
+                    <a class="navbar-brand" href="<?php echo base_url(); ?>home/index"><img src="<?php echo base_url(); ?>img/TEDx_logo.png" alt="TEDxPXL"></a>
 
                 </div>
                 <div class="navbar-collapse collapse">
