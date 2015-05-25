@@ -7,6 +7,8 @@ class Forum extends CI_Controller {
         $this->load->helper(array('form', 'url'));
         $this->load->library('session');
         $this->load->library('user_agent');
+        $this->load->helper('captcha');
+        $this->load->model('captcha_model');
     }
 
     //Show index page
@@ -22,7 +24,6 @@ class Forum extends CI_Controller {
             //de alert-error is vn bootstrap
             $this->data['error'] = "<div class='alert alert-error'>Er zijn geen subforums!</div>";
         }
-
         $this->parser->parse('forum/index', $this->data);
     }
 
@@ -202,6 +203,12 @@ class Forum extends CI_Controller {
 
     //Show index page
     function addPost($topicID) {
+        $this->data['captchaText'] = "";
+        $this->data['captchaError'] = "";
+        $this->data['bericht'] = "";
+        if (!$this->session->has_userdata('rolID')) {
+            $this->data['captcha'] = $this->captcha_model->create_image();
+        }
         //model laden
         $this->data['topicID'] = $topicID;
         $this->parser->parse('forum/addPost', $this->data);
@@ -312,6 +319,7 @@ class Forum extends CI_Controller {
     }
 
     function doneAdding($id) {
+        $this->form_validation->set_rules('captchaText', 'captchaText', 'trim|strip_tags|required|callback_captcha_check|match_captcha[captcha.captcha]');
         if (isset($_POST['addthr'])) {
             $this->load->model("subforum_model");
             $this->subforum_model->insert(array('gebruikerID' => $this->session->userdata['gebruikerID'], 'categorieID' => $id, 'titel' => $this->input->post('formtitel'), 'bericht' => $this->input->post('formbericht')));
@@ -327,7 +335,33 @@ class Forum extends CI_Controller {
             $this->forum_model->insert(array('titel' => $this->input->post('formtitel'), 'omschrijving' => $this->input->post('formomschrijving'), 'magZienTot' => $this->input->post('categorieZien'), 'magPosten' => $this->input->post('postsZien'), 'magThreadsBewerken' => $this->input->post('threadsBewerken')));
             redirect(base_url() . "forum/index");
         }
-        if (isset($_POST['addpost'])) {
+        if (isset($_POST['addpost']) && !$this->session->has_userdata('rolID')) {
+            $this->data['captchaError'] = "";
+            $this->data['bericht'] = $this->input->post('formbericht');
+            if ($this->form_validation->run() === false) {
+                $this->data['captchaText'] = "";
+                $this->data['captcha'] = $this->captcha_model->create_image();
+                $this->data['topicID'] = $id;
+                $this->data['captchaError'] = form_error('captchaText', "<p class='alert alert-danger'>");
+                $this->parser->parse('forum/addPost', $this->data);
+            } else {
+                $this->load->model("thread_model");
+                $this->load->model("subforum_model");
+                //alle latestpost voor deze thread op nul zetten
+                $this->thread_model->resetAllLatestPost($id);
+                //toevoegen als laatste en latest op 1 zetten
+                if ($this->session->has_userdata('gebruikerID')) {
+                    $gebruikerID = $this->session->userdata['gebruikerID'];
+                } else {
+                    $gebruikerID = 2;
+                }
+                $this->thread_model->insert(array('gebruikerID' => $gebruikerID, 'topicID' => $id, 'bericht' => $this->input->post('formbericht'), 'latestPost' => 1));
+                //doorsturen naar de thread
+                redirect(base_url() . "forum/thread/" . $id);
+            }
+        } else if (isset($_POST['addpost'])) {
+            $this->data['captchaError'] = "";
+            $this->data['bericht'] = $this->input->post('formbericht');
             $this->load->model("thread_model");
             $this->load->model("subforum_model");
             //alle latestpost voor deze thread op nul zetten
@@ -335,8 +369,7 @@ class Forum extends CI_Controller {
             //toevoegen als laatste en latest op 1 zetten
             if ($this->session->has_userdata('gebruikerID')) {
                 $gebruikerID = $this->session->userdata['gebruikerID'];
-            }
-            else {
+            } else {
                 $gebruikerID = 2;
             }
             $this->thread_model->insert(array('gebruikerID' => $gebruikerID, 'topicID' => $id, 'bericht' => $this->input->post('formbericht'), 'latestPost' => 1));
@@ -492,10 +525,19 @@ class Forum extends CI_Controller {
                     $this->data['profielfoto'] = base_url() . 'userpic/' . $this->data['user'][0]['profielfoto'];
                 }
             }
-            
+
             $this->data['error'] .= "<div class='alert alert-danger'>Kon de afbeelding niet uploaden, een afbeelding mag maximum 2MB groot zijn en moet kleiner zijn dan 1024px op 1024px.</div>";
             $this->parser->parse('forum/wijzigProfiel.php', $this->data);
             //redirect(base_url() . 'forum/wijzigProfiel', 'refresh');
+        }
+    }
+
+    function captcha_check($value) {
+        if ($value == "") {
+            $this->form_validation->set_message('captcha_check', 'Please enter the text from the image in the captcha field.');
+            return false;
+        } else {
+            return true;
         }
     }
 

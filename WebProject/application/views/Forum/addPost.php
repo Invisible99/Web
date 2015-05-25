@@ -174,7 +174,24 @@
                     <div class="col-sm-12 animated fadeInLeft">
                         <div class="forumoverview-box event-box animated fadeInLeft jumbotron">
                             <form id="addpost" action="<?php echo base_url(); ?>forum/doneAdding/{topicID}" method="POST">
-                                <div><p class="forum-label">Inhoud:</p><textarea name="formbericht" form="addpost" class="forum-textarea"></textarea></div>
+                                {captchaError}
+                                <div><p class="forum-label">Inhoud:</p><textarea name="formbericht" form="addpost" class="forum-textarea">{bericht}</textarea></div>
+                                <?php if (!$this->session->has_userdata('rolID')) { ?>
+                                    <div class="row control-group">
+                                        <div class="form-group col-xs-12 controls">
+                                            {captcha}
+                                        </div>
+                                    </div> 
+                                    <div class="row control-group">
+                                        <div class="form-group col-xs-12 controls">
+                                            <label>Geef de tekst uit de afbeelding hieronder in.<span>*</span></label>
+                                            <input type="text" class="form-control" name="captchaText" placeholder="Captcha" id="captchaText" value="{captchaText}">
+                                            <p class="help-block"></p>
+                                        </div>
+                                    </div>
+                                    <?php
+                                }
+                                ?>
                                 <div><input type="submit" name="addpost" value="Toevoegen" class="btn"></div>
                             </form>
                         </div><!--event box-->

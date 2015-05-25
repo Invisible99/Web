@@ -123,7 +123,7 @@ class Login extends CI_Controller {
 
             if ($this->form_validation->run() === false) {
                 $this->data['captchaError'] = form_error('captchaText', "<p class='alert alert-danger'>");
-                $this->parser->parse('login/register.php', $this->data);
+                $this->parser->parse('login/register', $this->data);
             } else {
                 $this->data['emailVanDB'] = $this->users_model->doesEmailExist($this->input->post('email'));
                 $this->data['usernameVanDB'] = $this->users_model->doesUsernameExist($this->input->post('gebruikersnaam'));
