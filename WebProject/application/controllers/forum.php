@@ -5,6 +5,8 @@ class Forum extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->helper(array('form', 'url'));
+        $this->load->library('session');
+        $this->load->library('user_agent');
     }
 
     //Show index page
@@ -279,12 +281,12 @@ class Forum extends CI_Controller {
     function doneAdding($id) {
         if (isset($_POST['addthr'])) {
             $this->load->model("subforum_model");
-            $this->subforum_model->insert(array('gebruikerID' => 1, 'categorieID' => $id, 'titel' => $this->input->post('formtitel'), 'bericht' => $this->input->post('formbericht')));
+            $this->subforum_model->insert(array('gebruikerID' => $this->session->userdata['gebruikerID'], 'categorieID' => $id, 'titel' => $this->input->post('formtitel'), 'bericht' => $this->input->post('formbericht')));
             redirect(base_url() . "forum/subforum/" . $id);
         }
         if (isset($_POST['addcat'])) {
             $this->load->model("forum_model");
-            $this->forum_model->insert(array('titel' => $this->input->post('formtitel'), 'omschrijving' => $this->input->post('formomschrijving')));
+            $this->forum_model->insert(array('titel' => $this->input->post('formtitel'), 'omschrijving' => $this->input->post('formomschrijving'),'magZienTot' => 2,'magPosten' => 2,'magThreadBewerken' => 2));
             redirect(base_url() . "forum/index");
         }
         if (isset($_POST['addpost'])) {
@@ -293,7 +295,7 @@ class Forum extends CI_Controller {
             //alle latestpost voor deze thread op nul zetten
             $this->thread_model->resetAllLatestPost($id);
             //toevoegen als laatste en latest op 1 zetten
-            $this->thread_model->insert(array('gebruikerID' => 1, 'topicID' => $id, 'bericht' => $this->input->post('formbericht'), 'latestPost' => 1));
+            $this->thread_model->insert(array('gebruikerID' => $this->session->userdata['gebruikerID'], 'topicID' => $id, 'bericht' => $this->input->post('formbericht'), 'latestPost' => 1));
             //doorsturen naar de thread
             redirect(base_url() . "forum/thread/" . $id);
         } else {

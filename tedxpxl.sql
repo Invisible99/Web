@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Machine: 127.0.0.1
--- Gegenereerd op: 25 mei 2015 om 13:56
+-- Gegenereerd op: 25 mei 2015 om 15:10
 -- Serverversie: 5.6.17
 -- PHP-versie: 5.5.12
 
@@ -107,6 +107,8 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `titel` varchar(75) NOT NULL,
   `omschrijving` varchar(255) NOT NULL,
   `magZienTot` int(11) NOT NULL DEFAULT '2',
+  `magPosten` int(11) NOT NULL,
+  `magThreadsBewerken` int(11) NOT NULL,
   PRIMARY KEY (`categorieID`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
 
@@ -114,14 +116,14 @@ CREATE TABLE IF NOT EXISTS `categories` (
 -- Gegevens worden geëxporteerd voor tabel `categories`
 --
 
-INSERT INTO `categories` (`categorieID`, `titel`, `omschrijving`, `magZienTot`) VALUES
-(1, 'Evenementen', 'Hier komen alle geplande en voorbije evenementen.', 2),
-(2, 'Gasten forum', 'forum voor de gasten', 3),
-(3, 'Leden forum', 'forum voor de leden', 2),
-(4, 'Nieuws', 'Al het nieuws van TedxPxl', 2),
-(12, 'Piet''s testforum', 'Don''t mind this place', 2),
-(13, 'Een leeg testforum', 'Nevermind me, I''m empty', 2),
-(14, 'nog een leeg forum', 'jaja, nog eeeeeeeeeeen!', 2);
+INSERT INTO `categories` (`categorieID`, `titel`, `omschrijving`, `magZienTot`, `magPosten`, `magThreadsBewerken`) VALUES
+(1, 'Evenementen', 'Hier komen alle geplande en voorbije evenementen.', 2, 2, 1),
+(2, 'Gasten forum', 'forum voor de gasten', 3, 3, 2),
+(3, 'Leden forum', 'forum voor de leden', 2, 2, 2),
+(4, 'Nieuws', 'Al het nieuws van TedxPxl', 2, 2, 1),
+(12, 'Piet''s testforum', 'Don''t mind this place', 2, 2, 2),
+(13, 'Een leeg testforum', 'Nevermind me, I''m empty', 2, 2, 2),
+(14, 'nog een leeg forum', 'jaja, nog eeeeeeeeeeen!', 2, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -228,7 +230,7 @@ CREATE TABLE IF NOT EXISTS `threads` (
   PRIMARY KEY (`topicID`),
   KEY `gebruikerID` (`gebruikerID`),
   KEY `categorieID` (`categorieID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=39 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=40 ;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `threads`
@@ -250,9 +252,10 @@ INSERT INTO `threads` (`topicID`, `titel`, `bericht`, `gebruikerID`, `categorieI
 (17, 'kerstmis!!!', 'ho ho ho', 1, 1, '2015-12-25 00:00:00', '0000-00-00 00:00:00'),
 (18, 'de sint is er ook bij ', 'zie ginds komt de stoomboot', 6, 1, '2015-12-06 00:00:00', '0000-00-00 00:00:00'),
 (19, 'het nieuwe jaar', 'happy newyear !', 2, 1, '2016-01-01 00:00:00', '0000-00-00 00:00:00'),
-(31, 'gastenboek', 'post hier maar iets', 1, 2, NULL, '2015-05-25 00:00:00'),
+(31, 'gastenboek2', 'post hier maar iets', 30, 2, '2015-05-25 14:41:21', '2015-05-25 14:41:21'),
 (36, 'Piet''s awesome test topic', 'There can only be one who''s the test!', 1, 12, '2015-05-25 03:39:41', '2015-05-25 03:39:41'),
-(37, 'Piet''s test topic numero dos', 'Veel plezier met testen', 1, 12, '2015-05-25 03:39:47', '2015-05-25 03:39:47');
+(37, 'Piet''s test topic numero dos', 'Veel plezier met testen', 1, 12, '2015-05-25 03:39:47', '2015-05-25 03:39:47'),
+(39, 'Dit moet werken', 'Yaay', 30, 2, '2015-05-25 15:08:59', '2015-05-25 15:08:59');
 
 -- --------------------------------------------------------
 

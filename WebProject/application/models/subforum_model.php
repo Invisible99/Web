@@ -5,7 +5,7 @@ class subforum_model extends MY_Model{
     var $primkey="topicID";
     
     function findThreads($id){
-        $query = $this->db->query("SELECT thr.titel 'thrtitel', thr.topicID 'thrtopicID', thr.bericht, posts.bericht 'lastpost', posts.gebruikerID, posts.postDate, users.username FROM posts LEFT JOIN threads thr ON posts.topicID = thr.topicID LEFT JOIN users ON posts.gebruikerID = users.gebruikerID WHERE posts.latestPost = 1 AND thr.categorieID = $id ORDER BY posts.postDate DESC");
+        $query = $this->db->query("SELECT thr.titel 'thrtitel', thr.topicID 'thrtopicID', thr.bericht, posts.bericht 'lastpost', thr.gebruikerID 'thrGebruikerID', posts.gebruikerID 'postGebruikerID', posts.postDate, users.username FROM posts LEFT JOIN threads thr ON posts.topicID = thr.topicID LEFT JOIN users ON posts.gebruikerID = users.gebruikerID WHERE posts.latestPost = 1 AND thr.categorieID = $id ORDER BY posts.postDate DESC");
         $result = array();
 
         return $query->result();

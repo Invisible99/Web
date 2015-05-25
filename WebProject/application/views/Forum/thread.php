@@ -159,11 +159,11 @@
                     <div class="col-sm-12 animated fadeInleft">
                         {error}
                         {thread}
-                        <div class="forumoverview-box event-box">
-                            <p class="forum-overview-post">
+                        <div class="forumoverview-box event-box jumbotron">
+                            <p class="forum-overview-post jumbotron">
                                 ({berichtID})<strong> Posted on {postDate}: </strong> {bericht}
                                 </p>
-                            <p class="forum-overview-poster">
+                            <p class="forum-overview-poster jumbotron">
                                 <strong class="forum-overview-black">Poster:</strong> <a href="#">{username}</a>
                             </p>
                             <a href="<?php echo base_url(); ?>forum/editPost/{berichtID}"><span class="forum-button">Wijzigen</span></a>
