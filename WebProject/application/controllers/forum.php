@@ -237,7 +237,7 @@ class Forum extends CI_Controller {
             $this->load->model("thread_model");
             //Huidige post opvragen
             $this->data['post'] = $this->thread_model->find($id);
-            //Kijken of dit dat laatste post is
+            //Kijken of dit dat enigste post is
             $this->data['countID']=$this->thread_model->countID($this->data['post'][0]['topicID']);
             if($this->data['countID']->countID > 1){
                 //hoogste post ID van deze thread ophalen
@@ -248,7 +248,7 @@ class Forum extends CI_Controller {
                     $this->thread_model->deleteID(array('berichtID' => $id));
                     //nieuwe laatste id berekenen
                     $this->data['newmaxID']=$this->thread_model->maxID($this->data['post'][0]['topicID']);
-                    //nieuwe laatste post op 1 zetten
+                    //nieuwe latestpost op 1 zetten
                     $this->thread_model->updateLatestPost($this->data['newmaxID']->maxID);
                 }
                 //anders gewoon deleten
@@ -256,7 +256,9 @@ class Forum extends CI_Controller {
                     $this->thread_model->deleteID(array('berichtID' => $id));
                 }
             }
+            //indien dit de enigste post is kan men veilig verwijderen
             else{
+                $this->thread_model->deleteID(array('berichtID' => $id));
                 redirect(base_url()."forum/thread/".$this->data['post'][0]['topicID']);
             }
             redirect(base_url()."forum/thread/".$this->data['post'][0]['topicID']);
