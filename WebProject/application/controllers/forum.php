@@ -308,27 +308,43 @@ class Forum extends CI_Controller {
         $this->load->model("users_model");
 
         if (isset($_POST['editProfile'])) {
+            $this->data['error'] = "";
+            $this->data['emailVanDB'] = $this->users_model->doesEmailExist($this->input->post('email'));
+            $this->data['usernameVanDB'] = $this->users_model->doesUsernameExist($this->input->post('gebruikersnaam'));
 
-            $wijzigArray = array('username' => $this->input->post('gebruikersnaam'), 'email' => $this->input->post('email'), 'voornaam' => $this->input->post('voornaam'), 'familienaam' => $this->input->post('familienaam'));
-            $teWijzigen = array('gebruikerID' => $this->session->userdata('gebruikerID'));
-            $result = $this->users_model->updateID($wijzigArray, $teWijzigen);
-            if ($result == 1) {
-                $this->data['user'] = $this->users_model->find($this->session->userdata('gebruikerID'));
-                $this->data['error'] = "<div class='alert alert-success'>Gegevens zijn opgeslagen</div>";
 
-                if (empty($this->data['user'])) {
-                    //de alert-error is vn bootstrap
-                    $this->data['error'] = "<div class='alert alert-error'>De gebruiker is niet gevonden</div>";
-                }
-                if ($this->data['user'][0]['profielfoto'] == null) {
-                    $this->data['profielfoto'] = base_url() . '/img/team-1.jpg';
-                } else {
-                    $this->data['profielfoto'] = base_url() . '/userpic/' . $this->data['user'][0]['profielfoto'];
-                }
-
-                $this->parser->parse('forum/wijzigProfiel', $this->data);
+            if (!empty($this->data['usernameVanDB'])) {
+                $this->data['error'] .= "<p class='alert alert-danger'>Deze gebruikersnaam is al in gebruik.</p>";
             }
-            //$this->index();
+            if (!empty($this->data['emailVanDB'])) {
+                $this->data['error'] .= "<p class='alert alert-danger'>Dit e-mail adres is al in gebruik.</p>";
+            }
+
+            if ($this->data['error'] == "") {
+                $wijzigArray = array('username' => $this->input->post('gebruikersnaam'), 'email' => $this->input->post('email'), 'voornaam' => $this->input->post('voornaam'), 'familienaam' => $this->input->post('familienaam'));
+                $teWijzigen = array('gebruikerID' => $this->session->userdata('gebruikerID'));
+                $result = $this->users_model->updateID($wijzigArray, $teWijzigen);
+                if ($result == 1) {
+                    $this->data['user'] = $this->users_model->find($this->session->userdata('gebruikerID'));
+                    $this->data['error'] .= "<div class='alert alert-success'>Gegevens zijn opgeslagen</div>";
+
+                    if (empty($this->data['user'])) {
+                        //de alert-error is vn bootstrap
+                        $this->data['error'] .= "<div class='alert alert-error'>De gebruiker is niet gevonden</div>";
+                    }
+
+                    if ($this->data['user'][0]['profielfoto'] == null) {
+                        $this->data['profielfoto'] = base_url() . '/img/team-1.jpg';
+                    } else {
+                        $this->data['profielfoto'] = base_url() . '/userpic/' . $this->data['user'][0]['profielfoto'];
+                    }
+                    
+                } else {
+                    $this->data['error'] .= "<div class='alert alert-error'>Kon de gebruiker niet updaten.</div>";
+                }
+            }
+
+            $this->parser->parse('forum/wijzigProfiel', $this->data);
         } else if (isset($_POST['btn-prfWzg'])) {
             //print($this->session->userdata('user'));
             $this->data['error'] = "";
