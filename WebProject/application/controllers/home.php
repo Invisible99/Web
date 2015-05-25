@@ -101,5 +101,4 @@ class Home extends CI_Controller {
 
     //$code = $this->str_encrypt($this->generateCode(6));
     /* $this->data['captcha'] = "<img src='captcha_images.php?width=120&height=40&code=<?php echo $code ?>' />"; */
-
 }
