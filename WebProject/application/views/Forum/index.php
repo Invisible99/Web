@@ -187,7 +187,7 @@
                 <div class="row">
                     <div class="col-sm-12 animated fadeInLeft">
                         {error}
-                        <?php
+                       <?php
                         foreach ($forum as $subforum) {
 
                             if (($this->session->has_userdata('rolID') && $this->session->userdata['rolID'] <= $subforum->magZienTot) || $subforum->magZienTot == 3) {
@@ -250,7 +250,6 @@
                                 <?php
                             }
                             ?>
-                            
                         </div><!--toevoegen knop-->
                     </div>
                 </div>
