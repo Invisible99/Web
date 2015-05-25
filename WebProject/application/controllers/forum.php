@@ -354,18 +354,18 @@ class Forum extends CI_Controller {
                     }
 
                     if ($this->data['user'][0]['profielfoto'] == null) {
-                        $this->data['profielfoto'] = base_url() . '/img/team-1.jpg';
+                        $this->data['profielfoto'] = base_url() . 'userpic/default.jpg';
                     } else {
-                        $this->data['profielfoto'] = base_url() . '/userpic/' . $this->data['user'][0]['profielfoto'];
+                        $this->data['profielfoto'] = base_url() . 'userpic/' . $this->data['user'][0]['profielfoto'];
                     }
                 } else {
                     $this->data['error'] .= "<div class='alert alert-error'>Kon de gebruiker niet updaten.</div>";
                 }
             } else {
                 if ($this->data['user'][0]['profielfoto'] == null) {
-                    $this->data['profielfoto'] = base_url() . '/img/team-1.jpg';
+                    $this->data['profielfoto'] = base_url() . 'userpic/default.jpg';
                 } else {
-                    $this->data['profielfoto'] = base_url() . '/userpic/' . $this->data['user'][0]['profielfoto'];
+                    $this->data['profielfoto'] = base_url() . 'userpic/' . $this->data['user'][0]['profielfoto'];
                 }
             }
 
@@ -382,9 +382,9 @@ class Forum extends CI_Controller {
                 $this->data['error'] = "<div class='alert alert-error'>De gebruiker is niet gevonden</div>";
             }
             if ($this->data['user'][0]['profielfoto'] == null) {
-                $this->data['profielfoto'] = base_url() . '/img/team-1.jpg';
+                $this->data['profielfoto'] = base_url() . 'img/default.jpg';
             } else {
-                $this->data['profielfoto'] = base_url() . '/userpic/' . $this->data['user'][0]['profielfoto'];
+                $this->data['profielfoto'] = base_url() . 'userpic/' . $this->data['user'][0]['profielfoto'];
             }
 
             $this->parser->parse('forum/wijzigProfiel.php', $this->data);
@@ -394,9 +394,9 @@ class Forum extends CI_Controller {
 
             $this->data['user'] = $this->users_model->find($this->session->userdata('gebruikerID'));
             if ($this->data['user'][0]['profielfoto'] == null) {
-                $this->data['profielfoto'] = base_url() . '/img/team-1.jpg';
+                $this->data['profielfoto'] = base_url() . 'userpic/default.jpg';
             } else {
-                $this->data['profielfoto'] = base_url() . '/userpic/' . $this->data['user'][0]['profielfoto'];
+                $this->data['profielfoto'] = base_url() . 'userpic/' . $this->data['user'][0]['profielfoto'];
             }
             if (empty($this->data['user'])) {
                 //de alert-error is vn bootstrap
