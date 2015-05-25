@@ -21,7 +21,6 @@ class Search extends CI_Controller {
                 $this->data['subforums'] = $this->forum_model->searchSubforums($this->data['searchstring']);
                 $this->data['threads'] = $this->subforum_model->searchThreads($this->data['searchstring']);
                 $this->data['posts'] = $this->thread_model->searchPosts($this->data['searchstring']);
-                print_r($this->data['threads']);
                 if (empty($this->data['searchstring'])){
                     //de alert-error is vn bootstrap
                     $this->data['error'] = "<div class='alert alert-error'>Geen resultaten in categorien!</div>";

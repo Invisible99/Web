@@ -9,7 +9,7 @@
         <!-- Bootstrap -->
         <link href="<?php echo base_url(); ?>bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <!-- custom css (blue color by default) -->
-        <link href="<?php echo base_url(); ?>css/style.css" rel="stylesheet" type="text/css" media="screen">
+        <link href="<?php echo base_url(); ?>css/style-red.css" rel="stylesheet" type="text/css" media="screen">
         <!-- custom css (green color ) -->
         <!--      <link href="css/style-green.css" rel="stylesheet" type="text/css" media="screen">-->
         <!-- custom css (red color ) -->
@@ -144,31 +144,29 @@
             <div class="row">
                 {error}
                 {user}
-               
+
                 <div class="animated fadeInLeft">
                     <div class="col-md-2"> 
-                        <div class="row control-group">
+                        <div class="row">
                             <div class="form-group col-xs-12 controls">
-                                <label>Profielfoto:</label>
+                                <p class="text-center"><label for="foto">Profielfoto:</label></p>
                                 <ul class="list-inline f3-work">
                                     <?php echo form_open_multipart('forum/do_upload'); ?>
-                                    <?php echo "<input type='file' name='userfile' size='20' />"; ?>{profielfoto} <!-- krijgt de naam van de file -->
-                                    <?php echo "<input type='submit' name='submit' value='upload' /> "; ?>
-                                    <?php echo "</form>" ?>
-                                    <!--<li><a href="" onclick="document.getElementById('userfile').click();
-                                            return false"><img id="img" src="{/user}{foto}{user}" name="foto" class="img-responsive" alt=""></a></li>
-                                    <input type="file" name="userfile" id="userfile" onchange="readURL(this);" class="hidden" />-->
+                                    <li><a href="" onclick="document.getElementById('userfile').click();
+                                            return false"><img id="img" src="<?php echo base_url(); ?>/userpic/{profielfoto}" name="foto" class="img-responsive center-block" alt=""></a></li>
                                 </ul>
+                                <input type="file" name="userfile" id="userfile" size="20" onchange="readURL(this);" class="hidden" />
                                 <p class="help-block"></p>
                             </div>
                         </div> 
                         <div class="row">
                             <div class="form-group col-xs-12">
-                                <input type="submit" name="editProfile" class="btn btn-theme-bg btn-lg" value="Wijzig profiel" />
+                                <input type="submit" name="submit" class="btn btn-theme-bg btn-lg center-block" value="Wijzig foto" />
                             </div>
                         </div>
                     </div>
-                     <?php echo form_open("forum/wijzigProfiel"); ?>
+                    <?php form_close(); ?>
+                    <?php echo form_open("forum/wijzigProfiel"); ?>
                     <div class="col-md-8 col-md-offset-2">
                         <div class="col-md-12 margin30">
                             <div class="row control-group">
@@ -207,6 +205,11 @@
                             </div>
                         </div>
                         <br>
+                        <div class="row">
+                            <div class="form-group col-xs-12">
+                                <input type="submit" name="editProfile" class="btn btn-theme-bg btn-lg" value="Wijzig profiel" />
+                            </div>
+                        </div>
                         <div id="success"></div>
                     </div>
                 </div>
@@ -286,21 +289,21 @@
 
         <!--customizable plugin edit according to your needs-->
         <script src="<?php echo base_url(); ?>js/custom.js" type="text/javascript"></script>
-        <!--<script type="text/javascript">
-                                            function readURL(input) {
-                                                if (input.files && input.files[0]) {
-                                                    var reader = new FileReader();
+        <script type="text/javascript">
+                                    function readURL(input) {
+                                        if (input.files && input.files[0]) {
+                                            var reader = new FileReader();
 
-                                                    reader.onload = function (e) {
-                                                        $('#img')
-                                                                .attr('src', e.target.result)
-                                                                .width(160)
-                                                                .height(160);
-                                                    };
+                                            reader.onload = function (e) {
+                                                $('#img')
+                                                        .attr('src', e.target.result)
+                                                        .width(160)
+                                                        .height(160);
+                                            };
 
-                                                    reader.readAsDataURL(input.files[0]);
-                                                }
-                                            }
-        </script>-->
+                                            reader.readAsDataURL(input.files[0]);
+                                        }
+                                    }
+        </script>
     </body>
 </html>
