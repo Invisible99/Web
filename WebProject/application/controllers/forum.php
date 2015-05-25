@@ -286,7 +286,7 @@ class Forum extends CI_Controller {
         }
         if (isset($_POST['addcat'])) {
             $this->load->model("forum_model");
-            $this->forum_model->insert(array('titel' => $this->input->post('formtitel'), 'omschrijving' => $this->input->post('formomschrijving'),'magZienTot' => 2,'magPosten' => 2,'magThreadBewerken' => 2));
+            $this->forum_model->insert(array('titel' => $this->input->post('formtitel'), 'omschrijving' => $this->input->post('formomschrijving'),'magZienTot' => $this->input->post('categorieZien'),'magPosten' => $this->input->post('postsZien'),'magThreadsBewerken' => $this->input->post('threadsBewerken')));
             redirect(base_url() . "forum/index");
         }
         if (isset($_POST['addpost'])) {

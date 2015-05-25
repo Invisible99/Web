@@ -146,6 +146,27 @@
                     <div class="col-sm-12 animated fadeInLeft">
                         <div class="forumoverview-box event-box animated fadeInLeft jumbotron">
                             <form id="addcat" action="<?php echo base_url(); ?>forum/doneAdding/{categorieID}" method="POST">
+                                <div>
+                                    Wie mag deze categorie zien?<br>
+                                    <input type="radio" name="categorieZien" value="1">Enkel admins<br>
+                                    <input type="radio" name="categorieZien" value="2">Admins en leden<br>
+                                    <input type="radio" name="categorieZien" value="3">Admins, leden en gasten<br>
+                                    <br>
+                                </div>
+                                <div>
+                                    Wie mag threads bewerken in deze categorie?<br>
+                                    <input type="radio" name="threadsBewerken" value="1">Enkel admins<br>
+                                    <input type="radio" name="threadsBewerken" value="2">Admins en leden<br>
+                                    <input type="radio" name="threadsBewerken" value="3">Admins, leden en gasten<br>
+                                    <br>
+                                </div>
+                                <div>
+                                    Wie mag posten in de threads van deze categorie?<br>
+                                    <input type="radio" name="postsZien" value="1">Enkel admins<br>
+                                    <input type="radio" name="postsZien" value="2">Admins en leden<br>
+                                    <input type="radio" name="postsZien" value="3">Admins, leden en gasten<br>
+                                    <br>
+                                </div>
                                 <div><p class="forum-label">Titel:</p><textarea name="formtitel" form="addcat" class="forum-textarea"></textarea></div>
                                 <div><p class="forum-label">Omschrijving:</p><textarea name="formomschrijving" form="addcat" class="forum-textarea"></textarea></div>
                                 <div><input type="submit" name="addcat" value="Toevoegen" class="btn"></div>
