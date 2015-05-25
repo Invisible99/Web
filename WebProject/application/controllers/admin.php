@@ -168,14 +168,16 @@ class Admin extends CI_Controller {
             $this->data['error'] = "";
 
             $this->data['user'] = $this->users_model->find($gebruikerID);
-            if ($this->data['user'][0]['profielfoto'] == null) {
-                $this->data['profielfoto'] = base_url() . 'userpic/default.jpg';
-            } else {
-                $this->data['profielfoto'] = base_url() . '/userpic/' . $this->data['user'][0]['profielfoto'];
-            }
+
             if (empty($this->data['user'])) {
-                //de alert-error is vn bootstrap
-                $this->data['error'] = "<div class='alert alert-error'>De gebruiker is niet gevonden</div>";
+                $this->data['profielfoto'] = "";
+                $this->data['error'] = "<div class='alert alert-danger'>De gebruiker is niet gevonden</div>";
+            } else {
+                if ($this->data['user'][0]['profielfoto'] == null) {
+                    $this->data['profielfoto'] = base_url() . 'userpic/default.jpg';
+                } else {
+                    $this->data['profielfoto'] = base_url() . 'userpic/' . $this->data['user'][0]['profielfoto'];
+                }
             }
 
             $this->parser->parse('admin/wijzigProfiel_Admin.php', $this->data);
