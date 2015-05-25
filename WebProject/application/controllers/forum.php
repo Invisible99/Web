@@ -15,7 +15,7 @@ class Forum extends CI_Controller {
         //alle subforums opvragen samen met laatste post en thread
         $this->data['forum'] = $this->forum_model->findSubforums();
         $this->data['forumNoThread'] = $this->forum_model->findSubforumsNoThread();
-        $this->data['addButtonID']=0;//id maakt niet uit voor een categorie toe te voegen maar de controller die add afhandeld moet een int ontvangen
+        $this->data['addButtonID'] = 0; //id maakt niet uit voor een categorie toe te voegen maar de controller die add afhandeld moet een int ontvangen
         if (empty($this->data['forum']) && empty($this->data['forumNoThread'])) {
             //de alert-error is vn bootstrap
             $this->data['error'] = "<div class='alert alert-error'>Er zijn geen subforums!</div>";
@@ -33,7 +33,7 @@ class Forum extends CI_Controller {
         $this->data['subforum'] = $this->subforum_model->findThreads($categorieID);
         $this->data['subforumNoPost'] = $this->subforum_model->findThreadsNoPost($categorieID);
         $this->data['dezeSub'] = $this->forum_model->find($categorieID);
-        $this->data['addButtonID']=$categorieID;
+        $this->data['addButtonID'] = $categorieID;
         if (empty($this->data['subforum']) && empty($this->data['subforumNoPost'])) {
             //de alert-error is vn bootstrap
             $this->data['error'] = "<div class='alert alert-error'>Er zijn nog geen threads!</div>";
@@ -49,7 +49,7 @@ class Forum extends CI_Controller {
         $this->data['error'] = "";
         $this->data['thread'] = $this->thread_model->findPosts($threadID);
         $this->data['dezeThread'] = $this->subforum_model->find($threadID);
-        $this->data['addButtonID']=$threadID;
+        $this->data['addButtonID'] = $threadID;
         //!!!Element uit mysql result halen
         if (empty($this->data['thread'])) {
             //de alert-error is vn bootstrap
@@ -139,8 +139,8 @@ class Forum extends CI_Controller {
         $this->data['categorieID'] = $categorieID;
         $this->parser->parse('forum/addThread', $this->data);
     }
-    
-     //Show index page
+
+    //Show index page
     function editPost($postID) {
         //model laden
         $this->load->model("thread_model");
@@ -155,8 +155,8 @@ class Forum extends CI_Controller {
 
         $this->parser->parse('forum/editPost', $this->data);
     }
-    
-        //Show index page
+
+    //Show index page
     function deletePost($postID) {
         //model laden
         $this->load->model("thread_model");
@@ -172,13 +172,14 @@ class Forum extends CI_Controller {
 
         $this->parser->parse('forum/deletePost', $this->data);
     }
+
     //Show index page
     function addPost($topicID) {
         //model laden
         $this->data['topicID'] = $topicID;
         $this->parser->parse('forum/addPost', $this->data);
     }
-    
+
     //Show index page
     function doneEditing($id) {
         //wijzigen van 
@@ -204,7 +205,7 @@ class Forum extends CI_Controller {
             $this->data['thread'] = $this->subforum_model->find($id);
             //thread updaten
             $this->subforum_model->updateID(array('titel' => $this->input->post('formtitel'), 'bericht' => $this->input->post('formbericht')), array('topicID' => $id));
-            redirect(base_url()."forum/subforum/".$this->data['thread'][0]['categorieID']);
+            redirect(base_url() . "forum/subforum/" . $this->data['thread'][0]['categorieID']);
         }
         if (isset($_POST['deletethryes'])) {
             //$id is threadid
@@ -212,16 +213,16 @@ class Forum extends CI_Controller {
             //Huidige post opvragen
             $this->data['thread'] = $this->subforum_model->find($id);
             //Kijken of dit dat laatste thread is
-            $this->data['countID']=$this->subforum_model->countID($this->data['thread'][0]['categorieID']);
+            $this->data['countID'] = $this->subforum_model->countID($this->data['thread'][0]['categorieID']);
             $this->subforum_model->deleteID(array('topicID' => $id));
-            redirect(base_url()."forum/subforum/".$this->data['thread'][0]['categorieID']);
+            redirect(base_url() . "forum/subforum/" . $this->data['thread'][0]['categorieID']);
         }
         if (isset($_POST['deletethrno'])) {
             //$id is threadid
             $this->load->model("subforum_model");
             //Huidige post opvragen
             $this->data['thread'] = $this->subforum_model->find($id);
-            redirect(base_url()."forum/subforum/".$this->data['thread'][0]['categorieID']);
+            redirect(base_url() . "forum/subforum/" . $this->data['thread'][0]['categorieID']);
         }
         if (isset($_POST['editpost'])) {
             //$id is berichtid
@@ -230,7 +231,7 @@ class Forum extends CI_Controller {
             $this->data['post'] = $this->thread_model->find($id);
             //post updaten
             $this->thread_model->updateID(array('bericht' => $this->input->post('formbericht')), array('berichtID' => $id));
-            redirect(base_url()."forum/thread/".$this->data['post'][0]['topicID']);
+            redirect(base_url() . "forum/thread/" . $this->data['post'][0]['topicID']);
         }
         if (isset($_POST['deletepostyes'])) {
             //$id is berichtid
@@ -238,54 +239,52 @@ class Forum extends CI_Controller {
             //Huidige post opvragen
             $this->data['post'] = $this->thread_model->find($id);
             //Kijken of dit dat enigste post is
-            $this->data['countID']=$this->thread_model->countID($this->data['post'][0]['topicID']);
-            if($this->data['countID']->countID > 1){
+            $this->data['countID'] = $this->thread_model->countID($this->data['post'][0]['topicID']);
+            if ($this->data['countID']->countID > 1) {
                 //hoogste post ID van deze thread ophalen
-                $this->data['maxID']=$this->thread_model->maxID($this->data['post'][0]['topicID']);
+                $this->data['maxID'] = $this->thread_model->maxID($this->data['post'][0]['topicID']);
                 //als dit de latestpost is moet de vorige post de latestpost worden
-                if($this->data['maxID']->maxID == $id){
+                if ($this->data['maxID']->maxID == $id) {
                     //post deleten
                     $this->thread_model->deleteID(array('berichtID' => $id));
                     //nieuwe laatste id berekenen
-                    $this->data['newmaxID']=$this->thread_model->maxID($this->data['post'][0]['topicID']);
+                    $this->data['newmaxID'] = $this->thread_model->maxID($this->data['post'][0]['topicID']);
                     //nieuwe latestpost op 1 zetten
                     $this->thread_model->updateLatestPost($this->data['newmaxID']->maxID);
                 }
                 //anders gewoon deleten
-                else{
+                else {
                     $this->thread_model->deleteID(array('berichtID' => $id));
                 }
             }
             //indien dit de enigste post is kan men veilig verwijderen
-            else{
+            else {
                 $this->thread_model->deleteID(array('berichtID' => $id));
-                redirect(base_url()."forum/thread/".$this->data['post'][0]['topicID']);
+                redirect(base_url() . "forum/thread/" . $this->data['post'][0]['topicID']);
             }
-            redirect(base_url()."forum/thread/".$this->data['post'][0]['topicID']);
+            redirect(base_url() . "forum/thread/" . $this->data['post'][0]['topicID']);
         }
         if (isset($_POST['deletepostno'])) {
             //$id is berichtid
             $this->load->model("thread_model");
             //Huidige post opvragen
             $this->data['post'] = $this->thread_model->find($id);
-            redirect(base_url()."forum/thread/".$this->data['post'][0]['topicID']);
-        }
-        else
-        {
+            redirect(base_url() . "forum/thread/" . $this->data['post'][0]['topicID']);
+        } else {
             redirect(base_url());
         }
     }
-    
+
     function doneAdding($id) {
         if (isset($_POST['addthr'])) {
             $this->load->model("subforum_model");
-            $this->subforum_model->insert(array('gebruikerID' => 1, 'categorieID' => $id, 'titel' => $this->input->post('formtitel'),'bericht' => $this->input->post('formbericht')));
-            redirect(base_url()."forum/subforum/".$id);
+            $this->subforum_model->insert(array('gebruikerID' => 1, 'categorieID' => $id, 'titel' => $this->input->post('formtitel'), 'bericht' => $this->input->post('formbericht')));
+            redirect(base_url() . "forum/subforum/" . $id);
         }
         if (isset($_POST['addcat'])) {
             $this->load->model("forum_model");
-            $this->forum_model->insert(array('titel' => $this->input->post('formtitel'),'omschrijving' => $this->input->post('formomschrijving')));
-            redirect(base_url()."forum/index");
+            $this->forum_model->insert(array('titel' => $this->input->post('formtitel'), 'omschrijving' => $this->input->post('formomschrijving')));
+            redirect(base_url() . "forum/index");
         }
         if (isset($_POST['addpost'])) {
             $this->load->model("thread_model");
@@ -293,12 +292,10 @@ class Forum extends CI_Controller {
             //alle latestpost voor deze thread op nul zetten
             $this->thread_model->resetAllLatestPost($id);
             //toevoegen als laatste en latest op 1 zetten
-            $this->thread_model->insert(array('gebruikerID' => 1, 'topicID' => $id,'bericht' => $this->input->post('formbericht'),'latestPost' => 1));
+            $this->thread_model->insert(array('gebruikerID' => 1, 'topicID' => $id, 'bericht' => $this->input->post('formbericht'), 'latestPost' => 1));
             //doorsturen naar de thread
-            redirect(base_url()."forum/thread/".$id);
-        }
-        else
-        {
+            redirect(base_url() . "forum/thread/" . $id);
+        } else {
             redirect(base_url() . "forum/index");
         }
     }
@@ -311,21 +308,36 @@ class Forum extends CI_Controller {
         $this->load->model("users_model");
 
         if (isset($_POST['editProfile'])) {
+            $this->data['error'] = "";
+            $this->data['emailVanDB'] = $this->users_model->doesEmailExist($this->input->post('email'));
+            $this->data['usernameVanDB'] = $this->users_model->doesUsernameExist($this->input->post('gebruikersnaam'));
 
-              $wijzigArray = array('username' => $this->input->post('gebruikersnaam'), 'email' => $this->input->post('email'), 'voornaam' => $this->input->post('voornaam'), 'familienaam' => $this->input->post('familienaam'));
-              $teWijzigen = array('gebruikerID' => $this->session->userdata('gebruikerID'));
-              $result = $this->users_model->updateID($wijzigArray, $teWijzigen);
-              if ($result == 1) {
-              $this->data['user'] = $this->users_model->find($this->session->userdata('gebruikerID'));
-              $this->data['error'] = "<div class='alert alert-success'>Gegevens zijn opgeslagen</div>";
+            if (!empty($this->data['usernameVanDB'])) {
+                $this->data['error'] .= "<p class='alert alert-danger'>Deze gebruikersnaam is al in gebruik.</p>";
+            }
+            if (!empty($this->data['emailVanDB'])) {
+                $this->data['error'] .= "<p class='alert alert-danger'>Dit e-mail adres is al in gebruik.</p>";
+            }
 
-              if (empty($this->data['user'])) {
-              //de alert-error is vn bootstrap
-              $this->data['error'] = "<div class='alert alert-error'>De gebruiker is niet gevonden</div>";
-              }
+            if ($this->data['error'] == "") {
+                $wijzigArray = array('username' => $this->input->post('gebruikersnaam'), 'email' => $this->input->post('email'), 'voornaam' => $this->input->post('voornaam'), 'familienaam' => $this->input->post('familienaam'));
+                $teWijzigen = array('gebruikerID' => $this->session->userdata('gebruikerID'));
+                $result = $this->users_model->updateID($wijzigArray, $teWijzigen);
+                if ($result == 1) {
+                    $this->data['user'] = $this->users_model->find($this->session->userdata('gebruikerID'));
+                    $this->data['error'] .= "<div class='alert alert-success'>Gegevens zijn opgeslagen</div>";
 
-              $this->parser->parse('forum/wijzigProfiel', $this->data);
-              } 
+                    if (empty($this->data['user'])) {
+                        //de alert-error is vn bootstrap
+                        $this->data['error'] .= "<div class='alert alert-error'>De gebruiker is niet gevonden</div>";
+                    }
+                }
+                else{
+                    $this->data['error'] .= "<div class='alert alert-error'>Kon de gebruiker niet updaten.</div>";
+                }
+            }
+            
+            $this->parser->parse('forum/wijzigProfiel', $this->data);
             //$this->index();
         } else if (isset($_POST['btn-prfWzg'])) {
             //print($this->session->userdata('user'));
@@ -333,7 +345,6 @@ class Forum extends CI_Controller {
 
             $this->data['user'] = $this->users_model->find($this->session->userdata('gebruikerID'));
             //$this->data['foto'] = base_url() . "img/team-1.jpg";
-
             //print_r($this->data);
             if (empty($this->data['user'])) {
                 //de alert-error is vn bootstrap
@@ -364,8 +375,8 @@ class Forum extends CI_Controller {
         $this->load->helper('url');
         $this->load->helper('path');
         $this->load->model("users_model");
- 
-        
+
+
         $filename = $this->session->userdata('gebruikerID');
 
         $config = array(
@@ -377,18 +388,18 @@ class Forum extends CI_Controller {
             'max_height' => "768",
             'max_width' => "1024"
         );
-        
+
         $this->load->library('upload', $config);
-        
-        
+
+
         if ($this->upload->do_upload()) {
             $fileArray = $this->upload->data();
             $filename .= $fileArray['file_ext'];
-                    
-         $wijzigArray = array('profielfoto' => $filename);
-        $teWijzigen = array('gebruikerID' => $this->session->userdata('gebruikerID'));
-        $result = $this->users_model->updateID($wijzigArray, $teWijzigen);
-        
+
+            $wijzigArray = array('profielfoto' => $filename);
+            $teWijzigen = array('gebruikerID' => $this->session->userdata('gebruikerID'));
+            $result = $this->users_model->updateID($wijzigArray, $teWijzigen);
+
             redirect(base_url() . 'forum/wijzigProfiel', 'refresh');
         } else {
             redirect(base_url() . 'forum/wijzigProfiel', 'refresh');
