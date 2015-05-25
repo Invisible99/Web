@@ -10,5 +10,28 @@ class thread_model extends MY_Model{
 
         return $query->result();
     }
-  
+    
+    function maxID($id){
+        $query = $this->db->query("SELECT MAX(berichtID) 'maxID' FROM posts WHERE topicID = $id");
+        $result = array();
+
+        return $query->row();
+    }
+    
+    function countID($id){
+        $query = $this->db->query("SELECT COUNT(berichtID) 'countID' FROM posts WHERE topicID = $id");
+        $result = array();
+
+        return $query->row();
+    }
+    
+    function updateLatestPost($id){
+        $query = $this->db->query("UPDATE tedxpxl.posts SET latestPost = 1 WHERE posts.berichtID = $id");
+        return $query;
+    }
+    
+    function resetAllLatestPost($id){
+        $query = $this->db->query("UPDATE tedxpxl.posts SET latestPost = 0 WHERE posts.topicID = $id");
+        return $query;
+    }
 }

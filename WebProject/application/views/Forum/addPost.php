@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Thread</title>
+        <title>Forum</title>
 
         <!-- Bootstrap -->
         <link href="<?php echo base_url(); ?>bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -133,11 +133,7 @@
                     <div class="col-sm-6 hidden-xs text-right">
                         <ol class="breadcrumb">
                             <li><a href="<?php echo base_url(); ?>home/index">Home</a></li>
-                            <li><a href="<?php echo base_url(); ?>forum/index">Forum</a></li>
-                            {dezeThread}
-                            <li><a href="<?php echo base_url(); ?>forum/subforum/{categorieID}">Subforum</a></li>
-                            {/dezeThread}
-                            <li>Thread</li>
+                            <li>Forum</li>
                         </ol>
                     </div>
                 </div>
@@ -146,33 +142,14 @@
         <div class="divide80"></div>
         <div class="schedule">
             <div class="container">
-                <div class="center-heading">
-                    {dezeThread}
-                    <h2>{titel}</h2>
-                    <span class="center-line"></span>
-                    <p class="margin40">
-                        {bericht}
-                    </p>
-                    {/dezeThread}
-                </div> 
                 <div class="row">
-                    <div class="col-sm-12 animated fadeInleft">
-                        {error}
-                        {thread}
-                        <div class="forumoverview-box event-box">
-                            <p class="forum-overview-post">
-                                <strong>({berichtID}) Posted on {postDate}: </strong> {bericht}
-                                </p>
-                            <p class="forum-overview-poster">
-                                <strong class="forum-overview-black">Poster:</strong> <a href="#">{username}</a>
-                            </p>
-                            <a href="<?php echo base_url(); ?>forum/editPost/{berichtID}"><span class="forum-button">Wijzigen</span></a>
-                            <a href="<?php echo base_url(); ?>forum/deletePost/{berichtID}"><span class="forum-button">Verwijderen</span></a>
+                    <div class="col-sm-12 animated fadeInLeft">
+                        <div class="forumoverview-box event-box animated fadeInLeft jumbotron">
+                            <form id="addpost" action="<?php echo base_url(); ?>forum/doneAdding/{topicID}" method="POST">
+                                <div><p class="forum-label">Inhoud:</p><textarea name="formbericht" form="addpost" class="forum-textarea"></textarea></div>
+                                <div><input type="submit" name="addpost" value="Toevoegen" class="btn"></div>
+                            </form>
                         </div><!--event box-->
-                        {/thread}
-                        <div>
-                            <a href="<?php echo base_url(); ?>forum/addPost/{addButtonID}"><span class="forum-button-right">Post toevoegen</span></a>
-                        </div><!--toevoegen knop-->
                     </div>
                 </div>
             </div>
@@ -240,7 +217,6 @@
                             </form>
                         </div>                        
                     </div><!--footer col-->
-
                 </div>
                 <div class="row">
                     <div class="col-md-12 text-center">

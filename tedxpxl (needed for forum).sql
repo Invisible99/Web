@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 24, 2015 at 10:02 PM
+-- Generation Time: May 25, 2015 at 04:35 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -105,7 +105,7 @@ CREATE TABLE IF NOT EXISTS `categories` (
 `categorieID` int(11) NOT NULL,
   `titel` varchar(75) NOT NULL,
   `omschrijving` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `categories`
@@ -116,7 +116,9 @@ INSERT INTO `categories` (`categorieID`, `titel`, `omschrijving`) VALUES
 (2, 'Gasten forum', 'forum voor de gasten'),
 (3, 'Leden forum', 'forum voor de leden'),
 (4, 'Nieuws', 'Al het nieuws van TedxPxl'),
-(7, 'Forum voor speciale mensen', 'Fre welcomes u!');
+(12, 'Piet''s testforum', 'Don''t mind this place'),
+(13, 'Een leeg testforum', 'Nevermind me, I''m empty'),
+(14, 'nog een leeg forum', 'jaja, nog eeeeeeeeeeen!');
 
 -- --------------------------------------------------------
 
@@ -158,21 +160,26 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `topicID` int(11) NOT NULL,
   `gebruikerID` int(11) NOT NULL,
   `bericht` text NOT NULL,
-  `postDate` date NOT NULL,
-  `latestPost` tinyint(4) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+  `postDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `latestPost` tinyint(4) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `posts`
 --
 
 INSERT INTO `posts` (`berichtID`, `topicID`, `gebruikerID`, `bericht`, `postDate`, `latestPost`) VALUES
-(1, 1, 4, 'Wanneer werkt het forum?', '2015-05-23', 1),
-(2, 2, 4, 'heheheh nice', '2015-05-23', 1),
-(3, 3, 4, 'vreeed nice. kan niet wachten!', '2015-05-23', 0),
-(4, 4, 4, 'hohohohohho, werk dan maar snel door', '2015-05-23', 1),
-(5, 3, 1, 'Die kerel hierboven weet hoe het zit!!', '2015-05-23', 0),
-(6, 3, 1, 'BTW, al lekker veel posts', '2015-05-23', 1);
+(1, 1, 4, 'Wanneer werkt het forum?', '2015-05-23 00:00:00', 1),
+(2, 2, 4, 'heheheh nice', '2015-05-23 00:00:00', 1),
+(3, 3, 4, 'vreeed nice. kan niet wachten! naicuuuu', '2015-05-23 00:00:00', 0),
+(4, 4, 4, 'hohohohohho, werk dan maar snel door', '2015-05-23 00:00:00', 1),
+(11, 3, 4, 'vreeed nice. kan niet wachten! naicuuuu azda dazfazefa z faz fazf afa', '2015-05-23 00:00:00', 1),
+(37, 31, 1, 'dit is een testbericht', '2015-05-25 00:00:00', 0),
+(39, 31, 1, 'hoipiepeloi', '2015-05-25 02:59:23', 1),
+(41, 36, 1, 'een eerste test? :O\r\n\r\nEDIT: Tijd is nu later dan de rest muahahahahahah ^^', '2015-05-25 03:56:02', 0),
+(42, 36, 1, 'het ziet er naar uit ja dat dit wederom een test is', '2015-05-25 03:52:37', 0),
+(43, 36, 1, 'Het lijk wel te werken. Nice!', '2015-05-25 03:56:19', 0),
+(44, 36, 1, 'Too StronK!', '2015-05-25 03:56:19', 1);
 
 -- --------------------------------------------------------
 
@@ -208,32 +215,33 @@ CREATE TABLE IF NOT EXISTS `threads` (
   `bericht` text NOT NULL,
   `gebruikerID` int(11) NOT NULL COMMENT 'gebruiker die deze topic heeft aangemaakt',
   `categorieID` int(11) NOT NULL,
-  `latestThread` tinyint(4) NOT NULL DEFAULT '1',
-  `eventDate` date DEFAULT NULL COMMENT 'enkel nodig bij topics over events',
-  `postDate` date DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
+  `eventDate` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'enkel nodig bij topics over events',
+  `postDate` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `threads`
 --
 
-INSERT INTO `threads` (`topicID`, `titel`, `bericht`, `gebruikerID`, `categorieID`, `latestThread`, `eventDate`, `postDate`) VALUES
-(1, 'Support', 'Stel hier je vragen!', 4, 2, 1, '0000-00-00', '2015-05-24'),
-(2, 'Welkom leden', 'Maak kennis met de andere leden hier', 4, 3, 1, '0000-00-00', '2015-05-24'),
-(3, 'Website launch party', 'De party van het jaar! De nieuwe website wordt gelauncht!', 4, 1, 1, '0000-00-00', '2015-05-24'),
-(4, 'Nieuwe website in de maak', 'We zijn een nieuwe website aan het maken. Woop Woop!', 4, 4, 1, '0000-00-00', '2015-05-24'),
-(5, 'Het grote wijzig-event', 'Lekker body dit!', 4, 1, 0, '2015-05-14', '0000-00-00'),
-(6, 'nog een test event', 'lqjsdlmfjazlerjmljlkjlmsdjfmljsd\r\nfmljsmdfljmlksqdf\r\nmlsdjfmlqsjfmlkjqdf\r\nmjsdmlfjmqlsdjf', 4, 1, 0, '2015-06-03', '0000-00-00'),
-(9, 'zoveelste test event', 'lqjsdlmfjazlerjmljlkjlmsdjfmljsd\r\nfmljsmdfljmlksqdf\r\nmlsdjfmlqsjfmlkjqdf\r\nmjsdmlfjmqlsdjf', 4, 1, 0, '2015-07-14', '0000-00-00'),
-(11, 'hupla nog wa testen', 'bladieblablabla', 4, 1, 0, '2015-06-10', '0000-00-00'),
-(13, 'nog ewa meer events', 'tralalalalalalalala', 2, 1, 0, '2015-08-06', '0000-00-00'),
-(14, 'hier zijn we alweer', 'trolololol', 3, 1, 0, '2015-09-13', '0000-00-00'),
-(15, 'dit wordt saai', 'wa moet ne mens nog zeggen omdenduur', 1, 1, 0, '2015-11-21', '0000-00-00'),
-(16, 'ee kijk, een vlieg', 'PETS dood', 2, 1, 0, '2015-12-10', '0000-00-00'),
-(17, 'kerstmis!!!', 'ho ho ho', 1, 1, 0, '2015-12-25', '0000-00-00'),
-(18, 'de sint is er ook bij ', 'zie ginds komt de stoomboot', 6, 1, 0, '2015-12-06', '0000-00-00'),
-(19, 'het nieuwe jaar', 'happy newyear !', 2, 1, 0, '2016-01-01', '0000-00-00'),
-(24, 'fre masterrace', 'officiele fanclub hier!', 1, 7, 1, '0000-00-00', '2015-05-24');
+INSERT INTO `threads` (`topicID`, `titel`, `bericht`, `gebruikerID`, `categorieID`, `eventDate`, `postDate`) VALUES
+(1, 'Support', 'Stel hier je vragen!', 4, 2, '0000-00-00 00:00:00', '2015-05-24 00:00:00'),
+(2, 'Welkom leden', 'Maak kennis met de andere leden hier', 4, 3, '0000-00-00 00:00:00', '2015-05-24 00:00:00'),
+(3, 'Website launch party', 'De party van het jaar! De nieuwe website wordt gelauncht!', 4, 1, '0000-00-00 00:00:00', '2015-05-24 00:00:00'),
+(4, 'Nieuwe website in de maak', 'We zijn een nieuwe website aan het maken. Woop Woop!', 4, 4, '0000-00-00 00:00:00', '2015-05-24 00:00:00'),
+(5, 'Het grote wijzig-event', 'Lekker body dit!', 4, 1, '2015-05-14 00:00:00', '0000-00-00 00:00:00'),
+(6, 'nog een test event', 'lqjsdlmfjazlerjmljlkjlmsdjfmljsd\r\nfmljsmdfljmlksqdf\r\nmlsdjfmlqsjfmlkjqdf\r\nmjsdmlfjmqlsdjf', 4, 1, '2015-06-03 00:00:00', '0000-00-00 00:00:00'),
+(9, 'zoveelste test event', 'lqjsdlmfjazlerjmljlkjlmsdjfmljsd\r\nfmljsmdfljmlksqdf\r\nmlsdjfmlqsjfmlkjqdf\r\nmjsdmlfjmqlsdjf', 4, 1, '2015-07-14 00:00:00', '0000-00-00 00:00:00'),
+(11, 'hupla nog wa testen', 'bladieblablabla', 4, 1, '2015-06-10 00:00:00', '0000-00-00 00:00:00'),
+(13, 'nog ewa meer events', 'tralalalalalalalala', 2, 1, '2015-08-06 00:00:00', '0000-00-00 00:00:00'),
+(14, 'hier zijn we alweer', 'trolololol', 3, 1, '2015-09-13 00:00:00', '0000-00-00 00:00:00'),
+(15, 'dit wordt saai', 'wa moet ne mens nog zeggen omdenduur', 1, 1, '2015-11-21 00:00:00', '0000-00-00 00:00:00'),
+(16, 'ee kijk, een vlieg', 'PETS dood', 2, 1, '2015-12-10 00:00:00', '0000-00-00 00:00:00'),
+(17, 'kerstmis!!!', 'ho ho ho', 1, 1, '2015-12-25 00:00:00', '0000-00-00 00:00:00'),
+(18, 'de sint is er ook bij ', 'zie ginds komt de stoomboot', 6, 1, '2015-12-06 00:00:00', '0000-00-00 00:00:00'),
+(19, 'het nieuwe jaar', 'happy newyear !', 2, 1, '2016-01-01 00:00:00', '0000-00-00 00:00:00'),
+(31, 'gastenboek', 'post hier maar iets', 1, 2, NULL, '2015-05-25 00:00:00'),
+(36, 'Piet''s awesome test topic', 'There can only be one who''s the test!', 1, 12, '2015-05-25 03:39:41', '2015-05-25 03:39:41'),
+(37, 'Piet''s test topic numero dos', 'Veel plezier met testen', 1, 12, '2015-05-25 03:39:47', '2015-05-25 03:39:47');
 
 -- --------------------------------------------------------
 
@@ -329,7 +337,7 @@ MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=113;
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-MODIFY `categorieID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+MODIFY `categorieID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `maanden`
 --
@@ -339,7 +347,7 @@ MODIFY `maandID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-MODIFY `berichtID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+MODIFY `berichtID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=45;
 --
 -- AUTO_INCREMENT for table `roles`
 --
@@ -349,7 +357,7 @@ MODIFY `rolID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 -- AUTO_INCREMENT for table `threads`
 --
 ALTER TABLE `threads`
-MODIFY `topicID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=25;
+MODIFY `topicID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=39;
 --
 -- AUTO_INCREMENT for table `users`
 --

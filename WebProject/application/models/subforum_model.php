@@ -37,4 +37,18 @@ class subforum_model extends MY_Model{
         return $query->result();
         
     }
+    
+    function maxID($id){
+        $query = $this->db->query("SELECT MAX(topicID) 'maxID' FROM threads WHERE categorieID = $id");
+        $result = array();
+
+        return $query->row();
+    }
+    
+    function countID($id){
+        $query = $this->db->query("SELECT COUNT(topicID) 'countID' FROM threads WHERE categorieID = $id");
+        $result = array();
+
+        return $query->row();
+    }
 }

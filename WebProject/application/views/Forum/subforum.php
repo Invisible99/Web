@@ -184,7 +184,7 @@
                         </div><!--event box-->
                         {/subforumNoPost}
                         <div>
-                            <a href="<?php echo base_url(); ?>forum/addThread/{addButtonID}"><span class="forum-button-right">Toevoegen</span></a>
+                            <a href="<?php echo base_url(); ?>forum/addThread/{addButtonID}"><span class="forum-button-right">Thread toevoegen</span></a>
                         </div><!--toevoegen knop-->
                     </div>
                 </div>

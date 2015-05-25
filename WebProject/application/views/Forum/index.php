@@ -201,7 +201,7 @@
                                 <strong>Laatste post in </strong><strong class="forum-overview-red"><a href="<?php echo base_url(); ?>forum/thread/{topicID}">{thrtitel}</a></strong>: {bericht} 
                             </p>
                             <p class="forum-overview-poster jumbotron">
-                                <strong class="forum-overview-black">Poster:</strong> <a href="#">{username}</a>
+                                <strong class="forum-overview-black">Poster:</strong> <a href="#">{username}</a><strong class="forum-overview-black"> op {postDate}</strong>
                             </p>
                             <a href="<?php echo base_url(); ?>forum/editSubforum/{categorieID}"><span class="forum-button">Wijzigen</span></a>
                             <a href="<?php echo base_url(); ?>forum/deleteSubforum/{categorieID}"><span class="forum-button">Verwijderen</span></a>
@@ -220,7 +220,7 @@
                         </div><!--event box-->
                         {/forumNoThread}
                         <div>
-                            <a href="<?php echo base_url(); ?>forum/addSubforum/{addButtonID}"><span class="forum-button-right">Toevoegen</span></a>
+                            <a href="<?php echo base_url(); ?>forum/addSubforum/{addButtonID}"><span class="forum-button-right">Subforum toevoegen</span></a>
                         </div><!--toevoegen knop-->
                     </div>
                 </div>

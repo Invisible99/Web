@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Thread</title>
+        <title>Forum</title>
 
         <!-- Bootstrap -->
         <link href="<?php echo base_url(); ?>bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -27,7 +27,6 @@
         <!-- animated css  -->
         <link href="<?php echo base_url(); ?>css/animate.css" rel="stylesheet" type="text/css" media="screen">
         <!--google fonts-->
-
 
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
         <!--owl carousel css-->
@@ -133,11 +132,7 @@
                     <div class="col-sm-6 hidden-xs text-right">
                         <ol class="breadcrumb">
                             <li><a href="<?php echo base_url(); ?>home/index">Home</a></li>
-                            <li><a href="<?php echo base_url(); ?>forum/index">Forum</a></li>
-                            {dezeThread}
-                            <li><a href="<?php echo base_url(); ?>forum/subforum/{categorieID}">Subforum</a></li>
-                            {/dezeThread}
-                            <li>Thread</li>
+                            <li>Forum</li>
                         </ol>
                     </div>
                 </div>
@@ -146,33 +141,17 @@
         <div class="divide80"></div>
         <div class="schedule">
             <div class="container">
-                <div class="center-heading">
-                    {dezeThread}
-                    <h2>{titel}</h2>
-                    <span class="center-line"></span>
-                    <p class="margin40">
-                        {bericht}
-                    </p>
-                    {/dezeThread}
-                </div> 
                 <div class="row">
-                    <div class="col-sm-12 animated fadeInleft">
+                    <div class="col-sm-12 animated fadeInLeft">
                         {error}
-                        {thread}
-                        <div class="forumoverview-box event-box">
-                            <p class="forum-overview-post">
-                                <strong>({berichtID}) Posted on {postDate}: </strong> {bericht}
-                                </p>
-                            <p class="forum-overview-poster">
-                                <strong class="forum-overview-black">Poster:</strong> <a href="#">{username}</a>
-                            </p>
-                            <a href="<?php echo base_url(); ?>forum/editPost/{berichtID}"><span class="forum-button">Wijzigen</span></a>
-                            <a href="<?php echo base_url(); ?>forum/deletePost/{berichtID}"><span class="forum-button">Verwijderen</span></a>
+                        {post}
+                        <div class="forumoverview-box event-box animated fadeInLeft jumbotron">
+                            <form id="editpost" action="<?php echo base_url(); ?>forum/doneEditing/{berichtID}" method="POST">
+                                <div><p class="forum-label">Inhoud:</p><textarea name="formbericht" form="editpost" class="forum-textarea">{bericht}</textarea></div>
+                                <div><input type="submit" name="editpost" value="Klaar met wijzigen" class="btn"></div>
+                            </form>
                         </div><!--event box-->
-                        {/thread}
-                        <div>
-                            <a href="<?php echo base_url(); ?>forum/addPost/{addButtonID}"><span class="forum-button-right">Post toevoegen</span></a>
-                        </div><!--toevoegen knop-->
+                        {/post}
                     </div>
                 </div>
             </div>
@@ -240,7 +219,6 @@
                             </form>
                         </div>                        
                     </div><!--footer col-->
-
                 </div>
                 <div class="row">
                     <div class="col-md-12 text-center">
