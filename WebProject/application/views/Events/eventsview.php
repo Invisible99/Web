@@ -9,7 +9,7 @@
         <!-- Bootstrap -->
         <link href="<?php echo base_url(); ?>bootstrap/css/bootstrap.css" rel="stylesheet">
         <!-- custom css-->
-        <link href="<?php echo base_url(); ?>css/style.css" rel="stylesheet" type="text/css" media="screen">
+        <link href="<?php echo base_url(); ?>css/style-red.css" rel="stylesheet" type="text/css" media="screen">
 
         <!-- font awesome for icons -->
         <link href="<?php echo base_url(); ?>font-awesome-4.3.0/css/font-awesome.min.css" rel="stylesheet">
@@ -55,14 +55,14 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="active ">
+                        <li>
                             <a href="<?php echo base_url(); ?>home/index">Home</a>
                         </li>
                         <!--menu Portfolio li end here-->
                         <li>
                             <a href="<?php echo base_url(); ?>forum/index">Forum</a>
                         </li>
-                        <li>
+                        <li class="active">
                             <a href="<?php echo base_url(); ?>events/index">Evenementen</a>
                         </li> 
                         <li>
