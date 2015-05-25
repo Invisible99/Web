@@ -22,7 +22,7 @@ class Forum extends CI_Controller {
             //de alert-error is vn bootstrap
             $this->data['error'] = "<div class='alert alert-error'>Er zijn geen subforums!</div>";
         }
-        
+
         $this->parser->parse('forum/index', $this->data);
     }
 
@@ -286,7 +286,7 @@ class Forum extends CI_Controller {
         }
         if (isset($_POST['addcat'])) {
             $this->load->model("forum_model");
-            $this->forum_model->insert(array('titel' => $this->input->post('formtitel'), 'omschrijving' => $this->input->post('formomschrijving'),'magZienTot' => $this->input->post('categorieZien'),'magPosten' => $this->input->post('postsZien'),'magThreadsBewerken' => $this->input->post('threadsBewerken')));
+            $this->forum_model->insert(array('titel' => $this->input->post('formtitel'), 'omschrijving' => $this->input->post('formomschrijving'), 'magZienTot' => $this->input->post('categorieZien'), 'magPosten' => $this->input->post('postsZien'), 'magThreadsBewerken' => $this->input->post('threadsBewerken')));
             redirect(base_url() . "forum/index");
         }
         if (isset($_POST['addpost'])) {
@@ -295,10 +295,9 @@ class Forum extends CI_Controller {
             //alle latestpost voor deze thread op nul zetten
             $this->thread_model->resetAllLatestPost($id);
             //toevoegen als laatste en latest op 1 zetten
-            if($this->session->has_userdata('gebruikerID')){
+            if ($this->session->has_userdata('gebruikerID')) {
                 $gebruikerID = $this->session->userdata['gebruikerID'];
-            }
-            else{
+            } else {
                 $gebruikerID = 3;
             }
             $this->thread_model->insert(array('gebruikerID' => $gebruikerID, 'topicID' => $id, 'bericht' => $this->input->post('formbericht'), 'latestPost' => 1));
@@ -394,9 +393,14 @@ class Forum extends CI_Controller {
 
             $this->data['user'] = $this->users_model->find($this->session->userdata('gebruikerID'));
             if (empty($this->data['user'])) {
-                $this->data['profielfoto'] = '';
-                //de alert-error is vn bootstrap
-                $this->data['error'] = "<div class='alert alert-error'>De gebruiker is niet gevonden</div>";
+                $this->data['profielfoto'] = "";
+                $this->data['error'] = "<div class='alert alert-danger'>De gebruiker is niet gevonden</div>";
+            } else {
+                if ($this->data['user'][0]['profielfoto'] == null) {
+                    $this->data['profielfoto'] = base_url() . 'userpic/default.jpg';
+                } else {
+                    $this->data['profielfoto'] = base_url() . 'userpic/' . $this->data['user'][0]['profielfoto'];
+                }
             }
 
             $this->parser->parse('forum/wijzigProfiel.php', $this->data);
